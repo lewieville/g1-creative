@@ -69,12 +69,12 @@ const featuredProjects = [
     href: "/portfolio/ctr-trades",
   },
   {
-    title: "GrowthLabs",
-    description: "Professional corporate website with integrated CRM and marketing automation.",
-    image: "/images/portfolio-3.jpg",
-    category: "Business",
-    tags: ["Web Design", "CRM", "Analytics"],
-    href: "/portfolio/growthlabs",
+    title: "Tradesvilles Crypto Program",
+    description: "Comprehensive trading education platform with interactive learning journey, TradingView integration, and real-time market analysis. Built to teach trading from zero with step-by-step progression and progress tracking.",
+    image: "/images/tradevilles-1.png",
+    category: "Education Platform",
+    tags: ["TradingView", "Interactive", "Education", "React"],
+    href: "/portfolio/tradevilles",
   },
 ]
 
