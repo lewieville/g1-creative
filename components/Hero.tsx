@@ -276,7 +276,7 @@ export function Hero({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+            className="absolute bottom-8 left-0 right-0 z-20 flex justify-center"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
@@ -284,18 +284,18 @@ export function Hero({
               className="flex flex-col items-center gap-2 cursor-pointer group"
             >
               <motion.span 
-                className="text-xs tracking-widest uppercase text-gold/70 group-hover:text-gold transition-colors"
+                className="text-xs tracking-widest uppercase text-gold/70 group-hover:text-gold transition-colors text-center"
                 whileHover={{ scale: 1.1 }}
               >
                 Scroll
               </motion.span>
               <motion.div
-                className="relative flex items-center justify-center"
+                className="w-6 h-6 flex items-center justify-center"
                 whileHover={{ scale: 1.2 }}
               >
                 <ChevronDown className="w-4 h-4 text-gold/70 group-hover:text-gold transition-colors" />
                 <motion.div
-                  className="absolute inset-0 blur-md bg-gold/30 -z-10"
+                  className="absolute w-6 h-6 blur-md bg-gold/30 rounded-full"
                   animate={{ opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
