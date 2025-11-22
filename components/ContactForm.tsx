@@ -86,7 +86,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 mt-8">
       {/* Name */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -135,46 +135,52 @@ export function ContactForm() {
         />
       </motion.div>
 
-      {/* Company and Phone */}
+      {/* Optional Details Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="grid md:grid-cols-2 gap-6"
       >
-        <div>
-          <label
-            htmlFor="company"
-            className="block text-sm font-medium text-gold mb-2 tracking-wide"
-          >
-            Company
-          </label>
-          <Input
-            type="text"
-            id="company"
-            name="company"
-            value={formData.company}
-            onChange={handleChange}
-            placeholder="Your Company"
-            disabled={status === "loading"}
-          />
-        </div>
-        <div>
-          <label
-            htmlFor="phone"
-            className="block text-sm font-medium text-gold mb-2 tracking-wide"
-          >
-            Phone
-          </label>
-          <Input
-            type="tel"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="+1 (555) 123-4567"
-            disabled={status === "loading"}
-          />
+        <p className="text-xs text-luxury-muted/70 mb-4 uppercase tracking-wider">
+          Optional Details
+        </p>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div>
+            <label
+              htmlFor="company"
+              className="block text-sm font-medium text-luxury-muted/80 mb-2 tracking-wide"
+            >
+              Company <span className="text-luxury-muted/50 text-xs">(Optional)</span>
+            </label>
+            <Input
+              type="text"
+              id="company"
+              name="company"
+              value={formData.company}
+              onChange={handleChange}
+              placeholder="Your Company"
+              disabled={status === "loading"}
+              className="opacity-90"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-luxury-muted/80 mb-2 tracking-wide"
+            >
+              Phone <span className="text-luxury-muted/50 text-xs">(Optional)</span>
+            </label>
+            <Input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="+1 (555) 123-4567"
+              disabled={status === "loading"}
+              className="opacity-90"
+            />
+          </div>
         </div>
       </motion.div>
 
@@ -197,7 +203,7 @@ export function ContactForm() {
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="flex h-11 w-full rounded-lg glass-panel border border-gold/20 px-4 py-2 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:border-gold disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-5 py-3 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
             disabled={status === "loading"}
           >
             <option value="">Select a service</option>
@@ -221,7 +227,7 @@ export function ContactForm() {
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className="flex h-11 w-full rounded-lg glass-panel border border-gold/20 px-4 py-2 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:border-gold disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-5 py-3 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
             disabled={status === "loading"}
           >
             <option value="">Select budget</option>
@@ -252,7 +258,7 @@ export function ContactForm() {
           onChange={handleChange}
           required
           placeholder="Tell us about your project..."
-          rows={6}
+          className="min-h-[180px]"
           disabled={status === "loading"}
         />
       </motion.div>

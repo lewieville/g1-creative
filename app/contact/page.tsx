@@ -78,7 +78,7 @@ export default function ContactPage() {
               Let&apos;s Build Something Amazing Together
             </h1>
             <p className="text-xl text-luxury-muted leading-relaxed">
-              Book your free consultation today. We&apos;d love to hear about your project and show you how we can help grow your business with a tailored website solution.
+              Have a question? Send us a message — we respond within 24 hours.
             </p>
           </div>
         </Container>
@@ -87,66 +87,68 @@ export default function ContactPage() {
       {/* Contact Section */}
       <MotionSection className="bg-luxury-surface">
         <div className="gold-divider" />
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16">
           {/* Contact Form */}
           <div>
             <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
               Send Us a Message
             </h2>
-            <p className="text-luxury-muted mb-8 text-lg">
-              Have a question or ready to get started? Fill out the form and we&apos;ll get back to you within 24 hours.
-            </p>
             <ContactForm />
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="mt-12 lg:mt-0 lg:pl-8">
             <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
               Get in Touch
             </h2>
-            <p className="text-luxury-muted mb-8 text-lg">
+            <p className="text-luxury-muted mb-10 text-lg">
               Prefer to reach out directly? Here&apos;s how you can contact us.
             </p>
 
-            <div className="space-y-6 mb-12">
+            <div className="space-y-8 mb-12">
               {contactInfo.map((item, index) => {
                 const Icon = iconMap[item.iconName] || Mail
                 return (
-                  <div key={index} className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-gold mb-1 tracking-wide">
-                        {item.title}
+                  <div key={index}>
+                    <div className="flex items-start gap-5">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
+                        <Icon className="w-6 h-6" />
                       </div>
-                      {item.link ? (
-                        <a
-                          href={item.link}
-                          className="text-luxury-text font-medium hover:text-gold transition-colors"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <div className="text-luxury-text font-medium">
-                          {item.value}
+                      <div className="flex-1 pt-1">
+                        <div className="text-sm text-gold mb-2 tracking-wide font-medium">
+                          {item.title}
                         </div>
-                      )}
+                        {item.link ? (
+                          <a
+                            href={item.link}
+                            className="text-luxury-text font-medium hover:text-gold transition-colors text-base"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <div className="text-luxury-text font-medium text-base">
+                            {item.value}
+                          </div>
+                        )}
+                      </div>
                     </div>
+                    {index < contactInfo.length - 1 && (
+                      <div className="mt-8 h-px bg-luxury-panel/50" />
+                    )}
                   </div>
                 )
               })}
             </div>
 
             {/* Schedule Call CTA */}
-            <div className="glass-panel rounded-xl p-8 shadow-g1-glow border border-gold/20">
-              <div className="flex items-start gap-4 mb-6">
-                <MessageSquare className="w-8 h-8 flex-shrink-0 text-gold" />
+            <div className="glass-panel rounded-xl p-6 border border-gold/10 shadow-g1-soft">
+              <div className="flex items-start gap-4 mb-5">
+                <MessageSquare className="w-6 h-6 flex-shrink-0 text-gold/80" />
                 <div>
-                  <h3 className="text-2xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
+                  <h3 className="text-xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
                     Book a Free Consultation
                   </h3>
-                  <p className="text-luxury-muted">
+                  <p className="text-luxury-muted text-sm leading-relaxed">
                     Prefer to talk directly? Schedule a 30-minute consultation call to discuss your project goals and how we can help.
                   </p>
                 </div>
@@ -155,6 +157,7 @@ export default function ContactPage() {
                 asChild
                 size="lg"
                 className="w-full"
+                variant="outline"
               >
                 <a
                   href="https://calendly.com/g1creative"
