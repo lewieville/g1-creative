@@ -276,7 +276,7 @@ export function Hero({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
@@ -290,7 +290,7 @@ export function Hero({
                 Scroll
               </motion.span>
               <motion.div
-                className="relative"
+                className="relative flex items-center justify-center"
                 whileHover={{ scale: 1.2 }}
               >
                 <ChevronDown className="w-4 h-4 text-gold/70 group-hover:text-gold transition-colors" />

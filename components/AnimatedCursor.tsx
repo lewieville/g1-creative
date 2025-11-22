@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
 export function AnimatedCursor() {
@@ -8,13 +8,13 @@ export function AnimatedCursor() {
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
-  // Smooth spring animation for main cursor
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 }
+  // Ultra-smooth spring animation for main cursor (higher FPS)
+  const springConfig = { damping: 30, stiffness: 500, mass: 0.3 }
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
 
-  // Slower spring for trailing glow
-  const glowSpringConfig = { damping: 20, stiffness: 150, mass: 0.8 }
+  // Slightly slower spring for trailing glow with smoother motion
+  const glowSpringConfig = { damping: 25, stiffness: 200, mass: 0.5 }
   const glowX = useSpring(cursorX, glowSpringConfig)
   const glowY = useSpring(cursorY, glowSpringConfig)
 
@@ -51,12 +51,13 @@ export function AnimatedCursor() {
 
   return (
     <>
-      {/* Main cursor dot */}
+      {/* Main cursor dot - ultra smooth */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
+          willChange: "transform",
         }}
       >
         <motion.div
@@ -66,20 +67,21 @@ export function AnimatedCursor() {
           }}
           transition={{
             type: "spring",
-            stiffness: 500,
-            damping: 28,
+            stiffness: 600,
+            damping: 30,
           }}
         >
           <div className="w-4 h-4 rounded-full bg-gold border border-gold/50" />
         </motion.div>
       </motion.div>
 
-      {/* Trailing glow effect */}
+      {/* Trailing glow effect - smooth follow */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9998]"
         style={{
           x: glowX,
           y: glowY,
+          willChange: "transform",
         }}
       >
         <motion.div
@@ -90,8 +92,8 @@ export function AnimatedCursor() {
           }}
           transition={{
             type: "spring",
-            stiffness: 200,
-            damping: 25,
+            stiffness: 250,
+            damping: 30,
           }}
         >
           <div className="w-10 h-10 rounded-full bg-gold blur-xl" />
