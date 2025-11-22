@@ -75,10 +75,10 @@ export default function ContactPage() {
         <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-heading font-bold text-luxury-text mb-6 tracking-wide leading-tight">
-              Let&apos;s Build Something Amazing Together
+              Your Next Big Step Starts Here
             </h1>
             <p className="text-xl text-luxury-muted leading-relaxed">
-              Have a question? Send us a message — we respond within 24 hours.
+              Schedule your free consultation and discover how a strategic, custom-built website can move your business forward.
             </p>
           </div>
         </Container>
