@@ -1,5 +1,3 @@
-"use client"
-
 import { Palette, ShoppingCart, Sparkles, Wrench, TrendingUp, Code, Smartphone, Shield } from "lucide-react"
 import { ServiceCard } from "@/components/ServiceCard"
 import { Section } from "@/components/ui/Section"
