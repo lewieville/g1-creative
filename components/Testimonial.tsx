@@ -29,7 +29,7 @@ export function Testimonial({
       className="glass-panel p-8 shadow-g1-card hover:shadow-g1-glow transition-all duration-500 relative overflow-hidden group"
     >
       {/* Decorative quote mark */}
-      <div className="absolute top-4 right-4 text-gold/10 text-8xl font-heading leading-none">"</div>
+      <div className="absolute top-4 right-4 text-gold/10 text-8xl font-heading leading-none">&ldquo;</div>
       
       {/* Rating */}
       <div className="flex gap-1 mb-4 relative z-10">
@@ -43,7 +43,7 @@ export function Testimonial({
 
       {/* Quote */}
       <blockquote className="text-luxury-muted leading-relaxed mb-6 relative z-10 text-lg">
-        "{quote}"
+        &ldquo;{quote}&rdquo;
       </blockquote>
 
       {/* Author */}
