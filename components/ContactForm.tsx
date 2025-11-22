@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/Input"
 import { Textarea } from "@/components/ui/Textarea"
 import { isValidEmail } from "@/lib/utils"
 import { trackFormSubmission } from "@/lib/analytics"
+import { motion, AnimatePresence } from "framer-motion"
+import { CheckCircle2, AlertCircle } from "lucide-react"
 
 interface FormData {
   name: string
@@ -86,10 +88,14 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Name */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+      >
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-secondary-900 mb-2"
+          className="block text-sm font-medium text-gold mb-2 tracking-wide"
         >
           Full Name *
         </label>
@@ -103,13 +109,17 @@ export function ContactForm() {
           placeholder="John Doe"
           disabled={status === "loading"}
         />
-      </div>
+      </motion.div>
 
       {/* Email */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-secondary-900 mb-2"
+          className="block text-sm font-medium text-gold mb-2 tracking-wide"
         >
           Email Address *
         </label>
@@ -123,14 +133,19 @@ export function ContactForm() {
           placeholder="john@company.com"
           disabled={status === "loading"}
         />
-      </div>
+      </motion.div>
 
       {/* Company and Phone */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="grid md:grid-cols-2 gap-6"
+      >
         <div>
           <label
             htmlFor="company"
-            className="block text-sm font-medium text-secondary-900 mb-2"
+            className="block text-sm font-medium text-gold mb-2 tracking-wide"
           >
             Company
           </label>
@@ -147,7 +162,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-secondary-900 mb-2"
+            className="block text-sm font-medium text-gold mb-2 tracking-wide"
           >
             Phone
           </label>
@@ -161,14 +176,19 @@ export function ContactForm() {
             disabled={status === "loading"}
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Service and Budget */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="grid md:grid-cols-2 gap-6"
+      >
         <div>
           <label
             htmlFor="service"
-            className="block text-sm font-medium text-secondary-900 mb-2"
+            className="block text-sm font-medium text-gold mb-2 tracking-wide"
           >
             Service Interested In
           </label>
@@ -177,7 +197,7 @@ export function ContactForm() {
             name="service"
             value={formData.service}
             onChange={handleChange}
-            className="flex h-11 w-full rounded-lg border border-secondary-300 bg-white px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-11 w-full rounded-lg glass-panel border border-gold/20 px-4 py-2 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:border-gold disabled:cursor-not-allowed disabled:opacity-50"
             disabled={status === "loading"}
           >
             <option value="">Select a service</option>
@@ -192,7 +212,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="budget"
-            className="block text-sm font-medium text-secondary-900 mb-2"
+            className="block text-sm font-medium text-gold mb-2 tracking-wide"
           >
             Budget Range
           </label>
@@ -201,7 +221,7 @@ export function ContactForm() {
             name="budget"
             value={formData.budget}
             onChange={handleChange}
-            className="flex h-11 w-full rounded-lg border border-secondary-300 bg-white px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex h-11 w-full rounded-lg glass-panel border border-gold/20 px-4 py-2 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:border-gold disabled:cursor-not-allowed disabled:opacity-50"
             disabled={status === "loading"}
           >
             <option value="">Select budget</option>
@@ -211,13 +231,17 @@ export function ContactForm() {
             <option value="20k-plus">$20,000+</option>
           </select>
         </div>
-      </div>
+      </motion.div>
 
       {/* Message */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-secondary-900 mb-2"
+          className="block text-sm font-medium text-gold mb-2 tracking-wide"
         >
           Project Details *
         </label>
@@ -231,34 +255,58 @@ export function ContactForm() {
           rows={6}
           disabled={status === "loading"}
         />
-      </div>
+      </motion.div>
 
-      {/* Status messages */}
-      {status === "success" && (
-        <div className="rounded-lg bg-green-50 border border-green-200 p-4">
-          <p className="text-sm text-green-800">
-            Thank you for your message! We&apos;ll get back to you within 24 hours.
-          </p>
-        </div>
-      )}
+      {/* Status messages with gold accents */}
+      <AnimatePresence>
+        {status === "success" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="glass-panel border-gold/50 p-4 shadow-g1-glow"
+          >
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-luxury-muted">
+                Thank you for your message! We&apos;ll get back to you within 24 hours.
+              </p>
+            </div>
+          </motion.div>
+        )}
 
-      {status === "error" && (
-        <div className="rounded-lg bg-red-50 border border-red-200 p-4">
-          <p className="text-sm text-red-800">
-            {errorMessage || "Something went wrong. Please try again."}
-          </p>
-        </div>
-      )}
+        {status === "error" && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="glass-panel border-red-500/50 p-4"
+          >
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-red-400">
+                {errorMessage || "Something went wrong. Please try again."}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Submit button */}
-      <Button
-        type="submit"
-        size="lg"
-        className="w-full"
-        disabled={status === "loading"}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
       >
-        {status === "loading" ? "Sending..." : "Send Message"}
-      </Button>
+        <Button
+          type="submit"
+          size="lg"
+          className="w-full shadow-g1-glow"
+          disabled={status === "loading"}
+        >
+          {status === "loading" ? "Sending..." : "Send Message"}
+        </Button>
+      </motion.div>
     </form>
   )
 }
