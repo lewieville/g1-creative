@@ -141,25 +141,38 @@ export default function HomePage() {
         </div>
       </MotionSection>
 
-      {/* Portfolio Section */}
-      <MotionSection className="bg-luxury-bg">
+      {/* Insights Section */}
+      <MotionSection className="bg-luxury-bg relative py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
-            Featured Projects
+        
+        {/* Subtle background accents */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
+            Case Studies
+          </span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
+            Insights
           </h2>
-          <p className="text-xl text-luxury-muted leading-relaxed">
-            See how we&apos;ve helped businesses achieve their digital goals
+          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
+            Real results from real partnerships. See how we transform businesses through strategic design and development
           </p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-10 mb-16">
           {featuredProjects.map((project, index) => (
             <PortfolioCard key={index} {...project} />
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button asChild size="lg">
-            <Link href="/portfolio">View Full Portfolio</Link>
+        
+        <div className="text-center">
+          <Button asChild size="lg" className="group">
+            <Link href="/insights" className="flex items-center gap-2">
+              Explore the Change
+              <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </Link>
           </Button>
         </div>
       </MotionSection>
