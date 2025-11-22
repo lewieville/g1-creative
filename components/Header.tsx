@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navigation = [
-  { name: "Our Services", href: "/services" },
+  { name: "What We Do", href: "/services" },
   { name: "Insights", href: "/insights" },
   { name: "Contact Us", href: "/contact" },
 ]

@@ -7,6 +7,7 @@ import { TestimonialsCarousel } from "@/components/TestimonialsCarousel"
 import { Button } from "@/components/ui/Button"
 import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
+import { motion } from "framer-motion"
 import { generateMetadata as generateSEOMetadata, generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
 
 export const metadata = generateSEOMetadata()
@@ -105,26 +106,65 @@ export default function HomePage() {
       />
 
       {/* Services Section */}
-      <MotionSection className="bg-luxury-surface relative">
+      <MotionSection className="bg-luxury-surface relative py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
-            Our Services
-          </h2>
-          <p className="text-xl text-luxury-muted leading-relaxed">
-            Comprehensive digital solutions tailored to your business needs
-          </p>
+        
+        {/* Subtle background accents */}
+        <div className="absolute top-20 right-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl" />
+        
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
+              Expertise
+            </span>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
+              What We Do
+            </h2>
+            <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
+              Bespoke digital solutions crafted to elevate your brand and drive measurable growth
+            </p>
+          </motion.div>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-10 mb-16">
           {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <ServiceCard {...service} />
+            </motion.div>
           ))}
         </div>
-        <div className="text-center mt-12">
-          <Button asChild size="lg" variant="outline">
-            <Link href="/services">View All Services</Link>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center"
+        >
+          <Button asChild size="lg" variant="outline" className="group">
+            <Link href="/services" className="flex items-center gap-2">
+              Explore All Capabilities
+              <motion.span
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                →
+              </motion.span>
+            </Link>
           </Button>
-        </div>
+        </motion.div>
       </MotionSection>
 
       {/* Portfolio Section */}
