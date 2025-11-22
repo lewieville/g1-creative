@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Phone } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { cn } from "@/lib/utils"
@@ -9,6 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 
 export function StickyCTA() {
   const [visible, setVisible] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,25 @@ export function StickyCTA() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // If we're already on the contact page, scroll to the scheduler
+    if (pathname === "/contact") {
+      e.preventDefault()
+      const element = document.getElementById("schedule-call")
+      if (element) {
+        const headerOffset = 80
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - headerOffset
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        })
+      }
+    }
+    // Otherwise, let the Link navigate normally (it will scroll via the hash)
+  }
 
   return (
     <AnimatePresence>
@@ -34,7 +55,11 @@ export function StickyCTA() {
           className="fixed bottom-6 right-6 z-40"
         >
           <Button asChild size="lg" className="shadow-g1-glow group">
-            <Link href="/contact#schedule-call" className="flex items-center gap-2">
+            <Link 
+              href="/contact#schedule-call" 
+              className="flex items-center gap-2"
+              onClick={handleClick}
+            >
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
