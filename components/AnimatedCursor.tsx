@@ -1,15 +1,27 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useState, useRef } from "react"
+import { motion, useMotionValue, useSpring } from "framer-motion"
 
 export function AnimatedCursor() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+  const cursorX = useMotionValue(-100)
+  const cursorY = useMotionValue(-100)
+
+  // Smooth spring animation for main cursor
+  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 }
+  const cursorXSpring = useSpring(cursorX, springConfig)
+  const cursorYSpring = useSpring(cursorY, springConfig)
+
+  // Slower spring for trailing glow
+  const glowSpringConfig = { damping: 20, stiffness: 150, mass: 0.8 }
+  const glowX = useSpring(cursorX, glowSpringConfig)
+  const glowY = useSpring(cursorY, glowSpringConfig)
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
     }
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -18,7 +30,9 @@ export function AnimatedCursor() {
         target.tagName === "A" ||
         target.tagName === "BUTTON" ||
         target.closest("a") ||
-        target.closest("button")
+        target.closest("button") ||
+        target.closest('[role="button"]') ||
+        target.style.cursor === "pointer"
       ) {
         setIsHovering(true)
       } else {
@@ -33,44 +47,55 @@ export function AnimatedCursor() {
       window.removeEventListener("mousemove", updateMousePosition)
       document.removeEventListener("mouseover", handleMouseOver)
     }
-  }, [])
+  }, [cursorX, cursorY])
 
   return (
     <>
-      {/* Main cursor */}
+      {/* Main cursor dot */}
       <motion.div
-        className="fixed top-0 left-0 w-6 h-6 pointer-events-none z-[9999] mix-blend-difference"
-        animate={{
-          x: mousePosition.x - 12,
-          y: mousePosition.y - 12,
-          scale: isHovering ? 1.5 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        style={{
+          x: cursorXSpring,
+          y: cursorYSpring,
         }}
       >
-        <div className="w-full h-full rounded-full bg-gold border-2 border-gold opacity-80" />
+        <motion.div
+          className="relative -translate-x-1/2 -translate-y-1/2"
+          animate={{
+            scale: isHovering ? 1.5 : 1,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 500,
+            damping: 28,
+          }}
+        >
+          <div className="w-4 h-4 rounded-full bg-gold border border-gold/50" />
+        </motion.div>
       </motion.div>
 
-      {/* Trailing glow */}
+      {/* Trailing glow effect */}
       <motion.div
-        className="fixed top-0 left-0 w-12 h-12 pointer-events-none z-[9998]"
-        animate={{
-          x: mousePosition.x - 24,
-          y: mousePosition.y - 24,
-          scale: isHovering ? 1.8 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 20,
-          mass: 0.8,
+        className="fixed top-0 left-0 pointer-events-none z-[9998]"
+        style={{
+          x: glowX,
+          y: glowY,
         }}
       >
-        <div className="w-full h-full rounded-full bg-gold opacity-10 blur-xl" />
+        <motion.div
+          className="relative -translate-x-1/2 -translate-y-1/2"
+          animate={{
+            scale: isHovering ? 2 : 1,
+            opacity: isHovering ? 0.3 : 0.15,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 200,
+            damping: 25,
+          }}
+        >
+          <div className="w-10 h-10 rounded-full bg-gold blur-xl" />
+        </motion.div>
       </motion.div>
     </>
   )
