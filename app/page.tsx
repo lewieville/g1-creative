@@ -190,10 +190,10 @@ export default function HomePage() {
       <Section className="bg-white">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
-            Transparent Pricing
+            Affordable Pricing That Fits Your Budget
           </h2>
           <p className="text-lg text-secondary-600">
-            Flexible packages designed to fit your budget and goals
+            Launch-ready packages starting at just $97/month • No hidden fees • Cancel anytime
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -201,9 +201,10 @@ export default function HomePage() {
             <h3 className="text-2xl font-bold text-secondary-900 mb-2 font-heading">
               Starter
             </h3>
-            <div className="text-4xl font-bold text-primary-600 mb-4 font-heading">
-              $2,499
+            <div className="text-4xl font-bold text-primary-600 mb-1 font-heading">
+              $97
             </div>
+            <div className="text-sm text-secondary-600 mb-4">/month or $997/year</div>
             <p className="text-secondary-600 mb-6">
               Perfect for small businesses and startups
             </p>
@@ -213,14 +214,15 @@ export default function HomePage() {
           </div>
           <div className="bg-white rounded-xl border-2 border-primary-600 p-8 text-center shadow-lg scale-105">
             <div className="bg-primary-600 text-white text-sm font-semibold py-1 px-4 rounded-full inline-block mb-4">
-              Most Popular
+              Best Value
             </div>
             <h3 className="text-2xl font-bold text-secondary-900 mb-2 font-heading">
-              Business
+              Professional
             </h3>
-            <div className="text-4xl font-bold text-primary-600 mb-4 font-heading">
-              $4,999
+            <div className="text-4xl font-bold text-primary-600 mb-1 font-heading">
+              $197
             </div>
+            <div className="text-sm text-secondary-600 mb-4">/month or $1,997/year</div>
             <p className="text-secondary-600 mb-6">
               Ideal for growing businesses
             </p>
@@ -232,9 +234,10 @@ export default function HomePage() {
             <h3 className="text-2xl font-bold text-secondary-900 mb-2 font-heading">
               E-commerce
             </h3>
-            <div className="text-4xl font-bold text-primary-600 mb-4 font-heading">
-              $7,999
+            <div className="text-4xl font-bold text-primary-600 mb-1 font-heading">
+              $297
             </div>
+            <div className="text-sm text-secondary-600 mb-4">/month or $2,997/year</div>
             <p className="text-secondary-600 mb-6">
               Complete solution for online stores
             </p>
@@ -242,6 +245,14 @@ export default function HomePage() {
               <Link href="/pricing">Learn More</Link>
             </Button>
           </div>
+        </div>
+        <div className="text-center mt-12">
+          <p className="text-secondary-600 mb-4">
+            🎁 <strong>Limited Time Offer:</strong> Get 2 months FREE when you pay annually!
+          </p>
+          <p className="text-sm text-secondary-500">
+            All packages include FREE revisions • Money-back guarantee • Flexible payment plans
+          </p>
         </div>
       </Section>
 

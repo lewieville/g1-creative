@@ -106,7 +106,8 @@ export function generateOrganizationSchema() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "Customer Service",
-      email: "lewis@g1creative.com",
+      email: "g1.creative.web@gmail.com",
+      telephone: "+1-239-255-4733",
     },
     sameAs: [
       "https://twitter.com/g1creative",
@@ -144,10 +145,12 @@ export function generateLocalBusinessSchema() {
     image: `${siteUrl}/images/logo.svg`,
     "@id": siteUrl,
     url: siteUrl,
-    telephone: "+1-555-123-4567",
+    telephone: "+1-239-255-4733",
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
+      addressLocality: "Lexington",
+      addressRegion: "VA",
       addressCountry: "US",
     },
     openingHoursSpecification: {

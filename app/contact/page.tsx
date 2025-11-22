@@ -15,19 +15,19 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "lewis@g1creative.com",
-    link: "mailto:lewis@g1creative.com",
+    value: "g1.creative.web@gmail.com",
+    link: "mailto:g1.creative.web@gmail.com",
   },
   {
     icon: Phone,
     title: "Phone",
-    value: "+1 (555) 123-4567",
-    link: "tel:+15551234567",
+    value: "(239) 255-4733",
+    link: "tel:+12392554733",
   },
   {
     icon: MapPin,
     title: "Location",
-    value: "123 Design Street, Creative City, CC 12345",
+    value: "Lexington, Virginia",
     link: null,
   },
   {

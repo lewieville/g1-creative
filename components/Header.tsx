@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/Button"
@@ -52,14 +53,13 @@ export function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 group">
             <span className="sr-only">G1 Creative</span>
-            <div className="flex items-center gap-2">
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform">
-                G1
-              </div>
-              <span className="text-xl font-bold text-secondary-900 font-heading">
-                Creative
-              </span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="G1 Creative"
+              width={150}
+              height={40}
+              className="h-10 w-auto group-hover:scale-105 transition-transform"
+            />
           </Link>
         </div>
 
@@ -115,14 +115,13 @@ export function Header() {
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">G1 Creative</span>
-                <div className="flex items-center gap-2">
-                  <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white font-bold text-xl">
-                    G1
-                  </div>
-                  <span className="text-xl font-bold text-secondary-900 font-heading">
-                    Creative
-                  </span>
-                </div>
+                <Image
+                  src="/logo.png"
+                  alt="G1 Creative"
+                  width={150}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </Link>
               <button
                 type="button"

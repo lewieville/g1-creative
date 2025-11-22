@@ -20,7 +20,13 @@ const poppins = Poppins({
   display: "swap",
 })
 
-export const metadata: Metadata = generateSEOMetadata()
+export const metadata: Metadata = {
+  ...generateSEOMetadata(),
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
+}
 
 export default function RootLayout({
   children,

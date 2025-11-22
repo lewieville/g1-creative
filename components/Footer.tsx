@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/Button"
@@ -75,13 +76,14 @@ export function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           {/* Brand and newsletter */}
           <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center text-white font-bold text-xl group-hover:scale-105 transition-transform">
-                G1
-              </div>
-              <span className="text-xl font-bold text-white font-heading">
-                Creative
-              </span>
+            <Link href="/" className="group">
+              <Image
+                src="/logo.png"
+                alt="G1 Creative"
+                width={150}
+                height={40}
+                className="h-10 w-auto group-hover:scale-105 transition-transform brightness-0 invert"
+              />
             </Link>
             <p className="text-sm leading-6 text-secondary-300">
               Crafting exceptional digital experiences that drive results. Transform your business with award-winning web design and development.
@@ -187,27 +189,25 @@ export function Footer() {
                   <li className="flex items-start gap-2">
                     <Mail className="h-5 w-5 text-secondary-400 flex-shrink-0 mt-0.5" />
                     <a
-                      href="mailto:lewis@g1creative.com"
+                      href="mailto:g1.creative.web@gmail.com"
                       className="text-sm leading-6 text-secondary-300 hover:text-white transition-colors"
                     >
-                      lewis@g1creative.com
+                      g1.creative.web@gmail.com
                     </a>
                   </li>
                   <li className="flex items-start gap-2">
                     <Phone className="h-5 w-5 text-secondary-400 flex-shrink-0 mt-0.5" />
                     <a
-                      href="tel:+15551234567"
+                      href="tel:+12392554733"
                       className="text-sm leading-6 text-secondary-300 hover:text-white transition-colors"
                     >
-                      +1 (555) 123-4567
+                      (239) 255-4733
                     </a>
                   </li>
                   <li className="flex items-start gap-2">
                     <MapPin className="h-5 w-5 text-secondary-400 flex-shrink-0 mt-0.5" />
                     <span className="text-sm leading-6 text-secondary-300">
-                      123 Design Street
-                      <br />
-                      Creative City, CC 12345
+                      Lexington, Virginia
                     </span>
                   </li>
                 </ul>
