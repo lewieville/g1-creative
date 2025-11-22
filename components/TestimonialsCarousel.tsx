@@ -1,0 +1,117 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { Testimonial } from "@/components/Testimonial"
+import { cn } from "@/lib/utils"
+
+const testimonials = [
+  {
+    quote:
+      "G1 Creative transformed our online presence completely. Our conversion rate increased by 150% within 3 months of launching the new site. Lewis and his team are true professionals.",
+    author: {
+      name: "Sarah Johnson",
+      title: "CEO",
+      company: "TechStart Inc",
+      image: "/images/testimonial-1.jpg",
+    },
+    rating: 5,
+  },
+  {
+    quote:
+      "Working with G1 Creative was an absolute pleasure. They delivered a beautiful, high-performing e-commerce site that exceeded our expectations. Our sales have doubled since launch.",
+    author: {
+      name: "Michael Chen",
+      title: "Founder",
+      company: "Urban Boutique",
+      image: "/images/testimonial-2.jpg",
+    },
+    rating: 5,
+  },
+  {
+    quote:
+      "The attention to detail and professionalism is unmatched. G1 Creative didn't just build us a website - they created a powerful marketing tool that drives real business results.",
+    author: {
+      name: "Emily Rodriguez",
+      title: "Marketing Director",
+      company: "GrowthLabs",
+      image: "/images/testimonial-3.jpg",
+    },
+    rating: 5,
+  },
+]
+
+export function TestimonialsCarousel() {
+  const [current, setCurrent] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length)
+    }, 8000) // Auto-rotate every 8 seconds
+
+    return () => clearInterval(timer)
+  }, [])
+
+  const goToPrevious = () => {
+    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+  }
+
+  const goToNext = () => {
+    setCurrent((prev) => (prev + 1) % testimonials.length)
+  }
+
+  return (
+    <div className="relative">
+      {/* Testimonials */}
+      <div className="overflow-hidden">
+        <div
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="w-full flex-shrink-0 px-4">
+              <Testimonial {...testimonial} />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Navigation buttons */}
+      <div className="flex justify-center gap-4 mt-8">
+        <button
+          onClick={goToPrevious}
+          className="p-2 rounded-full bg-secondary-100 hover:bg-secondary-200 text-secondary-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          aria-label="Previous testimonial"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+
+        {/* Dots */}
+        <div className="flex items-center gap-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={cn(
+                "w-2 h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500",
+                current === index
+                  ? "bg-primary-600 w-8"
+                  : "bg-secondary-300 hover:bg-secondary-400"
+              )}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={goToNext}
+          className="p-2 rounded-full bg-secondary-100 hover:bg-secondary-200 text-secondary-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          aria-label="Next testimonial"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+  )
+}
+
