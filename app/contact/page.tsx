@@ -3,7 +3,7 @@ import { ContactForm } from "@/components/ContactForm"
 import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
-import { Button } from "@/components/ui/Button"
+import { ScrollToButton } from "@/components/ScrollToButton"
 import { CalendlyWidget } from "@/components/CalendlyWidget"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 
@@ -155,22 +155,14 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </div>
-                <Button
-                  asChild
+                <ScrollToButton
+                  href="#schedule-call"
                   size="lg"
                   className="w-full"
                   variant="outline"
                 >
-                  <a
-                    href="#schedule-call"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      document.getElementById("schedule-call")?.scrollIntoView({ behavior: "smooth" })
-                    }}
-                  >
-                    Schedule Your Call
-                  </a>
-                </Button>
+                  Schedule Your Call
+                </ScrollToButton>
               </div>
             </div>
           </div>
