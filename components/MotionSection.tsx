@@ -8,6 +8,7 @@ interface MotionSectionProps {
   className?: string
   delay?: number
   preset?: "fadeUp" | "fadeIn" | "slideLeft" | "slideRight" | "scale"
+  id?: string
 }
 
 const presets = {
@@ -38,6 +39,7 @@ export function MotionSection({
   className,
   delay = 0,
   preset = "fadeUp",
+  id,
 }: MotionSectionProps) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
@@ -45,6 +47,7 @@ export function MotionSection({
   return (
     <motion.div
       ref={ref}
+      id={id}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={presets[preset]}

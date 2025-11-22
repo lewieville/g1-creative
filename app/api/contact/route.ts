@@ -25,21 +25,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const formspreeEndpoint = process.env.FORMSPREE_ENDPOINT
-
-    if (!formspreeEndpoint) {
-      // If Formspree isn't configured, log to console (for development)
-      console.log("Contact form submission:", body)
-      
-      // In production, you'd want to send an error or use a fallback
-      return NextResponse.json(
-        { 
-          success: true, 
-          message: "Message received (demo mode - configure FORMSPREE_ENDPOINT for production)" 
-        },
-        { status: 200 }
-      )
-    }
+    // Use environment variable or fallback to default Formspree endpoint
+    const formspreeEndpoint = process.env.FORMSPREE_ENDPOINT || "mrbdaybo"
 
     // Forward to Formspree
     const response = await fetch(
