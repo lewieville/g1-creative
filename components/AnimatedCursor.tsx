@@ -20,13 +20,11 @@ export function AnimatedCursor() {
   const glowY = useSpring(cursorY, glowSpringConfig)
 
   useEffect(() => {
-    // Detect if device supports touch (mobile/tablet)
+    // Detect if PRIMARY input device is touch (mobile/tablet only)
+    // Use media query which detects the primary pointer, not just if touch is available
     const checkTouchDevice = () => {
-      setIsTouchDevice(
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0 ||
-        window.matchMedia('(pointer: coarse)').matches
-      )
+      const isTouchPrimary = window.matchMedia('(pointer: coarse)').matches
+      setIsTouchDevice(isTouchPrimary)
     }
     
     checkTouchDevice()
