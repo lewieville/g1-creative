@@ -35,9 +35,9 @@ const projects: Record<string, any> = {
       "Engaging purple/cyan gradient theme throughout",
     ],
     screenshots: [
-      "/images/mico-screenshot-1.png",
-      "/images/mico-screenshot-2.png",
-      "/images/mico-screenshot-3.png",
+      "/images/mico-1.png",
+      "/images/mico-2.png",
+      "/images/mico-3.png",
     ],
     testimonial: {
       quote:
