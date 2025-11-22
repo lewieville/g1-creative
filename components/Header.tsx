@@ -104,9 +104,6 @@ export function Header() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-4">
-          <Button asChild size="md" variant="outline">
-            <Link href="/insights">Case Studies</Link>
-          </Button>
           <Button asChild size="md">
             <Link href="/contact">Let&apos;s Talk</Link>
           </Button>
@@ -177,11 +174,8 @@ export function Header() {
                     ))}
                   </div>
                   <div className="py-6">
-                    <Button asChild size="lg" className="w-full mb-3">
+                    <Button asChild size="lg" className="w-full">
                       <Link href="/contact">Let&apos;s Talk</Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline" className="w-full">
-                      <Link href="/insights">Case Studies</Link>
                     </Button>
                   </div>
                 </div>
