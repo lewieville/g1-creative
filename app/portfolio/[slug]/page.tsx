@@ -22,9 +22,10 @@ const projects: Record<string, any> = {
     challenge:
       "MICO needed a sophisticated web platform that could showcase their vision for human-centered intelligence while integrating complex blockchain data and AI-powered features. The platform required an interactive AI chat interface, real-time crypto statistics, community features, and a seamless user experience that made cutting-edge technology feel accessible and engaging.",
     approach:
-      "We developed a custom AI copilot with an interactive chat interface that guides users through AI-powered trading. Built a loading screen with animated $MICO branding, integrated real-time blockchain statistics via API connections, created community sections for Discord and X/Twitter engagement, and designed a stunning purple/cyan gradient interface that reflects MICO's futuristic vision. The entire platform was built with React for optimal performance and includes animated character interactions.",
+      "We developed a custom AI copilot with an interactive chat interface that guides users through AI-powered trading. Built an educational onboarding system with modular lessons ('The Spark', 'The Vision', 'The Wave') featuring progress tracking and interactive completion states. Created an animated loading screen with $MICO branding, integrated real-time blockchain statistics via API connections, and designed community sections for Discord and X/Twitter engagement. The entire platform features a stunning purple/cyan gradient interface built with React for optimal performance and includes animated character interactions.",
     results: [
       "Interactive AI chat interface with real-time responses",
+      "Educational onboarding system with modular lessons and progress tracking",
       "Custom animated loading screen with $MICO branding",
       "Real-time blockchain data integration via API",
       "Beautiful character-based UI with chat functionality",
@@ -34,9 +35,9 @@ const projects: Record<string, any> = {
       "Engaging purple/cyan gradient theme throughout",
     ],
     screenshots: [
-      "/images/project-4-mico.png",
-      "/images/project-4-mico.png",
-      "/images/project-4-mico.png",
+      "/images/mico-screenshot-1.png",
+      "/images/mico-screenshot-2.png",
+      "/images/mico-screenshot-3.png",
     ],
     testimonial: {
       quote:
