@@ -11,73 +11,73 @@ import { ArrowUpRight, TrendingUp } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
-const categories = ["All", "Case Studies", "Web Design", "E-commerce", "Branding", "SEO"]
+const categories = ["All", "Case Studies", "Web3 & AI", "Trading Platforms", "Education"]
 
 const insights = [
   {
-    title: "How We Increased Conversion Rates by 150% for TechStart",
-    description: "A complete website redesign that transformed user experience and drove measurable business growth through strategic UX improvements and conversion optimization.",
-    image: "/images/portfolio-1.jpg",
+    title: "Building MICO: A Web3 Platform with AI Agents and Real-Time Blockchain Data",
+    description: "How we created a comprehensive web3 platform featuring custom AI agents, real-time blockchain stats via API integration, and an elegant interface for a crypto company pioneering human-centered intelligence.",
+    image: "/images/mico-1.png",
     category: "Case Studies",
     type: "Case Study",
-    tags: ["Web Design", "UX", "Conversion Optimization"],
-    results: "+150% conversion rate, -45% bounce rate",
-    href: "/insights/techstart-conversion-optimization",
+    tags: ["Web3 & AI", "API Integration", "React", "Crypto"],
+    results: "Custom AI agent + Real-time blockchain stats",
+    href: "#mico",
     featured: true,
   },
   {
-    title: "Building a High-Performance E-commerce Platform",
-    description: "From concept to launch: How we built Urban Boutique's custom e-commerce solution that doubled their online revenue in 3 months.",
-    image: "/images/portfolio-2.jpg",
+    title: "CTR Trades Journal: Advanced Trading Analytics Platform",
+    description: "Developed a professional trading journal platform with comprehensive analytics dashboard, real-time trade tracking, and multi-user database. Features auto-calculated metrics, performance analysis, and seamless backend integration.",
+    image: "/images/ctr-trades-main.png",
     category: "Case Studies",
     type: "Case Study",
-    tags: ["E-commerce", "Shopify", "Performance"],
-    results: "2x revenue in 90 days",
-    href: "/insights/urban-boutique-ecommerce",
+    tags: ["Trading Platforms", "Backend", "Database", "Analytics"],
+    results: "Multi-user system with real-time analytics",
+    href: "#ctr-trades",
     featured: true,
   },
   {
-    title: "Complete Brand & Website Transformation for GrowthLabs",
-    description: "A comprehensive rebrand and web redesign that positioned GrowthLabs as an elite B2B service provider and generated 3x more qualified leads.",
-    image: "/images/portfolio-3.jpg",
+    title: "Tradesvilles Crypto Program: Interactive Trading Education Platform",
+    description: "Built a comprehensive trading education platform with interactive learning journey, TradingView integration, and real-time market analysis. Designed to teach trading from zero with step-by-step progression and performance tracking.",
+    image: "/images/tradevilles-1.png",
     category: "Case Studies",
     type: "Case Study",
-    tags: ["Branding", "Web Design", "B2B"],
-    results: "3x qualified leads",
-    href: "/insights/growthlabs-rebrand",
+    tags: ["Education", "TradingView", "Interactive", "Crypto"],
+    results: "10-step learning journey with market analysis",
+    href: "#tradevilles",
     featured: false,
   },
   {
-    title: "The Psychology of High-End Web Design",
-    description: "Discover the design principles and psychological triggers that make luxury websites convert at higher rates than standard designs.",
-    image: "/images/blog-1.jpg",
-    category: "Web Design",
+    title: "The Technology Behind MICO's AI Agent System",
+    description: "Deep dive into how we architected MICO's custom AI agent infrastructure, integrated blockchain APIs for real-time data, and created a seamless user experience for complex crypto operations.",
+    image: "/images/mico-2.png",
+    category: "Web3 & AI",
     type: "Article",
-    tags: ["Design", "Psychology", "UX"],
+    tags: ["AI", "Web3", "Architecture", "API"],
     results: null,
-    href: "/insights/high-end-web-design-psychology",
+    href: "#mico-tech",
     featured: false,
   },
   {
-    title: "SEO Strategies That Actually Work in 2025",
-    description: "The latest proven SEO tactics we use to get our clients' websites ranking on page 1 of Google and driving organic traffic.",
-    image: "/images/blog-2.jpg",
-    category: "SEO",
+    title: "Building Scalable Trading Platforms: Lessons from CTR Trades",
+    description: "The architecture decisions and performance optimizations that went into building a multi-user trading journal capable of handling thousands of trades with real-time calculations.",
+    image: "/images/proj 3.png",
+    category: "Trading Platforms",
     type: "Article",
-    tags: ["SEO", "Marketing", "Strategy"],
+    tags: ["Backend", "Performance", "Database", "Scalability"],
     results: null,
-    href: "/insights/seo-strategies-2025",
+    href: "#ctr-tech",
     featured: false,
   },
   {
-    title: "Why Your Business Needs a Custom Website",
-    description: "Templates vs. custom development: A comprehensive analysis of long-term ROI, scalability, and brand differentiation.",
-    image: "/images/blog-3.jpg",
-    category: "Web Design",
+    title: "Creating Engaging Educational Experiences with TradingView Integration",
+    description: "How we leveraged TradingView's powerful charting capabilities to create an interactive, hands-on learning experience for traders at all skill levels.",
+    image: "/images/tradevilles-2.png",
+    category: "Education",
     type: "Article",
-    tags: ["Business", "Strategy", "Web Design"],
+    tags: ["TradingView", "UX", "Interactive", "Education"],
     results: null,
-    href: "/insights/custom-vs-template-websites",
+    href: "#tradevilles-tech",
     featured: false,
   },
 ]
@@ -124,7 +124,7 @@ export default function InsightsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-luxury-muted leading-relaxed"
             >
-              Explore our client success stories, in-depth case studies, and insights on web design, development, and digital strategy.
+              Explore our client success stories, in-depth case studies showcasing real projects like MICO, CTR Trades, and Tradesvilles, plus insights on modern web development and technology.
             </motion.p>
           </div>
         </Container>
@@ -335,10 +335,10 @@ export default function InsightsPage() {
               Ready to Transform Your Business?
             </h2>
             <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
-              Let&apos;s discuss how we can create a custom web solution that drives real results for your business.
+              Let&apos;s discuss how we can create a bespoke web solution that drives real results for your business.
             </p>
             <Button asChild size="xl">
-              <Link href="/contact#schedule-call">Book a Consultation</Link>
+              <Link href="/contact#schedule-call">Schedule Your Consultation</Link>
             </Button>
           </div>
         </Container>
