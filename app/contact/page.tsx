@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
+import { CalendlyWidget } from "@/components/CalendlyWidget"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 
 const iconMap: Record<string, LucideIcon> = {
@@ -161,14 +162,36 @@ export default function ContactPage() {
                   variant="outline"
                 >
                   <a
-                    href="https://calendly.com/g1creative"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#schedule-call"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      document.getElementById("schedule-call")?.scrollIntoView({ behavior: "smooth" })
+                    }}
                   >
                     Schedule Your Call
                   </a>
                 </Button>
               </div>
+            </div>
+          </div>
+        </Container>
+      </MotionSection>
+
+      {/* Calendly Scheduling Section */}
+      <MotionSection className="bg-luxury-surface py-32 lg:py-40" id="schedule-call">
+        <div className="gold-divider" />
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
+              Schedule Your Consultation
+            </h2>
+            <p className="text-xl text-luxury-muted leading-relaxed">
+              Choose a time that works for you. We&apos;ll send you a confirmation and calendar invite.
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="glass-panel rounded-2xl p-8 border border-gold/10 overflow-hidden">
+              <CalendlyWidget url="https://calendly.com/igodlylewieyt/new-meeting" />
             </div>
           </div>
         </Container>
