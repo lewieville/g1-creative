@@ -10,23 +10,21 @@ import { motion } from "framer-motion"
 
 const navigation = {
   services: [
-    { name: "Web Design", href: "/services#web-design" },
-    { name: "E-commerce", href: "/services#ecommerce" },
-    { name: "Branding", href: "/services#branding" },
-    { name: "Maintenance", href: "/services#maintenance" },
-    { name: "SEO", href: "/services#seo" },
+    { name: "Web Design & Development", href: "/services#web-design" },
+    { name: "E-commerce Solutions", href: "/services#ecommerce" },
+    { name: "Branding & UI/UX", href: "/services#branding" },
+    { name: "SEO Optimization", href: "/services#seo" },
+    { name: "Maintenance & Support", href: "/services#maintenance" },
   ],
   company: [
-    { name: "About", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Our Services", href: "/services" },
+    { name: "Insights", href: "/insights" },
+    { name: "Contact Us", href: "/contact" },
+    { name: "Book Consultation", href: "/contact" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Cookie Policy", href: "/cookies" },
   ],
   social: [
     {

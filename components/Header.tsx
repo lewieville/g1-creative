@@ -10,12 +10,9 @@ import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
 
 const navigation = [
-  { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "Pricing", href: "/pricing" },
-  { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "Our Services", href: "/services" },
+  { name: "Insights", href: "/insights" },
+  { name: "Contact Us", href: "/contact" },
 ]
 
 export function Header() {
@@ -106,9 +103,12 @@ export function Header() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-4">
+          <Button asChild size="md" variant="outline">
+            <Link href="/insights">View Work</Link>
+          </Button>
           <Button asChild size="md">
-            <Link href="/contact">Get Started</Link>
+            <Link href="/contact">Book a Consultation</Link>
           </Button>
         </div>
       </nav>
@@ -177,8 +177,11 @@ export function Header() {
                     ))}
                   </div>
                   <div className="py-6">
-                    <Button asChild size="lg" className="w-full">
-                      <Link href="/contact">Get Started</Link>
+                    <Button asChild size="lg" className="w-full mb-3">
+                      <Link href="/contact">Book a Consultation</Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="w-full">
+                      <Link href="/insights">View Our Work</Link>
                     </Button>
                   </div>
                 </div>

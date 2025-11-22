@@ -103,12 +103,12 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <Hero
-        title="Websites Built to Impress—and Convert"
-        subtitle="Custom, results-driven websites for businesses that want more than templates."
-        primaryCTA={{ text: "Start Your Project", href: "/contact" }}
-        secondaryCTA={{ text: "View Our Work", href: "/portfolio" }}
+        title="We Design & Build Premium Websites—That Grow Your Business"
+        subtitle="Custom web solutions that combine stunning design with proven conversion strategies. From concept to launch, we create digital experiences that deliver measurable results."
+        primaryCTA={{ text: "Book a Consultation", href: "/contact" }}
+        secondaryCTA={{ text: "View Our Work", href: "/insights" }}
         image="/images/hero-main.jpg"
-        imageAlt="Modern web design showcase"
+        imageAlt="Premium web design showcase"
         showScrollCue={true}
       />
 

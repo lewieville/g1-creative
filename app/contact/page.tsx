@@ -14,8 +14,8 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 export const metadata = generateSEOMetadata({
-  title: "Contact - Get in Touch with G1 Creative",
-  description: "Ready to start your project? Contact G1 Creative today for a free consultation. We're here to help bring your vision to life.",
+  title: "Contact Us - Book Your Free Consultation | G1 Creative",
+  description: "Ready to grow your business with a premium website? Contact G1 Creative today to book your free consultation and discuss your project.",
   url: "/contact",
 })
 
@@ -75,10 +75,10 @@ export default function ContactPage() {
         <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-heading font-bold text-luxury-text mb-6 tracking-wide leading-tight">
-              Let&apos;s Start Your Project
+              Let&apos;s Build Something Amazing Together
             </h1>
             <p className="text-xl text-luxury-muted leading-relaxed">
-              Ready to transform your digital presence? Get in touch today for a free consultation. We typically respond within 24 hours.
+              Book your free consultation today. We&apos;d love to hear about your project and show you how we can help grow your business with a premium website.
             </p>
           </div>
         </Container>
@@ -94,7 +94,7 @@ export default function ContactPage() {
               Send Us a Message
             </h2>
             <p className="text-luxury-muted mb-8 text-lg">
-              Fill out the form below and we&apos;ll get back to you as soon as possible.
+              Have a question or ready to get started? Fill out the form and we&apos;ll get back to you within 24 hours.
             </p>
             <ContactForm />
           </div>
@@ -144,10 +144,10 @@ export default function ContactPage() {
                 <MessageSquare className="w-8 h-8 flex-shrink-0 text-gold" />
                 <div>
                   <h3 className="text-2xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
-                    Schedule a Call
+                    Book a Free Consultation
                   </h3>
                   <p className="text-luxury-muted">
-                    Prefer to talk? Book a free 30-minute consultation to discuss your project.
+                    Prefer to talk directly? Schedule a 30-minute consultation call to discuss your project goals and how we can help.
                   </p>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Book a Call
+                  Schedule Your Call
                 </a>
               </Button>
             </div>
