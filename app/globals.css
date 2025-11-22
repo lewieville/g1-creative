@@ -23,6 +23,12 @@
   body {
     @apply bg-luxury-bg text-luxury-text;
     font-feature-settings: "rlig" 1, "calt" 1;
+    cursor: none;
+  }
+
+  /* Hide default cursor globally */
+  * {
+    cursor: none !important;
   }
 
   /* Smooth scrolling */

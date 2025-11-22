@@ -90,9 +90,9 @@ export function Footer() {
               <Image
                 src="/logo.png"
                 alt="G1 Creative"
-                width={150}
-                height={40}
-                className="h-10 w-auto brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+                width={180}
+                height={50}
+                className="h-12 w-auto object-contain brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
               />
             </Link>
             <p className="text-sm leading-6 text-luxury-muted">

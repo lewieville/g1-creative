@@ -63,9 +63,10 @@ export function Header() {
             <Image
               src="/logo.png"
               alt="G1 Creative"
-              width={150}
-              height={40}
-              className="h-10 w-auto brightness-0 invert transition-all duration-300 group-hover:brightness-100 group-hover:invert-0"
+              width={180}
+              height={50}
+              priority
+              className="h-12 w-auto object-contain transition-all duration-300 brightness-0 invert group-hover:brightness-100 group-hover:invert-0"
             />
           </Link>
         </motion.div>
@@ -137,9 +138,9 @@ export function Header() {
                   <Image
                     src="/logo.png"
                     alt="G1 Creative"
-                    width={150}
-                    height={40}
-                    className="h-10 w-auto brightness-0 invert"
+                    width={180}
+                    height={50}
+                    className="h-12 w-auto object-contain brightness-0 invert"
                   />
                 </Link>
                 <button
