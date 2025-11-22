@@ -53,12 +53,12 @@ const services = [
 
 const featuredProjects = [
   {
-    title: "TechStart Inc",
-    description: "Complete website redesign that increased conversion rates by 150% and reduced bounce rate by 45%.",
-    image: "/images/portfolio-1.jpg",
-    category: "Business",
-    tags: ["Web Design", "SEO", "CMS"],
-    href: "/portfolio/techstart-inc",
+    title: "MICO",
+    description: "Built a comprehensive web3 platform featuring custom AI agents, real-time blockchain stats via API integration, and an elegant interface for a crypto company pioneering human-centered intelligence.",
+    image: "/images/project-4-mico.png",
+    category: "Web3 & AI",
+    tags: ["AI Agent", "API Integration", "Web3", "React"],
+    href: "/portfolio/mico",
   },
   {
     title: "Urban Boutique",
