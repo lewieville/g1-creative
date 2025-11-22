@@ -187,7 +187,7 @@ export default function BlogPostPage({
             <p className="text-xl mb-8 text-primary-100">
               Let&apos;s discuss how we can help you achieve your digital goals.
             </p>
-            <Button asChild size="lg" variant="accent">
+            <Button asChild size="lg">
               <Link href="/contact">Start Your Project</Link>
             </Button>
           </div>

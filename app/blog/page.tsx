@@ -229,7 +229,7 @@ export default function BlogPage() {
           <p className="text-xl mb-8 text-primary-100">
             Subscribe to our newsletter for the latest tips, insights, and industry news delivered to your inbox.
           </p>
-          <Button asChild size="lg" variant="accent">
+          <Button asChild size="lg">
             <Link href="/#newsletter">Subscribe Now</Link>
           </Button>
         </div>

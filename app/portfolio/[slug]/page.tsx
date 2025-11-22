@@ -289,7 +289,7 @@ export default function ProjectDetailPage({
           <p className="text-xl mb-8 text-primary-100">
             Let&apos;s discuss how we can help transform your digital presence.
           </p>
-          <Button asChild size="lg" variant="accent">
+          <Button asChild size="lg">
             <Link href="/contact">Start Your Project</Link>
           </Button>
         </div>
