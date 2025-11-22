@@ -9,6 +9,40 @@ import { notFound } from "next/navigation"
 
 // This would typically come from a CMS or database
 const projects: Record<string, any> = {
+  "mico": {
+    title: "MICO",
+    category: "Web3 & AI Platform",
+    description: "A comprehensive blockchain platform featuring custom AI agents, real-time crypto statistics, and an elegant interface for a company pioneering human-centered intelligence and co-creation in Web3.",
+    image: "/images/project-4-mico.png",
+    tags: ["AI Agent", "API Integration", "Web3", "React", "Blockchain"],
+    client: "MICO",
+    industry: "Cryptocurrency & AI",
+    year: "2024",
+    website: "https://micocopilots.xyz/",
+    challenge:
+      "MICO needed a sophisticated web platform that could showcase their vision for human-centered intelligence while integrating complex blockchain data and AI-powered features. The challenge was to make cutting-edge technology feel accessible and beautiful.",
+    approach:
+      "We developed a custom AI agent system that interacts with users naturally, integrated real-time blockchain statistics via API connections, and created a stunning, responsive interface that reflects MICO's vision for co-creation. The platform was built with React for optimal performance and seamless user experience.",
+    results: [
+      "Custom AI agent with natural language processing",
+      "Real-time blockchain data integration via API",
+      "Beautiful, intuitive Web3 interface",
+      "Seamless wallet connection functionality",
+      "High-performance React architecture",
+      "Mobile-responsive design across all devices",
+    ],
+    screenshots: [
+      "/images/project-4-mico.png",
+      "/images/project-4-mico.png",
+      "/images/project-4-mico.png",
+    ],
+    testimonial: {
+      quote:
+        "Working with Lewis was exceptional. He understood our vision for human-centered AI and delivered a platform that perfectly balances sophisticated technology with elegant design. The custom AI agent and real-time blockchain integration exceeded our expectations.",
+      author: "MICO Team",
+      title: "Founders, MICO",
+    },
+  },
   "techstart-inc": {
     title: "TechStart Inc",
     category: "Business Website",
