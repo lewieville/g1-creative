@@ -159,7 +159,7 @@ const projects: Record<string, any> = {
     client: "Tradesvilles",
     industry: "Trading Education",
     year: "2024",
-    website: "https://tradevilles.example.com",
+    website: "https://tradevilles.com",
     challenge:
       "Tradesvilles needed an interactive educational platform that could teach complete beginners how to trade cryptocurrency from the ground up. The platform required seamless TradingView integration, a structured learning journey with progress tracking, real-time market analysis features, and an engaging user experience that keeps students motivated.",
     approach:
