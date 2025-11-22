@@ -61,12 +61,12 @@ const featuredProjects = [
     href: "/portfolio/mico",
   },
   {
-    title: "Urban Boutique",
-    description: "Modern e-commerce platform that doubled online sales within 3 months of launch.",
+    title: "CTR Trades Journal",
+    description: "Advanced trading journal platform with comprehensive analytics dashboard, real-time trade tracking, and multi-user database. Features auto-calculated metrics, performance analysis, and seamless backend integration for professional traders.",
     image: "/images/portfolio-2.jpg",
-    category: "E-commerce",
-    tags: ["Shopify", "Branding", "Marketing"],
-    href: "/portfolio/urban-boutique",
+    category: "Trading Platform",
+    tags: ["Backend", "Database", "Analytics", "React"],
+    href: "/portfolio/ctr-trades",
   },
   {
     title: "GrowthLabs",

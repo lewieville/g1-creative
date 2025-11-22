@@ -47,6 +47,43 @@ const projects: Record<string, any> = {
       image: "/images/testimonial-4.jpg",
     },
   },
+  "ctr-trades": {
+    title: "CTR Trades Journal",
+    category: "Trading Platform",
+    description: "A comprehensive trading journal platform with advanced analytics, real-time trade tracking, and multi-user database functionality. Built for professional traders to track performance, analyze metrics, and optimize their trading strategies.",
+    image: "/images/portfolio-2.jpg",
+    tags: ["Backend", "Database", "Analytics", "React", "Multi-User"],
+    client: "CTR Trades",
+    industry: "Trading & Finance",
+    year: "2024",
+    website: "https://scalp.ctrtrades.com",
+    challenge:
+      "CTR Trades needed a sophisticated trading journal platform that could handle multiple users, store complex trade data, and provide comprehensive analytics. The system required real-time calculations, performance tracking, and an intuitive interface for traders to log and analyze their trades.",
+    approach:
+      "We built a full-stack trading journal with a robust backend API, multi-user database architecture, and advanced analytics dashboard. The platform features auto-calculated metrics (P/L, ROI, win rate, Sharpe ratio), trade entry/editing forms with real-time updates, performance analysis by timeframe, and a comprehensive landing page. The system tracks leverage, risk management, and provides detailed insights for traders to optimize their strategies.",
+    results: [
+      "Multi-user database with secure authentication",
+      "Advanced analytics dashboard with comprehensive metrics",
+      "Real-time trade tracking and auto-calculations",
+      "Performance analysis by timeframe and monthly breakdown",
+      "Professional landing page at scalp.ctrtrades.com",
+      "Seamless backend integration with robust API",
+      "Intuitive trade entry/editing interface",
+      "Risk management and leverage tracking",
+    ],
+    screenshots: [
+      "/images/portfolio-2.jpg",
+      "/images/portfolio-2.jpg",
+      "/images/portfolio-2.jpg",
+    ],
+    testimonial: {
+      quote:
+        "Lewis built an incredible trading journal platform for CTR Trades that connects to a robust backend with multi-user database functionality. The landing page perfectly captures our brand, and the journal system has become essential for our trading community. The technical execution was flawless.",
+      author: "Andy",
+      title: "Founder, CTR Trades",
+      image: "/images/andy.jpg",
+    },
+  },
   "techstart-inc": {
     title: "TechStart Inc",
     category: "Business Website",
