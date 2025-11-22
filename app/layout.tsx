@@ -5,6 +5,7 @@ import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { StickyCTA } from "@/components/StickyCTA"
 import { AnimatedCursor } from "@/components/AnimatedCursor"
+import { ClientLayout } from "@/components/ClientLayout"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 import { GA_TRACKING_ID } from "@/lib/analytics"
 
@@ -60,11 +61,13 @@ export default function RootLayout({
         )}
       </head>
       <body className="font-sans antialiased bg-luxury-bg text-luxury-text">
-        <AnimatedCursor />
-        <Header />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
-        <StickyCTA />
+        <ClientLayout>
+          <AnimatedCursor />
+          <Header />
+          <main className="min-h-screen">{children}</main>
+          <Footer />
+          <StickyCTA />
+        </ClientLayout>
       </body>
     </html>
   )

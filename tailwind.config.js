@@ -127,6 +127,7 @@ module.exports = {
       backgroundImage: {
         'gold-gradient': 'linear-gradient(135deg, #C6A667 0%, #E1C98F 50%, #C6A667 100%)',
         'shimmer': 'linear-gradient(90deg, transparent 0%, rgba(198, 166, 103, 0.3) 50%, transparent 100%)',
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },
