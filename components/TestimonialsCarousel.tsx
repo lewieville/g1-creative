@@ -30,11 +30,11 @@ const testimonials = [
   },
   {
     quote:
-      "The attention to detail and professionalism is unmatched. G1 Creative didn't just build us a website - they created a powerful marketing tool that drives real business results.",
+      "The interactive learning platform Lewis built transformed how we teach trading. The TradingView integration and structured journey make complex concepts accessible to beginners. Students love the progress tracking and real-time market analysis features.",
     author: {
-      name: "Emily Rodriguez",
-      title: "Marketing Director",
-      company: "GrowthLabs",
+      name: "Emily",
+      title: "Team Member",
+      company: "Tradesvilles",
       image: "/images/testimonial-3.jpg",
     },
     rating: 5,
