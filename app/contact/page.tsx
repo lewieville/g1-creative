@@ -1,6 +1,7 @@
 import { Mail, Phone, MapPin, Clock, MessageSquare } from "lucide-react"
 import { ContactForm } from "@/components/ContactForm"
 import { Section } from "@/components/ui/Section"
+import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
@@ -60,13 +61,16 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary-50 via-white to-secondary-50 pt-32 pb-20">
-        <Container>
+      <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        
+        <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-6 font-heading">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold text-luxury-text mb-6 tracking-wide leading-tight">
               Let&apos;s Start Your Project
             </h1>
-            <p className="text-xl text-secondary-600 leading-relaxed">
+            <p className="text-xl text-luxury-muted leading-relaxed">
               Ready to transform your digital presence? Get in touch today for a free consultation. We typically respond within 24 hours.
             </p>
           </div>
@@ -74,14 +78,15 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Section */}
-      <Section className="bg-white">
+      <MotionSection className="bg-luxury-surface">
+        <div className="gold-divider" />
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div>
-            <h2 className="text-3xl font-bold text-secondary-900 mb-4 font-heading">
+            <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
               Send Us a Message
             </h2>
-            <p className="text-secondary-600 mb-8">
+            <p className="text-luxury-muted mb-8 text-lg">
               Fill out the form below and we&apos;ll get back to you as soon as possible.
             </p>
             <ContactForm />
@@ -89,32 +94,32 @@ export default function ContactPage() {
 
           {/* Contact Info */}
           <div>
-            <h2 className="text-3xl font-bold text-secondary-900 mb-4 font-heading">
+            <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
               Get in Touch
             </h2>
-            <p className="text-secondary-600 mb-8">
+            <p className="text-luxury-muted mb-8 text-lg">
               Prefer to reach out directly? Here&apos;s how you can contact us.
             </p>
 
             <div className="space-y-6 mb-12">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
                     <item.icon className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-sm text-secondary-600 mb-1">
+                    <div className="text-sm text-gold mb-1 tracking-wide">
                       {item.title}
                     </div>
                     {item.link ? (
                       <a
                         href={item.link}
-                        className="text-secondary-900 font-medium hover:text-primary-600 transition-colors"
+                        className="text-luxury-text font-medium hover:text-gold transition-colors"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <div className="text-secondary-900 font-medium">
+                      <div className="text-luxury-text font-medium">
                         {item.value}
                       </div>
                     )}
@@ -124,21 +129,20 @@ export default function ContactPage() {
             </div>
 
             {/* Schedule Call CTA */}
-            <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-xl p-8 text-white">
+            <div className="glass-panel rounded-xl p-8 shadow-g1-glow border border-gold/20">
               <div className="flex items-start gap-4 mb-6">
-                <MessageSquare className="w-8 h-8 flex-shrink-0" />
+                <MessageSquare className="w-8 h-8 flex-shrink-0 text-gold" />
                 <div>
-                  <h3 className="text-2xl font-bold mb-2 font-heading">
+                  <h3 className="text-2xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
                     Schedule a Call
                   </h3>
-                  <p className="text-primary-100">
+                  <p className="text-luxury-muted">
                     Prefer to talk? Book a free 30-minute consultation to discuss your project.
                   </p>
                 </div>
               </div>
               <Button
                 asChild
-                variant="accent"
                 size="lg"
                 className="w-full"
               >
@@ -153,15 +157,16 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </Section>
+      </MotionSection>
 
       {/* FAQ Section */}
-      <Section className="bg-secondary-50">
+      <MotionSection className="bg-luxury-bg">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Quick Answers
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             Common questions we get from new clients
           </p>
         </div>
@@ -169,35 +174,18 @@ export default function ContactPage() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border border-secondary-200 p-6"
+              className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500"
             >
-              <h3 className="text-lg font-semibold text-secondary-900 mb-2 font-heading">
+              <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
                 {faq.question}
               </h3>
-              <p className="text-secondary-600">{faq.answer}</p>
+              <p className="text-luxury-muted">{faq.answer}</p>
             </div>
           ))}
         </div>
-      </Section>
-
-      {/* Map Section (Placeholder) */}
-      <Section className="bg-white">
-        <div className="aspect-[21/9] bg-secondary-200 rounded-xl overflow-hidden relative">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="w-16 h-16 text-secondary-400 mx-auto mb-4" />
-              <p className="text-secondary-600">
-                Interactive map would go here
-                <br />
-                <span className="text-sm">
-                  (Integrate Google Maps or similar service)
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
+      </MotionSection>
     </>
   )
 }
+
 

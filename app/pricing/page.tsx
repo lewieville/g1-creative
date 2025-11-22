@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Check, HelpCircle } from "lucide-react"
 import { PricingTable } from "@/components/PricingTable"
 import { Section } from "@/components/ui/Section"
+import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
@@ -82,13 +83,16 @@ export default function PricingPage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary-50 via-white to-secondary-50 pt-32 pb-20">
-        <Container>
+      <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        
+        <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-6 font-heading">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold text-luxury-text mb-6 tracking-wide leading-tight">
               Simple, Transparent Pricing
             </h1>
-            <p className="text-xl text-secondary-600 leading-relaxed">
+            <p className="text-xl text-luxury-muted leading-relaxed">
               Choose the package that fits your needs. All packages include responsive design, SEO basics, and ongoing support.
             </p>
           </div>
@@ -96,17 +100,19 @@ export default function PricingPage() {
       </div>
 
       {/* Pricing Table */}
-      <Section className="bg-white">
+      <MotionSection className="bg-luxury-surface">
+        <div className="gold-divider" />
         <PricingTable />
-      </Section>
+      </MotionSection>
 
       {/* Add-ons Section */}
-      <Section className="bg-secondary-50">
+      <MotionSection className="bg-luxury-bg">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Optional Add-ons
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             Enhance your package with these popular add-ons
           </p>
         </div>
@@ -114,27 +120,28 @@ export default function PricingPage() {
           {addons.map((addon, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border border-secondary-200 p-6 hover:shadow-lg transition-shadow"
+              className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500"
             >
-              <h3 className="text-lg font-semibold text-secondary-900 mb-2 font-heading">
+              <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
                 {addon.name}
               </h3>
-              <div className="text-2xl font-bold text-primary-600 mb-2 font-heading">
+              <div className="text-3xl font-heading font-bold gold-shimmer mb-2">
                 {addon.price}
               </div>
-              <p className="text-sm text-secondary-600">{addon.description}</p>
+              <p className="text-sm text-luxury-muted">{addon.description}</p>
             </div>
           ))}
         </div>
-      </Section>
+      </MotionSection>
 
       {/* What's Included */}
-      <Section className="bg-white">
+      <MotionSection className="bg-luxury-surface">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             What&apos;s Always Included
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             Every package comes with these essential features
           </p>
         </div>
@@ -154,20 +161,21 @@ export default function PricingPage() {
             "Quality assurance testing",
           ].map((feature, index) => (
             <div key={index} className="flex items-start gap-3">
-              <Check className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-              <span className="text-secondary-700">{feature}</span>
+              <Check className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+              <span className="text-luxury-muted">{feature}</span>
             </div>
           ))}
         </div>
-      </Section>
+      </MotionSection>
 
       {/* FAQ Section */}
-      <Section className="bg-secondary-50">
+      <MotionSection className="bg-luxury-bg">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             Got questions? We&apos;ve got answers.
           </p>
         </div>
@@ -175,47 +183,47 @@ export default function PricingPage() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border border-secondary-200 p-6"
+              className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500"
             >
               <div className="flex items-start gap-4">
-                <HelpCircle className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
+                <HelpCircle className="w-6 h-6 text-gold flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="text-lg font-semibold text-secondary-900 mb-2 font-heading">
+                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
                     {faq.question}
                   </h3>
-                  <p className="text-secondary-600">{faq.answer}</p>
+                  <p className="text-luxury-muted">{faq.answer}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-      </Section>
+      </MotionSection>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">
+      <MotionSection className="bg-luxury-surface relative overflow-hidden">
+        <div className="gold-divider" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        
+        <div className="text-center max-w-3xl mx-auto relative z-10">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Ready to Get Started?
           </h2>
-          <p className="text-xl mb-8 text-primary-100">
+          <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
             Let&apos;s discuss your project and create a custom quote tailored to your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="accent">
+            <Button asChild size="xl">
               <Link href="/contact">Request a Quote</Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
-            >
+            <Button asChild variant="outline" size="xl">
               <Link href="/portfolio">View Our Work</Link>
             </Button>
           </div>
         </div>
-      </Section>
+      </MotionSection>
     </>
   )
 }
+
 

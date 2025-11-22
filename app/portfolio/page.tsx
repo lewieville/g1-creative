@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { PortfolioCard } from "@/components/PortfolioCard"
 import { Section } from "@/components/ui/Section"
+import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { cn } from "@/lib/utils"
@@ -95,13 +96,16 @@ export default function PortfolioPage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary-50 via-white to-secondary-50 pt-32 pb-20">
-        <Container>
+      <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        
+        <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-6 font-heading">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold text-luxury-text mb-6 tracking-wide leading-tight">
               Our Portfolio
             </h1>
-            <p className="text-xl text-secondary-600 leading-relaxed">
+            <p className="text-xl text-luxury-muted leading-relaxed">
               Explore our recent projects and see how we&apos;ve helped businesses transform their digital presence and achieve remarkable results.
             </p>
           </div>
@@ -109,7 +113,8 @@ export default function PortfolioPage() {
       </div>
 
       {/* Filter Section */}
-      <Section className="bg-white pt-12">
+      <MotionSection className="bg-luxury-surface pt-12">
+        <div className="gold-divider" />
         <div className="flex justify-center gap-4 mb-12 flex-wrap">
           {categories.map((category) => (
             <Button
@@ -118,7 +123,7 @@ export default function PortfolioPage() {
               onClick={() => setSelectedCategory(category)}
               className={cn(
                 "transition-all",
-                selectedCategory === category && "shadow-lg"
+                selectedCategory === category && "shadow-g1-glow"
               )}
             >
               {category}
@@ -135,27 +140,31 @@ export default function PortfolioPage() {
 
         {filteredProjects.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-secondary-600 text-lg">
+            <p className="text-luxury-muted text-lg">
               No projects found in this category.
             </p>
           </div>
         )}
-      </Section>
+      </MotionSection>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">
+      <MotionSection className="bg-luxury-bg relative overflow-hidden">
+        <div className="gold-divider" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        
+        <div className="text-center max-w-3xl mx-auto relative z-10">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Want to Be Our Next Success Story?
           </h2>
-          <p className="text-xl mb-8 text-primary-100">
+          <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
             Let&apos;s create something amazing together. Schedule a free consultation to discuss your project.
           </p>
-          <Button asChild size="lg" variant="accent">
+          <Button asChild size="xl">
             <a href="/contact">Start Your Project</a>
           </Button>
         </div>
-      </Section>
+      </MotionSection>
     </>
   )
 }
