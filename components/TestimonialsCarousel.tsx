@@ -8,12 +8,12 @@ import { cn } from "@/lib/utils"
 const testimonials = [
   {
     quote:
-      "G1 Creative transformed our online presence completely. Our conversion rate increased by 150% within 3 months of launching the new site. Lewis and his team are true professionals.",
+      "Working with Lewis was exceptional. He understood our vision for human-centered AI and delivered a platform that perfectly balances sophisticated technology with elegant design. The custom AI chat interface and real-time blockchain integration exceeded our expectations. The interactive character and smooth animations bring the whole experience to life.",
     author: {
-      name: "Sarah Johnson",
-      title: "CEO",
-      company: "TechStart Inc",
-      image: "/images/testimonial-1.jpg",
+      name: "Vince",
+      title: "Founder",
+      company: "MICO",
+      image: "/images/testimonial-4.jpg",
     },
     rating: 5,
   },
