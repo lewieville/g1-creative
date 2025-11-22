@@ -221,7 +221,7 @@ export default function ServicesPage() {
                     Proven Track Record
                   </h3>
                   <p className="text-luxury-muted">
-                    50+ successful projects with an average 125% increase in client conversions.
+                    Multiple success projects with an increase in client conversions.
                   </p>
                 </div>
               </div>
