@@ -97,7 +97,7 @@ export default function HomePage() {
       <Hero
         title="Web Experiences Engineered for Growth"
         subtitle="Websites engineered to convert visitors into customers."
-        primaryCTA={{ text: "Let's Talk", href: "/contact#schedule-call" }}
+        primaryCTA={{ text: "Let's Talk", href: "/contact" }}
         image="/images/hero-main.jpg"
         imageAlt="Bespoke web design showcase"
         showScrollCue={true}
