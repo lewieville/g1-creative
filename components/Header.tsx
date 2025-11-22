@@ -46,7 +46,7 @@ export function Header() {
       )}
     >
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
+        className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:p-4 lg:px-8"
         aria-label="Global"
       >
         {/* Logo */}
@@ -63,20 +63,20 @@ export function Header() {
               width={180}
               height={50}
               priority
-              className="h-12 w-auto object-contain transition-all duration-300"
+              className="h-10 sm:h-12 w-auto object-contain transition-all duration-300"
             />
           </Link>
         </motion.div>
 
-        {/* Mobile menu button */}
+        {/* Mobile menu button - Enhanced tap target */}
         <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gold hover:text-gold-light transition-colors"
+            className="-m-2 inline-flex items-center justify-center rounded-lg p-3 text-gold hover:text-gold-light transition-colors active:scale-95 min-w-[48px] min-h-[48px]"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open main menu"
           >
-            <Menu className="h-6 w-6" aria-hidden="true" />
+            <Menu className="h-7 w-7" aria-hidden="true" />
           </button>
         </div>
 
@@ -129,7 +129,7 @@ export function Header() {
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-luxury-surface px-6 py-6 sm:max-w-sm border-l border-gold/20"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-8">
                 <Link href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">G1 Creative</span>
                   <Image
@@ -137,21 +137,21 @@ export function Header() {
                     alt="G1 Creative"
                     width={180}
                     height={50}
-                    className="h-12 w-auto object-contain"
+                    className="h-10 sm:h-12 w-auto object-contain"
                   />
                 </Link>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gold hover:text-gold-light transition-colors"
+                  className="-m-2 rounded-lg p-3 text-gold hover:text-gold-light transition-colors active:scale-95 min-w-[48px] min-h-[48px]"
                   onClick={() => setMobileMenuOpen(false)}
                   aria-label="Close menu"
                 >
-                  <X className="h-6 w-6" aria-hidden="true" />
+                  <X className="h-7 w-7" aria-hidden="true" />
                 </button>
               </div>
-              <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-luxury-panel">
-                  <div className="space-y-2 py-6">
+              <div className="flow-root">
+                <div className="-my-6 divide-y divide-luxury-panel/50">
+                  <div className="space-y-1 py-6">
                     {navigation.map((item, index) => (
                       <motion.div
                         key={item.name}
@@ -162,10 +162,10 @@ export function Header() {
                         <Link
                           href={item.href}
                           className={cn(
-                            "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 transition-colors",
+                            "-mx-3 block rounded-xl px-5 py-4 text-lg font-semibold leading-7 transition-all duration-300 min-h-[56px] flex items-center",
                             pathname === item.href
-                              ? "text-gold bg-gold/10"
-                              : "text-luxury-muted hover:text-gold hover:bg-luxury-panel"
+                              ? "text-gold bg-gold/10 border border-gold/20"
+                              : "text-luxury-muted hover:text-gold hover:bg-luxury-panel border border-transparent"
                           )}
                         >
                           {item.name}
@@ -174,7 +174,7 @@ export function Header() {
                     ))}
                   </div>
                   <div className="py-6">
-                    <Button asChild size="lg" className="w-full">
+                    <Button asChild size="lg" className="w-full min-h-[56px] text-base">
                       <Link href="/contact">Let&apos;s Talk</Link>
                     </Button>
                   </div>

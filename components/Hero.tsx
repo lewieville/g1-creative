@@ -108,9 +108,9 @@ export function Hero({
         />
       ))}
 
-      <Container className="relative z-10 pt-32 pb-20">
+      <Container className="relative z-10 pt-20 sm:pt-28 pb-16 sm:pb-20">
         <motion.div 
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center px-4 sm:px-0"
           style={{ opacity }}
         >
           {/* Animated logo with bounce */}
@@ -124,7 +124,7 @@ export function Hero({
               stiffness: 200,
               damping: 15
             }}
-            className="mb-8 flex justify-center"
+            className="mb-6 sm:mb-8 flex justify-center"
           >
             <motion.div
               className="relative"
@@ -137,7 +137,7 @@ export function Hero({
                 width={200}
                 height={60}
                 priority
-                className="h-16 md:h-20 w-auto object-contain"
+                className="h-12 sm:h-16 md:h-20 w-auto object-contain"
               />
               {/* Pulsing glow effect */}
               <motion.div
@@ -155,12 +155,12 @@ export function Hero({
             </motion.div>
           </motion.div>
 
-          {/* Title with letter animation */}
+          {/* Title with letter animation - Mobile optimized */}
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 leading-tight relative"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-4 sm:mb-6 leading-tight relative px-2 sm:px-0"
           >
             {title.split(" ").map((word, wordIndex) => (
               <motion.span
@@ -172,7 +172,7 @@ export function Hero({
                   delay: 0.5 + (wordIndex * 0.1),
                   ease: [0.22, 1, 0.36, 1]
                 }}
-                className="inline-block mr-3 md:mr-4"
+                className="inline-block mr-2 sm:mr-3 md:mr-4"
               >
                 <span className="bg-gradient-to-r from-luxury-text via-white to-luxury-text bg-clip-text text-transparent">
                   {word}
@@ -180,9 +180,9 @@ export function Hero({
               </motion.span>
             ))}
             
-            {/* Sparkle accent */}
+            {/* Sparkle accent - Hidden on small mobile */}
             <motion.span
-              className="absolute -top-4 -right-4 text-gold"
+              className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 text-gold hidden sm:block"
               initial={{ opacity: 0, scale: 0, rotate: -180 }}
               animate={{ 
                 opacity: [0, 1, 1, 0],
@@ -195,21 +195,21 @@ export function Hero({
                 times: [0, 0.2, 0.8, 1]
               }}
             >
-              <Sparkles className="w-8 h-8" />
+              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
             </motion.span>
           </motion.h1>
 
-          {/* Subtitle with fade and slide */}
+          {/* Subtitle with fade and slide - Mobile optimized */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="text-lg md:text-xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-10"
+            className="text-base sm:text-lg md:text-xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
           >
             {subtitle}
           </motion.p>
 
-          {/* CTA with magnetic hover effect */}
+          {/* CTA with magnetic hover effect - Mobile optimized */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -219,13 +219,14 @@ export function Hero({
               type: "spring",
               stiffness: 200
             }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-4 sm:px-0"
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              className="w-full sm:w-auto"
             >
-              <Button asChild size="xl" className="shadow-g1-glow relative overflow-hidden group">
+              <Button asChild size="xl" className="shadow-g1-glow relative overflow-hidden group w-full sm:w-auto min-h-[56px]">
                 <Link href={primaryCTA.href} className="relative z-10">
                   <motion.span
                     className="absolute inset-0 bg-gradient-to-r from-gold-light via-gold to-gold-light"
@@ -233,7 +234,7 @@ export function Hero({
                     whileHover={{ x: "100%" }}
                     transition={{ duration: 0.6 }}
                   />
-                  <span className="relative z-10 flex items-center">
+                  <span className="relative z-10 flex items-center justify-center">
                     {primaryCTA.text}
                     <motion.span
                       animate={{ x: [0, 4, 0] }}
@@ -253,8 +254,9 @@ export function Hero({
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto"
               >
-                <Button asChild variant="subtle" size="xl">
+                <Button asChild variant="subtle" size="xl" className="w-full sm:w-auto min-h-[56px]">
                   <Link href={secondaryCTA.href}>{secondaryCTA.text}</Link>
                 </Button>
               </motion.div>
@@ -266,36 +268,36 @@ export function Hero({
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 1.5 }}
-            className="mt-16 h-px w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent"
+            className="mt-12 sm:mt-16 h-px w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent"
           />
         </motion.div>
 
-        {/* Enhanced scroll cue */}
+        {/* Enhanced scroll cue - Mobile optimized */}
         {showScrollCue && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="absolute bottom-8 left-0 right-0 z-20 flex justify-center"
+            className="absolute bottom-6 sm:bottom-8 left-0 right-0 z-20 flex justify-center"
           >
             <motion.div
-              animate={{ y: [0, 12, 0] }}
+              animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="flex flex-col items-center gap-2 cursor-pointer group"
+              className="flex flex-col items-center gap-1.5 sm:gap-2 cursor-pointer group"
             >
               <motion.span 
-                className="text-xs tracking-widest uppercase text-gold/70 group-hover:text-gold transition-colors text-center"
+                className="text-[10px] sm:text-xs tracking-widest uppercase text-gold/70 group-hover:text-gold transition-colors text-center"
                 whileHover={{ scale: 1.1 }}
               >
                 Scroll
               </motion.span>
               <motion.div
-                className="w-6 h-6 flex items-center justify-center"
+                className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center"
                 whileHover={{ scale: 1.2 }}
               >
                 <ChevronDown className="w-4 h-4 text-gold/70 group-hover:text-gold transition-colors" />
                 <motion.div
-                  className="absolute w-6 h-6 blur-md bg-gold/30 rounded-full"
+                  className="absolute w-5 h-5 sm:w-6 sm:h-6 blur-md bg-gold/30 rounded-full"
                   animate={{ opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />

@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion"
 
 export function AnimatedCursor() {
   const [isHovering, setIsHovering] = useState(false)
+  const [isTouchDevice, setIsTouchDevice] = useState(false)
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
 
@@ -19,6 +20,20 @@ export function AnimatedCursor() {
   const glowY = useSpring(cursorY, glowSpringConfig)
 
   useEffect(() => {
+    // Detect if device supports touch (mobile/tablet)
+    const checkTouchDevice = () => {
+      setIsTouchDevice(
+        'ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(pointer: coarse)').matches
+      )
+    }
+    
+    checkTouchDevice()
+    
+    // Don't initialize cursor on touch devices
+    if (isTouchDevice) return
+    
     const updateMousePosition = (e: MouseEvent) => {
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
@@ -48,6 +63,9 @@ export function AnimatedCursor() {
       document.removeEventListener("mouseover", handleMouseOver)
     }
   }, [cursorX, cursorY])
+
+  // Don't render cursor on touch devices
+  if (isTouchDevice) return null
 
   return (
     <>

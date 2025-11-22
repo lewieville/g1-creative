@@ -104,122 +104,128 @@ export default function HomePage() {
       />
 
       {/* Services Section */}
-      <MotionSection className="bg-luxury-surface relative py-32 lg:py-40">
+      <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Subtle background accents */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 left-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle background accents - reduced on mobile */}
+        <div className="absolute top-10 sm:top-20 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 sm:bottom-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
         
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
-            Expertise
-          </span>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
-            What We Do
-          </h2>
-          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
-            Bespoke digital solutions crafted to elevate your brand and drive measurable growth
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-10 mb-16">
-          {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
-          ))}
-        </div>
-        
-        <div className="text-center">
-          <Button asChild size="lg" variant="outline" className="group">
-            <Link href="/services" className="flex items-center gap-2">
-              Explore All Capabilities
-              <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </Link>
-          </Button>
-        </div>
+        <Container>
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
+              Expertise
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
+              What We Do
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+              Bespoke digital solutions crafted to elevate your brand and drive measurable growth
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-12 sm:mb-16">
+            {services.map((service, index) => (
+              <ServiceCard key={index} {...service} />
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <Button asChild size="lg" variant="outline" className="group w-full sm:w-auto min-h-[56px]">
+              <Link href="/services" className="flex items-center gap-2 justify-center">
+                Explore All Capabilities
+                <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </Link>
+            </Button>
+          </div>
+        </Container>
       </MotionSection>
 
       {/* Insights Section */}
-      <MotionSection className="bg-luxury-bg relative py-32 lg:py-40">
+      <MotionSection className="bg-luxury-bg relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Subtle background accents */}
-        <div className="absolute top-20 left-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle background accents - reduced on mobile */}
+        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
         
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
-            Case Studies
-          </span>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
-            Insights
-          </h2>
-          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
-            Real results from real partnerships. See how we transform businesses through strategic design and development
-          </p>
-        </div>
-        
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-10 mb-16">
-          {featuredProjects.map((project, index) => (
-            <PortfolioCard key={index} {...project} />
-          ))}
-        </div>
-        
-        <div className="text-center">
-          <Button asChild size="lg" className="group">
-            <Link href="/insights" className="flex items-center gap-2">
-              Explore the Change
-              <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </Link>
-          </Button>
-        </div>
+        <Container>
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
+              Case Studies
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
+              Insights
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+              Real results from real partnerships. See how we transform businesses through strategic design and development
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-12 sm:mb-16">
+            {featuredProjects.map((project, index) => (
+              <PortfolioCard key={index} {...project} />
+            ))}
+          </div>
+          
+          <div className="text-center">
+            <Button asChild size="lg" className="group w-full sm:w-auto min-h-[56px]">
+              <Link href="/insights" className="flex items-center gap-2 justify-center">
+                Explore the Change
+                <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+              </Link>
+            </Button>
+          </div>
+        </Container>
       </MotionSection>
 
       {/* Testimonials Section */}
-      <MotionSection className="bg-luxury-surface relative py-32 lg:py-40">
+      <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Subtle background accents */}
-        <div className="absolute top-20 right-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        {/* Subtle background accents - reduced on mobile */}
+        <div className="absolute top-10 sm:top-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-10 sm:bottom-20 left-5 sm:left-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
         
-        <div className="text-center max-w-4xl mx-auto mb-20 relative z-10">
-          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
-            Testimonials
-          </span>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
-            What Our Clients Say
-          </h2>
-          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
-            Don&apos;t just take our word for it—hear from the businesses we&apos;ve transformed
-          </p>
-        </div>
-        
-        <div className="max-w-5xl mx-auto relative z-10">
-          <TestimonialsCarousel />
-        </div>
+        <Container>
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20 relative z-10">
+            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
+              Testimonials
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
+              What Our Clients Say
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+              Don&apos;t just take our word for it—hear from the businesses we&apos;ve transformed
+            </p>
+          </div>
+          
+          <div className="max-w-5xl mx-auto relative z-10">
+            <TestimonialsCarousel />
+          </div>
+        </Container>
       </MotionSection>
 
       {/* CTA Section */}
-      <MotionSection className="bg-luxury-surface relative overflow-hidden py-32 lg:py-40">
+      <MotionSection className="bg-luxury-surface relative overflow-hidden py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
-        {/* Decorative gold orbs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        {/* Decorative gold orbs - reduced on mobile */}
+        <div className="absolute top-0 right-0 w-56 sm:w-96 h-56 sm:h-96 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-56 sm:w-96 h-56 sm:h-96 bg-gold/10 rounded-full blur-3xl" />
         
         <Container className="relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
+            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
               How We Deliver
             </span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
               Launch Faster. Launch Smarter.
             </h2>
-            <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-12">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 lg:mb-12 px-4 sm:px-0">
               We craft polished, ready-to-ship products designed to meet your business objectives from day one.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="xl" className="shadow-g1-glow">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
+              <Button asChild size="xl" className="shadow-g1-glow w-full sm:w-auto min-h-[56px]">
                 <Link href="/contact">Connect With Us</Link>
               </Button>
             </div>

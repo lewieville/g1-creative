@@ -20,7 +20,7 @@ export function ContactForm() {
   }, [state.succeeded])
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 mt-8">
+    <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 mt-6 sm:mt-8">
       {/* Name */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export function ContactForm() {
       >
         <label
           htmlFor="name"
-          className="block text-sm font-medium text-gold mb-2 tracking-wide"
+          className="block text-sm font-medium text-gold mb-2.5 tracking-wide"
         >
           Full Name *
         </label>
@@ -40,6 +40,7 @@ export function ContactForm() {
           required
           placeholder="John Doe"
           disabled={state.submitting}
+          className="h-[52px] sm:h-12 text-base"
         />
         <ValidationError prefix="Name" field="name" errors={state.errors} />
       </motion.div>
@@ -52,7 +53,7 @@ export function ContactForm() {
       >
         <label
           htmlFor="email"
-          className="block text-sm font-medium text-gold mb-2 tracking-wide"
+          className="block text-sm font-medium text-gold mb-2.5 tracking-wide"
         >
           Email Address *
         </label>
@@ -63,6 +64,7 @@ export function ContactForm() {
           required
           placeholder="john@company.com"
           disabled={state.submitting}
+          className="h-[52px] sm:h-12 text-base"
         />
         <ValidationError prefix="Email" field="email" errors={state.errors} />
       </motion.div>
@@ -76,11 +78,11 @@ export function ContactForm() {
         <p className="text-xs text-luxury-muted/70 mb-4 uppercase tracking-wider">
           Optional Details
         </p>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
           <div>
             <label
               htmlFor="company"
-              className="block text-sm font-medium text-luxury-muted/80 mb-2 tracking-wide"
+              className="block text-sm font-medium text-luxury-muted/80 mb-2.5 tracking-wide"
             >
               Company <span className="text-luxury-muted/50 text-xs">(Optional)</span>
             </label>
@@ -90,13 +92,13 @@ export function ContactForm() {
               name="company"
               placeholder="Your Company"
               disabled={state.submitting}
-              className="opacity-90"
+              className="opacity-90 h-[52px] sm:h-12 text-base"
             />
           </div>
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-luxury-muted/80 mb-2 tracking-wide"
+              className="block text-sm font-medium text-luxury-muted/80 mb-2.5 tracking-wide"
             >
               Phone <span className="text-luxury-muted/50 text-xs">(Optional)</span>
             </label>
@@ -106,7 +108,7 @@ export function ContactForm() {
               name="phone"
               placeholder="+1 (555) 123-4567"
               disabled={state.submitting}
-              className="opacity-90"
+              className="opacity-90 h-[52px] sm:h-12 text-base"
             />
           </div>
         </div>
@@ -117,19 +119,19 @@ export function ContactForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="grid md:grid-cols-2 gap-6"
+        className="grid sm:grid-cols-2 gap-5 sm:gap-6"
       >
         <div>
           <label
             htmlFor="service"
-            className="block text-sm font-medium text-gold mb-2 tracking-wide"
+            className="block text-sm font-medium text-gold mb-2.5 tracking-wide"
           >
             Service Interested In
           </label>
           <select
             id="service"
             name="service"
-            className="flex h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-5 py-3 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
+            className="flex h-[52px] sm:h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-4 sm:px-5 py-3 text-base sm:text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
             disabled={state.submitting}
           >
             <option value="">Select a service</option>
@@ -144,14 +146,14 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="budget"
-            className="block text-sm font-medium text-gold mb-2 tracking-wide"
+            className="block text-sm font-medium text-gold mb-2.5 tracking-wide"
           >
             Budget Range
           </label>
           <select
             id="budget"
             name="budget"
-            className="flex h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-5 py-3 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
+            className="flex h-[52px] sm:h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-4 sm:px-5 py-3 text-base sm:text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
             disabled={state.submitting}
           >
             <option value="">Select budget</option>
@@ -171,7 +173,7 @@ export function ContactForm() {
       >
         <label
           htmlFor="message"
-          className="block text-sm font-medium text-gold mb-2 tracking-wide"
+          className="block text-sm font-medium text-gold mb-2.5 tracking-wide"
         >
           Project Details *
         </label>
@@ -180,7 +182,7 @@ export function ContactForm() {
           name="message"
           required
           placeholder="Tell us about your project..."
-          className="min-h-[180px]"
+          className="min-h-[200px] sm:min-h-[180px] text-base"
           disabled={state.submitting}
         />
         <ValidationError prefix="Message" field="message" errors={state.errors} />
@@ -193,11 +195,11 @@ export function ContactForm() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="glass-panel border-gold/50 p-4 shadow-g1-glow"
+            className="glass-panel border-gold/50 p-4 sm:p-4 shadow-g1-glow"
           >
             <div className="flex items-start gap-3">
               <CheckCircle2 className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-luxury-muted">
+              <p className="text-sm text-luxury-muted leading-relaxed">
                 Thank you for your message! We&apos;ll get back to you within 24 hours.
               </p>
             </div>
@@ -209,11 +211,11 @@ export function ContactForm() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="glass-panel border-red-500/50 p-4"
+            className="glass-panel border-red-500/50 p-4 sm:p-4"
           >
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-red-400">
+              <p className="text-sm text-red-400 leading-relaxed">
                 Something went wrong. Please try again.
               </p>
             </div>
@@ -221,7 +223,7 @@ export function ContactForm() {
         )}
       </AnimatePresence>
 
-      {/* Submit button */}
+      {/* Submit button - Mobile optimized */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -230,7 +232,7 @@ export function ContactForm() {
         <Button
           type="submit"
           size="lg"
-          className="w-full shadow-g1-glow"
+          className="w-full shadow-g1-glow min-h-[56px] text-base font-semibold"
           disabled={state.submitting}
         >
           {state.submitting ? "Sending..." : "Send Message"}

@@ -23,12 +23,23 @@
   body {
     @apply bg-luxury-bg text-luxury-text;
     font-feature-settings: "rlig" 1, "calt" 1;
-    cursor: none;
   }
 
-  /* Hide default cursor globally */
-  * {
-    cursor: none !important;
+  /* Hide default cursor only on desktop (pointer devices) */
+  @media (pointer: fine) {
+    body {
+      cursor: none;
+    }
+    * {
+      cursor: none !important;
+    }
+  }
+  
+  /* Ensure proper cursor on mobile/touch devices */
+  @media (pointer: coarse) {
+    body, * {
+      cursor: auto !important;
+    }
   }
 
   /* Smooth scrolling */
@@ -58,6 +69,43 @@
     @apply font-heading;
     letter-spacing: 0.02em;
   }
+  
+  /* Mobile typography improvements */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px; /* Prevent zoom on iOS */
+      -webkit-text-size-adjust: 100%;
+    }
+    
+    h1 {
+      line-height: 1.15;
+    }
+    
+    h2 {
+      line-height: 1.25;
+    }
+    
+    h3 {
+      line-height: 1.3;
+    }
+    
+    /* Improve mobile touch performance */
+    * {
+      -webkit-tap-highlight-color: rgba(198, 166, 103, 0.1);
+    }
+    
+    /* Reduce animations for better mobile performance */
+    .glass-panel {
+      backdrop-filter: blur(10px);
+    }
+  }
+  
+  /* Optimize for small mobile screens */
+  @media (max-width: 480px) {
+    html {
+      font-size: 14px;
+    }
+  }
 }
 
 @layer utilities {
@@ -86,7 +134,17 @@
   .glass-panel {
     background: rgba(26, 26, 26, 0.6);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Safari support */
     border: 1px solid rgba(198, 166, 103, 0.1);
+  }
+  
+  /* Smooth scrolling with reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

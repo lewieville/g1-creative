@@ -70,13 +70,13 @@ export function StickyCTA() {
             stiffness: 260,
             damping: 20,
           }}
-          className="fixed bottom-6 right-6 z-40"
+          className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40"
         >
           <div className="relative">
             <Link
               href="/contact#schedule-call"
               onClick={handleClick}
-              className="inline-flex items-center justify-center rounded-lg tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-luxury-bg disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group bg-gold text-luxury-bg hover:bg-gold-light font-semibold hover:shadow-g1-glow transform hover:scale-[1.02] active:scale-[0.98] h-12 px-8 py-3 text-base shadow-g1-glow group gap-2 z-10"
+              className="inline-flex items-center justify-center rounded-lg tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-luxury-bg disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group bg-gold text-luxury-bg hover:bg-gold-light font-semibold hover:shadow-g1-glow transform hover:scale-[1.02] active:scale-[0.98] h-[52px] sm:h-12 px-5 sm:px-8 py-3 text-sm sm:text-base shadow-g1-glow group gap-2 z-10 min-w-[52px] sm:min-w-auto"
             >
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
@@ -84,8 +84,7 @@ export function StickyCTA() {
               >
                 <Phone className="w-5 h-5" />
               </motion.div>
-              <span className="hidden sm:inline">Book a Call</span>
-              <span className="sm:hidden">Contact</span>
+              <span className="hidden sm:inline whitespace-nowrap">Book a Call</span>
             </Link>
             
             {/* Pulsing ring effect - behind the button */}

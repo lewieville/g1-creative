@@ -37,24 +37,24 @@ export function ServiceCard({
   const cardContent = (
     <div className="relative h-full flex flex-col">
       {/* Icon container with elegant styling */}
-      <div className="mb-8">
-        <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-luxury-panel to-luxury-surface border border-gold/10 relative overflow-hidden group-hover:border-gold/30 transition-colors duration-500">
+      <div className="mb-6 sm:mb-8">
+        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-luxury-panel to-luxury-surface border border-gold/10 relative overflow-hidden group-hover:border-gold/30 transition-colors duration-500">
           {/* Glow effect */}
           <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          <Icon className="w-9 h-9 text-gold relative z-10 group-hover:scale-110 transition-transform duration-300" />
+          <Icon className="w-7 h-7 sm:w-9 sm:h-9 text-gold relative z-10 group-hover:scale-110 transition-transform duration-300" />
         </div>
       </div>
 
       {/* Content */}
-      <h3 className="text-2xl md:text-3xl font-heading font-bold text-luxury-text mb-4 tracking-tight leading-tight">
+      <h3 className="text-xl sm:text-2xl md:text-3xl font-heading font-bold text-luxury-text mb-3 sm:mb-4 tracking-tight leading-tight">
         {title}
       </h3>
-      <p className="text-luxury-muted mb-8 leading-relaxed text-base">
+      <p className="text-luxury-muted mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
         {description}
       </p>
 
       {/* Features list */}
-      <ul className="space-y-4 mb-8 flex-grow">
+      <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8 flex-grow">
         {features.map((feature, index) => (
           <li
             key={index}
@@ -96,7 +96,7 @@ export function ServiceCard({
   )
 
   const cardClassName = cn(
-    "group relative glass-panel p-10 lg:p-12 rounded-2xl border border-luxury-panel hover:border-gold/20 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full",
+    "group relative glass-panel p-6 sm:p-8 lg:p-10 xl:p-12 rounded-2xl border border-luxury-panel hover:border-gold/20 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full",
     href && "cursor-pointer hover:-translate-y-2 hover:shadow-g1-glow",
     className
   )
