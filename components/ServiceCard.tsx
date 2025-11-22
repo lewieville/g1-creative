@@ -1,7 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import { LucideIcon } from "lucide-react"
 import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 interface ServiceCardProps {
   icon: LucideIcon
@@ -22,23 +25,34 @@ export function ServiceCard({
 }: ServiceCardProps) {
   const cardContent = (
     <>
-      {/* Icon */}
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg bg-primary-100 text-primary-600 mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors">
-        <Icon className="w-7 h-7" />
-      </div>
+      {/* Icon with gold glow */}
+      <motion.div
+        whileHover={{ scale: 1.05, rotate: 5 }}
+        transition={{ duration: 0.3 }}
+        className="inline-flex items-center justify-center w-16 h-16 rounded-lg glass-panel mb-6 group-hover:shadow-g1-glow transition-shadow duration-300"
+      >
+        <Icon className="w-8 h-8 text-gold" />
+      </motion.div>
 
       {/* Content */}
-      <h3 className="text-xl font-semibold text-secondary-900 mb-3 font-heading">
+      <h3 className="text-2xl font-heading font-semibold text-luxury-text mb-3 tracking-wide">
         {title}
       </h3>
-      <p className="text-secondary-600 mb-6 leading-relaxed">{description}</p>
+      <p className="text-luxury-muted mb-6 leading-relaxed">{description}</p>
 
       {/* Features list */}
-      <ul className="space-y-2 mb-6">
+      <ul className="space-y-3 mb-6">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2 text-sm text-secondary-700">
+          <motion.li
+            key={index}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            className="flex items-start gap-3 text-sm text-luxury-muted"
+          >
             <svg
-              className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5"
+              className="w-5 h-5 text-gold flex-shrink-0 mt-0.5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -51,26 +65,26 @@ export function ServiceCard({
               />
             </svg>
             {feature}
-          </li>
+          </motion.li>
         ))}
       </ul>
 
       {/* Link arrow */}
       {href && (
-        <div className="flex items-center text-primary-600 font-medium group-hover:text-primary-700">
-          <span className="text-sm">Learn more</span>
+        <div className="flex items-center text-gold font-medium group-hover:text-gold-light transition-colors">
+          <span className="text-sm tracking-wide">Learn more</span>
           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </div>
       )}
 
-      {/* Decorative element */}
-      <div className="absolute top-0 right-0 -z-10 w-32 h-32 bg-primary-100 rounded-full -translate-y-16 translate-x-16 opacity-0 group-hover:opacity-100 transition-opacity blur-2xl" />
+      {/* Decorative gold line */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold/0 group-hover:bg-gold/50 transition-all duration-500" />
     </>
   )
 
   const cardClassName = cn(
-    "group relative bg-white rounded-xl border border-secondary-200 p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary-300 hover:-translate-y-1",
-    href && "cursor-pointer",
+    "group relative glass-panel p-8 shadow-g1-card hover:shadow-g1-glow transition-all duration-500 overflow-hidden",
+    href && "cursor-pointer hover:-translate-y-1",
     className
   )
 
@@ -82,10 +96,6 @@ export function ServiceCard({
     )
   }
 
-  return (
-    <div className={cardClassName}>
-      {cardContent}
-    </div>
-  )
+  return <div className={cardClassName}>{cardContent}</div>
 }
 
