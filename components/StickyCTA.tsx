@@ -25,19 +25,21 @@ export function StickyCTA() {
     // If we're already on the contact page, scroll to the scheduler
     if (pathname === "/contact") {
       e.preventDefault()
-      const element = document.getElementById("schedule-call")
-      if (element) {
-        const headerOffset = 80
-        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
-        const offsetPosition = elementPosition - headerOffset
+      setTimeout(() => {
+        const element = document.getElementById("schedule-call")
+        if (element) {
+          const headerOffset = 80
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+          const offsetPosition = elementPosition - headerOffset
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        })
-      }
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          })
+        }
+      }, 100)
     }
-    // Otherwise, let the Link navigate normally (it will scroll via the hash)
+    // Otherwise, let Next.js Link handle navigation - hash will scroll automatically
   }
 
   return (
