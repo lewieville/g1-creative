@@ -1,11 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Phone } from "lucide-react"
-import { Button } from "@/components/ui/Button"
-import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function StickyCTA() {
@@ -56,22 +53,20 @@ export function StickyCTA() {
           }}
           className="fixed bottom-6 right-6 z-40"
         >
-          <Button asChild size="lg" className="shadow-g1-glow group">
-            <Link 
-              href="/contact#schedule-call" 
-              className="flex items-center gap-2"
-              onClick={handleClick}
+          <a
+            href="/contact#schedule-call"
+            onClick={handleClick}
+            className="inline-flex items-center justify-center rounded-lg tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-luxury-bg disabled:pointer-events-none disabled:opacity-50 relative overflow-hidden group bg-gold text-luxury-bg hover:bg-gold-light font-semibold hover:shadow-g1-glow transform hover:scale-[1.02] active:scale-[0.98] h-12 px-8 py-3 text-base shadow-g1-glow group gap-2"
+          >
+            <motion.div
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
             >
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-              >
-                <Phone className="w-5 h-5" />
-              </motion.div>
-              <span className="hidden sm:inline">Book a Call</span>
-              <span className="sm:hidden">Contact</span>
-            </Link>
-          </Button>
+              <Phone className="w-5 h-5" />
+            </motion.div>
+            <span className="hidden sm:inline">Book a Call</span>
+            <span className="sm:hidden">Contact</span>
+          </a>
           
           {/* Pulsing ring effect */}
           <motion.div
