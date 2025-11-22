@@ -8,6 +8,7 @@ import { PortfolioCard } from "@/components/PortfolioCard"
 import { TestimonialsCarousel } from "@/components/TestimonialsCarousel"
 import { Button } from "@/components/ui/Button"
 import { Section } from "@/components/ui/Section"
+import { Container } from "@/components/ui/Container"
 import { MotionSection } from "@/components/MotionSection"
 import { motion } from "framer-motion"
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
@@ -200,28 +201,30 @@ export default function HomePage() {
       </MotionSection>
 
       {/* CTA Section */}
-      <MotionSection className="bg-luxury-surface relative overflow-hidden">
+      <MotionSection className="bg-luxury-surface relative overflow-hidden py-32 lg:py-40">
         <div className="gold-divider" />
         {/* Decorative gold orbs */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
         
-        <div className="text-center max-w-4xl mx-auto relative z-10">
-          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
-            How We Deliver
-          </span>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
-            Launch Faster. Launch Smarter.
-          </h2>
-          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-12">
-            We craft polished, ready-to-ship products designed to meet your business objectives from day one.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="xl" className="shadow-g1-glow">
-              <Link href="/contact">Connect With Us</Link>
-            </Button>
+        <Container className="relative z-10">
+          <div className="text-center max-w-4xl mx-auto">
+            <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
+              How We Deliver
+            </span>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
+              Launch Faster. Launch Smarter.
+            </h2>
+            <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-12">
+              We craft polished, ready-to-ship products designed to meet your business objectives from day one.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="xl" className="shadow-g1-glow">
+                <Link href="/contact">Connect With Us</Link>
+              </Button>
+            </div>
           </div>
-        </div>
+        </Container>
       </MotionSection>
     </>
   )
