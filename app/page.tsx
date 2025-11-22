@@ -110,61 +110,35 @@ export default function HomePage() {
         <div className="gold-divider" />
         
         {/* Subtle background accents */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute top-20 right-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 left-10 w-72 h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
         
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
-              Expertise
-            </span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
-              What We Do
-            </h2>
-            <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
-              Bespoke digital solutions crafted to elevate your brand and drive measurable growth
-            </p>
-          </motion.div>
+          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
+            Expertise
+          </span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
+            What We Do
+          </h2>
+          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
+            Bespoke digital solutions crafted to elevate your brand and drive measurable growth
+          </p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 lg:gap-10 mb-16">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <ServiceCard {...service} />
-            </motion.div>
+            <ServiceCard key={index} {...service} />
           ))}
         </div>
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
-        >
+        <div className="text-center">
           <Button asChild size="lg" variant="outline" className="group">
             <Link href="/services" className="flex items-center gap-2">
               Explore All Capabilities
-              <motion.span
-                animate={{ x: [0, 4, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              >
-                →
-              </motion.span>
+              <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
             </Link>
           </Button>
-        </motion.div>
+        </div>
       </MotionSection>
 
       {/* Portfolio Section */}
