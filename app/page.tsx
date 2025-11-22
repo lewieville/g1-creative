@@ -58,7 +58,6 @@ const featuredProjects = [
     image: "/images/project-4-mico.png",
     category: "Web3 & AI",
     tags: ["AI Agent", "API Integration", "Web3", "React"],
-    href: "/portfolio/mico",
   },
   {
     title: "CTR Trades Journal",
@@ -66,7 +65,6 @@ const featuredProjects = [
     image: "/images/ctr-trades-main.png",
     category: "Trading Platform",
     tags: ["Backend", "Database", "Analytics", "React"],
-    href: "/portfolio/ctr-trades",
   },
   {
     title: "Tradesvilles Crypto Program",
@@ -74,7 +72,6 @@ const featuredProjects = [
     image: "/images/tradevilles-1.png",
     category: "Education Platform",
     tags: ["TradingView", "Interactive", "Education", "React"],
-    href: "/portfolio/tradevilles",
   },
 ]
 
@@ -209,23 +206,19 @@ export default function HomePage() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
         
-        <div className="text-center max-w-3xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
-            Ready to Transform Your Digital Presence?
+        <div className="text-center max-w-4xl mx-auto relative z-10">
+          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
+            How We Deliver
+          </span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
+            Launch Faster. Launch Smarter.
           </h2>
-          <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
-            Let&apos;s discuss your project and create something amazing together.
+          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-12">
+            We craft polished, ready-to-ship products designed to meet your business objectives from day one.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="xl">
-              <Link href="/contact">Get Started Today</Link>
-            </Button>
-            <Button
-              asChild
-              size="xl"
-              variant="outline"
-            >
-              <Link href="/portfolio">View Our Work</Link>
+            <Button asChild size="xl" className="shadow-g1-glow">
+              <Link href="/contact">Connect With Us</Link>
             </Button>
           </div>
         </div>

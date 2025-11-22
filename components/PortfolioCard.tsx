@@ -11,7 +11,7 @@ interface PortfolioCardProps {
   image: string
   category: string
   tags: string[]
-  href: string
+  href?: string
 }
 
 export function PortfolioCard({
@@ -22,8 +22,7 @@ export function PortfolioCard({
   tags,
   href,
 }: PortfolioCardProps) {
-  return (
-    <Link href={href} className="group block h-full">
+  const CardContent = (
       <div className="glass-panel overflow-hidden rounded-2xl border border-luxury-panel hover:border-gold/20 transition-all duration-500 relative h-full flex flex-col hover:-translate-y-2 hover:shadow-g1-glow">
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden bg-luxury-panel">
@@ -78,7 +77,16 @@ export function PortfolioCard({
         {/* Bottom gradient accent */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/50 transition-all duration-700" />
       </div>
-    </Link>
   )
+
+  if (href) {
+    return (
+      <Link href={href} className="group block h-full">
+        {CardContent}
+      </Link>
+    )
+  }
+
+  return <div className="group block h-full">{CardContent}</div>
 }
 

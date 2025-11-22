@@ -188,9 +188,6 @@ export default function AboutPage() {
               <Button asChild size="lg">
                 <Link href="/contact">Work With Me</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/portfolio">View My Work</Link>
-              </Button>
             </div>
           </div>
         </div>

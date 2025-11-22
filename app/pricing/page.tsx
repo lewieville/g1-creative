@@ -216,9 +216,6 @@ export default function PricingPage() {
             <Button asChild size="xl">
               <Link href="/contact">Request a Quote</Link>
             </Button>
-            <Button asChild variant="outline" size="xl">
-              <Link href="/portfolio">View Our Work</Link>
-            </Button>
           </div>
         </div>
       </MotionSection>
