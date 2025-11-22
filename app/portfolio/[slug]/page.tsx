@@ -42,8 +42,9 @@ const projects: Record<string, any> = {
     testimonial: {
       quote:
         "Working with Lewis was exceptional. He understood our vision for human-centered AI and delivered a platform that perfectly balances sophisticated technology with elegant design. The custom AI chat interface and real-time blockchain integration exceeded our expectations. The interactive character and smooth animations bring the whole experience to life.",
-      author: "MICO Team",
-      title: "Founders, MICO",
+      author: "Vince",
+      title: "Founder, MICO",
+      image: "/images/testimonial-4.jpg",
     },
   },
   "techstart-inc": {
