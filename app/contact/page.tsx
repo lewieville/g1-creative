@@ -102,11 +102,11 @@ export default function ContactPage() {
               <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
                 Get in Touch
               </h2>
-            <p className="text-luxury-muted mb-10 text-lg">
-              Prefer to reach out directly? Here&apos;s how you can contact us.
-            </p>
+              <p className="text-luxury-muted mb-10 text-lg">
+                Prefer to reach out directly? Here&apos;s how you can contact us.
+              </p>
 
-            <div className="space-y-8 mb-12">
+              <div className="space-y-8 mb-12">
               {contactInfo.map((item, index) => {
                 const Icon = iconMap[item.iconName] || Mail
                 return (
@@ -139,35 +139,36 @@ export default function ContactPage() {
                   </div>
                 )
               })}
-            </div>
-
-            {/* Schedule Call CTA */}
-            <div className="glass-panel rounded-xl p-6 border border-gold/10 shadow-g1-soft">
-              <div className="flex items-start gap-4 mb-5">
-                <MessageSquare className="w-6 h-6 flex-shrink-0 text-gold/80" />
-                <div>
-                  <h3 className="text-xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
-                    Book a Free Consultation
-                  </h3>
-                  <p className="text-luxury-muted text-sm leading-relaxed">
-                    Prefer to talk directly? Schedule a 30-minute consultation call to discuss your project goals and how we can help.
-                  </p>
-                </div>
               </div>
-              <Button
-                asChild
-                size="lg"
-                className="w-full"
-                variant="outline"
-              >
-                <a
-                  href="https://calendly.com/g1creative"
-                  target="_blank"
-                  rel="noopener noreferrer"
+
+              {/* Schedule Call CTA */}
+              <div className="glass-panel rounded-xl p-6 border border-gold/10 shadow-g1-soft">
+                <div className="flex items-start gap-4 mb-5">
+                  <MessageSquare className="w-6 h-6 flex-shrink-0 text-gold/80" />
+                  <div>
+                    <h3 className="text-xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
+                      Book a Free Consultation
+                    </h3>
+                    <p className="text-luxury-muted text-sm leading-relaxed">
+                      Prefer to talk directly? Schedule a 30-minute consultation call to discuss your project goals and how we can help.
+                    </p>
+                  </div>
+                </div>
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full"
+                  variant="outline"
                 >
-                  Schedule Your Call
-                </a>
-              </Button>
+                  <a
+                    href="https://calendly.com/g1creative"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Schedule Your Call
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </Container>
