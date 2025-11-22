@@ -85,22 +85,23 @@ export default function ContactPage() {
       </div>
 
       {/* Contact Section */}
-      <MotionSection className="bg-luxury-surface">
+      <MotionSection className="bg-luxury-surface py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16">
-          {/* Contact Form */}
-          <div>
-            <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
-              Send Us a Message
-            </h2>
-            <ContactForm />
-          </div>
+        <Container>
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16">
+            {/* Contact Form */}
+            <div>
+              <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
+                Send Us a Message
+              </h2>
+              <ContactForm />
+            </div>
 
-          {/* Contact Info */}
-          <div className="mt-12 lg:mt-0 lg:pl-8">
-            <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
-              Get in Touch
-            </h2>
+            {/* Contact Info */}
+            <div className="mt-12 lg:mt-0 lg:pl-8">
+              <h2 className="text-4xl font-heading font-bold text-luxury-text mb-4 tracking-wide">
+                Get in Touch
+              </h2>
             <p className="text-luxury-muted mb-10 text-lg">
               Prefer to reach out directly? Here&apos;s how you can contact us.
             </p>
@@ -169,33 +170,35 @@ export default function ContactPage() {
               </Button>
             </div>
           </div>
-        </div>
+        </Container>
       </MotionSection>
 
       {/* FAQ Section */}
-      <MotionSection className="bg-luxury-bg">
+      <MotionSection className="bg-luxury-bg py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
-            Quick Answers
-          </h2>
-          <p className="text-xl text-luxury-muted leading-relaxed">
-            Common questions we get from new clients
-          </p>
-        </div>
-        <div className="max-w-3xl mx-auto space-y-6">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500"
-            >
-              <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
-                {faq.question}
-              </h3>
-              <p className="text-luxury-muted">{faq.answer}</p>
-            </div>
-          ))}
-        </div>
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
+              Quick Answers
+            </h2>
+            <p className="text-xl text-luxury-muted leading-relaxed">
+              Common questions we get from new clients
+            </p>
+          </div>
+          <div className="max-w-3xl mx-auto space-y-6">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500"
+              >
+                <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
+                  {faq.question}
+                </h3>
+                <p className="text-luxury-muted">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
       </MotionSection>
     </>
   )
