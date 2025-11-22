@@ -58,12 +58,12 @@ export function Header() {
           <Link href="/" className="-m-1.5 p-1.5 group">
             <span className="sr-only">G1 Creative</span>
             <Image
-              src="/logo.png"
+              src="/g1-logo.png"
               alt="G1 Creative"
               width={180}
               height={50}
               priority
-              className="h-12 w-auto object-contain transition-all duration-300 brightness-0 invert group-hover:brightness-100 group-hover:invert-0"
+              className="h-12 w-auto object-contain transition-all duration-300"
             />
           </Link>
         </motion.div>
@@ -136,11 +136,11 @@ export function Header() {
                 <Link href="/" className="-m-1.5 p-1.5">
                   <span className="sr-only">G1 Creative</span>
                   <Image
-                    src="/logo.png"
+                    src="/g1-logo.png"
                     alt="G1 Creative"
                     width={180}
                     height={50}
-                    className="h-12 w-auto object-contain brightness-0 invert"
+                    className="h-12 w-auto object-contain"
                   />
                 </Link>
                 <button

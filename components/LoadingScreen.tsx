@@ -172,12 +172,12 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
               <motion.div
                 key={i}
                 initial={{
-                  x: Math.random() * window.innerWidth,
-                  y: window.innerHeight + 50,
+                  x: `${Math.random() * 100}vw`,
+                  y: "100vh",
                   opacity: 0,
                 }}
                 animate={{
-                  y: -50,
+                  y: "-50px",
                   opacity: [0, 1, 0],
                 }}
                 transition={{
@@ -186,9 +186,6 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                   ease: "linear",
                 }}
                 className="absolute w-1 h-1 bg-gold/30 rounded-full"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                }}
               />
             ))}
           </div>

@@ -62,6 +62,27 @@ export function Hero({
       <Container className="relative z-10 pt-32 pb-20">
         {/* Tighter max-width for cleaner layout */}
         <div className="max-w-4xl mx-auto text-center">
+          {/* Logo above headline - subtle and elegant */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="mb-8 flex justify-center"
+          >
+            <div className="relative">
+              <Image
+                src="/g1-logo.png"
+                alt="G1 Creative"
+                width={200}
+                height={60}
+                priority
+                className="h-16 md:h-20 w-auto object-contain opacity-90"
+              />
+              {/* Subtle glow effect behind logo */}
+              <div className="absolute inset-0 blur-2xl bg-gold/10 -z-10" />
+            </div>
+          </motion.div>
+
           {/* Single, strong headline */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
