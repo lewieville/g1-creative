@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Palette, ShoppingCart, Sparkles } from "lucide-react"
 import { Hero } from "@/components/Hero"
@@ -8,9 +10,7 @@ import { Button } from "@/components/ui/Button"
 import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
 import { motion } from "framer-motion"
-import { generateMetadata as generateSEOMetadata, generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
-
-export const metadata = generateSEOMetadata()
+import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
 
 const services = [
   {
