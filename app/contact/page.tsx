@@ -1,10 +1,17 @@
-import { Mail, Phone, MapPin, Clock, MessageSquare } from "lucide-react"
+import { Mail, Phone, MapPin, Clock, MessageSquare, LucideIcon } from "lucide-react"
 import { ContactForm } from "@/components/ContactForm"
 import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
+
+const iconMap: Record<string, LucideIcon> = {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+}
 
 export const metadata = generateSEOMetadata({
   title: "Contact - Get in Touch with G1 Creative",
@@ -14,25 +21,25 @@ export const metadata = generateSEOMetadata({
 
 const contactInfo = [
   {
-    icon: Mail,
+    iconName: "Mail",
     title: "Email",
     value: "g1.creative.web@gmail.com",
     link: "mailto:g1.creative.web@gmail.com",
   },
   {
-    icon: Phone,
+    iconName: "Phone",
     title: "Phone",
     value: "(239) 255-4733",
     link: "tel:+12392554733",
   },
   {
-    icon: MapPin,
+    iconName: "MapPin",
     title: "Location",
     value: "Lexington, Virginia",
     link: null,
   },
   {
-    icon: Clock,
+    iconName: "Clock",
     title: "Business Hours",
     value: "Mon-Fri: 9:00 AM - 5:00 PM EST",
     link: null,
@@ -102,30 +109,33 @@ export default function ContactPage() {
             </p>
 
             <div className="space-y-6 mb-12">
-              {contactInfo.map((item, index) => (
-                <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
-                    <item.icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-gold mb-1 tracking-wide">
-                      {item.title}
+              {contactInfo.map((item, index) => {
+                const Icon = iconMap[item.iconName] || Mail
+                return (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
+                      <Icon className="w-6 h-6" />
                     </div>
-                    {item.link ? (
-                      <a
-                        href={item.link}
-                        className="text-luxury-text font-medium hover:text-gold transition-colors"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <div className="text-luxury-text font-medium">
-                        {item.value}
+                    <div>
+                      <div className="text-sm text-gold mb-1 tracking-wide">
+                        {item.title}
                       </div>
-                    )}
+                      {item.link ? (
+                        <a
+                          href={item.link}
+                          className="text-luxury-text font-medium hover:text-gold transition-colors"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <div className="text-luxury-text font-medium">
+                          {item.value}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
 
             {/* Schedule Call CTA */}

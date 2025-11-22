@@ -1,11 +1,18 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Award, Users, Target, Heart, CheckCircle2 } from "lucide-react"
+import { Award, Users, Target, Heart, CheckCircle2, LucideIcon } from "lucide-react"
 import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
+
+const iconMap: Record<string, LucideIcon> = {
+  Award,
+  Users,
+  Target,
+  Heart,
+}
 
 export const metadata = generateSEOMetadata({
   title: "About - Meet the Team Behind G1 Creative",
@@ -15,25 +22,25 @@ export const metadata = generateSEOMetadata({
 
 const values = [
   {
-    icon: Award,
+    iconName: "Award",
     title: "Excellence",
     description:
       "We're committed to delivering exceptional quality in every project, never settling for 'good enough'.",
   },
   {
-    icon: Users,
+    iconName: "Users",
     title: "Collaboration",
     description:
       "We work closely with our clients, treating each project as a true partnership.",
   },
   {
-    icon: Target,
+    iconName: "Target",
     title: "Results-Driven",
     description:
       "Beautiful design is just the start - we focus on metrics that matter to your business.",
   },
   {
-    icon: Heart,
+    iconName: "Heart",
     title: "Passion",
     description:
       "We genuinely love what we do and it shows in the enthusiasm we bring to every project.",
@@ -231,17 +238,20 @@ export default function AboutPage() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {values.map((value, index) => (
-            <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
-                <value.icon className="w-8 h-8" />
+          {values.map((value, index) => {
+            const Icon = iconMap[value.iconName] || Award
+            return (
+              <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
+                  <Icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
+                  {value.title}
+                </h3>
+                <p className="text-luxury-muted">{value.description}</p>
               </div>
-              <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
-                {value.title}
-              </h3>
-              <p className="text-luxury-muted">{value.description}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </MotionSection>
 

@@ -13,7 +13,7 @@ export const metadata = generateSEOMetadata()
 
 const services = [
   {
-    icon: Palette,
+    iconName: "Palette",
     title: "Web Design",
     description: "Beautiful, conversion-optimized websites that captivate your audience and drive results.",
     features: [
@@ -25,7 +25,7 @@ const services = [
     href: "/services#web-design",
   },
   {
-    icon: ShoppingCart,
+    iconName: "ShoppingCart",
     title: "E-commerce",
     description: "Powerful online stores built to maximize sales and provide seamless shopping experiences.",
     features: [
@@ -37,7 +37,7 @@ const services = [
     href: "/services#ecommerce",
   },
   {
-    icon: Sparkles,
+    iconName: "Sparkles",
     title: "Branding",
     description: "Distinctive brand identities that make your business stand out in the marketplace.",
     features: [

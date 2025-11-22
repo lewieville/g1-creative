@@ -1,4 +1,4 @@
-import { Palette, ShoppingCart, Sparkles, Wrench, TrendingUp, Code, Smartphone, Shield } from "lucide-react"
+import { Palette, ShoppingCart, Sparkles, Wrench, TrendingUp, Code, Smartphone, Shield, LucideIcon } from "lucide-react"
 import { ServiceCard } from "@/components/ServiceCard"
 import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
@@ -6,6 +6,17 @@ import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import Link from "next/link"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
+
+const iconMap: Record<string, LucideIcon> = {
+  Palette,
+  ShoppingCart,
+  Sparkles,
+  Wrench,
+  TrendingUp,
+  Code,
+  Smartphone,
+  Shield,
+}
 
 export const metadata = generateSEOMetadata({
   title: "Services - Professional Web Design & Development",
@@ -15,7 +26,7 @@ export const metadata = generateSEOMetadata({
 
 const services = [
   {
-    icon: Palette,
+    iconName: "Palette",
     title: "Web Design & Development",
     description: "Custom websites that combine stunning aesthetics with powerful functionality to deliver exceptional user experiences and drive conversions.",
     features: [
@@ -30,7 +41,7 @@ const services = [
     ],
   },
   {
-    icon: ShoppingCart,
+    iconName: "ShoppingCart",
     title: "E-commerce Solutions",
     description: "Powerful online stores built on platforms like Shopify or custom solutions that maximize sales and provide seamless shopping experiences.",
     features: [
@@ -46,7 +57,7 @@ const services = [
     ],
   },
   {
-    icon: Sparkles,
+    iconName: "Sparkles",
     title: "Brand Identity & Design",
     description: "Distinctive brand identities that make your business memorable and stand out in a crowded marketplace.",
     features: [
@@ -61,7 +72,7 @@ const services = [
     ],
   },
   {
-    icon: Wrench,
+    iconName: "Wrench",
     title: "Website Maintenance & Support",
     description: "Ongoing maintenance, updates, and support to keep your website secure, fast, and running smoothly.",
     features: [
@@ -76,7 +87,7 @@ const services = [
     ],
   },
   {
-    icon: TrendingUp,
+    iconName: "TrendingUp",
     title: "SEO & Digital Marketing",
     description: "Strategic search engine optimization and digital marketing services to increase your visibility and drive qualified traffic.",
     features: [
@@ -91,7 +102,7 @@ const services = [
     ],
   },
   {
-    icon: Code,
+    iconName: "Code",
     title: "Custom Web Applications",
     description: "Bespoke web applications tailored to your specific business processes and requirements.",
     features: [
@@ -109,22 +120,22 @@ const services = [
 
 const processSteps = [
   {
-    icon: Sparkles,
+    iconName: "Sparkles",
     title: "Discovery & Strategy",
     description: "We start by understanding your business goals, target audience, and competitive landscape to create a winning strategy.",
   },
   {
-    icon: Palette,
+    iconName: "Palette",
     title: "Design & Prototyping",
     description: "Our designers create beautiful mockups and interactive prototypes for your review and feedback.",
   },
   {
-    icon: Code,
+    iconName: "Code",
     title: "Development & Testing",
     description: "Our developers bring the designs to life with clean, efficient code, followed by rigorous testing.",
   },
   {
-    icon: TrendingUp,
+    iconName: "TrendingUp",
     title: "Launch & Optimization",
     description: "We launch your site and continuously monitor and optimize for peak performance and results.",
   },
@@ -172,20 +183,23 @@ export default function ServicesPage() {
           </p>
         </div>
         <div className="grid md:grid-cols-4 gap-8">
-          {processSteps.map((step, index) => (
-            <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
-                <step.icon className="w-8 h-8" />
+          {processSteps.map((step, index) => {
+            const Icon = iconMap[step.iconName] || Sparkles
+            return (
+              <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
+                  <Icon className="w-8 h-8" />
+                </div>
+                <div className="text-gold font-bold mb-2 font-heading tracking-wide">
+                  Step {index + 1}
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
+                  {step.title}
+                </h3>
+                <p className="text-luxury-muted">{step.description}</p>
               </div>
-              <div className="text-gold font-bold mb-2 font-heading tracking-wide">
-                Step {index + 1}
-              </div>
-              <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
-                {step.title}
-              </h3>
-              <p className="text-luxury-muted">{step.description}</p>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </MotionSection>
 

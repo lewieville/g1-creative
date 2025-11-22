@@ -1,13 +1,22 @@
 "use client"
 
 import Link from "next/link"
-import { LucideIcon } from "lucide-react"
+import { Palette, ShoppingCart, Sparkles, Wrench, TrendingUp, Code, LucideIcon } from "lucide-react"
 import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
+const iconMap: Record<string, LucideIcon> = {
+  Palette,
+  ShoppingCart,
+  Sparkles,
+  Wrench,
+  TrendingUp,
+  Code,
+}
+
 interface ServiceCardProps {
-  icon: LucideIcon
+  iconName: string
   title: string
   description: string
   features: string[]
@@ -16,13 +25,14 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({
-  icon: Icon,
+  iconName,
   title,
   description,
   features,
   href,
   className,
 }: ServiceCardProps) {
+  const Icon = iconMap[iconName] || Palette
   const cardContent = (
     <>
       {/* Icon with gold glow */}
