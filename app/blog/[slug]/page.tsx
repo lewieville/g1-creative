@@ -166,7 +166,7 @@ export default function BlogPostPage({
                   About {post.author.name}
                 </h3>
                 <p className="text-secondary-600 mb-4">
-                  Lewis is the founder of G1 Creative, bringing over 8 years of experience in web design and development. He's passionate about creating digital experiences that drive real business results.
+                  Lewis is the founder of G1 Creative, bringing over 8 years of experience in web design and development. He&apos;s passionate about creating digital experiences that drive real business results.
                 </p>
                 <Button asChild variant="outline" size="sm">
                   <Link href="/about">Learn More</Link>
@@ -185,7 +185,7 @@ export default function BlogPostPage({
               Ready to Transform Your Website?
             </h2>
             <p className="text-xl mb-8 text-primary-100">
-              Let's discuss how we can help you achieve your digital goals.
+              Let&apos;s discuss how we can help you achieve your digital goals.
             </p>
             <Button asChild size="lg" variant="accent">
               <Link href="/contact">Start Your Project</Link>
