@@ -49,17 +49,17 @@ const faqs = [
 const addons = [
   {
     name: "Additional Pages",
-    price: "$200",
+    price: "$800",
     description: "per page",
   },
   {
     name: "Logo Design",
-    price: "$500",
+    price: "$2,500",
     description: "3 concepts, unlimited revisions",
   },
   {
     name: "Copywriting",
-    price: "$150",
+    price: "$600",
     description: "per page",
   },
   {
@@ -69,12 +69,12 @@ const addons = [
   },
   {
     name: "Extended Support",
-    price: "$200",
+    price: "$800",
     description: "per month after initial period",
   },
   {
     name: "SEO Package",
-    price: "$1,500",
+    price: "$5,000",
     description: "Comprehensive SEO setup and optimization",
   },
 ]

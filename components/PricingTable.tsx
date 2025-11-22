@@ -22,8 +22,8 @@ const tiers: PricingTier[] = [
   {
     name: "Starter",
     description: "Perfect for small businesses and startups",
-    monthlyPrice: 97,
-    yearlyPrice: 997,
+    monthlyPrice: 497,
+    yearlyPrice: 4997,
     features: [
       "5-page responsive website",
       "Mobile-optimized design",
@@ -39,8 +39,8 @@ const tiers: PricingTier[] = [
   {
     name: "Professional",
     description: "Best value for growing businesses",
-    monthlyPrice: 197,
-    yearlyPrice: 1997,
+    monthlyPrice: 997,
+    yearlyPrice: 9997,
     features: [
       "10-page responsive website",
       "Custom design & branding",
@@ -60,8 +60,8 @@ const tiers: PricingTier[] = [
   {
     name: "E-commerce",
     description: "Complete solution for online stores",
-    monthlyPrice: 297,
-    yearlyPrice: 2997,
+    monthlyPrice: 1997,
+    yearlyPrice: 19997,
     features: [
       "Custom e-commerce website",
       "Product catalog (up to 50 products)",

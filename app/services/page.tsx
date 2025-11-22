@@ -273,9 +273,6 @@ export default function ServicesPage() {
             <Button asChild size="xl">
               <Link href="/contact">Start Your Project</Link>
             </Button>
-            <Button asChild variant="outline" size="xl">
-              <Link href="/pricing">View Pricing</Link>
-            </Button>
           </div>
         </div>
       </MotionSection>
