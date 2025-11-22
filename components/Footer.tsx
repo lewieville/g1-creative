@@ -20,7 +20,7 @@ const navigation = {
     { name: "Our Services", href: "/services" },
     { name: "Insights", href: "/insights" },
     { name: "Contact Us", href: "/contact" },
-    { name: "Book Consultation", href: "/contact" },
+    { name: "Book Consultation", href: "/contact#schedule-call" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },

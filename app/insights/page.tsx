@@ -338,7 +338,7 @@ export default function InsightsPage() {
               Let&apos;s discuss how we can create a custom web solution that drives real results for your business.
             </p>
             <Button asChild size="xl">
-              <Link href="/contact">Book a Consultation</Link>
+              <Link href="/contact#schedule-call">Book a Consultation</Link>
             </Button>
           </div>
         </Container>

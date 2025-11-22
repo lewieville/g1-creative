@@ -34,7 +34,7 @@ export function StickyCTA() {
           className="fixed bottom-6 right-6 z-40"
         >
           <Button asChild size="lg" className="shadow-g1-glow group">
-            <Link href="/contact" className="flex items-center gap-2">
+            <Link href="/contact#schedule-call" className="flex items-center gap-2">
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
