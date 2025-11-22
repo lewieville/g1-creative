@@ -1,89 +1,23 @@
 "use client"
 
-import { useState } from "react"
+import { useForm, ValidationError } from "@formspree/react"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Textarea } from "@/components/ui/Textarea"
-import { isValidEmail } from "@/lib/utils"
 import { trackFormSubmission } from "@/lib/analytics"
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle2, AlertCircle } from "lucide-react"
-
-interface FormData {
-  name: string
-  email: string
-  company: string
-  phone: string
-  service: string
-  budget: string
-  message: string
-}
+import { useEffect } from "react"
 
 export function ContactForm() {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    company: "",
-    phone: "",
-    service: "",
-    budget: "",
-    message: "",
-  })
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
-  const [errorMessage, setErrorMessage] = useState("")
+  const [state, handleSubmit] = useForm("mrbdaybo")
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus("loading")
-    setErrorMessage("")
-
-    // Validation
-    if (!isValidEmail(formData.email)) {
-      setStatus("error")
-      setErrorMessage("Please enter a valid email address")
-      return
+  // Track successful submission
+  useEffect(() => {
+    if (state.succeeded) {
+      trackFormSubmission("contact")
     }
-
-    try {
-      // Submit to API route which proxies to Formspree
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setStatus("success")
-        trackFormSubmission("contact")
-        // Reset form
-        setFormData({
-          name: "",
-          email: "",
-          company: "",
-          phone: "",
-          service: "",
-          budget: "",
-          message: "",
-        })
-      } else {
-        throw new Error("Failed to send message")
-      }
-    } catch (error) {
-      setStatus("error")
-      setErrorMessage("Something went wrong. Please try again.")
-    }
-  }
+  }, [state.succeeded])
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 mt-8">
@@ -103,12 +37,11 @@ export function ContactForm() {
           type="text"
           id="name"
           name="name"
-          value={formData.name}
-          onChange={handleChange}
           required
           placeholder="John Doe"
-          disabled={status === "loading"}
+          disabled={state.submitting}
         />
+        <ValidationError prefix="Name" field="name" errors={state.errors} />
       </motion.div>
 
       {/* Email */}
@@ -127,12 +60,11 @@ export function ContactForm() {
           type="email"
           id="email"
           name="email"
-          value={formData.email}
-          onChange={handleChange}
           required
           placeholder="john@company.com"
-          disabled={status === "loading"}
+          disabled={state.submitting}
         />
+        <ValidationError prefix="Email" field="email" errors={state.errors} />
       </motion.div>
 
       {/* Optional Details Section */}
@@ -156,10 +88,8 @@ export function ContactForm() {
               type="text"
               id="company"
               name="company"
-              value={formData.company}
-              onChange={handleChange}
               placeholder="Your Company"
-              disabled={status === "loading"}
+              disabled={state.submitting}
               className="opacity-90"
             />
           </div>
@@ -174,10 +104,8 @@ export function ContactForm() {
               type="tel"
               id="phone"
               name="phone"
-              value={formData.phone}
-              onChange={handleChange}
               placeholder="+1 (555) 123-4567"
-              disabled={status === "loading"}
+              disabled={state.submitting}
               className="opacity-90"
             />
           </div>
@@ -201,10 +129,8 @@ export function ContactForm() {
           <select
             id="service"
             name="service"
-            value={formData.service}
-            onChange={handleChange}
             className="flex h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-5 py-3 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
-            disabled={status === "loading"}
+            disabled={state.submitting}
           >
             <option value="">Select a service</option>
             <option value="web-design">Web Design</option>
@@ -225,10 +151,8 @@ export function ContactForm() {
           <select
             id="budget"
             name="budget"
-            value={formData.budget}
-            onChange={handleChange}
             className="flex h-12 w-full rounded-lg border border-luxury-panel/60 bg-luxury-panel/30 px-5 py-3 text-sm text-luxury-text transition-all duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold/50 focus-visible:ring-offset-0 focus-visible:border-gold/60 focus-visible:bg-luxury-panel/40 disabled:cursor-not-allowed disabled:opacity-50 hover:border-gold/20 hover:bg-luxury-panel/40"
-            disabled={status === "loading"}
+            disabled={state.submitting}
           >
             <option value="">Select budget</option>
             <option value="under-5k">Under $5,000</option>
@@ -254,18 +178,17 @@ export function ContactForm() {
         <Textarea
           id="message"
           name="message"
-          value={formData.message}
-          onChange={handleChange}
           required
           placeholder="Tell us about your project..."
           className="min-h-[180px]"
-          disabled={status === "loading"}
+          disabled={state.submitting}
         />
+        <ValidationError prefix="Message" field="message" errors={state.errors} />
       </motion.div>
 
       {/* Status messages with gold accents */}
       <AnimatePresence>
-        {status === "success" && (
+        {state.succeeded && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -281,7 +204,7 @@ export function ContactForm() {
           </motion.div>
         )}
 
-        {status === "error" && (
+        {state.errors && state.errors.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -291,7 +214,7 @@ export function ContactForm() {
             <div className="flex items-start gap-3">
               <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
               <p className="text-sm text-red-400">
-                {errorMessage || "Something went wrong. Please try again."}
+                Something went wrong. Please try again.
               </p>
             </div>
           </motion.div>
@@ -308,9 +231,9 @@ export function ContactForm() {
           type="submit"
           size="lg"
           className="w-full shadow-g1-glow"
-          disabled={status === "loading"}
+          disabled={state.submitting}
         >
-          {status === "loading" ? "Sending..." : "Send Message"}
+          {state.submitting ? "Sending..." : "Send Message"}
         </Button>
       </motion.div>
     </form>
