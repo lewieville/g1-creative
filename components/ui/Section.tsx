@@ -6,6 +6,7 @@ interface SectionProps {
   className?: string
   containerSize?: "sm" | "md" | "lg" | "xl" | "full"
   id?: string
+  withDivider?: boolean
 }
 
 export function Section({
@@ -13,9 +14,13 @@ export function Section({
   className,
   containerSize = "xl",
   id,
+  withDivider = false,
 }: SectionProps) {
   return (
-    <section id={id} className={cn("py-16 md:py-24", className)}>
+    <section id={id} className={cn("py-20 md:py-32 relative", className)}>
+      {withDivider && (
+        <div className="absolute top-0 left-0 right-0 gold-divider" />
+      )}
       <Container size={containerSize}>{children}</Container>
     </section>
   )

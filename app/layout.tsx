@@ -1,9 +1,10 @@
 import type { Metadata } from "next"
-import { Inter, Poppins } from "next/font/google"
+import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { StickyCTA } from "@/components/StickyCTA"
+import { AnimatedCursor } from "@/components/AnimatedCursor"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 import { GA_TRACKING_ID } from "@/lib/analytics"
 
@@ -13,10 +14,10 @@ const inter = Inter({
   display: "swap",
 })
 
-const poppins = Poppins({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-playfair",
   display: "swap",
 })
 
@@ -34,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         {/* Google Analytics */}
         {GA_TRACKING_ID && (
@@ -58,7 +59,8 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased bg-luxury-bg text-luxury-text">
+        <AnimatedCursor />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
