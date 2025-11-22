@@ -6,6 +6,7 @@ import { PortfolioCard } from "@/components/PortfolioCard"
 import { TestimonialsCarousel } from "@/components/TestimonialsCarousel"
 import { Button } from "@/components/ui/Button"
 import { Section } from "@/components/ui/Section"
+import { MotionSection } from "@/components/MotionSection"
 import { generateMetadata as generateSEOMetadata, generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
 
 export const metadata = generateSEOMetadata()
@@ -102,38 +103,23 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <Hero
-        title="Transform Your Business with Award-Winning Web Design"
-        subtitle="We craft stunning, high-performance websites that drive real results. From startups to established businesses, we bring your digital vision to life."
+        title="Websites Built to Impress—and Convert"
+        subtitle="Custom, results-driven websites for businesses that want more than templates."
         primaryCTA={{ text: "Start Your Project", href: "/contact" }}
         secondaryCTA={{ text: "View Our Work", href: "/portfolio" }}
         image="/images/hero-main.jpg"
         imageAlt="Modern web design showcase"
+        showScrollCue={true}
       />
 
-      {/* Stats Section */}
-      <Section className="bg-white">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary-100 text-primary-600 mb-4">
-                <stat.icon className="w-6 h-6" />
-              </div>
-              <div className="text-3xl md:text-4xl font-bold text-secondary-900 mb-2 font-heading">
-                {stat.value}
-              </div>
-              <div className="text-sm text-secondary-600">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       {/* Services Section */}
-      <Section className="bg-secondary-50">
+      <MotionSection className="bg-luxury-surface relative">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Our Services
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             Comprehensive digital solutions tailored to your business needs
           </p>
         </div>
@@ -147,15 +133,16 @@ export default function HomePage() {
             <Link href="/services">View All Services</Link>
           </Button>
         </div>
-      </Section>
+      </MotionSection>
 
       {/* Portfolio Section */}
-      <Section className="bg-white">
+      <MotionSection className="bg-luxury-bg">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Featured Projects
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             See how we&apos;ve helped businesses achieve their digital goals
           </p>
         </div>
@@ -169,76 +156,78 @@ export default function HomePage() {
             <Link href="/portfolio">View Full Portfolio</Link>
           </Button>
         </div>
-      </Section>
+      </MotionSection>
 
       {/* Testimonials Section */}
-      <Section className="bg-gradient-to-br from-primary-50 to-secondary-50">
+      <MotionSection className="bg-luxury-surface">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             What Our Clients Say
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             Don&apos;t just take our word for it - hear from our satisfied clients
           </p>
         </div>
         <div className="max-w-4xl mx-auto">
           <TestimonialsCarousel />
         </div>
-      </Section>
+      </MotionSection>
 
       {/* Pricing Teaser */}
-      <Section className="bg-white">
+      <MotionSection className="bg-luxury-bg">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Affordable Pricing That Fits Your Budget
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             Launch-ready packages starting at just $97/month • No hidden fees • Cancel anytime
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <div className="bg-white rounded-xl border-2 border-secondary-200 p-8 text-center hover:border-primary-300 transition-all">
-            <h3 className="text-2xl font-bold text-secondary-900 mb-2 font-heading">
+          <div className="glass-panel p-8 text-center hover:shadow-g1-glow transition-all group">
+            <h3 className="text-2xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
               Starter
             </h3>
-            <div className="text-4xl font-bold text-primary-600 mb-1 font-heading">
+            <div className="text-5xl font-heading font-bold gold-shimmer mb-1">
               $97
             </div>
-            <div className="text-sm text-secondary-600 mb-4">/month or $997/year</div>
-            <p className="text-secondary-600 mb-6">
+            <div className="text-sm text-luxury-muted mb-4">/month or $997/year</div>
+            <p className="text-luxury-muted mb-6">
               Perfect for small businesses and startups
             </p>
             <Button asChild variant="outline" className="w-full">
               <Link href="/pricing">Learn More</Link>
             </Button>
           </div>
-          <div className="bg-white rounded-xl border-2 border-primary-600 p-8 text-center shadow-lg scale-105">
-            <div className="bg-primary-600 text-white text-sm font-semibold py-1 px-4 rounded-full inline-block mb-4">
+          <div className="glass-panel p-8 text-center ring-2 ring-gold shadow-g1-glow scale-105 group">
+            <div className="bg-gold text-luxury-bg text-sm font-semibold py-1 px-4 rounded-full inline-block mb-4 tracking-wide">
               Best Value
             </div>
-            <h3 className="text-2xl font-bold text-secondary-900 mb-2 font-heading">
+            <h3 className="text-2xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
               Professional
             </h3>
-            <div className="text-4xl font-bold text-primary-600 mb-1 font-heading">
+            <div className="text-5xl font-heading font-bold gold-shimmer mb-1">
               $197
             </div>
-            <div className="text-sm text-secondary-600 mb-4">/month or $1,997/year</div>
-            <p className="text-secondary-600 mb-6">
+            <div className="text-sm text-luxury-muted mb-4">/month or $1,997/year</div>
+            <p className="text-luxury-muted mb-6">
               Ideal for growing businesses
             </p>
             <Button asChild className="w-full">
               <Link href="/pricing">Learn More</Link>
             </Button>
           </div>
-          <div className="bg-white rounded-xl border-2 border-secondary-200 p-8 text-center hover:border-primary-300 transition-all">
-            <h3 className="text-2xl font-bold text-secondary-900 mb-2 font-heading">
+          <div className="glass-panel p-8 text-center hover:shadow-g1-glow transition-all group">
+            <h3 className="text-2xl font-heading font-bold text-luxury-text mb-2 tracking-wide">
               E-commerce
             </h3>
-            <div className="text-4xl font-bold text-primary-600 mb-1 font-heading">
+            <div className="text-5xl font-heading font-bold gold-shimmer mb-1">
               $297
             </div>
-            <div className="text-sm text-secondary-600 mb-4">/month or $2,997/year</div>
-            <p className="text-secondary-600 mb-6">
+            <div className="text-sm text-luxury-muted mb-4">/month or $2,997/year</div>
+            <p className="text-luxury-muted mb-6">
               Complete solution for online stores
             </p>
             <Button asChild variant="outline" className="w-full">
@@ -247,39 +236,43 @@ export default function HomePage() {
           </div>
         </div>
         <div className="text-center mt-12">
-          <p className="text-secondary-600 mb-4">
-            🎁 <strong>Limited Time Offer:</strong> Get 2 months FREE when you pay annually!
+          <p className="text-luxury-muted mb-4">
+            <span className="text-gold">✦</span> <strong>Limited Time Offer:</strong> Get 2 months FREE when you pay annually!
           </p>
-          <p className="text-sm text-secondary-500">
+          <p className="text-sm text-luxury-muted">
             All packages include FREE revisions • Money-back guarantee • Flexible payment plans
           </p>
         </div>
-      </Section>
+      </MotionSection>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">
+      <MotionSection className="bg-luxury-surface relative overflow-hidden">
+        <div className="gold-divider" />
+        {/* Decorative gold orbs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        
+        <div className="text-center max-w-3xl mx-auto relative z-10">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Ready to Transform Your Digital Presence?
           </h2>
-          <p className="text-xl mb-8 text-primary-100">
+          <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
             Let&apos;s discuss your project and create something amazing together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="accent">
+            <Button asChild size="xl">
               <Link href="/contact">Get Started Today</Link>
             </Button>
             <Button
               asChild
-              size="lg"
+              size="xl"
               variant="outline"
-              className="border-white text-white hover:bg-white/10"
             >
               <Link href="/portfolio">View Our Work</Link>
             </Button>
           </div>
         </div>
-      </Section>
+      </MotionSection>
     </>
   )
 }
