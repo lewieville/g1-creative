@@ -19,12 +19,12 @@ const testimonials = [
   },
   {
     quote:
-      "Working with G1 Creative was an absolute pleasure. They delivered a beautiful, high-performing e-commerce site that exceeded our expectations. Our sales have doubled since launch.",
+      "Lewis built an incredible trading journal platform for CTR Trades that connects to a robust backend with multi-user database functionality. The landing page perfectly captures our brand, and the journal system has become essential for our trading community. The technical execution was flawless.",
     author: {
-      name: "Michael Chen",
+      name: "Andy",
       title: "Founder",
-      company: "Urban Boutique",
-      image: "/images/testimonial-2.jpg",
+      company: "CTR Trades",
+      image: "/images/andy.jpg",
     },
     rating: 5,
   },
