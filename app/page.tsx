@@ -63,7 +63,7 @@ const featuredProjects = [
   {
     title: "CTR Trades Journal",
     description: "Advanced trading journal platform with comprehensive analytics dashboard, real-time trade tracking, and multi-user database. Features auto-calculated metrics, performance analysis, and seamless backend integration for professional traders.",
-    image: "/images/portfolio-2.jpg",
+    image: "/images/ctr-trades-1.png",
     category: "Trading Platform",
     tags: ["Backend", "Database", "Analytics", "React"],
     href: "/portfolio/ctr-trades",

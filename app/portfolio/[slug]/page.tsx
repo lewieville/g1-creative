@@ -51,7 +51,7 @@ const projects: Record<string, any> = {
     title: "CTR Trades Journal",
     category: "Trading Platform",
     description: "A comprehensive trading journal platform with advanced analytics, real-time trade tracking, and multi-user database functionality. Built for professional traders to track performance, analyze metrics, and optimize their trading strategies.",
-    image: "/images/portfolio-2.jpg",
+    image: "/images/ctr-trades-1.png",
     tags: ["Backend", "Database", "Analytics", "React", "Multi-User"],
     client: "CTR Trades",
     industry: "Trading & Finance",
@@ -72,9 +72,9 @@ const projects: Record<string, any> = {
       "Risk management and leverage tracking",
     ],
     screenshots: [
-      "/images/portfolio-2.jpg",
-      "/images/portfolio-2.jpg",
-      "/images/portfolio-2.jpg",
+      "/images/ctr-trades-1.png",
+      "/images/ctr-trades-2.png",
+      "/images/ctr-trades-1.png",
     ],
     testimonial: {
       quote:
