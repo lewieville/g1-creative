@@ -1,3 +1,5 @@
+"use client"
+
 import { Mail, Phone, MapPin, Clock, MessageSquare } from "lucide-react"
 import { ContactForm } from "@/components/ContactForm"
 import { Section } from "@/components/ui/Section"

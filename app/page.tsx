@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { Palette, ShoppingCart, Sparkles, TrendingUp, Award, Zap } from "lucide-react"
 import { Hero } from "@/components/Hero"
