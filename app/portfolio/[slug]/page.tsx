@@ -73,8 +73,8 @@ const projects: Record<string, any> = {
     ],
     screenshots: [
       "/images/ctr-trades-1.png",
-      "/images/ctr-trades-2.png",
       "/images/ctr-trades-main.png",
+      "/images/ctr-trades-2.png",
     ],
     testimonial: {
       quote:
