@@ -99,7 +99,6 @@ export default function HomePage() {
         title="Web Experiences Engineered for Growth"
         subtitle="Websites engineered to convert visitors into customers."
         primaryCTA={{ text: "Let's Talk", href: "/contact" }}
-        secondaryCTA={{ text: "Case Studies", href: "/insights" }}
         image="/images/hero-main.jpg"
         imageAlt="Bespoke web design showcase"
         showScrollCue={true}
