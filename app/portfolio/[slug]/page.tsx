@@ -14,22 +14,24 @@ const projects: Record<string, any> = {
     category: "Web3 & AI Platform",
     description: "A comprehensive blockchain platform featuring custom AI agents, real-time crypto statistics, and an elegant interface for a company pioneering human-centered intelligence and co-creation in Web3.",
     image: "/images/project-4-mico.png",
-    tags: ["AI Agent", "API Integration", "Web3", "React", "Blockchain"],
+    tags: ["AI Agent", "API Integration", "Web3", "React", "Blockchain", "Chat Interface"],
     client: "MICO",
     industry: "Cryptocurrency & AI",
     year: "2024",
     website: "https://micocopilots.xyz/",
     challenge:
-      "MICO needed a sophisticated web platform that could showcase their vision for human-centered intelligence while integrating complex blockchain data and AI-powered features. The challenge was to make cutting-edge technology feel accessible and beautiful.",
+      "MICO needed a sophisticated web platform that could showcase their vision for human-centered intelligence while integrating complex blockchain data and AI-powered features. The platform required an interactive AI chat interface, real-time crypto statistics, community features, and a seamless user experience that made cutting-edge technology feel accessible and engaging.",
     approach:
-      "We developed a custom AI agent system that interacts with users naturally, integrated real-time blockchain statistics via API connections, and created a stunning, responsive interface that reflects MICO's vision for co-creation. The platform was built with React for optimal performance and seamless user experience.",
+      "We developed a custom AI copilot with an interactive chat interface that guides users through AI-powered trading. Built a loading screen with animated $MICO branding, integrated real-time blockchain statistics via API connections, created community sections for Discord and X/Twitter engagement, and designed a stunning purple/cyan gradient interface that reflects MICO's futuristic vision. The entire platform was built with React for optimal performance and includes animated character interactions.",
     results: [
-      "Custom AI agent with natural language processing",
+      "Interactive AI chat interface with real-time responses",
+      "Custom animated loading screen with $MICO branding",
       "Real-time blockchain data integration via API",
-      "Beautiful, intuitive Web3 interface",
-      "Seamless wallet connection functionality",
-      "High-performance React architecture",
+      "Beautiful character-based UI with chat functionality",
+      "Community integration (Discord, X/Twitter)",
+      "High-performance React architecture with smooth animations",
       "Mobile-responsive design across all devices",
+      "Engaging purple/cyan gradient theme throughout",
     ],
     screenshots: [
       "/images/project-4-mico.png",
@@ -38,7 +40,7 @@ const projects: Record<string, any> = {
     ],
     testimonial: {
       quote:
-        "Working with Lewis was exceptional. He understood our vision for human-centered AI and delivered a platform that perfectly balances sophisticated technology with elegant design. The custom AI agent and real-time blockchain integration exceeded our expectations.",
+        "Working with Lewis was exceptional. He understood our vision for human-centered AI and delivered a platform that perfectly balances sophisticated technology with elegant design. The custom AI chat interface and real-time blockchain integration exceeded our expectations. The interactive character and smooth animations bring the whole experience to life.",
       author: "MICO Team",
       title: "Founders, MICO",
     },
