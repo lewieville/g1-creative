@@ -1,6 +1,7 @@
 import { Palette, ShoppingCart, Sparkles, Wrench, TrendingUp, Code, Smartphone, Shield } from "lucide-react"
 import { ServiceCard } from "@/components/ServiceCard"
 import { Section } from "@/components/ui/Section"
+import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import Link from "next/link"
@@ -133,13 +134,16 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary-50 via-white to-secondary-50 pt-32 pb-20">
-        <Container>
+      <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        
+        <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-secondary-900 mb-6 font-heading">
+            <h1 className="text-5xl md:text-6xl font-heading font-bold text-luxury-text mb-6 tracking-wide leading-tight">
               Services That Drive Results
             </h1>
-            <p className="text-xl text-secondary-600 leading-relaxed">
+            <p className="text-xl text-luxury-muted leading-relaxed">
               Comprehensive digital solutions designed to help your business thrive online. From beautiful websites to powerful e-commerce platforms, we&apos;ve got you covered.
             </p>
           </div>
@@ -147,141 +151,144 @@ export default function ServicesPage() {
       </div>
 
       {/* Services Grid */}
-      <Section className="bg-white">
+      <MotionSection className="bg-luxury-surface">
+        <div className="gold-divider" />
         <div className="grid md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
         </div>
-      </Section>
+      </MotionSection>
 
       {/* Process Section */}
-      <Section className="bg-secondary-50">
+      <MotionSection className="bg-luxury-bg">
+        <div className="gold-divider" />
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-4 font-heading">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Our Process
           </h2>
-          <p className="text-lg text-secondary-600">
+          <p className="text-xl text-luxury-muted leading-relaxed">
             A proven methodology that ensures successful project delivery
           </p>
         </div>
         <div className="grid md:grid-cols-4 gap-8">
           {processSteps.map((step, index) => (
-            <div key={index} className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary-100 text-primary-600 mb-4">
+            <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
                 <step.icon className="w-8 h-8" />
               </div>
-              <div className="text-primary-600 font-bold mb-2 font-heading">
+              <div className="text-gold font-bold mb-2 font-heading tracking-wide">
                 Step {index + 1}
               </div>
-              <h3 className="text-xl font-semibold text-secondary-900 mb-2 font-heading">
+              <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
                 {step.title}
               </h3>
-              <p className="text-secondary-600">{step.description}</p>
+              <p className="text-luxury-muted">{step.description}</p>
             </div>
           ))}
         </div>
-      </Section>
+      </MotionSection>
 
       {/* Why Choose Us Section */}
-      <Section className="bg-white">
+      <MotionSection className="bg-luxury-surface">
+        <div className="gold-divider" />
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-900 mb-6 font-heading">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
               Why Choose G1 Creative?
             </h2>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
                   <Shield className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-secondary-900 mb-2 font-heading">
+                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
                     Proven Track Record
                   </h3>
-                  <p className="text-secondary-600">
+                  <p className="text-luxury-muted">
                     50+ successful projects with an average 125% increase in client conversions.
                   </p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
                   <Smartphone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-secondary-900 mb-2 font-heading">
+                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
                     Mobile-First Approach
                   </h3>
-                  <p className="text-secondary-600">
+                  <p className="text-luxury-muted">
                     Every website we build is optimized for mobile devices where most traffic comes from.
                   </p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-secondary-900 mb-2 font-heading">
+                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
                     Results-Driven
                   </h3>
-                  <p className="text-secondary-600">
+                  <p className="text-luxury-muted">
                     We focus on metrics that matter - conversions, engagement, and ROI.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-gradient-to-br from-primary-100 to-secondary-100 rounded-2xl p-12">
+          <div className="glass-panel rounded-2xl p-12 shadow-g1-glow">
             <div className="space-y-6">
               <div>
-                <div className="text-5xl font-bold text-primary-600 mb-2 font-heading">
+                <div className="text-6xl font-heading font-bold gold-shimmer mb-2">
                   98%
                 </div>
-                <div className="text-secondary-700">Client Satisfaction Rate</div>
+                <div className="text-luxury-muted tracking-wide">Client Satisfaction Rate</div>
               </div>
               <div>
-                <div className="text-5xl font-bold text-primary-600 mb-2 font-heading">
+                <div className="text-6xl font-heading font-bold gold-shimmer mb-2">
                   50+
                 </div>
-                <div className="text-secondary-700">Projects Completed</div>
+                <div className="text-luxury-muted tracking-wide">Projects Completed</div>
               </div>
               <div>
-                <div className="text-5xl font-bold text-primary-600 mb-2 font-heading">
+                <div className="text-6xl font-heading font-bold gold-shimmer mb-2">
                   125%
                 </div>
-                <div className="text-secondary-700">Avg. Conversion Increase</div>
+                <div className="text-luxury-muted tracking-wide">Avg. Conversion Increase</div>
               </div>
             </div>
           </div>
         </div>
-      </Section>
+      </MotionSection>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">
+      <MotionSection className="bg-luxury-bg relative overflow-hidden">
+        <div className="gold-divider" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        
+        <div className="text-center max-w-3xl mx-auto relative z-10">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
             Ready to Get Started?
           </h2>
-          <p className="text-xl mb-8 text-primary-100">
+          <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
             Let&apos;s discuss your project and create a custom solution for your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" variant="accent">
+            <Button asChild size="xl">
               <Link href="/contact">Start Your Project</Link>
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
-            >
+            <Button asChild variant="outline" size="xl">
               <Link href="/pricing">View Pricing</Link>
             </Button>
           </div>
         </div>
-      </Section>
+      </MotionSection>
     </>
   )
 }
+
 
