@@ -20,18 +20,8 @@ export function ServiceCard({
   href,
   className,
 }: ServiceCardProps) {
-  const Wrapper = href ? Link : "div"
-  const wrapperProps = href ? { href } : {}
-
-  return (
-    <Wrapper
-      {...wrapperProps}
-      className={cn(
-        "group relative bg-white rounded-xl border border-secondary-200 p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary-300 hover:-translate-y-1",
-        href && "cursor-pointer",
-        className
-      )}
-    >
+  const cardContent = (
+    <>
       {/* Icon */}
       <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg bg-primary-100 text-primary-600 mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors">
         <Icon className="w-7 h-7" />
@@ -75,7 +65,27 @@ export function ServiceCard({
 
       {/* Decorative element */}
       <div className="absolute top-0 right-0 -z-10 w-32 h-32 bg-primary-100 rounded-full -translate-y-16 translate-x-16 opacity-0 group-hover:opacity-100 transition-opacity blur-2xl" />
-    </Wrapper>
+    </>
+  )
+
+  const cardClassName = cn(
+    "group relative bg-white rounded-xl border border-secondary-200 p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary-300 hover:-translate-y-1",
+    href && "cursor-pointer",
+    className
+  )
+
+  if (href) {
+    return (
+      <Link href={href} className={cardClassName}>
+        {cardContent}
+      </Link>
+    )
+  }
+
+  return (
+    <div className={cardClassName}>
+      {cardContent}
+    </div>
   )
 }
 
