@@ -178,17 +178,26 @@ export default function HomePage() {
       </MotionSection>
 
       {/* Testimonials Section */}
-      <MotionSection className="bg-luxury-surface">
+      <MotionSection className="bg-luxury-surface relative py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
+        
+        {/* Subtle background accents */}
+        <div className="absolute top-20 right-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="text-center max-w-4xl mx-auto mb-20 relative z-10">
+          <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold mb-4 font-medium">
+            Testimonials
+          </span>
+          <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text mb-8 tracking-tight leading-tight">
             What Our Clients Say
           </h2>
-          <p className="text-xl text-luxury-muted leading-relaxed">
-            Don&apos;t just take our word for it - hear from our satisfied clients
+          <p className="text-xl md:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto">
+            Don&apos;t just take our word for it—hear from the businesses we&apos;ve transformed
           </p>
         </div>
-        <div className="max-w-4xl mx-auto">
+        
+        <div className="max-w-5xl mx-auto relative z-10">
           <TestimonialsCarousel />
         </div>
       </MotionSection>

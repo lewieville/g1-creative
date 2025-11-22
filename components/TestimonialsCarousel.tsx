@@ -63,40 +63,41 @@ export function TestimonialsCarousel() {
   return (
     <div className="relative">
       {/* Testimonials */}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden rounded-2xl">
         <div
-          className="flex transition-transform duration-500 ease-out"
+          className="flex transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="w-full flex-shrink-0 px-4">
+            <div key={index} className="w-full flex-shrink-0 px-2 md:px-4">
               <Testimonial {...testimonial} />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Navigation buttons */}
-      <div className="flex justify-center gap-4 mt-8">
+      {/* Enhanced Navigation */}
+      <div className="flex justify-center items-center gap-6 mt-12">
         <button
           onClick={goToPrevious}
-          className="p-2 rounded-full bg-secondary-100 hover:bg-secondary-200 text-secondary-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          className="group relative w-12 h-12 rounded-full border border-gold/30 bg-luxury-panel/50 hover:bg-luxury-panel hover:border-gold transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
           aria-label="Previous testimonial"
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-5 h-5 text-gold group-hover:scale-110 transition-transform" />
+          <div className="absolute inset-0 rounded-full bg-gold/0 group-hover:bg-gold/10 transition-colors" />
         </button>
 
-        {/* Dots */}
-        <div className="flex items-center gap-2">
+        {/* Enhanced Dots */}
+        <div className="flex items-center gap-3">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrent(index)}
               className={cn(
-                "w-2 h-2 rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500",
+                "rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-luxury-surface",
                 current === index
-                  ? "bg-primary-600 w-8"
-                  : "bg-secondary-300 hover:bg-secondary-400"
+                  ? "w-10 h-2 bg-gold shadow-g1-glow"
+                  : "w-2 h-2 bg-gold/30 hover:bg-gold/50"
               )}
               aria-label={`Go to testimonial ${index + 1}`}
             />
@@ -105,10 +106,11 @@ export function TestimonialsCarousel() {
 
         <button
           onClick={goToNext}
-          className="p-2 rounded-full bg-secondary-100 hover:bg-secondary-200 text-secondary-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          className="group relative w-12 h-12 rounded-full border border-gold/30 bg-luxury-panel/50 hover:bg-luxury-panel hover:border-gold transition-all duration-300 flex items-center justify-center backdrop-blur-sm"
           aria-label="Next testimonial"
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-5 h-5 text-gold group-hover:scale-110 transition-transform" />
+          <div className="absolute inset-0 rounded-full bg-gold/0 group-hover:bg-gold/10 transition-colors" />
         </button>
       </div>
     </div>
