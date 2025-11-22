@@ -68,9 +68,9 @@ const timeline = [
   },
   {
     year: "2023",
-    title: "50+ Projects",
+    title: "Client Milestone",
     description:
-      "Reached the milestone of 50+ completed projects with a 98% client satisfaction rate.",
+      "Continued expanding our client base with tailored solutions for diverse industries.",
   },
   {
     year: "2024",

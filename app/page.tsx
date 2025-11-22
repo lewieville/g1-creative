@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Palette, ShoppingCart, Sparkles, TrendingUp, Award, Zap } from "lucide-react"
+import { Palette, ShoppingCart, Sparkles } from "lucide-react"
 import { Hero } from "@/components/Hero"
 import { ServiceCard } from "@/components/ServiceCard"
 import { PortfolioCard } from "@/components/PortfolioCard"
@@ -77,13 +77,6 @@ const featuredProjects = [
   },
 ]
 
-const stats = [
-  { label: "Projects Completed", value: "50+", icon: Award },
-  { label: "Happy Clients", value: "40+", icon: Sparkles },
-  { label: "Avg. Conversion Increase", value: "125%", icon: TrendingUp },
-  { label: "Client Satisfaction", value: "98%", icon: Zap },
-]
-
 export default function HomePage() {
   return (
     <>
@@ -103,12 +96,12 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <Hero
-        title="Premium Websites That Drive Results"
-        subtitle="Custom web design and development built for growth."
-        primaryCTA={{ text: "Book a Consultation", href: "/contact" }}
-        secondaryCTA={{ text: "View Our Work", href: "/insights" }}
+        title="Web Experiences Engineered for Growth"
+        subtitle="Websites engineered to convert visitors into customers."
+        primaryCTA={{ text: "Let's Talk", href: "/contact" }}
+        secondaryCTA={{ text: "Case Studies", href: "/insights" }}
         image="/images/hero-main.jpg"
-        imageAlt="Premium web design showcase"
+        imageAlt="Bespoke web design showcase"
         showScrollCue={true}
       />
 

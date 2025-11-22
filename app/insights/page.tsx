@@ -38,7 +38,7 @@ const insights = [
   },
   {
     title: "Complete Brand & Website Transformation for GrowthLabs",
-    description: "A comprehensive rebrand and web redesign that positioned GrowthLabs as a premium B2B service provider and generated 3x more qualified leads.",
+    description: "A comprehensive rebrand and web redesign that positioned GrowthLabs as an elite B2B service provider and generated 3x more qualified leads.",
     image: "/images/portfolio-3.jpg",
     category: "Case Studies",
     type: "Case Study",
@@ -48,14 +48,14 @@ const insights = [
     featured: false,
   },
   {
-    title: "The Psychology of Premium Web Design",
+    title: "The Psychology of High-End Web Design",
     description: "Discover the design principles and psychological triggers that make luxury websites convert at higher rates than standard designs.",
     image: "/images/blog-1.jpg",
     category: "Web Design",
     type: "Article",
     tags: ["Design", "Psychology", "UX"],
     results: null,
-    href: "/insights/premium-web-design-psychology",
+    href: "/insights/high-end-web-design-psychology",
     featured: false,
   },
   {

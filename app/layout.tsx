@@ -25,8 +25,8 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   ...generateSEOMetadata(),
   icons: {
-    icon: '/logo.png',
-    apple: '/logo.png',
+    icon: '/g1-logo.png',
+    apple: '/g1-logo.png',
   },
 }
 

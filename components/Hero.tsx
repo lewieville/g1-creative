@@ -122,41 +122,6 @@ export function Hero({
               </Button>
             )}
           </motion.div>
-
-          {/* Cleaner trust indicators - more subtle */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-20 flex items-center justify-center gap-16 flex-wrap"
-          >
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-heading font-bold text-luxury-text mb-1">
-                50<span className="text-gold">+</span>
-              </div>
-              <div className="text-xs text-luxury-muted tracking-wider uppercase">
-                Projects
-              </div>
-            </div>
-            <div className="h-12 w-px bg-gold/20" />
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-heading font-bold text-luxury-text mb-1">
-                98<span className="text-gold">%</span>
-              </div>
-              <div className="text-xs text-luxury-muted tracking-wider uppercase">
-                Satisfaction
-              </div>
-            </div>
-            <div className="h-12 w-px bg-gold/20" />
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-heading font-bold text-luxury-text mb-1">
-                2<span className="text-gold">x</span>
-              </div>
-              <div className="text-xs text-luxury-muted tracking-wider uppercase">
-                Avg. Growth
-              </div>
-            </div>
-          </motion.div>
         </div>
 
         {/* Scroll cue animation */}

@@ -253,28 +253,6 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
-          <div className="glass-panel rounded-2xl p-12 shadow-g1-glow">
-            <div className="space-y-6">
-              <div>
-                <div className="text-6xl font-heading font-bold gold-shimmer mb-2">
-                  98%
-                </div>
-                <div className="text-luxury-muted tracking-wide">Client Satisfaction Rate</div>
-              </div>
-              <div>
-                <div className="text-6xl font-heading font-bold gold-shimmer mb-2">
-                  50+
-                </div>
-                <div className="text-luxury-muted tracking-wide">Projects Completed</div>
-              </div>
-              <div>
-                <div className="text-6xl font-heading font-bold gold-shimmer mb-2">
-                  125%
-                </div>
-                <div className="text-luxury-muted tracking-wide">Avg. Conversion Increase</div>
-              </div>
-            </div>
-          </div>
         </div>
       </MotionSection>
 
