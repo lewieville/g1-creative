@@ -38,9 +38,9 @@ export function ServiceCard({
     <div className="relative h-full flex flex-col">
       {/* Icon container with elegant styling */}
       <div className="mb-6 sm:mb-8">
-        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-luxury-panel to-luxury-surface border border-gold/20 relative overflow-hidden group-hover:border-gold/50 transition-colors duration-500">
+        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-gold/10 to-gold/5 border-2 border-gold/30 relative overflow-hidden group-hover:border-gold/60 group-hover:bg-gold/10 transition-all duration-500">
           {/* Glow effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <Icon className="w-7 h-7 sm:w-9 sm:h-9 text-gold relative z-10 group-hover:scale-110 transition-transform duration-300" />
         </div>
       </div>
@@ -61,7 +61,7 @@ export function ServiceCard({
             className="flex items-start gap-3 text-sm text-luxury-muted"
           >
             <div className="flex-shrink-0 mt-0.5">
-              <div className="w-5 h-5 rounded-full border border-gold/30 flex items-center justify-center">
+              <div className="w-5 h-5 rounded-full border-2 border-gold/40 flex items-center justify-center bg-gold/5">
                 <svg
                   className="w-3 h-3 text-gold"
                   fill="none"
@@ -91,13 +91,13 @@ export function ServiceCard({
       )}
 
       {/* Bottom gradient accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/0 to-transparent group-hover:via-gold/50 transition-all duration-700" />
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold/50 to-transparent group-hover:via-gold transition-all duration-700" />
     </div>
   )
 
   const cardClassName = cn(
-    "group relative glass-panel p-6 sm:p-8 lg:p-10 xl:p-12 rounded-2xl border border-gold/20 hover:border-gold/40 transition-all duration-500 overflow-hidden backdrop-blur-sm h-full shadow-g1-soft",
-    href && "cursor-pointer hover:-translate-y-2 hover:shadow-g1-glow",
+    "group relative p-6 sm:p-8 lg:p-10 xl:p-12 rounded-2xl border-2 border-gold/30 hover:border-gold/60 bg-luxury-panel/50 backdrop-blur-sm transition-all duration-500 overflow-hidden h-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-g1-glow",
+    href && "cursor-pointer hover:-translate-y-2",
     className
   )
 
