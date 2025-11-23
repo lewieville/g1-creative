@@ -11,7 +11,7 @@ import { ArrowUpRight, TrendingUp, Clock, Calendar, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
-const categories = ["All", "Case Studies", "Web3 & AI", "Trading Platforms", "Education"]
+const categories = ["All", "Case Studies"]
 
 const insights = [
   {
@@ -54,48 +54,6 @@ const insights = [
     featured: false,
     date: "October 2024",
     readTime: "6 min read",
-    author: "Lewis Miller",
-  },
-  {
-    title: "The Technology Behind MICO's AI Agent System",
-    description: "Deep dive into the architectural decisions behind MICO's custom AI agent infrastructure. Learn how we integrated blockchain APIs for real-time data fetching, implemented WebSocket connections for live updates, created a seamless chat interface, and optimized performance for complex crypto operations.",
-    image: "/images/mico-2.png",
-    category: "Web3 & AI",
-    type: "Article",
-    tags: ["AI", "Web3", "Architecture", "API"],
-    results: null,
-    href: "#mico-tech",
-    featured: false,
-    date: "January 2025",
-    readTime: "10 min read",
-    author: "Lewis Miller",
-  },
-  {
-    title: "Building Scalable Trading Platforms: Lessons from CTR Trades",
-    description: "The critical architecture decisions and performance optimizations that enabled CTR Trades to handle thousands of trades with real-time calculations. Explore database indexing strategies, efficient query patterns, caching mechanisms, and backend optimization techniques for financial applications.",
-    image: "/images/proj 3.png",
-    category: "Trading Platforms",
-    type: "Article",
-    tags: ["Backend", "Performance", "Database", "Scalability"],
-    results: null,
-    href: "#ctr-tech",
-    featured: false,
-    date: "December 2024",
-    readTime: "9 min read",
-    author: "Lewis Miller",
-  },
-  {
-    title: "Creating Engaging Educational Experiences with TradingView Integration",
-    description: "How we leveraged TradingView's powerful charting capabilities and widget API to create an interactive, hands-on learning experience. Learn about embedding advanced charts, customizing indicators, real-time data synchronization, and UX patterns that make financial education engaging for traders at all skill levels.",
-    image: "/images/tradevilles-2.png",
-    category: "Education",
-    type: "Article",
-    tags: ["TradingView", "UX", "Interactive", "Education"],
-    results: null,
-    href: "#tradevilles-tech",
-    featured: false,
-    date: "November 2024",
-    readTime: "7 min read",
     author: "Lewis Miller",
   },
 ]
@@ -198,7 +156,7 @@ export default function InsightsPage() {
                             alt={item.title}
                             fill
                             className="object-cover"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
                           />
                         </motion.div>
                         
@@ -286,7 +244,7 @@ export default function InsightsPage() {
                         alt={item.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 33vw"
                       />
                       
                       <div className="absolute inset-0 bg-gradient-to-t from-luxury-bg via-luxury-bg/30 to-transparent opacity-60" />
