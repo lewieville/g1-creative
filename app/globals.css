@@ -78,7 +78,9 @@
     }
     
     h1 {
-      line-height: 1.15;
+      line-height: 1.1;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     
     h2 {
@@ -98,12 +100,18 @@
     .glass-panel {
       backdrop-filter: blur(10px);
     }
+    
+    /* Prevent horizontal overflow */
+    body, html {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
   }
   
-  /* Optimize for small mobile screens */
-  @media (max-width: 480px) {
+  /* iPhone 14 and similar sizes (390px width) */
+  @media (max-width: 390px) {
     html {
-      font-size: 14px;
+      font-size: 15px;
     }
   }
 }

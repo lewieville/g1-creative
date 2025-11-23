@@ -150,7 +150,7 @@ export function AnimatedLogo({
           className={cn(
             "h-auto w-auto object-contain transition-all duration-300",
             variant === "header" && "h-10 sm:h-12",
-            variant === "hero" && "h-12 sm:h-16 md:h-20",
+            variant === "hero" && "h-10 sm:h-12 md:h-16 lg:h-20",
             variant === "footer" && "h-12"
           )}
         />
