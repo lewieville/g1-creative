@@ -9,8 +9,8 @@ import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 
 interface HeroProps {
-  title: string
-  subtitle: string
+  title?: string
+  subtitle?: string
   problem?: string
   agitate?: string
   solution?: string
@@ -221,7 +221,7 @@ export function Hero({
                 </motion.span>
               </motion.h1>
             </motion.div>
-          ) : (
+          ) : title ? (
             /* Fallback to original title structure */
             <>
               <motion.h1
@@ -268,16 +268,18 @@ export function Hero({
               </motion.h1>
 
               {/* Subtitle with fade and slide - Mobile optimized */}
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="text-base sm:text-lg md:text-xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
-              >
-                {subtitle}
-              </motion.p>
+              {subtitle && (
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1 }}
+                  className="text-base sm:text-lg md:text-xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
+                >
+                  {subtitle}
+                </motion.p>
+              )}
             </>
-          )}
+          ) : null}
 
           {/* Outcome-Driven Benefits List */}
           {benefits.length > 0 && (
