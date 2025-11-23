@@ -101,7 +101,7 @@ export default function HomePage() {
         benefits={[
           "Get a website that converts 3x better than templates",
           "Launch in 4 weeks, not 4 months",
-          "Includes 30 days of free optimization",
+          "Built with cutting-edge tech that scales with you",
           "Average 142% increase in client conversions"
         ]}
         primaryCTA={{ text: "Let's Talk", href: "/contact" }}
