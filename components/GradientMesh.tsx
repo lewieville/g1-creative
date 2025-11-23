@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion, useReducedMotion } from "framer-motion"
 
 interface GradientMeshProps {
   className?: string
@@ -15,6 +15,17 @@ export function GradientMesh({
   speed = "slow" 
 }: GradientMeshProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   const intensityMap = {
     low: "opacity-20",
@@ -28,17 +39,23 @@ export function GradientMesh({
     fast: 10,
   }
 
+  // Disable on mobile or reduced motion
+  if (isMobile || prefersReducedMotion) {
+    return null
+  }
+
   return (
     <div 
       ref={containerRef}
       className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}
       aria-hidden="true"
     >
-      {/* Animated gradient mesh blob 1 */}
+      {/* Animated gradient mesh blob 1 - reduced blur on mobile */}
       <motion.div
-        className={`absolute w-[600px] h-[600px] rounded-full blur-3xl ${intensityMap[intensity]}`}
+        className={`absolute w-[600px] h-[600px] rounded-full ${isMobile ? 'blur-2xl' : 'blur-3xl'} ${intensityMap[intensity]}`}
         style={{
           background: "radial-gradient(circle, rgba(198, 166, 103, 0.4) 0%, rgba(225, 201, 143, 0.2) 50%, transparent 70%)",
+          willChange: "transform",
         }}
         animate={{
           x: [0, 100, -50, 0],
@@ -52,13 +69,14 @@ export function GradientMesh({
         }}
       />
 
-      {/* Animated gradient mesh blob 2 */}
+      {/* Animated gradient mesh blob 2 - reduced blur on mobile */}
       <motion.div
-        className={`absolute w-[500px] h-[500px] rounded-full blur-3xl ${intensityMap[intensity]}`}
+        className={`absolute w-[500px] h-[500px] rounded-full ${isMobile ? 'blur-2xl' : 'blur-3xl'} ${intensityMap[intensity]}`}
         style={{
           background: "radial-gradient(circle, rgba(225, 201, 143, 0.3) 0%, rgba(198, 166, 103, 0.2) 50%, transparent 70%)",
           top: "60%",
           left: "70%",
+          willChange: "transform",
         }}
         animate={{
           x: [0, -120, 80, 0],
@@ -73,13 +91,14 @@ export function GradientMesh({
         }}
       />
 
-      {/* Animated gradient mesh blob 3 */}
+      {/* Animated gradient mesh blob 3 - reduced blur on mobile */}
       <motion.div
-        className={`absolute w-[400px] h-[400px] rounded-full blur-3xl ${intensityMap[intensity]}`}
+        className={`absolute w-[400px] h-[400px] rounded-full ${isMobile ? 'blur-2xl' : 'blur-3xl'} ${intensityMap[intensity]}`}
         style={{
           background: "radial-gradient(circle, rgba(198, 166, 103, 0.25) 0%, rgba(184, 149, 74, 0.15) 50%, transparent 70%)",
           top: "20%",
           left: "20%",
+          willChange: "transform",
         }}
         animate={{
           x: [0, 60, -40, 0],

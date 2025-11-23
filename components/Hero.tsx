@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/Button"
 import { Container } from "@/components/ui/Container"
 import { GradientMesh } from "@/components/GradientMesh"
 import { AnimatedLogo } from "@/components/AnimatedLogo"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
+import { useRef, useState, useEffect } from "react"
 
 interface HeroProps {
   title?: string
@@ -44,26 +44,40 @@ export function Hero({
   showScrollCue = true,
 }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   })
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  
+  // Disable parallax on mobile for better performance
+  const shouldParallax = !isMobile && !prefersReducedMotion
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-bg">
-      {/* Animated background with parallax */}
+    <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-bg px-0">
+      {/* Animated background with parallax - disabled on mobile */}
       <motion.div 
         className="absolute inset-0 z-0"
-        style={{ y }}
+        style={shouldParallax ? { y } : {}}
       >
         <div className="relative w-full h-full">
           <motion.div
-            initial={{ scale: 1.2, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+            initial={prefersReducedMotion ? false : { scale: 1.2, opacity: 0 }}
+            animate={prefersReducedMotion ? {} : { scale: 1, opacity: 1 }}
+            transition={prefersReducedMotion ? {} : { duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
               src={image}
@@ -80,16 +94,16 @@ export function Hero({
         </div>
       </motion.div>
 
-      {/* Animated gradient mesh background */}
-      <GradientMesh intensity="low" speed="slow" />
+      {/* Animated gradient mesh background - reduced on mobile */}
+      {!isMobile && <GradientMesh intensity="low" speed="slow" />}
 
-      {/* Floating particles */}
-      {[...Array(8)].map((_, i) => (
+      {/* Floating particles - disabled on mobile for performance */}
+      {!isMobile && !prefersReducedMotion && [...Array(4)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-gold/30 rounded-full"
           initial={{ 
-            x: `${20 + (i * 10)}%`,
+            x: `${20 + (i * 15)}%`,
             y: "100%",
             opacity: 0 
           }}
@@ -103,21 +117,21 @@ export function Hero({
             repeat: Infinity,
             ease: "linear",
           }}
-          style={{ left: `${10 + (i * 11)}%` }}
+          style={{ left: `${10 + (i * 20)}%` }}
         />
       ))}
 
-      <Container className="relative z-10 pt-20 sm:pt-28 pb-16 sm:pb-20">
+      <Container className="relative z-10 pt-20 sm:pt-28 pb-16 sm:pb-20 px-4 sm:px-6">
         <motion.div 
-          className="max-w-4xl mx-auto text-center px-4 sm:px-0"
-          style={{ opacity }}
+          className="max-w-4xl mx-auto text-center w-full"
+          style={shouldParallax ? { opacity } : {}}
         >
           {/* Animated logo with handwriting effect */}
           <div className="mb-6 sm:mb-8 flex justify-center">
             <AnimatedLogo
               variant="hero"
               size="lg"
-              showOnLoad={true}
+              showOnLoad={!isMobile && !prefersReducedMotion}
             />
           </div>
 
@@ -129,96 +143,36 @@ export function Hero({
               transition={{ duration: 0.5, delay: 0.4 }}
               className="mb-6 sm:mb-8"
             >
-              {/* Problem - Typewriter effect with character-by-character reveal */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-                className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium relative overflow-hidden"
-              >
-                <motion.span
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ 
-                    duration: 2,
-                    delay: 0.7,
-                    ease: "easeInOut"
-                  }}
-                  className="inline-block overflow-hidden whitespace-nowrap"
-                >
-                  {problem.split('').map((char, i) => (
-                    <motion.span
-                      key={i}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{
-                        duration: 0.05,
-                        delay: 0.7 + (i * 0.03),
-                      }}
-                      className={char === ' ' ? "inline-block w-2" : "inline-block"}
-                    >
-                      {char === ' ' ? '\u00A0' : char}
-                    </motion.span>
-                  ))}
-                </motion.span>
-                
-                {/* Blinking cursor */}
-                <motion.span
-                  animate={{ opacity: [1, 0, 1] }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.7,
-                    repeat: 3,
-                    ease: "linear"
-                  }}
-                  className="inline-block w-0.5 h-5 sm:h-6 bg-luxury-muted/60 ml-1 align-middle"
-                />
-              </motion.p>
-
-              {/* Agitate - Slide and scale with dramatic emphasis */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: 2.8,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="relative mb-4 sm:mb-6"
-              >
+              {/* Problem - Simplified on mobile, typewriter on desktop */}
+              {isMobile || prefersReducedMotion ? (
+                <p className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium">
+                  {problem}
+                </p>
+              ) : (
                 <motion.p
-                  className="text-xl sm:text-2xl md:text-3xl text-luxury-muted font-semibold relative"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.6 }}
+                  className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium relative overflow-hidden"
                 >
-                  {/* Background glow that pulses in */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: [0, 0.3, 0.15], scale: 1 }}
-                    transition={{ 
-                      duration: 1,
-                      delay: 2.9,
-                      ease: "easeOut"
-                    }}
-                    className="absolute inset-0 blur-2xl bg-red-500/10 -z-10"
-                  />
-                  
                   <motion.span
                     initial={{ width: 0 }}
                     animate={{ width: "100%" }}
                     transition={{ 
-                      duration: 1.8,
-                      delay: 3,
+                      duration: 2,
+                      delay: 0.7,
                       ease: "easeInOut"
                     }}
                     className="inline-block overflow-hidden whitespace-nowrap"
                   >
-                    {agitate.split('').map((char, i) => (
+                    {problem.split('').map((char, i) => (
                       <motion.span
                         key={i}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{
                           duration: 0.05,
-                          delay: 3 + (i * 0.025),
+                          delay: 0.7 + (i * 0.03),
                         }}
                         className={char === ' ' ? "inline-block w-2" : "inline-block"}
                       >
@@ -227,98 +181,176 @@ export function Hero({
                     ))}
                   </motion.span>
                   
-                  {/* Blinking cursor for second line */}
+                  {/* Blinking cursor */}
                   <motion.span
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{
                       duration: 0.8,
-                      delay: 3,
+                      delay: 0.7,
                       repeat: 3,
                       ease: "linear"
                     }}
-                    className="inline-block w-0.5 h-6 sm:h-7 bg-luxury-muted/60 ml-1 align-middle"
+                    className="inline-block w-0.5 h-5 sm:h-6 bg-luxury-muted/60 ml-1 align-middle"
                   />
                 </motion.p>
-                
-                {/* Animated underline that draws in - adjusted timing */}
+              )}
+
+              {/* Agitate - Simplified on mobile */}
+              {isMobile || prefersReducedMotion ? (
+                <p className="text-xl sm:text-2xl md:text-3xl text-luxury-muted font-semibold mb-4 sm:mb-6">
+                  {agitate}
+                </p>
+              ) : (
                 <motion.div
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  animate={{ scaleX: 1, opacity: 1 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   transition={{ 
-                    duration: 0.8, 
-                    delay: 4.8,
+                    duration: 0.6, 
+                    delay: 2.8,
                     ease: [0.22, 1, 0.36, 1]
                   }}
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
-                />
-              </motion.div>
+                  className="relative mb-4 sm:mb-6"
+                >
+                  <motion.p
+                    className="text-xl sm:text-2xl md:text-3xl text-luxury-muted font-semibold relative"
+                  >
+                    {/* Background glow that pulses in - disabled on mobile */}
+                    {!isMobile && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: [0, 0.3, 0.15], scale: 1 }}
+                        transition={{ 
+                          duration: 1,
+                          delay: 2.9,
+                          ease: "easeOut"
+                        }}
+                        className="absolute inset-0 blur-2xl bg-red-500/10 -z-10"
+                      />
+                    )}
+                    
+                    <motion.span
+                      initial={{ width: 0 }}
+                      animate={{ width: "100%" }}
+                      transition={{ 
+                        duration: 1.8,
+                        delay: 3,
+                        ease: "easeInOut"
+                      }}
+                      className="inline-block overflow-hidden whitespace-nowrap"
+                    >
+                      {agitate.split('').map((char, i) => (
+                        <motion.span
+                          key={i}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.05,
+                            delay: 3 + (i * 0.025),
+                          }}
+                          className={char === ' ' ? "inline-block w-2" : "inline-block"}
+                        >
+                          {char === ' ' ? '\u00A0' : char}
+                        </motion.span>
+                      ))}
+                    </motion.span>
+                    
+                    {/* Blinking cursor for second line */}
+                    <motion.span
+                      animate={{ opacity: [1, 0, 1] }}
+                      transition={{
+                        duration: 0.8,
+                        delay: 3,
+                        repeat: 3,
+                        ease: "linear"
+                      }}
+                      className="inline-block w-0.5 h-6 sm:h-7 bg-luxury-muted/60 ml-1 align-middle"
+                    />
+                  </motion.p>
+                  
+                  {/* Animated underline that draws in - adjusted timing */}
+                  <motion.div
+                    initial={{ scaleX: 0, opacity: 0 }}
+                    animate={{ scaleX: 1, opacity: 1 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: 4.8,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
+                  />
+                </motion.div>
+              )}
 
               {/* Solution - Dramatic reveal with glow and scale - adjusted timing */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ 
+                initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
+                animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+                transition={prefersReducedMotion ? {} : { 
                   duration: 1,
-                  delay: 5.2,
+                  delay: isMobile ? 0.3 : 5.2,
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 className="relative"
               >
                 <motion.h1
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight relative px-2 sm:px-0"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight relative break-words"
                 >
-                  {/* Animated glow background */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ 
-                      opacity: [0, 0.5, 0.3],
-                      scale: [0.8, 1.2, 1],
-                    }}
-                    transition={{
-                      duration: 1.5,
-                      delay: 5.2,
-                      ease: "easeOut"
-                    }}
-                    className="absolute inset-0 blur-3xl bg-gold/30 -z-10"
-                  />
+                  {/* Animated glow background - disabled on mobile */}
+                  {!isMobile && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ 
+                        opacity: [0, 0.5, 0.3],
+                        scale: [0.8, 1.2, 1],
+                      }}
+                      transition={{
+                        duration: 1.5,
+                        delay: 5.2,
+                        ease: "easeOut"
+                      }}
+                      className="absolute inset-0 blur-3xl bg-gold/30 -z-10"
+                    />
+                  )}
                   
                   {solution.split(' ').map((word, i) => (
                     <motion.span
                       key={i}
-                      initial={{ 
+                      initial={prefersReducedMotion || isMobile ? { opacity: 0 } : { 
                         opacity: 0, 
                         y: 50,
                         rotateX: 90,
                         filter: "blur(10px)"
                       }}
-                      animate={{ 
+                      animate={prefersReducedMotion || isMobile ? { opacity: 1 } : { 
                         opacity: 1, 
                         y: 0,
                         rotateX: 0,
                         filter: "blur(0px)"
                       }}
                       transition={{
-                        duration: 0.6,
-                        delay: 5.4 + (i * 0.15),
+                        duration: isMobile ? 0.3 : 0.6,
+                        delay: isMobile ? 0.3 + (i * 0.1) : 5.4 + (i * 0.15),
                         ease: [0.22, 1, 0.36, 1]
                       }}
                       className="inline-block mr-[0.2em] origin-bottom"
-                      style={{ perspective: "1000px" }}
+                      style={isMobile ? {} : { perspective: "1000px" }}
                     >
                       <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent relative">
                         {word}
-                        {/* Shimmer effect that sweeps across */}
-                        <motion.span
-                          initial={{ x: "-100%" }}
-                          animate={{ x: "200%" }}
-                          transition={{
-                            duration: 1.5,
-                            delay: 5.6 + (i * 0.15),
-                            ease: "easeInOut"
-                          }}
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                          style={{ backgroundClip: "text" }}
-                        />
+                        {/* Shimmer effect that sweeps across - disabled on mobile */}
+                        {!isMobile && (
+                          <motion.span
+                            initial={{ x: "-100%" }}
+                            animate={{ x: "200%" }}
+                            transition={{
+                              duration: 1.5,
+                              delay: 5.6 + (i * 0.15),
+                              ease: "easeInOut"
+                            }}
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                            style={{ backgroundClip: "text" }}
+                          />
+                        )}
                       </span>
                     </motion.span>
                   ))}
