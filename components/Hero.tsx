@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/Button"
 import { Container } from "@/components/ui/Container"
 import { GradientMesh } from "@/components/GradientMesh"
 import { AnimatedLogo } from "@/components/AnimatedLogo"
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
+import { motion, useReducedMotion } from "framer-motion"
+import { useRef } from "react"
 
 interface HeroProps {
   title?: string
@@ -104,9 +104,7 @@ export function Hero({
 
       <div className="relative z-10 w-full py-20 sm:py-24 md:py-28 px-4 sm:px-6 md:px-8">
         <Container>
-          <div 
-            className="max-w-4xl mx-auto text-center w-full"
-          >
+          <div className="max-w-4xl mx-auto text-center w-full">
           {/* Animated logo with handwriting effect */}
           <div className="mb-6 flex justify-center" style={{ marginBottom: 'clamp(1.5rem, 2vw, 2rem)' }}>
             <AnimatedLogo
@@ -656,6 +654,6 @@ export function Hero({
       {/* Radial gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-luxury-bg/30 pointer-events-none" />
     </div>
+    </div>
   )
 }
-
