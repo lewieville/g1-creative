@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { useRef, forwardRef } from "react"
 
 interface MotionSectionProps {
   children: React.ReactNode
@@ -34,32 +34,38 @@ const presets = {
   },
 }
 
-export function MotionSection({
-  children,
-  className,
-  delay = 0,
-  preset = "fadeUp",
-  id,
-}: MotionSectionProps) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+export const MotionSection = forwardRef<HTMLDivElement, MotionSectionProps>(
+  function MotionSection(
+    {
+      children,
+      className,
+      delay = 0,
+      preset = "fadeUp",
+      id,
+    },
+    forwardedRef
+  ) {
+    const internalRef = useRef<HTMLDivElement>(null)
+    const ref = (forwardedRef || internalRef) as React.RefObject<HTMLDivElement>
+    const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-  return (
-    <motion.div
-      ref={ref}
-      id={id}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      variants={presets[preset]}
-      transition={{
-        duration: 0.8,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
+    return (
+      <motion.div
+        ref={ref}
+        id={id}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={presets[preset]}
+        transition={{
+          duration: 0.8,
+          delay,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    )
+  }
+)
 
