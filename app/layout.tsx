@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer"
 import { StickyCTA } from "@/components/StickyCTA"
 import { AnimatedCursor } from "@/components/AnimatedCursor"
 import { ClientLayout } from "@/components/ClientLayout"
+import { SocialProofTicker } from "@/components/SocialProofTicker"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 import { GA_TRACKING_ID } from "@/lib/analytics"
 
@@ -67,6 +68,7 @@ export default function RootLayout({
           <main className="min-h-screen">{children}</main>
           <Footer />
           <StickyCTA />
+          <SocialProofTicker />
         </ClientLayout>
       </body>
     </html>
