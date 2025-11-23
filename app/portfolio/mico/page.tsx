@@ -115,11 +115,11 @@ export default function MICOCaseStudy() {
             <div className="glass-panel p-8 rounded-2xl border border-gold/20 mb-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <div className="text-4xl font-bold text-gold mb-2">Custom AI</div>
+                  <div className="text-4xl font-bold text-gold mb-2 font-accent">Custom AI</div>
                   <p className="text-luxury-muted">Interactive agent for user assistance</p>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-gold mb-2">Real-Time</div>
+                  <div className="text-4xl font-bold text-gold mb-2 font-accent">Real-Time</div>
                   <p className="text-luxury-muted">Live blockchain data integration</p>
                 </div>
               </div>
