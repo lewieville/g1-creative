@@ -6,6 +6,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/Button"
+import { AnimatedLogo } from "@/components/AnimatedLogo"
 import { cn } from "@/lib/utils"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -50,23 +51,15 @@ export function Header() {
         aria-label="Global"
       >
         {/* Logo */}
-        <motion.div 
-          className="flex lg:flex-1"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Link href="/" className="-m-1.5 p-1.5 group">
-            <span className="sr-only">G1 Creative</span>
-            <Image
-              src="/g1-logo.png"
-              alt="G1 Creative"
-              width={180}
-              height={50}
-              priority
-              className="h-10 sm:h-12 w-auto object-contain transition-all duration-300"
-            />
-          </Link>
-        </motion.div>
+        <div className="flex lg:flex-1">
+          <AnimatedLogo
+            href="/"
+            variant="header"
+            size="md"
+            className="-m-1.5 p-1.5"
+            showOnLoad={true}
+          />
+        </div>
 
         {/* Mobile menu button - Enhanced tap target */}
         <div className="flex lg:hidden">
@@ -130,16 +123,13 @@ export function Header() {
               className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-luxury-surface px-6 py-6 sm:max-w-sm border-l border-gold/20"
             >
               <div className="flex items-center justify-between mb-8">
-                <Link href="/" className="-m-1.5 p-1.5">
-                  <span className="sr-only">G1 Creative</span>
-                  <Image
-                    src="/g1-logo.png"
-                    alt="G1 Creative"
-                    width={180}
-                    height={50}
-                    className="h-10 sm:h-12 w-auto object-contain"
-                  />
-                </Link>
+                <AnimatedLogo
+                  href="/"
+                  variant="header"
+                  size="md"
+                  className="-m-1.5 p-1.5"
+                  showOnLoad={false}
+                />
                 <button
                   type="button"
                   className="-m-2 rounded-lg p-3 text-gold hover:text-gold-light transition-colors active:scale-95 min-w-[48px] min-h-[48px]"

@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
+import { AnimatedLogo } from "@/components/AnimatedLogo"
 import { motion } from "framer-motion"
 
 const navigation = {
@@ -84,15 +85,12 @@ export function Footer() {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <Link href="/" className="group block">
-              <Image
-                src="/g1-logo.png"
-                alt="G1 Creative"
-                width={180}
-                height={50}
-                className="h-12 w-auto object-contain transition-all duration-300"
-              />
-            </Link>
+            <AnimatedLogo
+              href="/"
+              variant="footer"
+              size="md"
+              showOnLoad={false}
+            />
             <p className="text-sm leading-6 text-luxury-muted">
               Crafting exceptional digital experiences that drive results. Transform your business with award-winning web design and development.
             </p>

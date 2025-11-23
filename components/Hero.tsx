@@ -6,6 +6,7 @@ import { ArrowRight, ChevronDown, Sparkles, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Container } from "@/components/ui/Container"
 import { GradientMesh } from "@/components/GradientMesh"
+import { AnimatedLogo } from "@/components/AnimatedLogo"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 
@@ -111,47 +112,14 @@ export function Hero({
           className="max-w-4xl mx-auto text-center px-4 sm:px-0"
           style={{ opacity }}
         >
-          {/* Animated logo with bounce */}
-          <motion.div
-            initial={{ opacity: 0, y: -50, scale: 0.5 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ 
-              duration: 1,
-              delay: 0.2,
-              type: "spring",
-              stiffness: 200,
-              damping: 15
-            }}
-            className="mb-6 sm:mb-8 flex justify-center"
-          >
-            <motion.div
-              className="relative"
-              whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
-              transition={{ duration: 0.4 }}
-            >
-              <Image
-                src="/g1-logo.png"
-                alt="G1 Creative"
-                width={200}
-                height={60}
-                priority
-                className="h-12 sm:h-16 md:h-20 w-auto object-contain"
-              />
-              {/* Pulsing glow effect */}
-              <motion.div
-                className="absolute inset-0 blur-2xl bg-gold/20 -z-10 rounded-full"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3]
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </motion.div>
-          </motion.div>
+          {/* Animated logo with handwriting effect */}
+          <div className="mb-6 sm:mb-8 flex justify-center">
+            <AnimatedLogo
+              variant="hero"
+              size="lg"
+              showOnLoad={true}
+            />
+          </div>
 
           {/* Problem → Agitate → Solution Headline Structure with Advanced Animations */}
           {problem && agitate && solution ? (
