@@ -408,9 +408,7 @@ export default function ServicesPage() {
               Let&apos;s discuss your project and create a custom solution for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="xl">
-                <Link href="/contact">Start Your Project</Link>
-              </Button>
+              <DynamicCTA size="xl" href="/contact" />
             </div>
           </div>
         </Container>

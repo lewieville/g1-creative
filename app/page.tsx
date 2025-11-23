@@ -12,6 +12,7 @@ import { Container } from "@/components/ui/Container"
 import { MotionSection } from "@/components/MotionSection"
 import { CinematicSection } from "@/components/CinematicSection"
 import { ScrollReveal } from "@/components/ScrollReveal"
+import { DynamicCTA } from "@/components/DynamicCTA"
 import { motion } from "framer-motion"
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
 
@@ -274,9 +275,11 @@ export default function HomePage() {
               We craft polished, ready-to-ship products designed to meet your business objectives from day one.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
-              <Button asChild size="xl" className="shadow-g1-glow w-full sm:w-auto min-h-[56px]">
-                <Link href="/contact">Connect With Us</Link>
-              </Button>
+              <DynamicCTA 
+                href="/contact#schedule-call"
+                size="xl"
+                className="shadow-g1-glow w-full sm:w-auto min-h-[56px]"
+              />
             </div>
           </div>
         </Container>

@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container"
 import { MotionSection } from "@/components/MotionSection"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
+import { DynamicCTA } from "@/components/DynamicCTA"
 import { ArrowUpRight, TrendingUp, Clock, Calendar, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
@@ -313,9 +314,7 @@ export default function InsightsPage() {
             <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
               Let&apos;s discuss how we can create a bespoke web solution that drives real results for your business.
             </p>
-            <Button asChild size="xl">
-              <Link href="/contact#schedule-call">Schedule Your Consultation</Link>
-            </Button>
+            <DynamicCTA size="xl" />
           </div>
         </Container>
       </MotionSection>
