@@ -197,9 +197,9 @@ export function Hero({
                         duration: 0.05,
                         delay: 0.7 + (i * 0.03),
                       }}
-                      className="inline-block"
+                      className={char === ' ' ? "inline-block w-2" : "inline-block"}
                     >
-                      {char}
+                      {char === ' ' ? '\u00A0' : char}
                     </motion.span>
                   ))}
                 </motion.span>
@@ -262,9 +262,9 @@ export function Hero({
                           duration: 0.05,
                           delay: 3 + (i * 0.025),
                         }}
-                        className="inline-block"
+                        className={char === ' ' ? "inline-block w-2" : "inline-block"}
                       >
-                        {char}
+                        {char === ' ' ? '\u00A0' : char}
                       </motion.span>
                     ))}
                   </motion.span>
