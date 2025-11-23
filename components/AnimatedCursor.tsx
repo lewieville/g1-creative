@@ -24,11 +24,11 @@ export function AnimatedCursor() {
   // Combine cursor position with magnetic pull using useTransform
   const combinedX = useTransform(
     [cursorXSpring, magneticXSpring],
-    ([x, mx]) => x + mx
+    ([x, mx]: number[]) => (x ?? 0) + (mx ?? 0)
   )
   const combinedY = useTransform(
     [cursorYSpring, magneticYSpring],
-    ([y, my]) => y + my
+    ([y, my]: number[]) => (y ?? 0) + (my ?? 0)
   )
 
   // Slightly slower spring for trailing glow with smoother motion
