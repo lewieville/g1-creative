@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion, useMotionValue, useSpring } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 
 export function AnimatedCursor() {
   const [isHovering, setIsHovering] = useState(false)
@@ -20,6 +20,16 @@ export function AnimatedCursor() {
   const magneticSpringConfig = { damping: 20, stiffness: 300, mass: 0.4 }
   const magneticXSpring = useSpring(magneticX, magneticSpringConfig)
   const magneticYSpring = useSpring(magneticY, magneticSpringConfig)
+
+  // Combine cursor position with magnetic pull using useTransform
+  const combinedX = useTransform(
+    [cursorXSpring, magneticXSpring],
+    ([x, mx]) => x + mx
+  )
+  const combinedY = useTransform(
+    [cursorYSpring, magneticYSpring],
+    ([y, my]) => y + my
+  )
 
   // Slightly slower spring for trailing glow with smoother motion
   const glowSpringConfig = { damping: 25, stiffness: 200, mass: 0.5 }
@@ -105,8 +115,8 @@ export function AnimatedCursor() {
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
-          x: cursorXSpring + magneticXSpring,
-          y: cursorYSpring + magneticYSpring,
+          x: combinedX,
+          y: combinedY,
           willChange: "transform",
         }}
       >
