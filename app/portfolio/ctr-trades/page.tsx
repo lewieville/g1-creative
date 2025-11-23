@@ -115,11 +115,11 @@ export default function CTRTradesCaseStudy() {
             <div className="glass-panel p-8 rounded-2xl border border-gold/20 mb-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <div className="text-4xl font-bold text-gold mb-2">Multi-User</div>
+                  <div className="text-4xl font-bold text-gold mb-2 font-accent">Multi-User</div>
                   <p className="text-luxury-muted">Scalable system for multiple traders</p>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-gold mb-2">Real-Time</div>
+                  <div className="text-4xl font-bold text-gold mb-2 font-accent">Real-Time</div>
                   <p className="text-luxury-muted">Instant analytics and calculations</p>
                 </div>
               </div>

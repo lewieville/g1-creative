@@ -29,7 +29,7 @@ export function Testimonial({
       className="glass-panel p-10 lg:p-12 rounded-2xl border border-luxury-panel hover:border-gold/30 shadow-g1-card hover:shadow-g1-glow transition-all duration-500 relative overflow-hidden group h-full"
     >
       {/* Decorative quote mark */}
-      <div className="absolute top-6 right-6 text-gold/5 text-9xl font-heading leading-none select-none">&ldquo;</div>
+      <div className="absolute top-6 right-6 text-gold/5 text-9xl font-accent leading-none select-none">&ldquo;</div>
       
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-gold/0 via-transparent to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -51,7 +51,9 @@ export function Testimonial({
 
       {/* Quote */}
       <blockquote className="text-luxury-muted leading-relaxed mb-8 relative z-10 text-lg md:text-xl font-light">
-        &ldquo;{quote}&rdquo;
+        <span className="font-accent text-gold/60">&ldquo;</span>
+        {quote}
+        <span className="font-accent text-gold/60">&rdquo;</span>
       </blockquote>
 
       {/* Author */}

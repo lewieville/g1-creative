@@ -127,7 +127,7 @@ export default function HomePage() {
             <span className="text-luxury-muted text-sm ml-2">Average attention span</span>
           </div>
           <div className="glass-panel px-4 py-2 rounded-lg border border-gold/20">
-            <span className="text-gold font-semibold">75%</span>
+            <span className="text-gold font-semibold font-accent">75%</span>
             <span className="text-luxury-muted text-sm ml-2">Judge by design</span>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function HomePage() {
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
+            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
               Expertise
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
@@ -199,7 +199,7 @@ export default function HomePage() {
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
+            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
               Case Studies
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
@@ -239,7 +239,7 @@ export default function HomePage() {
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20 relative z-10">
-            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
+            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
               Testimonials
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
@@ -265,7 +265,7 @@ export default function HomePage() {
         
         <Container className="relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <span className="inline-block text-xs sm:text-sm tracking-[0.2em] uppercase text-gold mb-3 sm:mb-4 font-medium">
+            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
               How We Deliver
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">

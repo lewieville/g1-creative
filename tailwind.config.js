@@ -80,6 +80,14 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         heading: ['var(--font-playfair)', 'Georgia', 'serif'],
+        accent: ['var(--font-cinzel)', 'Georgia', 'serif'],
+      },
+      fontWeight: {
+        light: '300',
+        normal: '400',
+        medium: '500',
+        semibold: '600',
+        bold: '700',
       },
       boxShadow: {
         'g1-soft': '0 4px 20px rgba(198, 166, 103, 0.1)',
@@ -89,6 +97,7 @@ module.exports = {
       letterSpacing: {
         'luxury': '0.05em',
         'wide': '0.1em',
+        'caps': '0.3em',
       },
       keyframes: {
         "accordion-down": {

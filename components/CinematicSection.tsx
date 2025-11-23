@@ -119,7 +119,7 @@ export function CinematicSection({
             className={`space-y-6 ${reverse ? "lg:col-start-2" : ""}`}
           >
             {subtitle && (
-              <span className="inline-block text-sm tracking-[0.2em] uppercase text-gold font-medium">
+              <span className="inline-block text-sm tracking-caps uppercase text-gold font-medium">
                 {subtitle}
               </span>
             )}

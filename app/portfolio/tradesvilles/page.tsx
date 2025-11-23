@@ -115,11 +115,11 @@ export default function TradesvillesCaseStudy() {
             <div className="glass-panel p-8 rounded-2xl border border-gold/20 mb-8">
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <div className="text-4xl font-bold text-gold mb-2">10 Steps</div>
+                  <div className="text-4xl font-bold text-gold mb-2 font-accent">10 Steps</div>
                   <p className="text-luxury-muted">Comprehensive learning journey</p>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold text-gold mb-2">Interactive</div>
+                  <div className="text-4xl font-bold text-gold mb-2 font-accent">Interactive</div>
                   <p className="text-luxury-muted">TradingView integration + quizzes</p>
                 </div>
               </div>
