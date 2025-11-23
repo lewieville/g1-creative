@@ -8,11 +8,18 @@ export function AnimatedCursor() {
   const [isTouchDevice, setIsTouchDevice] = useState(false)
   const cursorX = useMotionValue(-100)
   const cursorY = useMotionValue(-100)
+  const magneticX = useMotionValue(0)
+  const magneticY = useMotionValue(0)
 
   // Ultra-smooth spring animation for main cursor (higher FPS)
   const springConfig = { damping: 30, stiffness: 500, mass: 0.3 }
   const cursorXSpring = useSpring(cursorX, springConfig)
   const cursorYSpring = useSpring(cursorY, springConfig)
+  
+  // Magnetic pull spring (slightly slower for smooth attraction)
+  const magneticSpringConfig = { damping: 20, stiffness: 300, mass: 0.4 }
+  const magneticXSpring = useSpring(magneticX, magneticSpringConfig)
+  const magneticYSpring = useSpring(magneticY, magneticSpringConfig)
 
   // Slightly slower spring for trailing glow with smoother motion
   const glowSpringConfig = { damping: 25, stiffness: 200, mass: 0.5 }
@@ -21,7 +28,6 @@ export function AnimatedCursor() {
 
   useEffect(() => {
     // Detect if PRIMARY input device is touch (mobile/tablet only)
-    // Use media query which detects the primary pointer, not just if touch is available
     const checkTouchDevice = () => {
       const isTouchPrimary = window.matchMedia('(pointer: coarse)').matches
       setIsTouchDevice(isTouchPrimary)
@@ -35,6 +41,34 @@ export function AnimatedCursor() {
     const updateMousePosition = (e: MouseEvent) => {
       cursorX.set(e.clientX)
       cursorY.set(e.clientY)
+      
+      // Calculate magnetic pull from buttons/links
+      const buttons = document.querySelectorAll('button, a[href], [role="button"]')
+      let closestDistance = Infinity
+      let pullX = 0
+      let pullY = 0
+      
+      buttons.forEach((button) => {
+        const rect = button.getBoundingClientRect()
+        const centerX = rect.left + rect.width / 2
+        const centerY = rect.top + rect.height / 2
+        
+        const distanceX = e.clientX - centerX
+        const distanceY = e.clientY - centerY
+        const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
+        
+        // Magnetic radius: 120px
+        if (distance < 120 && distance < closestDistance) {
+          closestDistance = distance
+          // Pull strength increases as cursor gets closer
+          const pullStrength = 0.4 * (1 - distance / 120)
+          pullX = -distanceX * pullStrength
+          pullY = -distanceY * pullStrength
+        }
+      })
+      
+      magneticX.set(pullX)
+      magneticY.set(pullY)
     }
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -60,19 +94,19 @@ export function AnimatedCursor() {
       window.removeEventListener("mousemove", updateMousePosition)
       document.removeEventListener("mouseover", handleMouseOver)
     }
-  }, [cursorX, cursorY])
+  }, [cursorX, cursorY, magneticX, magneticY, isTouchDevice])
 
   // Don't render cursor on touch devices
   if (isTouchDevice) return null
 
   return (
     <>
-      {/* Main cursor dot - ultra smooth */}
+      {/* Main cursor dot - ultra smooth with magnetic pull */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
-          x: cursorXSpring,
-          y: cursorYSpring,
+          x: cursorXSpring + magneticXSpring,
+          y: cursorYSpring + magneticYSpring,
           willChange: "transform",
         }}
       >
