@@ -11,6 +11,8 @@ import { GradientMesh } from "@/components/GradientMesh"
 import { DynamicCTA } from "@/components/DynamicCTA"
 import { ClientJourneyTimeline } from "@/components/ClientJourneyTimeline"
 import { ScrollReveal } from "@/components/ScrollReveal"
+import { FAQ } from "@/components/FAQ"
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/lib/seo"
 import Link from "next/link"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -269,6 +271,27 @@ export default function ServicesPage() {
 
   return (
     <>
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateServiceSchema(
+            "Web Design Services",
+            "Professional web design services including custom website development, e-commerce solutions, UI/UX design, SEO optimization, and ongoing maintenance.",
+            "/services"
+          )),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateBreadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Services", url: "/services" },
+          ])),
+        }}
+      />
+      
       {/* Hero Section */}
       <div ref={heroRef} className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
         <GradientMesh intensity="low" speed="slow" />
@@ -407,6 +430,57 @@ export default function ServicesPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <DynamicCTA size="xl" href="/contact" />
             </div>
+          </div>
+        </Container>
+      </MotionSection>
+
+      {/* FAQ Section */}
+      <MotionSection className="bg-luxury-bg py-32 lg:py-40">
+        <div className="gold-divider" />
+        <GradientMesh intensity="low" speed="slow" />
+        
+        <Container>
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
+              Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+              Everything you need to know about our web design services
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <FAQ
+              items={[
+                {
+                  question: "What web design services do you offer?",
+                  answer: "We offer comprehensive web design services including custom website development, e-commerce solutions, UI/UX design, SEO optimization, branding, website maintenance, and digital marketing. We work with small businesses to create high-converting websites that drive results.",
+                },
+                {
+                  question: "How much does a custom website cost?",
+                  answer: "Our web design packages start from $2,500 for a basic website. E-commerce sites typically range from $5,000-$15,000 depending on features and complexity. We provide transparent pricing with no hidden fees. Contact us for a custom quote tailored to your needs.",
+                },
+                {
+                  question: "Do you create e-commerce websites?",
+                  answer: "Yes! We specialize in building powerful e-commerce websites using platforms like Shopify or custom solutions. Our e-commerce services include product catalog setup, payment gateway integration, shopping cart optimization, inventory management, and order tracking systems.",
+                },
+                {
+                  question: "Will my website be SEO-optimized?",
+                  answer: "Absolutely! All our websites are built with SEO best practices in mind. We optimize for search engines including proper meta tags, fast loading speeds, mobile responsiveness, clean code structure, and keyword optimization. We also offer ongoing SEO services to improve your rankings.",
+                },
+                {
+                  question: "How long does website development take?",
+                  answer: "Most custom websites take 4-6 weeks to complete. Simple brochure sites can be finished in 3-4 weeks, while complex e-commerce platforms with custom features typically take 6-8 weeks. We'll provide a detailed timeline during your consultation.",
+                },
+                {
+                  question: "Do you provide website maintenance?",
+                  answer: "Yes, we offer monthly maintenance plans that include security updates, performance monitoring, content updates (up to 5 hours/month), bug fixes, and priority email support. This ensures your website stays secure, fast, and up-to-date.",
+                },
+              ]}
+            />
           </div>
         </Container>
       </MotionSection>

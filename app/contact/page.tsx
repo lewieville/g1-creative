@@ -16,8 +16,8 @@ const iconMap: Record<string, LucideIcon> = {
 }
 
 export const metadata = generateSEOMetadata({
-  title: "Contact Us - Book Your Free Consultation | G1 Creative",
-  description: "Ready to grow your business with a bespoke website? Contact G1 Creative today to book your free consultation and discuss your project.",
+  title: "Book a Consultation | G1 Creative",
+  description: "Ready to transform your business with a high-converting website? Book your free consultation with G1 Creative. Let's discuss your project and create a custom solution that drives results.",
   url: "/contact",
 })
 

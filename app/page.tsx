@@ -15,7 +15,8 @@ import { ScrollReveal } from "@/components/ScrollReveal"
 import { DynamicCTA } from "@/components/DynamicCTA"
 import { GradientMesh } from "@/components/GradientMesh"
 import { motion } from "framer-motion"
-import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
+import { generateOrganizationSchema, generateWebsiteSchema, generateLocalBusinessSchema } from "@/lib/seo"
+import { FAQ } from "@/components/FAQ"
 
 const services = [
   {
@@ -94,6 +95,12 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateWebsiteSchema()),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateLocalBusinessSchema()),
         }}
       />
 
@@ -250,6 +257,57 @@ export default function HomePage() {
           
           <div className="max-w-5xl mx-auto relative z-10">
             <TestimonialsCarousel />
+          </div>
+        </Container>
+      </MotionSection>
+
+      {/* FAQ Section */}
+      <MotionSection className="bg-luxury-bg relative py-20 sm:py-24 md:py-28 lg:py-40">
+        <div className="gold-divider" />
+        <GradientMesh intensity="low" speed="slow" />
+        
+        <Container>
+          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
+              Common Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+              Everything you need to know about working with G1 Creative
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <FAQ
+              items={[
+                {
+                  question: "How long does a new website take?",
+                  answer: "Most projects take 4-6 weeks depending on complexity. Simple brochure sites can be completed in 3-4 weeks, while e-commerce platforms with custom features typically take 6-8 weeks. We'll provide a detailed timeline during your consultation.",
+                },
+                {
+                  question: "Do you work with small businesses?",
+                  answer: "Absolutely! We specialize in creating high-converting websites for small businesses and startups. Our packages are designed to be affordable while delivering enterprise-level quality and results.",
+                },
+                {
+                  question: "What's included in your web design services?",
+                  answer: "Our web design services include responsive design, custom UI/UX, SEO optimization, content management system setup, performance optimization, and 30 days of free support. We also provide training on how to manage your website.",
+                },
+                {
+                  question: "Can you redesign my existing website?",
+                  answer: "Yes! We offer website redesign services to modernize your current site, improve conversions, and enhance user experience. We'll analyze your current site and create a strategy to improve performance and results.",
+                },
+                {
+                  question: "Do you provide ongoing maintenance?",
+                  answer: "Yes, we offer monthly maintenance plans that include security updates, performance monitoring, content updates, and technical support. This ensures your website stays fast, secure, and up-to-date.",
+                },
+                {
+                  question: "Will my website be mobile-friendly?",
+                  answer: "Absolutely! All our websites are built mobile-first and fully responsive. Your site will look and function perfectly on all devices - phones, tablets, and desktops. Mobile optimization is crucial for SEO and user experience.",
+                },
+              ]}
+            />
           </div>
         </Container>
       </MotionSection>

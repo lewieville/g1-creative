@@ -140,25 +140,83 @@ export function generateWebsiteSchema() {
 export function generateLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
+    "@type": "LocalBusiness",
+    "@id": `${siteUrl}#business`,
     name: siteName,
-    image: `${siteUrl}/images/logo.svg`,
-    "@id": siteUrl,
+    image: `${siteUrl}/g1-logo.png`,
+    logo: `${siteUrl}/g1-logo.png`,
     url: siteUrl,
     telephone: "+1-239-255-4733",
+    email: "g1.creative.web@gmail.com",
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "",
       addressLocality: "Lexington",
       addressRegion: "VA",
+      postalCode: "",
       addressCountry: "US",
     },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "17:00",
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: "37.7840",
+      longitude: "-79.4428",
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "17:00",
+      },
+    ],
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
+    },
+    sameAs: [
+      "https://twitter.com/g1creative",
+      "https://linkedin.com/company/g1creative",
+      "https://github.com/g1creative",
+    ],
+  }
+}
+
+/**
+ * Generate JSON-LD schema for service
+ */
+export function generateServiceSchema(serviceName: string, description: string, url: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: serviceName,
+    provider: {
+      "@type": "LocalBusiness",
+      name: siteName,
+      "@id": `${siteUrl}#business`,
+    },
+    areaServed: {
+      "@type": "Country",
+      name: "United States",
+    },
+    description,
+    url: `${siteUrl}${url}`,
+  }
+}
+
+/**
+ * Generate JSON-LD schema for breadcrumbs
+ */
+export function generateBreadcrumbSchema(items: Array<{ name: string; url: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteUrl}${item.url}`,
+    })),
   }
 }
 

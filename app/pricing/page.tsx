@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/Button"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 
 export const metadata = generateSEOMetadata({
-  title: "Pricing - Transparent Web Design Packages",
-  description: "Clear, transparent pricing for web design, e-commerce, and branding services. Flexible packages designed to fit your budget and goals.",
+  title: "Web Design Pricing | Transparent Packages | G1 Creative",
+  description: "Transparent web design pricing for small businesses. Custom website packages starting from $2,500. E-commerce, branding, and maintenance plans available. No hidden fees.",
   url: "/pricing",
 })
 

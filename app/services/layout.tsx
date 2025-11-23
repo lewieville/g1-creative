@@ -1,8 +1,8 @@
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 
 export const metadata = generateSEOMetadata({
-  title: "Services - Professional Web Design & Development",
-  description: "Comprehensive web design, e-commerce, branding, maintenance, and SEO services. Expert solutions tailored to grow your business online.",
+  title: "Web Design Services | UI/UX, SEO & Development | G1 Creative",
+  description: "Professional web design services including custom website development, e-commerce solutions, UI/UX design, SEO optimization, and ongoing maintenance. Transform your online presence.",
   url: "/services",
 })
 

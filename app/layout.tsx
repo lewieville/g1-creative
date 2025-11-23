@@ -33,7 +33,11 @@ const cinzel = Cinzel({
 })
 
 export const metadata: Metadata = {
-  ...generateSEOMetadata(),
+  ...generateSEOMetadata({
+    title: "Web Design Agency | High-Converting Websites | G1 Creative",
+    description: "G1 Creative builds premium websites designed to convert. Fast, SEO-optimized and tailored for growth. Trusted by startups and small businesses.",
+    url: "/",
+  }),
   icons: {
     icon: '/g1-logo.png',
     apple: '/g1-logo.png',
