@@ -211,7 +211,7 @@ export function Footer() {
                     <Mail className="h-5 w-5 text-gold flex-shrink-0 mt-0.5" />
                     <a
                       href="mailto:g1.creative.web@gmail.com"
-                      className="text-sm leading-6 text-luxury-muted hover:text-gold transition-colors"
+                      className="text-sm leading-6 text-luxury-muted hover:text-gold transition-colors break-all"
                     >
                       g1.creative.web@gmail.com
                     </a>
