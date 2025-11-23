@@ -138,26 +138,18 @@
     border: 1px solid rgba(198, 166, 103, 0.1);
   }
   
-  /* Performance optimizations for mobile */
+  /* Performance optimizations for mobile - GPU acceleration */
   @media (max-width: 768px) {
     .glass-panel {
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
     }
     
-    /* Reduce blur effects on mobile */
-    [class*="blur-3xl"] {
-      filter: blur(40px) !important;
-    }
-    
-    [class*="blur-2xl"] {
-      filter: blur(24px) !important;
-    }
-    
-    /* Optimize transforms */
-    * {
+    /* GPU acceleration for animations */
+    [class*="motion-"], [class*="animate-"] {
       transform: translateZ(0);
       -webkit-transform: translateZ(0);
+      will-change: transform, opacity;
     }
   }
   
