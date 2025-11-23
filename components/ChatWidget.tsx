@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { MessageCircle, X, Send, Loader2 } from "lucide-react"
+import { MessageCircle, X, Send } from "lucide-react"
 import Image from "next/image"
 
 interface Message {
@@ -187,7 +187,44 @@ export function ChatWidget() {
                     />
                   </div>
                   <div className="bg-luxury-surface border border-gold/10 rounded-2xl px-4 py-3">
-                    <Loader2 className="w-4 h-4 text-gold animate-spin" />
+                    <div className="flex items-center gap-1">
+                      <motion.span
+                        animate={{ opacity: [0.3, 1, 0.3] }}
+                        transition={{
+                          duration: 1.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 0,
+                        }}
+                        className="text-gold text-lg"
+                      >
+                        .
+                      </motion.span>
+                      <motion.span
+                        animate={{ opacity: [0.3, 1, 0.3] }}
+                        transition={{
+                          duration: 1.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 0.2,
+                        }}
+                        className="text-gold text-lg"
+                      >
+                        .
+                      </motion.span>
+                      <motion.span
+                        animate={{ opacity: [0.3, 1, 0.3] }}
+                        transition={{
+                          duration: 1.4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: 0.4,
+                        }}
+                        className="text-gold text-lg"
+                      >
+                        .
+                      </motion.span>
+                    </div>
                   </div>
                 </motion.div>
               )}
