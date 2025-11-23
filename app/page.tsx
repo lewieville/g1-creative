@@ -123,7 +123,7 @@ export default function HomePage() {
       >
         <div className="flex flex-wrap gap-3">
           <div className="glass-panel px-4 py-2 rounded-lg border border-gold/20">
-            <span className="text-gold font-semibold">8 seconds</span>
+            <span className="text-gold font-semibold font-accent">8 seconds</span>
             <span className="text-luxury-muted text-sm ml-2">Average attention span</span>
           </div>
           <div className="glass-panel px-4 py-2 rounded-lg border border-gold/20">
