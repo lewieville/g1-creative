@@ -162,119 +162,127 @@ export default function ServicesPage() {
       </div>
 
       {/* Services Grid */}
-      <MotionSection className="bg-luxury-surface">
+      <MotionSection className="bg-luxury-surface py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="grid md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={index} {...service} />
-          ))}
-        </div>
+        <Container>
+          <div className="grid md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <ServiceCard key={index} {...service} />
+            ))}
+          </div>
+        </Container>
       </MotionSection>
 
       {/* Process Section */}
-      <MotionSection className="bg-luxury-bg">
+      <MotionSection className="bg-luxury-bg py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
-            Our Process
-          </h2>
-          <p className="text-xl text-luxury-muted leading-relaxed">
-            A proven methodology that ensures successful project delivery
-          </p>
-        </div>
-        <div className="grid md:grid-cols-4 gap-8">
-          {processSteps.map((step, index) => {
-            const Icon = iconMap[step.iconName] || Sparkles
-            return (
-              <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
-                  <Icon className="w-8 h-8" />
+        <Container>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
+              Our Process
+            </h2>
+            <p className="text-xl text-luxury-muted leading-relaxed">
+              A proven methodology that ensures successful project delivery
+            </p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8">
+            {processSteps.map((step, index) => {
+              const Icon = iconMap[step.iconName] || Sparkles
+              return (
+                <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <div className="text-gold font-bold mb-2 font-heading tracking-wide">
+                    Step {index + 1}
+                  </div>
+                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
+                    {step.title}
+                  </h3>
+                  <p className="text-luxury-muted">{step.description}</p>
                 </div>
-                <div className="text-gold font-bold mb-2 font-heading tracking-wide">
-                  Step {index + 1}
-                </div>
-                <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
-                  {step.title}
-                </h3>
-                <p className="text-luxury-muted">{step.description}</p>
-              </div>
-            )
-          })}
-        </div>
+              )
+            })}
+          </div>
+        </Container>
       </MotionSection>
 
       {/* Why Choose Us Section */}
-      <MotionSection className="bg-luxury-surface">
+      <MotionSection className="bg-luxury-surface py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
-              Why Choose G1 Creative?
-            </h2>
-            <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
-                  <Shield className="w-6 h-6" />
+        <Container>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
+                Why Choose G1 Creative?
+              </h2>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
+                      Proven Track Record
+                    </h3>
+                    <p className="text-luxury-muted">
+                      Multiple success projects with an increase in client conversions.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
-                    Proven Track Record
-                  </h3>
-                  <p className="text-luxury-muted">
-                    Multiple success projects with an increase in client conversions.
-                  </p>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
+                    <Smartphone className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
+                      Mobile-First Approach
+                    </h3>
+                    <p className="text-luxury-muted">
+                      Every website we build is optimized for mobile devices where most traffic comes from.
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
-                  <Smartphone className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
-                    Mobile-First Approach
-                  </h3>
-                  <p className="text-luxury-muted">
-                    Every website we build is optimized for mobile devices where most traffic comes from.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
-                    Results-Driven
-                  </h3>
-                  <p className="text-luxury-muted">
-                    We focus on metrics that matter - conversions, engagement, and ROI.
-                  </p>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
+                    <TrendingUp className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-heading font-semibold text-luxury-text mb-2 tracking-wide">
+                      Results-Driven
+                    </h3>
+                    <p className="text-luxury-muted">
+                      We focus on metrics that matter - conversions, engagement, and ROI.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </MotionSection>
 
       {/* CTA Section */}
-      <MotionSection className="bg-luxury-bg relative overflow-hidden">
+      <MotionSection className="bg-luxury-bg relative overflow-hidden py-32 lg:py-40">
         <div className="gold-divider" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
         
-        <div className="text-center max-w-3xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
-            Ready to Get Started?
-          </h2>
-          <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
-            Let&apos;s discuss your project and create a custom solution for your business.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="xl">
-              <Link href="/contact">Start Your Project</Link>
-            </Button>
+        <Container className="relative z-10">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">
+              Ready to Get Started?
+            </h2>
+            <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
+              Let&apos;s discuss your project and create a custom solution for your business.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="xl">
+                <Link href="/contact">Start Your Project</Link>
+              </Button>
+            </div>
           </div>
-        </div>
+        </Container>
       </MotionSection>
     </>
   )
