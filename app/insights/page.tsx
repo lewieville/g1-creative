@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/Container"
 import { MotionSection } from "@/components/MotionSection"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
-import { ArrowUpRight, TrendingUp } from "lucide-react"
+import { ArrowUpRight, TrendingUp, Clock, Calendar, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
 
@@ -16,40 +16,49 @@ const categories = ["All", "Case Studies", "Web3 & AI", "Trading Platforms", "Ed
 const insights = [
   {
     title: "Building MICO: A Web3 Platform with AI Agents and Real-Time Blockchain Data",
-    description: "How we created a comprehensive web3 platform featuring custom AI agents, real-time blockchain stats via API integration, and an elegant interface for a crypto company pioneering human-centered intelligence.",
+    description: "How we architected a cutting-edge web3 platform featuring custom AI agents for co-creation, real-time blockchain statistics via API integration, and an elegant, user-centric interface. Built with React, TypeScript, and integrated with multiple blockchain APIs for live data visualization.",
     image: "/images/mico-1.png",
     category: "Case Studies",
     type: "Case Study",
     tags: ["Web3 & AI", "API Integration", "React", "Crypto"],
     results: "Custom AI agent + Real-time blockchain stats",
-    href: "#mico",
+    href: "/portfolio/mico",
     featured: true,
+    date: "December 2024",
+    readTime: "8 min read",
+    author: "Lewis Miller",
   },
   {
     title: "CTR Trades Journal: Advanced Trading Analytics Platform",
-    description: "Developed a professional trading journal platform with comprehensive analytics dashboard, real-time trade tracking, and multi-user database. Features auto-calculated metrics, performance analysis, and seamless backend integration.",
+    description: "Developed a professional trading journal platform with comprehensive analytics dashboard, real-time trade tracking, and multi-user database. Features auto-calculated metrics, P&L analysis, performance visualization, and seamless backend integration for scalable data handling.",
     image: "/images/ctr-trades-main.png",
     category: "Case Studies",
     type: "Case Study",
     tags: ["Trading Platforms", "Backend", "Database", "Analytics"],
     results: "Multi-user system with real-time analytics",
-    href: "#ctr-trades",
+    href: "/portfolio/ctr-trades",
     featured: true,
+    date: "November 2024",
+    readTime: "7 min read",
+    author: "Lewis Miller",
   },
   {
     title: "Tradesvilles Crypto Program: Interactive Trading Education Platform",
-    description: "Built a comprehensive trading education platform with interactive learning journey, TradingView integration, and real-time market analysis. Designed to teach trading from zero with step-by-step progression and performance tracking.",
+    description: "Built a comprehensive trading education platform with 10-step interactive learning journey, TradingView chart integration, real-time market analysis tools, and bull market cycle indicators. Designed to teach cryptocurrency trading from absolute zero with step-by-step progression and performance tracking.",
     image: "/images/tradevilles-1.png",
     category: "Case Studies",
     type: "Case Study",
     tags: ["Education", "TradingView", "Interactive", "Crypto"],
     results: "10-step learning journey with market analysis",
-    href: "#tradevilles",
+    href: "/portfolio/tradesvilles",
     featured: false,
+    date: "October 2024",
+    readTime: "6 min read",
+    author: "Lewis Miller",
   },
   {
     title: "The Technology Behind MICO's AI Agent System",
-    description: "Deep dive into how we architected MICO's custom AI agent infrastructure, integrated blockchain APIs for real-time data, and created a seamless user experience for complex crypto operations.",
+    description: "Deep dive into the architectural decisions behind MICO's custom AI agent infrastructure. Learn how we integrated blockchain APIs for real-time data fetching, implemented WebSocket connections for live updates, created a seamless chat interface, and optimized performance for complex crypto operations.",
     image: "/images/mico-2.png",
     category: "Web3 & AI",
     type: "Article",
@@ -57,10 +66,13 @@ const insights = [
     results: null,
     href: "#mico-tech",
     featured: false,
+    date: "January 2025",
+    readTime: "10 min read",
+    author: "Lewis Miller",
   },
   {
     title: "Building Scalable Trading Platforms: Lessons from CTR Trades",
-    description: "The architecture decisions and performance optimizations that went into building a multi-user trading journal capable of handling thousands of trades with real-time calculations.",
+    description: "The critical architecture decisions and performance optimizations that enabled CTR Trades to handle thousands of trades with real-time calculations. Explore database indexing strategies, efficient query patterns, caching mechanisms, and backend optimization techniques for financial applications.",
     image: "/images/proj 3.png",
     category: "Trading Platforms",
     type: "Article",
@@ -68,10 +80,13 @@ const insights = [
     results: null,
     href: "#ctr-tech",
     featured: false,
+    date: "December 2024",
+    readTime: "9 min read",
+    author: "Lewis Miller",
   },
   {
     title: "Creating Engaging Educational Experiences with TradingView Integration",
-    description: "How we leveraged TradingView's powerful charting capabilities to create an interactive, hands-on learning experience for traders at all skill levels.",
+    description: "How we leveraged TradingView's powerful charting capabilities and widget API to create an interactive, hands-on learning experience. Learn about embedding advanced charts, customizing indicators, real-time data synchronization, and UX patterns that make financial education engaging for traders at all skill levels.",
     image: "/images/tradevilles-2.png",
     category: "Education",
     type: "Article",
@@ -79,6 +94,9 @@ const insights = [
     results: null,
     href: "#tradevilles-tech",
     featured: false,
+    date: "November 2024",
+    readTime: "7 min read",
+    author: "Lewis Miller",
   },
 ]
 

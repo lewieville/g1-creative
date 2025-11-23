@@ -113,12 +113,12 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed bottom-24 right-6 z-[50] w-[380px] max-w-[calc(100vw-3rem)] h-[600px] max-h-[calc(100vh-8rem)] glass-panel border border-gold/20 shadow-g1-glow rounded-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-4 sm:bottom-24 right-4 sm:right-6 z-[50] w-[calc(100vw-2rem)] sm:w-[380px] h-[calc(100vh-2rem)] sm:h-[600px] max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-8rem)] glass-panel border border-gold/20 shadow-g1-glow rounded-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-luxury-panel to-luxury-surface border-b border-gold/20 p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-gold/30">
+            <div className="bg-gradient-to-r from-luxury-panel to-luxury-surface border-b border-gold/20 p-3 sm:p-4 flex items-center justify-between">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-gold/30">
                   <Image
                     src="/g1-logo.png"
                     alt="G1 Creative AI Assistant"
@@ -127,7 +127,7 @@ export function ChatWidget() {
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-luxury-text">Lewis — AI Assistant</h3>
+                  <h3 className="font-semibold text-luxury-text text-sm sm:text-base">Lewis — AI Assistant</h3>
                   <p className="text-xs text-luxury-muted">Usually replies instantly</p>
                 </div>
               </div>
@@ -141,7 +141,7 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-luxury-bg/50">
+            <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 bg-luxury-bg/50">
               {messages.map((message, index) => (
                 <motion.div
                   key={index}
@@ -151,7 +151,7 @@ export function ChatWidget() {
                   className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   {message.role === "assistant" && (
-                    <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/30 mr-2 flex-shrink-0">
+                    <div className="relative w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden border border-gold/30 mr-2 flex-shrink-0">
                       <Image
                         src="/g1-logo.png"
                         alt="AI"
@@ -161,13 +161,13 @@ export function ChatWidget() {
                     </div>
                   )}
                   <div
-                    className={`max-w-[75%] rounded-2xl px-4 py-2.5 ${
+                    className={`max-w-[75%] rounded-2xl px-3 py-2 sm:px-4 sm:py-2.5 ${
                       message.role === "user"
                         ? "bg-gold text-luxury-bg"
                         : "bg-luxury-surface border border-gold/10 text-luxury-text"
                     }`}
                   >
-                    <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                    <p className="text-xs sm:text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
                   </div>
                 </motion.div>
               ))}
@@ -178,7 +178,7 @@ export function ChatWidget() {
                   animate={{ opacity: 1 }}
                   className="flex justify-start"
                 >
-                  <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/30 mr-2">
+                  <div className="relative w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden border border-gold/30 mr-2">
                     <Image
                       src="/g1-logo.png"
                       alt="AI"
@@ -233,7 +233,7 @@ export function ChatWidget() {
             </div>
 
             {/* Input */}
-            <div className="border-t border-gold/20 p-4 bg-luxury-surface">
+            <div className="border-t border-gold/20 p-3 sm:p-4 bg-luxury-surface">
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -242,12 +242,12 @@ export function ChatWidget() {
                   onKeyPress={handleKeyPress}
                   placeholder="Type your message..."
                   disabled={isLoading}
-                  className="flex-1 bg-luxury-bg border border-gold/20 rounded-xl px-4 py-2.5 text-sm text-luxury-text placeholder:text-luxury-muted focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50"
+                  className="flex-1 bg-luxury-bg border border-gold/20 rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm text-luxury-text placeholder:text-luxury-muted focus:outline-none focus:border-gold/40 transition-colors disabled:opacity-50"
                 />
                 <button
                   onClick={sendMessage}
                   disabled={!input.trim() || isLoading}
-                  className="bg-gold text-luxury-bg rounded-xl px-4 py-2.5 hover:bg-gold-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[44px]"
+                  className="bg-gold text-luxury-bg rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 hover:bg-gold-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[44px]"
                   aria-label="Send message"
                 >
                   <Send className="w-4 h-4" />
