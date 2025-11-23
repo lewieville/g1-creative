@@ -28,7 +28,7 @@ interface HeroProps {
   image?: string
   imageAlt?: string
   showScrollCue?: boolean
-}Th
+}
 
 export function Hero({
   title,
