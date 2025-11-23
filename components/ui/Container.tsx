@@ -1,9 +1,11 @@
 import { cn } from "@/lib/utils"
+import { CSSProperties } from "react"
 
 interface ContainerProps {
   children: React.ReactNode
   className?: string
   size?: "sm" | "md" | "lg" | "xl" | "full"
+  style?: CSSProperties
 }
 
 const sizeClasses = {
@@ -18,6 +20,7 @@ export function Container({
   children,
   className,
   size = "xl",
+  style,
 }: ContainerProps) {
   return (
     <div
@@ -26,6 +29,7 @@ export function Container({
         sizeClasses[size],
         className
       )}
+      style={style}
     >
       {children}
     </div>
