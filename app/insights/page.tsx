@@ -8,6 +8,7 @@ import { MotionSection } from "@/components/MotionSection"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
 import { DynamicCTA } from "@/components/DynamicCTA"
+import { GradientMesh } from "@/components/GradientMesh"
 import { ArrowUpRight, TrendingUp, Clock, Calendar, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
@@ -73,8 +74,7 @@ export default function InsightsPage() {
     <>
       {/* Hero Section */}
       <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <GradientMesh intensity="low" speed="slow" />
         
         <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">
@@ -303,8 +303,7 @@ export default function InsightsPage() {
       {/* CTA Section */}
       <MotionSection className="bg-luxury-bg relative overflow-hidden py-32 lg:py-40">
         <div className="gold-divider" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        <GradientMesh intensity="medium" speed="medium" />
         
         <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">

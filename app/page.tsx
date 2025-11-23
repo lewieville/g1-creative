@@ -13,6 +13,7 @@ import { MotionSection } from "@/components/MotionSection"
 import { CinematicSection } from "@/components/CinematicSection"
 import { ScrollReveal } from "@/components/ScrollReveal"
 import { DynamicCTA } from "@/components/DynamicCTA"
+import { GradientMesh } from "@/components/GradientMesh"
 import { motion } from "framer-motion"
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
 
@@ -153,9 +154,8 @@ export default function HomePage() {
       <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Subtle background accents - reduced on mobile */}
-        <div className="absolute top-10 sm:top-20 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 sm:bottom-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        {/* Animated gradient mesh background */}
+        <GradientMesh intensity="low" speed="slow" />
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
@@ -193,9 +193,8 @@ export default function HomePage() {
       <MotionSection className="bg-luxury-bg relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Subtle background accents - reduced on mobile */}
-        <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 sm:bottom-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        {/* Animated gradient mesh background */}
+        <GradientMesh intensity="low" speed="slow" />
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
@@ -233,9 +232,8 @@ export default function HomePage() {
       <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Subtle background accents - reduced on mobile */}
-        <div className="absolute top-10 sm:top-20 right-5 sm:right-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 sm:bottom-20 left-5 sm:left-10 w-56 sm:w-96 h-56 sm:h-96 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+        {/* Animated gradient mesh background */}
+        <GradientMesh intensity="low" speed="slow" />
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20 relative z-10">
@@ -259,9 +257,8 @@ export default function HomePage() {
       {/* CTA Section */}
       <MotionSection className="bg-luxury-surface relative overflow-hidden py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
-        {/* Decorative gold orbs - reduced on mobile */}
-        <div className="absolute top-0 right-0 w-56 sm:w-96 h-56 sm:h-96 bg-gold/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-56 sm:w-96 h-56 sm:h-96 bg-gold/10 rounded-full blur-3xl" />
+        {/* Animated gradient mesh background */}
+        <GradientMesh intensity="medium" speed="medium" />
         
         <Container className="relative z-10">
           <div className="text-center max-w-4xl mx-auto">

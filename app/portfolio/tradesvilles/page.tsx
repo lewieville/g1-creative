@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
+import { GradientMesh } from "@/components/GradientMesh"
 import { ArrowLeft, ExternalLink, Calendar, Clock } from "lucide-react"
 import { Metadata } from "next"
 
@@ -16,8 +17,7 @@ export default function TradesvillesCaseStudy() {
     <>
       {/* Hero Section */}
       <div className="bg-luxury-bg pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <GradientMesh intensity="low" speed="slow" />
         
         <Container className="relative z-10">
           <Link href="/insights" className="inline-flex items-center gap-2 text-gold hover:text-gold-light transition-colors mb-8">

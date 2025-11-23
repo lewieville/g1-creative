@@ -70,8 +70,7 @@ export default function ContactPage() {
     <>
       {/* Hero Section */}
       <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        <GradientMesh intensity="low" speed="slow" />
         
         <Container className="relative z-10">
           <div className="text-center max-w-3xl mx-auto">

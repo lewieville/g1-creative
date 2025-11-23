@@ -5,6 +5,7 @@ import Link from "next/link"
 import { ArrowRight, ChevronDown, Sparkles, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Container } from "@/components/ui/Container"
+import { GradientMesh } from "@/components/GradientMesh"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef } from "react"
 
@@ -78,19 +79,8 @@ export function Hero({
         </div>
       </motion.div>
 
-      {/* Animated gold orbs with stagger */}
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-        className="absolute top-1/4 right-1/4 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl animate-glow"
-      />
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-        className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-gold/5 rounded-full blur-3xl animate-glow"
-      />
+      {/* Animated gradient mesh background */}
+      <GradientMesh intensity="low" speed="slow" />
 
       {/* Floating particles */}
       {[...Array(8)].map((_, i) => (

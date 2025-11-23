@@ -124,9 +124,8 @@ export default function AboutPage() {
     <>
       {/* Hero Section */}
       <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+        {/* Animated gradient mesh background */}
+        <GradientMesh intensity="low" speed="slow" />
         
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -339,8 +338,7 @@ export default function AboutPage() {
       {/* CTA Section */}
       <MotionSection className="bg-luxury-surface relative overflow-hidden">
         <div className="gold-divider" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/10 rounded-full blur-3xl" />
+        <GradientMesh intensity="medium" speed="medium" />
         
         <div className="text-center max-w-3xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-luxury-text mb-6 tracking-wide">

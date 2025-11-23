@@ -3,6 +3,7 @@ import Link from "next/link"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
+import { GradientMesh } from "@/components/GradientMesh"
 import { ArrowLeft, ExternalLink, Calendar, Clock } from "lucide-react"
 import { Metadata } from "next"
 
