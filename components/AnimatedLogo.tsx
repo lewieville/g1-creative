@@ -147,10 +147,14 @@ export function AnimatedLogo({
           width={dimensions.width}
           height={dimensions.height}
           priority={variant === "header"}
+          style={variant === "hero" ? {
+            height: 'clamp(3rem, 5vw, 5rem)',
+            width: 'auto'
+          } : undefined}
           className={cn(
             "h-auto w-auto object-contain transition-all duration-300",
             variant === "header" && "h-10 sm:h-12",
-            variant === "hero" && "h-10 sm:h-12 md:h-16 lg:h-20",
+            variant === "hero" && "",
             variant === "footer" && "h-12"
           )}
         />
