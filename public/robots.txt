@@ -1,11 +1,4 @@
-# Robots.txt for G1 Creative
-
 User-agent: *
 Allow: /
 
-# Sitemaps
 Sitemap: https://g1creative.com/sitemap.xml
-
-# Disallow admin/API routes (if any)
-Disallow: /api/
-
