@@ -64,7 +64,7 @@ export function ScrollReveal({
   }, [direction, delay])
 
   return (
-    <div ref={elementRef} className={className}>
+    <div ref={elementRef} className={`h-full ${className}`}>
       {children}
     </div>
   )
