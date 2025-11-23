@@ -28,7 +28,7 @@ interface HeroProps {
   image?: string
   imageAlt?: string
   showScrollCue?: boolean
-}
+}Th
 
 export function Hero({
   title,
@@ -136,11 +136,11 @@ export function Hero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mb-6 sm:mb-8"
+              className="mb-8 sm:mb-12 space-y-8 sm:space-y-10"
             >
               {/* Problem - Typewriter effect with character-by-character reveal */}
               {prefersReducedMotion ? (
-                <p className="text-luxury-muted/80 font-medium relative break-words px-2 sm:px-0" style={{ fontSize: 'clamp(0.875rem, 1.25vw, 1.5rem)', marginBottom: 'clamp(0.75rem, 1vw, 1rem)' }}>
+                <p className="text-luxury-muted/80 font-medium relative break-words px-4 sm:px-0 leading-relaxed" style={{ fontSize: 'clamp(1.125rem, 2vw, 1.875rem)' }}>
                   {problem}
                 </p>
               ) : (
@@ -148,8 +148,8 @@ export function Hero({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.6 }}
-                  className="text-luxury-muted/80 font-medium relative break-words px-2 sm:px-0"
-                  style={{ fontSize: 'clamp(0.875rem, 1.25vw, 1.5rem)', marginBottom: 'clamp(0.75rem, 1vw, 1rem)' }}
+                  className="text-luxury-muted/80 font-medium relative break-words px-4 sm:px-0 leading-relaxed"
+                  style={{ fontSize: 'clamp(1.125rem, 2vw, 1.875rem)' }}
                 >
                   <motion.span
                     initial={{ width: 0 }}
@@ -193,7 +193,7 @@ export function Hero({
 
               {/* Agitate - Slide and scale with dramatic emphasis */}
               {prefersReducedMotion ? (
-                <p className="text-luxury-muted font-semibold relative break-words px-2 sm:px-0" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.875rem)', marginBottom: 'clamp(1rem, 1.5vw, 1.5rem)' }}>
+                <p className="text-luxury-muted font-semibold relative break-words px-4 sm:px-0 leading-relaxed" style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2.5rem)' }}>
                   {agitate}
                 </p>
               ) : (
@@ -205,12 +205,11 @@ export function Hero({
                     delay: 2.8,
                     ease: [0.22, 1, 0.36, 1]
                   }}
-                  className="relative px-2 sm:px-0"
-                  style={{ marginBottom: 'clamp(1rem, 1.5vw, 1.5rem)' }}
+                  className="relative px-4 sm:px-0"
                 >
                     <motion.p
-                    className="text-luxury-muted font-semibold relative break-words"
-                    style={{ fontSize: 'clamp(1rem, 1.5vw, 1.875rem)' }}
+                    className="text-luxury-muted font-semibold relative break-words leading-relaxed"
+                    style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2.5rem)' }}
                   >
                     {/* Background glow that pulses in */}
                     <motion.div
@@ -273,7 +272,7 @@ export function Hero({
                       delay: 4.8,
                       ease: [0.22, 1, 0.36, 1]
                     }}
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
+                    className="absolute -bottom-2 sm:-bottom-3 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
                   />
                 </motion.div>
               )}
@@ -291,8 +290,8 @@ export function Hero({
                 style={{ willChange: "transform, opacity" }}
               >
                 <motion.h1
-                  className="font-heading font-bold leading-tight relative break-words px-2 sm:px-0"
-                  style={{ fontSize: 'clamp(1.75rem, 4vw, 4.5rem)', lineHeight: '1.1' }}
+                  className="font-heading font-bold leading-tight relative break-words px-4 sm:px-0"
+                  style={{ fontSize: 'clamp(2.5rem, 7vw, 6.5rem)', lineHeight: '1.05', letterSpacing: '-0.02em' }}
                 >
                   {/* Animated glow background */}
                   <motion.div
@@ -444,10 +443,10 @@ export function Hero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 7.2 }}
-              className="max-w-2xl mx-auto px-2 sm:px-0"
-              style={{ marginBottom: 'clamp(2rem, 2.5vw, 2.5rem)' }}
+              className="max-w-3xl mx-auto px-4 sm:px-0"
+              style={{ marginTop: 'clamp(3rem, 5vw, 4.5rem)', marginBottom: 'clamp(3rem, 4vw, 4rem)' }}
             >
-              <div className="grid sm:grid-cols-2" style={{ gap: 'clamp(1rem, 1.5vw, 1.5rem)' }}>
+              <div className="grid sm:grid-cols-2" style={{ gap: 'clamp(1.75rem, 2.5vw, 2.25rem)' }}>
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
@@ -515,7 +514,7 @@ export function Hero({
                     </div>
                     
                     {/* Benefit text with word-by-word reveal */}
-                    <p className="text-luxury-muted leading-relaxed group-hover:text-luxury-text transition-colors break-words flex-1 min-w-0" style={{ fontSize: 'clamp(0.875rem, 1vw, 1rem)' }}>
+                    <p className="text-luxury-muted leading-relaxed group-hover:text-luxury-text transition-colors break-words flex-1 min-w-0" style={{ fontSize: 'clamp(1.0625rem, 1.25vw, 1.125rem)' }}>
                       {benefit.split(' ').map((word, wordIndex) => (
                         <motion.span
                           key={wordIndex}
