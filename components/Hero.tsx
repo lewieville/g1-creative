@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react"
+import { ArrowRight, ChevronDown, Sparkles, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Container } from "@/components/ui/Container"
 import { motion, useScroll, useTransform } from "framer-motion"
@@ -11,6 +11,10 @@ import { useRef } from "react"
 interface HeroProps {
   title: string
   subtitle: string
+  problem?: string
+  agitate?: string
+  solution?: string
+  benefits?: string[]
   primaryCTA?: {
     text: string
     href: string
@@ -27,6 +31,10 @@ interface HeroProps {
 export function Hero({
   title,
   subtitle,
+  problem,
+  agitate,
+  solution,
+  benefits = [],
   primaryCTA = { text: "Get Started", href: "/contact" },
   secondaryCTA,
   image = "/images/hero-main.jpg",
@@ -155,59 +163,152 @@ export function Hero({
             </motion.div>
           </motion.div>
 
-          {/* Title with letter animation - Mobile optimized */}
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-4 sm:mb-6 leading-tight relative px-2 sm:px-0"
-          >
-            {title.split(" ").map((word, wordIndex) => (
-              <motion.span
-                key={wordIndex}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.5 + (wordIndex * 0.1),
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="inline-block mr-2 sm:mr-3 md:mr-4"
-              >
-                <span className="bg-gradient-to-r from-luxury-text via-white to-luxury-text bg-clip-text text-transparent">
-                  {word}
-                </span>
-              </motion.span>
-            ))}
-            
-            {/* Sparkle accent - Hidden on small mobile */}
-            <motion.span
-              className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 text-gold hidden sm:block"
-              initial={{ opacity: 0, scale: 0, rotate: -180 }}
-              animate={{ 
-                opacity: [0, 1, 1, 0],
-                scale: [0, 1, 1, 0],
-                rotate: 0
-              }}
-              transition={{ 
-                duration: 2,
-                delay: 1.5,
-                times: [0, 0.2, 0.8, 1]
-              }}
+          {/* Problem → Agitate → Solution Headline Structure */}
+          {problem && agitate && solution ? (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="mb-6 sm:mb-8"
             >
-              <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
-            </motion.span>
-          </motion.h1>
+              {/* Problem - Subtle, muted */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium"
+              >
+                {problem}
+              </motion.p>
 
-          {/* Subtitle with fade and slide - Mobile optimized */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="text-base sm:text-lg md:text-xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
-          >
-            {subtitle}
-          </motion.p>
+              {/* Agitate - Emphasized, creates tension */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="text-xl sm:text-2xl md:text-3xl text-luxury-muted mb-4 sm:mb-6 font-semibold"
+              >
+                {agitate}
+              </motion.p>
+
+              {/* Solution - Bold, gold accent, main headline */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight relative px-2 sm:px-0"
+              >
+                <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">
+                  {solution}
+                </span>
+                
+                {/* Sparkle accent - Hidden on small mobile */}
+                <motion.span
+                  className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 text-gold hidden sm:block"
+                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                  animate={{ 
+                    opacity: [0, 1, 1, 0],
+                    scale: [0, 1, 1, 0],
+                    rotate: 0
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    delay: 1.5,
+                    times: [0, 0.2, 0.8, 1]
+                  }}
+                >
+                  <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
+                </motion.span>
+              </motion.h1>
+            </motion.div>
+          ) : (
+            /* Fallback to original title structure */
+            <>
+              <motion.h1
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold mb-4 sm:mb-6 leading-tight relative px-2 sm:px-0"
+              >
+                {title.split(" ").map((word, wordIndex) => (
+                  <motion.span
+                    key={wordIndex}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.5 + (wordIndex * 0.1),
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                    className="inline-block mr-2 sm:mr-3 md:mr-4"
+                  >
+                    <span className="bg-gradient-to-r from-luxury-text via-white to-luxury-text bg-clip-text text-transparent">
+                      {word}
+                    </span>
+                  </motion.span>
+                ))}
+                
+                {/* Sparkle accent - Hidden on small mobile */}
+                <motion.span
+                  className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 text-gold hidden sm:block"
+                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                  animate={{ 
+                    opacity: [0, 1, 1, 0],
+                    scale: [0, 1, 1, 0],
+                    rotate: 0
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    delay: 1.5,
+                    times: [0, 0.2, 0.8, 1]
+                  }}
+                >
+                  <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
+                </motion.span>
+              </motion.h1>
+
+              {/* Subtitle with fade and slide - Mobile optimized */}
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+                className="text-base sm:text-lg md:text-xl text-luxury-muted leading-relaxed max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
+              >
+                {subtitle}
+              </motion.p>
+            </>
+          )}
+
+          {/* Outcome-Driven Benefits List */}
+          {benefits.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              className="max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
+            >
+              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                {benefits.map((benefit, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 1.2 + (index * 0.1) }}
+                    className="flex items-start gap-3 group"
+                  >
+                    <div className="flex-shrink-0 mt-1">
+                      <div className="w-6 h-6 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center group-hover:bg-gold/30 transition-colors">
+                        <CheckCircle2 className="w-4 h-4 text-gold" />
+                      </div>
+                    </div>
+                    <p className="text-sm sm:text-base text-luxury-muted leading-relaxed group-hover:text-luxury-text transition-colors">
+                      {benefit}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* CTA with magnetic hover effect - Mobile optimized */}
           <motion.div

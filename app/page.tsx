@@ -95,8 +95,15 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <Hero
-        title="Web Experiences Engineered for Growth"
-        subtitle="Websites engineered to convert visitors into customers."
+        problem="Your website isn't converting. Visitors leave in 8 seconds."
+        agitate="Meanwhile, your competitors are capturing those leads."
+        solution="We build websites that turn browsers into buyers."
+        benefits={[
+          "Get a website that converts 3x better than templates",
+          "Launch in 4 weeks, not 4 months",
+          "Includes 30 days of free optimization",
+          "Average 142% increase in client conversions"
+        ]}
         primaryCTA={{ text: "Let's Talk", href: "/contact" }}
         image="/images/hero-main.jpg"
         imageAlt="Bespoke web design showcase"
