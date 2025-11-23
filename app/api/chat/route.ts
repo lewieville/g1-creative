@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server"
 import OpenAI from "openai"
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// Initialize OpenAI only when API key is available (not during build)
+const getOpenAIClient = () => {
+  if (!process.env.OPENAI_API_KEY) {
+    return null
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+}
 
 const SYSTEM_PROMPT = `You are "Lewis — AI Project Assistant" for G1 Creative, a premium web design studio.
 
@@ -77,10 +83,14 @@ export async function POST(request: NextRequest) {
   try {
     const { messages } = await request.json()
 
-    if (!process.env.OPENAI_API_KEY) {
+    const openai = getOpenAIClient()
+    
+    if (!openai) {
       return NextResponse.json(
-        { error: "OpenAI API key not configured" },
-        { status: 500 }
+        { 
+          message: "I'm currently being set up. Please contact us directly at g1.creative.web@gmail.com or call 239-255-4733. Thanks! 😊"
+        },
+        { status: 200 }
       )
     }
 
