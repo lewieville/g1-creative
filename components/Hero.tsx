@@ -171,84 +171,137 @@ export function Hero({
               transition={{ duration: 0.5, delay: 0.4 }}
               className="mb-6 sm:mb-8"
             >
-              {/* Problem - Fade in from left with typewriter feel */}
+              {/* Problem - Typewriter effect with character-by-character reveal */}
               <motion.p
-                initial={{ opacity: 0, x: -50, filter: "blur(10px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: 0.6,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium relative"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium relative overflow-hidden"
               >
-                {problem.split(' ').map((word, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: 0.8 + (i * 0.08),
-                      ease: "easeOut"
-                    }}
-                    className="inline-block mr-[0.3em]"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </motion.p>
-
-              {/* Agitate - Slide in from right with emphasis shake */}
-              <motion.p
-                initial={{ opacity: 0, x: 50, filter: "blur(10px)" }}
-                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: 1.6,
-                  ease: [0.22, 1, 0.36, 1]
-                }}
-                className="text-xl sm:text-2xl md:text-3xl text-luxury-muted mb-4 sm:mb-6 font-semibold relative"
-              >
-                {agitate.split(' ').map((word, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ 
-                      opacity: 1, 
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.3,
-                      delay: 1.8 + (i * 0.08),
-                      ease: "easeOut"
-                    }}
-                    className="inline-block mr-[0.3em]"
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-                
-                {/* Animated underline that draws in */}
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
+                <motion.span
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
                   transition={{ 
-                    duration: 0.6, 
-                    delay: 2.5,
+                    duration: 2,
+                    delay: 0.7,
                     ease: "easeInOut"
                   }}
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
+                  className="inline-block overflow-hidden whitespace-nowrap"
+                >
+                  {problem.split('').map((char, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 0.05,
+                        delay: 0.7 + (i * 0.03),
+                      }}
+                      className="inline-block"
+                    >
+                      {char}
+                    </motion.span>
+                  ))}
+                </motion.span>
+                
+                {/* Blinking cursor */}
+                <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.7,
+                    repeat: 3,
+                    ease: "linear"
+                  }}
+                  className="inline-block w-0.5 h-5 sm:h-6 bg-luxury-muted/60 ml-1 align-middle"
                 />
               </motion.p>
 
-              {/* Solution - Dramatic reveal with glow and scale */}
+              {/* Agitate - Slide and scale with dramatic emphasis */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 2.8,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="relative mb-4 sm:mb-6"
+              >
+                <motion.p
+                  className="text-xl sm:text-2xl md:text-3xl text-luxury-muted font-semibold relative"
+                >
+                  {/* Background glow that pulses in */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: [0, 0.3, 0.15], scale: 1 }}
+                    transition={{ 
+                      duration: 1,
+                      delay: 2.9,
+                      ease: "easeOut"
+                    }}
+                    className="absolute inset-0 blur-2xl bg-red-500/10 -z-10"
+                  />
+                  
+                  <motion.span
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ 
+                      duration: 1.8,
+                      delay: 3,
+                      ease: "easeInOut"
+                    }}
+                    className="inline-block overflow-hidden whitespace-nowrap"
+                  >
+                    {agitate.split('').map((char, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.05,
+                          delay: 3 + (i * 0.025),
+                        }}
+                        className="inline-block"
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </motion.span>
+                  
+                  {/* Blinking cursor for second line */}
+                  <motion.span
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{
+                      duration: 0.8,
+                      delay: 3,
+                      repeat: 3,
+                      ease: "linear"
+                    }}
+                    className="inline-block w-0.5 h-6 sm:h-7 bg-luxury-muted/60 ml-1 align-middle"
+                  />
+                </motion.p>
+                
+                {/* Animated underline that draws in - adjusted timing */}
+                <motion.div
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  transition={{ 
+                    duration: 0.8, 
+                    delay: 4.8,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
+                />
+              </motion.div>
+
+              {/* Solution - Dramatic reveal with glow and scale - adjusted timing */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ 
                   duration: 1,
-                  delay: 2.8,
+                  delay: 5.2,
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 className="relative"
@@ -265,7 +318,7 @@ export function Hero({
                     }}
                     transition={{
                       duration: 1.5,
-                      delay: 2.8,
+                      delay: 5.2,
                       ease: "easeOut"
                     }}
                     className="absolute inset-0 blur-3xl bg-gold/30 -z-10"
@@ -288,7 +341,7 @@ export function Hero({
                       }}
                       transition={{
                         duration: 0.6,
-                        delay: 3 + (i * 0.15),
+                        delay: 5.4 + (i * 0.15),
                         ease: [0.22, 1, 0.36, 1]
                       }}
                       className="inline-block mr-[0.2em] origin-bottom"
@@ -302,7 +355,7 @@ export function Hero({
                           animate={{ x: "200%" }}
                           transition={{
                             duration: 1.5,
-                            delay: 3.2 + (i * 0.15),
+                            delay: 5.6 + (i * 0.15),
                             ease: "easeInOut"
                           }}
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
@@ -323,7 +376,7 @@ export function Hero({
                     }}
                     transition={{ 
                       duration: 0.8,
-                      delay: 4.5,
+                      delay: 6.8,
                       ease: [0.34, 1.56, 0.64, 1]
                     }}
                   >
@@ -392,12 +445,12 @@ export function Hero({
             </>
           ) : null}
 
-          {/* Outcome-Driven Benefits List with Staggered Entrance */}
+          {/* Outcome-Driven Benefits List with Staggered Entrance - adjusted timing */}
           {benefits.length > 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 5 }}
+              transition={{ duration: 0.6, delay: 7.2 }}
               className="max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
             >
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
@@ -416,7 +469,7 @@ export function Hero({
                     }}
                     transition={{
                       duration: 0.6,
-                      delay: 5.2 + (index * 0.15),
+                      delay: 7.4 + (index * 0.15),
                       ease: [0.22, 1, 0.36, 1]
                     }}
                     whileHover={{ 
@@ -432,7 +485,7 @@ export function Hero({
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{
                           duration: 0.5,
-                          delay: 5.3 + (index * 0.15),
+                          delay: 7.5 + (index * 0.15),
                           ease: [0.34, 1.56, 0.64, 1]
                         }}
                         className="w-6 h-6 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center group-hover:bg-gold/30 group-hover:border-gold/60 transition-all duration-300 relative overflow-hidden"
@@ -445,7 +498,7 @@ export function Hero({
                           }}
                           transition={{
                             duration: 2,
-                            delay: 5.5 + (index * 0.15),
+                            delay: 7.7 + (index * 0.15),
                             repeat: Infinity,
                             ease: "easeInOut"
                           }}
@@ -458,7 +511,7 @@ export function Hero({
                           animate={{ pathLength: 1, opacity: 1 }}
                           transition={{
                             duration: 0.4,
-                            delay: 5.5 + (index * 0.15),
+                            delay: 7.7 + (index * 0.15),
                             ease: "easeOut"
                           }}
                         >
@@ -476,7 +529,7 @@ export function Hero({
                           animate={{ opacity: 1, y: 0 }}
                           transition={{
                             duration: 0.2,
-                            delay: 5.4 + (index * 0.15) + (wordIndex * 0.03),
+                            delay: 7.6 + (index * 0.15) + (wordIndex * 0.03),
                             ease: "easeOut"
                           }}
                           className="inline-block mr-[0.3em]"
@@ -497,7 +550,7 @@ export function Hero({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
               duration: 0.8,
-              delay: 6,
+              delay: 8.2,
               type: "spring",
               stiffness: 200,
               damping: 20
@@ -517,7 +570,7 @@ export function Hero({
                 }}
                 transition={{
                   duration: 2,
-                  delay: 6.2,
+                  delay: 8.4,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
@@ -532,7 +585,7 @@ export function Hero({
                     animate={{ x: ["-200%", "200%"] }}
                     transition={{
                       duration: 2,
-                      delay: 6.5,
+                      delay: 8.7,
                       repeat: Infinity,
                       repeatDelay: 3,
                       ease: "easeInOut"
@@ -563,7 +616,7 @@ export function Hero({
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ 
                   duration: 0.6,
-                  delay: 6.3,
+                  delay: 8.5,
                 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -580,7 +633,7 @@ export function Hero({
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 1.2, delay: 6.8, ease: "easeInOut" }}
+            transition={{ duration: 1.2, delay: 9, ease: "easeInOut" }}
             className="mt-12 sm:mt-16 h-px w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent origin-center"
           />
         </motion.div>
