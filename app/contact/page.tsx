@@ -5,6 +5,7 @@ import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { ScrollToButton } from "@/components/ScrollToButton"
 import { CalendlyWidget } from "@/components/CalendlyWidget"
+import { GradientMesh } from "@/components/GradientMesh"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 
 const iconMap: Record<string, LucideIcon> = {

@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
+import { GradientMesh } from "@/components/GradientMesh"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 
 const iconMap: Record<string, LucideIcon> = {
