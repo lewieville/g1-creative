@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { GradientMesh } from "@/components/GradientMesh"
 import { DynamicCTA } from "@/components/DynamicCTA"
+import { ClientJourneyTimeline } from "@/components/ClientJourneyTimeline"
 import { ScrollReveal } from "@/components/ScrollReveal"
 import Link from "next/link"
 import { gsap } from "gsap"
@@ -331,6 +332,9 @@ export default function ServicesPage() {
           </div>
         </Container>
       </MotionSection>
+
+      {/* Client Journey Timeline */}
+      <ClientJourneyTimeline />
 
       {/* Why Choose Us Section */}
       <MotionSection ref={whyChooseRef} className="bg-luxury-surface py-32 lg:py-40">
