@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/Button"
 import { Section } from "@/components/ui/Section"
 import { Container } from "@/components/ui/Container"
 import { MotionSection } from "@/components/MotionSection"
+import { CinematicSection } from "@/components/CinematicSection"
+import { ScrollReveal } from "@/components/ScrollReveal"
 import { motion } from "framer-motion"
 import { generateOrganizationSchema, generateWebsiteSchema } from "@/lib/seo"
 
@@ -110,6 +112,42 @@ export default function HomePage() {
         showScrollCue={true}
       />
 
+      {/* Cinematic Story: The Problem */}
+      <CinematicSection
+        subtitle="The Challenge"
+        title="Most websites fail in the first 8 seconds"
+        description="Your visitors judge your credibility instantly. A slow, outdated, or confusing website means lost revenue. Every second counts when it comes to converting browsers into buyers."
+        image="/images/hero-main.jpg"
+        imageAlt="Website analytics showing visitor behavior"
+      >
+        <div className="flex flex-wrap gap-3">
+          <div className="glass-panel px-4 py-2 rounded-lg border border-gold/20">
+            <span className="text-gold font-semibold">8 seconds</span>
+            <span className="text-luxury-muted text-sm ml-2">Average attention span</span>
+          </div>
+          <div className="glass-panel px-4 py-2 rounded-lg border border-gold/20">
+            <span className="text-gold font-semibold">75%</span>
+            <span className="text-luxury-muted text-sm ml-2">Judge by design</span>
+          </div>
+        </div>
+      </CinematicSection>
+
+      {/* Cinematic Story: The Solution */}
+      <CinematicSection
+        subtitle="The Solution"
+        title="We build experiences that convert"
+        description="Every pixel, every interaction, every line of code is crafted with one goal: turning your visitors into customers. We combine stunning design with conversion psychology to create websites that actually work for your business."
+        image="/images/mico-1.png"
+        imageAlt="High-converting website design showcase"
+        reverse
+      >
+        <Link href="/services">
+          <Button size="lg" className="shadow-g1-glow">
+            Explore Our Process →
+          </Button>
+        </Link>
+      </CinematicSection>
+
       {/* Services Section */}
       <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
@@ -133,7 +171,9 @@ export default function HomePage() {
           
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-12 sm:mb-16">
             {services.map((service, index) => (
-              <ServiceCard key={index} {...service} />
+              <ScrollReveal key={index} direction="up" delay={index * 0.2}>
+                <ServiceCard {...service} />
+              </ScrollReveal>
             ))}
           </div>
           
@@ -171,7 +211,9 @@ export default function HomePage() {
           
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-12 sm:mb-16">
             {featuredProjects.map((project, index) => (
-              <PortfolioCard key={index} {...project} />
+              <ScrollReveal key={index} direction="up" delay={index * 0.15}>
+                <PortfolioCard {...project} />
+              </ScrollReveal>
             ))}
           </div>
           
