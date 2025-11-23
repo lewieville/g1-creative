@@ -163,7 +163,7 @@ export function Hero({
             </motion.div>
           </motion.div>
 
-          {/* Problem → Agitate → Solution Headline Structure */}
+          {/* Problem → Agitate → Solution Headline Structure with Advanced Animations */}
           {problem && agitate && solution ? (
             <motion.div
               initial={{ opacity: 0 }}
@@ -171,55 +171,166 @@ export function Hero({
               transition={{ duration: 0.5, delay: 0.4 }}
               className="mb-6 sm:mb-8"
             >
-              {/* Problem - Subtle, muted */}
+              {/* Problem - Fade in from left with typewriter feel */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium"
+                initial={{ opacity: 0, x: -50, filter: "blur(10px)" }}
+                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 0.6,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="text-lg sm:text-xl md:text-2xl text-luxury-muted/80 mb-3 sm:mb-4 font-medium relative"
               >
-                {problem}
+                {problem.split(' ').map((word, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: 0.8 + (i * 0.08),
+                      ease: "easeOut"
+                    }}
+                    className="inline-block mr-[0.3em]"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
               </motion.p>
 
-              {/* Agitate - Emphasized, creates tension */}
+              {/* Agitate - Slide in from right with emphasis shake */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                className="text-xl sm:text-2xl md:text-3xl text-luxury-muted mb-4 sm:mb-6 font-semibold"
+                initial={{ opacity: 0, x: 50, filter: "blur(10px)" }}
+                animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: 1.6,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="text-xl sm:text-2xl md:text-3xl text-luxury-muted mb-4 sm:mb-6 font-semibold relative"
               >
-                {agitate}
-              </motion.p>
-
-              {/* Solution - Bold, gold accent, main headline */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight relative px-2 sm:px-0"
-              >
-                <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent">
-                  {solution}
-                </span>
+                {agitate.split(' ').map((word, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ 
+                      opacity: 1, 
+                      y: 0,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                      delay: 1.8 + (i * 0.08),
+                      ease: "easeOut"
+                    }}
+                    className="inline-block mr-[0.3em]"
+                  >
+                    {word}
+                  </motion.span>
+                ))}
                 
-                {/* Sparkle accent - Hidden on small mobile */}
-                <motion.span
-                  className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 text-gold hidden sm:block"
-                  initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                  animate={{ 
-                    opacity: [0, 1, 1, 0],
-                    scale: [0, 1, 1, 0],
-                    rotate: 0
-                  }}
+                {/* Animated underline that draws in */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
                   transition={{ 
-                    duration: 2,
-                    delay: 1.5,
-                    times: [0, 0.2, 0.8, 1]
+                    duration: 0.6, 
+                    delay: 2.5,
+                    ease: "easeInOut"
                   }}
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
+                />
+              </motion.p>
+
+              {/* Solution - Dramatic reveal with glow and scale */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 1,
+                  delay: 2.8,
+                  ease: [0.22, 1, 0.36, 1]
+                }}
+                className="relative"
+              >
+                <motion.h1
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight relative px-2 sm:px-0"
                 >
-                  <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
-                </motion.span>
-              </motion.h1>
+                  {/* Animated glow background */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ 
+                      opacity: [0, 0.5, 0.3],
+                      scale: [0.8, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 1.5,
+                      delay: 2.8,
+                      ease: "easeOut"
+                    }}
+                    className="absolute inset-0 blur-3xl bg-gold/30 -z-10"
+                  />
+                  
+                  {solution.split(' ').map((word, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ 
+                        opacity: 0, 
+                        y: 50,
+                        rotateX: 90,
+                        filter: "blur(10px)"
+                      }}
+                      animate={{ 
+                        opacity: 1, 
+                        y: 0,
+                        rotateX: 0,
+                        filter: "blur(0px)"
+                      }}
+                      transition={{
+                        duration: 0.6,
+                        delay: 3 + (i * 0.15),
+                        ease: [0.22, 1, 0.36, 1]
+                      }}
+                      className="inline-block mr-[0.2em] origin-bottom"
+                      style={{ perspective: "1000px" }}
+                    >
+                      <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent relative">
+                        {word}
+                        {/* Shimmer effect that sweeps across */}
+                        <motion.span
+                          initial={{ x: "-100%" }}
+                          animate={{ x: "200%" }}
+                          transition={{
+                            duration: 1.5,
+                            delay: 3.2 + (i * 0.15),
+                            ease: "easeInOut"
+                          }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                          style={{ backgroundClip: "text" }}
+                        />
+                      </span>
+                    </motion.span>
+                  ))}
+                  
+                  {/* Sparkle accent with delayed pop-in */}
+                  <motion.span
+                    className="absolute -top-2 sm:-top-4 -right-2 sm:-right-4 text-gold hidden sm:block"
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    animate={{ 
+                      opacity: 1,
+                      scale: [0, 1.3, 1],
+                      rotate: [0, 360]
+                    }}
+                    transition={{ 
+                      duration: 0.8,
+                      delay: 4.5,
+                      ease: [0.34, 1.56, 0.64, 1]
+                    }}
+                  >
+                    <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />
+                  </motion.span>
+                </motion.h1>
+              </motion.div>
             </motion.div>
           ) : title ? (
             /* Fallback to original title structure */
@@ -281,30 +392,98 @@ export function Hero({
             </>
           ) : null}
 
-          {/* Outcome-Driven Benefits List */}
+          {/* Outcome-Driven Benefits List with Staggered Entrance */}
           {benefits.length > 0 && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.1 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 5 }}
               className="max-w-2xl mx-auto mb-8 sm:mb-10 px-4 sm:px-0"
             >
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 1.2 + (index * 0.1) }}
+                    initial={{ 
+                      opacity: 0, 
+                      x: index % 2 === 0 ? -30 : 30,
+                      scale: 0.8
+                    }}
+                    animate={{ 
+                      opacity: 1, 
+                      x: 0,
+                      scale: 1
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 5.2 + (index * 0.15),
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                    whileHover={{ 
+                      scale: 1.03,
+                      transition: { duration: 0.2 }
+                    }}
                     className="flex items-start gap-3 group"
                   >
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-6 h-6 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center group-hover:bg-gold/30 transition-colors">
-                        <CheckCircle2 className="w-4 h-4 text-gold" />
-                      </div>
+                    <div className="flex-shrink-0 mt-1 relative">
+                      {/* Checkmark with animated circle */}
+                      <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: 5.3 + (index * 0.15),
+                          ease: [0.34, 1.56, 0.64, 1]
+                        }}
+                        className="w-6 h-6 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center group-hover:bg-gold/30 group-hover:border-gold/60 transition-all duration-300 relative overflow-hidden"
+                      >
+                        {/* Pulsing background */}
+                        <motion.div
+                          animate={{ 
+                            scale: [1, 1.5, 1],
+                            opacity: [0.3, 0, 0.3]
+                          }}
+                          transition={{
+                            duration: 2,
+                            delay: 5.5 + (index * 0.15),
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                          }}
+                          className="absolute inset-0 bg-gold/50 rounded-full"
+                        />
+                        
+                        {/* Checkmark icon with draw-in animation */}
+                        <motion.div
+                          initial={{ pathLength: 0, opacity: 0 }}
+                          animate={{ pathLength: 1, opacity: 1 }}
+                          transition={{
+                            duration: 0.4,
+                            delay: 5.5 + (index * 0.15),
+                            ease: "easeOut"
+                          }}
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-gold relative z-10" />
+                        </motion.div>
+                      </motion.div>
                     </div>
+                    
+                    {/* Benefit text with word-by-word reveal */}
                     <p className="text-sm sm:text-base text-luxury-muted leading-relaxed group-hover:text-luxury-text transition-colors">
-                      {benefit}
+                      {benefit.split(' ').map((word, wordIndex) => (
+                        <motion.span
+                          key={wordIndex}
+                          initial={{ opacity: 0, y: 5 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.2,
+                            delay: 5.4 + (index * 0.15) + (wordIndex * 0.03),
+                            ease: "easeOut"
+                          }}
+                          className="inline-block mr-[0.3em]"
+                        >
+                          {word}
+                        </motion.span>
+                      ))}
                     </p>
                   </motion.div>
                 ))}
@@ -312,50 +491,81 @@ export function Hero({
             </motion.div>
           )}
 
-          {/* CTA with magnetic hover effect - Mobile optimized */}
+          {/* CTA with magnetic hover effect and final reveal - Mobile optimized */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
-              duration: 0.6,
-              delay: 1.3,
+              duration: 0.8,
+              delay: 6,
               type: "spring",
-              stiffness: 200
+              stiffness: 200,
+              damping: 20
             }}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-4 sm:px-0"
           >
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto relative group"
             >
+              {/* Animated pulse ring */}
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.15, 1],
+                  opacity: [0.5, 0, 0.5]
+                }}
+                transition={{
+                  duration: 2,
+                  delay: 6.2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute inset-0 rounded-lg bg-gold blur-xl -z-10"
+              />
+              
               <Button asChild size="xl" className="shadow-g1-glow relative overflow-hidden group w-full sm:w-auto min-h-[56px]">
                 <Link href={primaryCTA.href} className="relative z-10">
+                  {/* Animated shimmer sweep */}
                   <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-gold-light via-gold to-gold-light"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: "100%" }}
-                    transition={{ duration: 0.6 }}
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-light/50 to-transparent"
+                    animate={{ x: ["-200%", "200%"] }}
+                    transition={{
+                      duration: 2,
+                      delay: 6.5,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: "easeInOut"
+                    }}
                   />
+                  
                   <span className="relative z-10 flex items-center justify-center">
                     {primaryCTA.text}
                     <motion.span
-                      animate={{ x: [0, 4, 0] }}
+                      animate={{ x: [0, 5, 0] }}
                       transition={{ 
                         duration: 1.5,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
+                      className="ml-2"
                     >
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <ArrowRight className="h-5 w-5" />
                     </motion.span>
                   </span>
                 </Link>
               </Button>
             </motion.div>
+            
             {secondaryCTA && (
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.6,
+                  delay: 6.3,
+                }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto"
               >
@@ -366,12 +576,12 @@ export function Hero({
             )}
           </motion.div>
 
-          {/* Decorative line divider */}
+          {/* Decorative line divider with draw animation */}
           <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
-            className="mt-12 sm:mt-16 h-px w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent"
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 1 }}
+            transition={{ duration: 1.2, delay: 6.8, ease: "easeInOut" }}
+            className="mt-12 sm:mt-16 h-px w-24 sm:w-32 mx-auto bg-gradient-to-r from-transparent via-gold to-transparent origin-center"
           />
         </motion.div>
 
