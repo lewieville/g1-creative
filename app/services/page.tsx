@@ -1,11 +1,21 @@
+"use client"
+
+import { useEffect, useRef } from "react"
 import { Palette, ShoppingCart, Sparkles, Wrench, TrendingUp, Code, Smartphone, Shield, LucideIcon } from "lucide-react"
 import { ServiceCard } from "@/components/ServiceCard"
 import { Section } from "@/components/ui/Section"
 import { MotionSection } from "@/components/MotionSection"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
+import { ScrollReveal } from "@/components/ScrollReveal"
 import Link from "next/link"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 const iconMap: Record<string, LucideIcon> = {
   Palette,
@@ -142,10 +152,129 @@ const processSteps = [
 ]
 
 export default function ServicesPage() {
+  const heroRef = useRef<HTMLDivElement>(null)
+  const servicesRef = useRef<HTMLDivElement>(null)
+  const processRef = useRef<HTMLDivElement>(null)
+  const whyChooseRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Hero text reveal
+    if (heroRef.current) {
+      gsap.fromTo(
+        heroRef.current.querySelector("h1"),
+        { opacity: 0, y: 50, filter: "blur(10px)" },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 1,
+          ease: "power3.out",
+        }
+      )
+      gsap.fromTo(
+        heroRef.current.querySelector("p"),
+        { opacity: 0, y: 30, filter: "blur(10px)" },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.8,
+          delay: 0.3,
+          ease: "power3.out",
+        }
+      )
+    }
+
+    // Services cards stagger
+    if (servicesRef.current) {
+      const cards = servicesRef.current.querySelectorAll(".service-card")
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 80, filter: "blur(10px)" },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 1,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: servicesRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      )
+    }
+
+    // Process steps reveal
+    if (processRef.current) {
+      const steps = processRef.current.querySelectorAll(".process-step")
+      gsap.fromTo(
+        steps,
+        { opacity: 0, scale: 0.8, y: 50 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: processRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      )
+    }
+
+    // Why Choose section
+    if (whyChooseRef.current) {
+      gsap.fromTo(
+        whyChooseRef.current.querySelector("h2"),
+        { opacity: 0, x: -50, filter: "blur(10px)" },
+        {
+          opacity: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: whyChooseRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      )
+      const items = whyChooseRef.current.querySelectorAll(".why-item")
+      gsap.fromTo(
+        items,
+        { opacity: 0, x: 30 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: whyChooseRef.current,
+            start: "top 75%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      )
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+    }
+  }, [])
+
   return (
     <>
       {/* Hero Section */}
-      <div className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
+      <div ref={heroRef} className="bg-luxury-bg cinematic-overlay pt-32 pb-20 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
         
@@ -165,16 +294,18 @@ export default function ServicesPage() {
       <MotionSection className="bg-luxury-surface py-32 lg:py-40">
         <div className="gold-divider" />
         <Container>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div ref={servicesRef} className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <ServiceCard key={index} {...service} />
+              <div key={index} className="service-card">
+                <ServiceCard {...service} />
+              </div>
             ))}
           </div>
         </Container>
       </MotionSection>
 
       {/* Process Section */}
-      <MotionSection className="bg-luxury-bg py-32 lg:py-40">
+      <MotionSection ref={processRef} className="bg-luxury-bg py-32 lg:py-40">
         <div className="gold-divider" />
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -189,7 +320,7 @@ export default function ServicesPage() {
             {processSteps.map((step, index) => {
               const Icon = iconMap[step.iconName] || Sparkles
               return (
-                <div key={index} className="text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
+                <div key={index} className="process-step text-center glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full glass-panel mb-4 text-gold">
                     <Icon className="w-8 h-8" />
                   </div>
@@ -208,7 +339,7 @@ export default function ServicesPage() {
       </MotionSection>
 
       {/* Why Choose Us Section */}
-      <MotionSection className="bg-luxury-surface py-32 lg:py-40">
+      <MotionSection ref={whyChooseRef} className="bg-luxury-surface py-32 lg:py-40">
         <div className="gold-divider" />
         <Container>
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -217,7 +348,7 @@ export default function ServicesPage() {
                 Why Choose G1 Creative?
               </h2>
               <div className="space-y-6">
-                <div className="flex gap-4">
+                <div className="why-item flex gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
                     <Shield className="w-6 h-6" />
                   </div>
@@ -230,7 +361,7 @@ export default function ServicesPage() {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="why-item flex gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
                     <Smartphone className="w-6 h-6" />
                   </div>
@@ -243,7 +374,7 @@ export default function ServicesPage() {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="why-item flex gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-lg glass-panel text-gold flex items-center justify-center">
                     <TrendingUp className="w-6 h-6" />
                   </div>
