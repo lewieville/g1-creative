@@ -20,11 +20,11 @@ const posts = [
     date: "2023-12-28",
   },
   {
-    slug: "building-brand-stands-out",
+    slug: "building-standout-brand",
     date: "2023-12-20",
   },
   {
-    slug: "website-performance-optimization",
+    slug: "web-accessibility-guide",
     date: "2023-12-15",
   },
 ]
