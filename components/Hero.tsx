@@ -45,24 +45,11 @@ export function Hero({
 }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-bg px-0">
-      {/* Animated background with parallax - optimized for performance */}
-      <motion.div 
-        className="absolute inset-0 z-0"
-        style={{ 
-          y: prefersReducedMotion ? undefined : y,
-          willChange: prefersReducedMotion ? undefined : "transform"
-        }}
-      >
+      {/* Animated background - NO BLUR/FADE on scroll */}
+      <div className="absolute inset-0 z-0">
         <div className="relative w-full h-full">
           <motion.div
             initial={prefersReducedMotion ? false : { scale: 1.2, opacity: 0 }}
@@ -83,7 +70,7 @@ export function Hero({
           <div className="absolute inset-0 bg-gradient-to-b from-luxury-bg via-luxury-bg/85 to-luxury-bg" />
           <div className="absolute inset-0 bg-gradient-to-r from-luxury-bg/50 via-transparent to-luxury-bg/50" />
         </div>
-      </motion.div>
+      </div>
 
       {/* Animated gradient mesh background - optimized */}
       {!prefersReducedMotion && <GradientMesh intensity="low" speed="slow" />}
@@ -115,11 +102,10 @@ export function Hero({
         />
       ))}
 
-      <div className="relative z-10 px-3 sm:px-4 md:px-6" style={{ paddingTop: 'clamp(5rem, 7vw, 7rem)', paddingBottom: 'clamp(3rem, 5vw, 5rem)' }}>
-        <Container className="px-2 sm:px-5">
-          <motion.div 
+      <div className="relative z-10 w-full py-20 sm:py-24 md:py-28 px-4 sm:px-6 md:px-8">
+        <Container>
+          <div 
             className="max-w-4xl mx-auto text-center w-full"
-            style={prefersReducedMotion ? {} : { opacity }}
           >
           {/* Animated logo with handwriting effect */}
           <div className="mb-6 flex justify-center" style={{ marginBottom: 'clamp(1.5rem, 2vw, 2rem)' }}>
@@ -136,11 +122,11 @@ export function Hero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mb-8 sm:mb-12 space-y-8 sm:space-y-10"
+              className="space-y-6 sm:space-y-8 mb-10 sm:mb-12"
             >
               {/* Problem - Typewriter effect with character-by-character reveal */}
               {prefersReducedMotion ? (
-                <p className="text-luxury-muted/80 font-medium relative break-words px-4 sm:px-0 leading-relaxed" style={{ fontSize: 'clamp(1.125rem, 2vw, 1.875rem)' }}>
+                <p className="text-luxury-muted/80 font-medium break-words leading-relaxed" style={{ fontSize: 'clamp(1rem, 1.5vw, 1.5rem)' }}>
                   {problem}
                 </p>
               ) : (
@@ -148,8 +134,8 @@ export function Hero({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3, delay: 0.6 }}
-                  className="text-luxury-muted/80 font-medium relative break-words px-4 sm:px-0 leading-relaxed"
-                  style={{ fontSize: 'clamp(1.125rem, 2vw, 1.875rem)' }}
+                  className="text-luxury-muted/80 font-medium break-words leading-relaxed"
+                  style={{ fontSize: 'clamp(1rem, 1.5vw, 1.5rem)' }}
                 >
                   <motion.span
                     initial={{ width: 0 }}
@@ -170,9 +156,9 @@ export function Hero({
                           duration: 0.05,
                           delay: 0.7 + (i * 0.03),
                         }}
-                        className="inline-block"
+                        className={char === ' ' ? "inline-block w-[0.3em]" : "inline-block"}
                       >
-                        {char}
+                        {char === ' ' ? '\u00A0' : char}
                       </motion.span>
                     ))}
                   </motion.span>
@@ -193,7 +179,7 @@ export function Hero({
 
               {/* Agitate - Slide and scale with dramatic emphasis */}
               {prefersReducedMotion ? (
-                <p className="text-luxury-muted font-semibold relative break-words px-4 sm:px-0 leading-relaxed" style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2.5rem)' }}>
+                <p className="text-luxury-muted font-semibold break-words leading-relaxed" style={{ fontSize: 'clamp(1.125rem, 1.875vw, 2rem)' }}>
                   {agitate}
                 </p>
               ) : (
@@ -205,22 +191,22 @@ export function Hero({
                     delay: 2.8,
                     ease: [0.22, 1, 0.36, 1]
                   }}
-                  className="relative px-4 sm:px-0"
+                  className="relative"
                 >
                     <motion.p
-                    className="text-luxury-muted font-semibold relative break-words leading-relaxed"
-                    style={{ fontSize: 'clamp(1.375rem, 2.5vw, 2.5rem)' }}
+                    className="text-luxury-muted font-semibold break-words leading-relaxed"
+                    style={{ fontSize: 'clamp(1.125rem, 1.875vw, 2rem)' }}
                   >
-                    {/* Background glow that pulses in */}
+                    {/* Background glow that pulses in - REDUCED */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: [0, 0.3, 0.15], scale: 1 }}
+                      animate={{ opacity: [0, 0.15, 0.08], scale: 1 }}
                       transition={{ 
                         duration: 1,
                         delay: 2.9,
                         ease: "easeOut"
                       }}
-                      className="absolute inset-0 blur-2xl bg-red-500/10 -z-10"
+                      className="absolute inset-0 blur-xl bg-red-500/10 -z-10"
                       style={{ willChange: "transform, opacity" }}
                     />
                     
@@ -243,9 +229,9 @@ export function Hero({
                             duration: 0.05,
                             delay: 3 + (i * 0.025),
                           }}
-                          className="inline-block"
+                          className={char === ' ' ? "inline-block w-[0.3em]" : "inline-block"}
                         >
-                          {char}
+                          {char === ' ' ? '\u00A0' : char}
                         </motion.span>
                       ))}
                     </motion.span>
@@ -290,14 +276,14 @@ export function Hero({
                 style={{ willChange: "transform, opacity" }}
               >
                 <motion.h1
-                  className="font-heading font-bold leading-tight relative break-words px-4 sm:px-0"
-                  style={{ fontSize: 'clamp(2.5rem, 7vw, 6.5rem)', lineHeight: '1.05', letterSpacing: '-0.02em' }}
+                  className="font-heading font-bold leading-tight break-words"
+                  style={{ fontSize: 'clamp(2rem, 5vw, 4.75rem)', lineHeight: '1.1', letterSpacing: '-0.01em' }}
                 >
-                  {/* Animated glow background */}
+                  {/* Animated glow background - REDUCED */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ 
-                      opacity: [0, 0.5, 0.3],
+                      opacity: [0, 0.3, 0.2],
                       scale: [0.8, 1.2, 1],
                     }}
                     transition={{
@@ -305,7 +291,7 @@ export function Hero({
                       delay: 5.2,
                       ease: "easeOut"
                     }}
-                    className="absolute inset-0 blur-3xl bg-gold/30 -z-10"
+                    className="absolute inset-0 blur-2xl bg-gold/20 -z-10"
                     style={{ willChange: "transform, opacity" }}
                   />
                   
@@ -443,10 +429,9 @@ export function Hero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 7.2 }}
-              className="max-w-3xl mx-auto px-4 sm:px-0"
-              style={{ marginTop: 'clamp(3rem, 5vw, 4.5rem)', marginBottom: 'clamp(3rem, 4vw, 4rem)' }}
+              className="max-w-3xl mx-auto mb-12 sm:mb-14"
             >
-              <div className="grid sm:grid-cols-2" style={{ gap: 'clamp(1.75rem, 2.5vw, 2.25rem)' }}>
+              <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
@@ -514,7 +499,7 @@ export function Hero({
                     </div>
                     
                     {/* Benefit text with word-by-word reveal */}
-                    <p className="text-luxury-muted leading-relaxed group-hover:text-luxury-text transition-colors break-words flex-1 min-w-0" style={{ fontSize: 'clamp(1.0625rem, 1.25vw, 1.125rem)' }}>
+                    <p className="text-luxury-muted leading-relaxed group-hover:text-luxury-text transition-colors break-words flex-1 min-w-0" style={{ fontSize: 'clamp(0.9375rem, 1.1vw, 1.0625rem)' }}>
                       {benefit.split(' ').map((word, wordIndex) => (
                         <motion.span
                           key={wordIndex}
@@ -537,10 +522,10 @@ export function Hero({
             </motion.div>
           )}
 
-          {/* CTA with magnetic hover effect and final reveal - Mobile optimized */}
+          {/* CTA with magnetic hover effect and final reveal */}
           <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ 
               duration: 0.8,
               delay: 8.2,
@@ -548,8 +533,7 @@ export function Hero({
               stiffness: 200,
               damping: 20
             }}
-            className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center px-2 sm:px-0"
-            style={{ gap: 'clamp(0.75rem, 1vw, 1rem)' }}
+            className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4"
           >
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
@@ -568,7 +552,7 @@ export function Hero({
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="absolute inset-0 rounded-lg bg-gold blur-xl -z-10"
+                className="absolute inset-0 rounded-lg bg-gold blur-md -z-10"
               />
               
               <Button asChild size="xl" className="shadow-g1-glow relative overflow-hidden group w-full sm:w-auto min-h-[56px]">
@@ -628,13 +612,14 @@ export function Hero({
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ duration: 1.2, delay: 9, ease: "easeInOut" }}
-            className="h-px mx-auto bg-gradient-to-r from-transparent via-gold to-transparent origin-center"
-            style={{ marginTop: 'clamp(2rem, 3vw, 4rem)', width: 'clamp(5rem, 8vw, 8rem)' }}
+            className="h-px mx-auto bg-gradient-to-r from-transparent via-gold to-transparent origin-center mt-8 sm:mt-10"
+            style={{ width: 'clamp(5rem, 8vw, 8rem)' }}
           />
-        </motion.div>
+        </div>
+      </Container>
 
-        {/* Enhanced scroll cue - Mobile optimized */}
-        {showScrollCue && (
+      {/* Enhanced scroll cue - Mobile optimized */}
+      {showScrollCue && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -667,8 +652,6 @@ export function Hero({
             </motion.div>
           </motion.div>
         )}
-        </Container>
-      </div>
 
       {/* Radial gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-luxury-bg/30 pointer-events-none" />
