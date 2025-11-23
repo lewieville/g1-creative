@@ -35,7 +35,7 @@ export function ServiceCard({
   const Icon = iconMap[iconName] || Palette
   
   const cardContent = (
-    <div className="relative h-full flex flex-col">
+    <div className="relative flex flex-col h-full">
       {/* Icon container with elegant styling */}
       <div className="mb-6 sm:mb-8">
         <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br from-gold/10 to-gold/5 border-2 border-gold/30 relative overflow-hidden group-hover:border-gold/60 group-hover:bg-gold/10 transition-all duration-500">
@@ -96,7 +96,7 @@ export function ServiceCard({
   )
 
   const cardClassName = cn(
-    "group relative p-6 sm:p-8 lg:p-10 xl:p-12 rounded-2xl border-2 border-gold/30 hover:border-gold/60 bg-luxury-panel/50 backdrop-blur-sm transition-all duration-500 overflow-hidden h-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-g1-glow",
+    "group relative p-6 sm:p-8 lg:p-10 xl:p-12 rounded-2xl border-2 border-gold/30 hover:border-gold/60 bg-luxury-panel/50 backdrop-blur-sm transition-all duration-500 h-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-g1-glow flex flex-col",
     href && "cursor-pointer hover:-translate-y-2",
     className
   )
