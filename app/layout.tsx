@@ -7,6 +7,7 @@ import { StickyCTA } from "@/components/StickyCTA"
 import { AnimatedCursor } from "@/components/AnimatedCursor"
 import { ClientLayout } from "@/components/ClientLayout"
 import { SocialProofTicker } from "@/components/SocialProofTicker"
+import { ChatWidget } from "@/components/ChatWidget"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 import { GA_TRACKING_ID } from "@/lib/analytics"
 
@@ -69,6 +70,7 @@ export default function RootLayout({
           <Footer />
           <StickyCTA />
           <SocialProofTicker />
+          <ChatWidget />
         </ClientLayout>
       </body>
     </html>
