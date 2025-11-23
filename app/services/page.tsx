@@ -9,7 +9,6 @@ import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { ScrollReveal } from "@/components/ScrollReveal"
 import Link from "next/link"
-import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -27,12 +26,6 @@ const iconMap: Record<string, LucideIcon> = {
   Smartphone,
   Shield,
 }
-
-export const metadata = generateSEOMetadata({
-  title: "Services - Professional Web Design & Development",
-  description: "Comprehensive web design, e-commerce, branding, maintenance, and SEO services. Expert solutions tailored to grow your business online.",
-  url: "/services",
-})
 
 const services = [
   {
