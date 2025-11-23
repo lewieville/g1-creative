@@ -115,11 +115,12 @@ export function Hero({
         />
       ))}
 
-      <Container className="relative z-10 px-4 sm:px-6" style={{ paddingTop: 'clamp(5rem, 7vw, 7rem)', paddingBottom: 'clamp(3rem, 5vw, 5rem)' }}>
-        <motion.div 
-          className="max-w-4xl mx-auto text-center w-full"
-          style={prefersReducedMotion ? {} : { opacity }}
-        >
+      <div className="relative z-10 px-4 sm:px-6" style={{ paddingTop: 'clamp(5rem, 7vw, 7rem)', paddingBottom: 'clamp(3rem, 5vw, 5rem)' }}>
+        <Container>
+          <motion.div 
+            className="max-w-4xl mx-auto text-center w-full"
+            style={prefersReducedMotion ? {} : { opacity }}
+          >
           {/* Animated logo with handwriting effect */}
           <div className="mb-6 flex justify-center" style={{ marginBottom: 'clamp(1.5rem, 2vw, 2rem)' }}>
             <AnimatedLogo
@@ -667,7 +668,8 @@ export function Hero({
             </motion.div>
           </motion.div>
         )}
-      </Container>
+        </Container>
+      </div>
 
       {/* Radial gradient overlay for depth */}
       <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-luxury-bg/30 pointer-events-none" />
