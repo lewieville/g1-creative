@@ -114,9 +114,9 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <Hero
-        problem="Your website isn't converting. Visitors leave in 8 seconds."
-        agitate="Meanwhile, your competitors are capturing those leads."
-        solution="We build websites that turn browsers into buyers."
+        problem="You deserve a digital presence that attracts customers, not scares them away."
+        agitate="Whether you're starting from scratch or need a complete overhaul,"
+        solution="We'll build a website that turns browsers into buyers."
         benefits={[
           "Get a website that converts 3x better than templates",
           "Launch in 4 weeks, not 4 months",
