@@ -266,8 +266,8 @@ export function Hero({
                 initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
                 animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
                 transition={prefersReducedMotion ? {} : { 
-                  duration: 0.8,
-                  delay: 0.6,
+                  duration: 1,
+                  delay: 5.2,
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 className="relative"
@@ -285,8 +285,8 @@ export function Hero({
                       scale: [0.8, 1.2, 1],
                     }}
                     transition={{
-                      duration: 1,
-                      delay: 0.7,
+                      duration: 1.5,
+                      delay: 5.2,
                       ease: "easeOut"
                     }}
                     className="absolute inset-0 blur-2xl bg-gold/20 -z-10"
@@ -310,7 +310,7 @@ export function Hero({
                       }}
                       transition={{
                         duration: 0.6,
-                        delay: 0.7 + (i * 0.08),
+                        delay: 5.4 + (i * 0.15),
                         ease: [0.22, 1, 0.36, 1]
                       }}
                       className="inline-block mr-[0.2em] origin-bottom"
@@ -326,8 +326,8 @@ export function Hero({
                           initial={{ x: "-100%" }}
                           animate={{ x: "200%" }}
                           transition={{
-                            duration: 1.2,
-                            delay: 1 + (i * 0.1),
+                            duration: 1.5,
+                            delay: 5.6 + (i * 0.15),
                             ease: "easeInOut"
                           }}
                           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
@@ -351,8 +351,8 @@ export function Hero({
                       rotate: [0, 360]
                     }}
                     transition={{ 
-                      duration: 0.6,
-                      delay: 1.2,
+                      duration: 0.8,
+                      delay: 6.8,
                       ease: [0.34, 1.56, 0.64, 1]
                     }}
                   >
@@ -426,7 +426,7 @@ export function Hero({
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 1.5 }}
+              transition={{ duration: 0.6, delay: 7.2 }}
               className="max-w-3xl mx-auto mb-10 sm:mb-12"
             >
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
@@ -444,8 +444,8 @@ export function Hero({
                       scale: 1
                     }}
                     transition={{
-                      duration: 0.5,
-                      delay: 1.6 + (index * 0.1),
+                      duration: 0.6,
+                      delay: 7.4 + (index * 0.15),
                       ease: [0.22, 1, 0.36, 1]
                     }}
                     whileHover={{ 
@@ -460,8 +460,8 @@ export function Hero({
                         initial={{ scale: 0, rotate: -180 }}
                         animate={{ scale: 1, rotate: 0 }}
                         transition={{
-                          duration: 0.4,
-                          delay: 1.7 + (index * 0.1),
+                          duration: 0.5,
+                          delay: 7.5 + (index * 0.15),
                           ease: [0.34, 1.56, 0.64, 1]
                         }}
                         className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center group-hover:bg-gold/30 group-hover:border-gold/60 transition-all duration-300 relative overflow-hidden"
@@ -474,7 +474,7 @@ export function Hero({
                           }}
                           transition={{
                             duration: 2,
-                            delay: 1.8 + (index * 0.1),
+                            delay: 7.7 + (index * 0.15),
                             repeat: Infinity,
                             ease: "easeInOut"
                           }}
@@ -487,7 +487,7 @@ export function Hero({
                           animate={{ pathLength: 1, opacity: 1 }}
                           transition={{
                             duration: 0.4,
-                            delay: 1.8 + (index * 0.1),
+                            delay: 7.7 + (index * 0.15),
                             ease: "easeOut"
                           }}
                         >
@@ -505,7 +505,7 @@ export function Hero({
                           animate={{ opacity: 1, y: 0 }}
                           transition={{
                             duration: 0.2,
-                            delay: 1.8 + (index * 0.1) + (wordIndex * 0.02),
+                            delay: 7.6 + (index * 0.15) + (wordIndex * 0.03),
                             ease: "easeOut"
                           }}
                           className="inline-block mr-[0.3em]"
@@ -525,8 +525,8 @@ export function Hero({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
-              duration: 0.6,
-              delay: 2,
+              duration: 0.8,
+              delay: 8.2,
               type: "spring",
               stiffness: 200,
               damping: 20
@@ -546,7 +546,7 @@ export function Hero({
                 }}
                 transition={{
                   duration: 2,
-                  delay: 2.2,
+                  delay: 8.4,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
@@ -561,7 +561,7 @@ export function Hero({
                     animate={{ x: ["-200%", "200%"] }}
                     transition={{
                       duration: 2,
-                      delay: 2.4,
+                      delay: 8.7,
                       repeat: Infinity,
                       repeatDelay: 3,
                       ease: "easeInOut"
@@ -591,8 +591,8 @@ export function Hero({
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ 
-                  duration: 0.5,
-                  delay: 2.2,
+                  duration: 0.6,
+                  delay: 8.5,
                 }}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -609,7 +609,7 @@ export function Hero({
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 2.4, ease: "easeInOut" }}
+            transition={{ duration: 1.2, delay: 9, ease: "easeInOut" }}
             className="h-px mx-auto bg-gradient-to-r from-transparent via-gold to-transparent origin-center mt-8 sm:mt-10"
             style={{ width: 'clamp(5rem, 8vw, 8rem)' }}
           />
