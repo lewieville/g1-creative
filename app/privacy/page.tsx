@@ -39,7 +39,7 @@ export default function PrivacyPolicyPage() {
                   Introduction
                 </h2>
                 <p>
-                  G1 Creative ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://g1creative.com" className="text-gold hover:text-gold-light transition-colors">g1creative.com</a> and use our services.
+                  G1 Creative (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <a href="https://g1creative.com" className="text-gold hover:text-gold-light transition-colors">g1creative.com</a> and use our services.
                 </p>
                 <p>
                   Please read this Privacy Policy carefully. By accessing or using our website and services, you agree to be bound by the terms described in this policy. If you do not agree with our policies and practices, please do not use our services.
@@ -204,7 +204,7 @@ export default function PrivacyPolicyPage() {
                   Changes to This Privacy Policy
                 </h2>
                 <p>
-                  We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.
+                  We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date. You are advised to review this Privacy Policy periodically for any changes.
                 </p>
               </section>
 

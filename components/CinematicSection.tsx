@@ -61,10 +61,12 @@ export function CinematicSection({
             className={`relative ${reverse ? "lg:col-start-1 lg:row-start-1" : ""}`}
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden glass-panel border border-gold/10">
-              <img
+              <Image
                 src={image}
                 alt={imageAlt}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-luxury-bg/50 to-transparent" />

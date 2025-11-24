@@ -39,7 +39,7 @@ export default function TermsOfServicePage() {
                   Agreement to Terms
                 </h2>
                 <p>
-                  These Terms of Service ("Terms") constitute a legally binding agreement between you ("Client," "you," or "your") and G1 Creative ("we," "our," or "us") regarding your use of our website and services. By accessing or using our website at <a href="https://g1creative.com" className="text-gold hover:text-gold-light transition-colors">g1creative.com</a> or engaging our services, you agree to be bound by these Terms.
+                  These Terms of Service (&quot;Terms&quot;) constitute a legally binding agreement between you (&quot;Client,&quot; &quot;you,&quot; or &quot;your&quot;) and G1 Creative (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) regarding your use of our website and services. By accessing or using our website at <a href="https://g1creative.com" className="text-gold hover:text-gold-light transition-colors">g1creative.com</a> or engaging our services, you agree to be bound by these Terms.
                 </p>
                 <p>
                   If you do not agree with any part of these Terms, you must not use our website or services. We reserve the right to modify these Terms at any time, and such modifications will be effective immediately upon posting.
@@ -51,7 +51,7 @@ export default function TermsOfServicePage() {
                   Services Description
                 </h2>
                 <p>
-                  G1 Creative provides web design, web development, e-commerce solutions, branding, UI/UX design, SEO optimization, and related digital marketing services (collectively, "Services"). The specific scope, deliverables, timeline, and pricing for each project will be outlined in a separate written agreement or proposal.
+                  G1 Creative provides web design, web development, e-commerce solutions, branding, UI/UX design, SEO optimization, and related digital marketing services (collectively, &quot;Services&quot;). The specific scope, deliverables, timeline, and pricing for each project will be outlined in a separate written agreement or proposal.
                 </p>
                 <p>
                   We reserve the right to:
@@ -172,7 +172,7 @@ export default function TermsOfServicePage() {
                   <li>We are not liable for delays caused by factors outside our reasonable control</li>
                 </ul>
                 <p className="mt-4">
-                  EXCEPT AS EXPRESSLY SET FORTH HEREIN, OUR SERVICES ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
+                  EXCEPT AS EXPRESSLY SET FORTH HEREIN, OUR SERVICES ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
                 </p>
               </section>
 
@@ -193,7 +193,7 @@ export default function TermsOfServicePage() {
                   Indemnification
                 </h2>
                 <p>
-                  You agree to indemnify, defend, and hold harmless G1 Creative and its officers, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorneys' fees) arising out of or related to:
+                  You agree to indemnify, defend, and hold harmless G1 Creative and its officers, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorneys&apos; fees) arising out of or related to:
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Your use of our Services</li>
