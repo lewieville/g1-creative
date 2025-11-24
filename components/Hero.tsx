@@ -120,7 +120,7 @@ export function Hero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="space-y-6 sm:space-y-8 mb-10 sm:mb-12"
+              className="space-y-3 sm:space-y-4 mb-10 sm:mb-12"
             >
               {/* Problem - Typewriter effect with character-by-character reveal */}
               {prefersReducedMotion ? (
