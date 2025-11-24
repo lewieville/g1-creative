@@ -8,9 +8,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 interface ScrollRevealProps {
   children: React.ReactNode
-  direction?: "left" | "right" | "up" | "down"
+  direction?: "left" | "right" | "up" | "down" | "scale" | "fade"
   delay?: number
   className?: string
+  stagger?: number
 }
 
 export function ScrollReveal({
@@ -18,6 +19,7 @@ export function ScrollReveal({
   direction = "up",
   delay = 0,
   className = "",
+  stagger = 0,
 }: ScrollRevealProps) {
   const elementRef = useRef<HTMLDivElement>(null)
 
@@ -29,37 +31,51 @@ export function ScrollReveal({
     const rect = element.getBoundingClientRect()
     const isInViewport = rect.top < window.innerHeight * 0.9
 
-    // If already visible, don't animate
-    if (isInViewport) {
-      gsap.set(element, { opacity: 1, x: 0, y: 0 })
-      return
-    }
-
-    // Define animation based on direction
+    // Define animation based on direction - PROFESSIONAL ANIMATIONS
     const animations: Record<string, any> = {
-      left: { x: -100, opacity: 0 },
-      right: { x: 100, opacity: 0 },
-      up: { y: 100, opacity: 0 },
-      down: { y: -100, opacity: 0 },
+      left: { x: -60, opacity: 0, scale: 0.95 },
+      right: { x: 60, opacity: 0, scale: 0.95 },
+      up: { y: 60, opacity: 0, scale: 0.95 },
+      down: { y: -60, opacity: 0, scale: 0.95 },
+      scale: { scale: 0.9, opacity: 0 },
+      fade: { opacity: 0 },
     }
 
     const fromVars = animations[direction]
 
+    // If already visible, animate in immediately with no scroll trigger
+    if (isInViewport) {
+      gsap.fromTo(
+        element,
+        fromVars,
+        {
+          x: 0,
+          y: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          delay: delay,
+          ease: "power3.out",
+        }
+      )
+      return
+    }
+
+    // Professional scroll-triggered animation
     gsap.fromTo(
       element,
-      {
-        ...fromVars,
-      },
+      fromVars,
       {
         x: 0,
         y: 0,
+        scale: 1,
         opacity: 1,
-        duration: 1.2,
+        duration: 1,
         delay,
         ease: "power3.out",
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       }
@@ -68,7 +84,7 @@ export function ScrollReveal({
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
     }
-  }, [direction, delay])
+  }, [direction, delay, stagger])
 
   return (
     <div ref={elementRef} className={`h-full ${className}`}>

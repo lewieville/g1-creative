@@ -165,34 +165,38 @@ export default function HomePage() {
         <GradientMesh intensity="low" speed="slow" />
         
         <Container>
-          <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
-              Expertise
-            </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
-              What We Do
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
-              Bespoke digital solutions crafted to elevate your brand and drive measurable growth
-            </p>
-          </div>
+          <ScrollReveal direction="fade">
+            <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+              <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
+                Expertise
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
+                What We Do
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+                Bespoke digital solutions crafted to elevate your brand and drive measurable growth
+              </p>
+            </div>
+          </ScrollReveal>
           
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 mb-12 sm:mb-16">
             {services.map((service, index) => (
-              <ScrollReveal key={index} direction="up" delay={index * 0.2}>
+              <ScrollReveal key={index} direction="scale" delay={index * 0.15}>
                 <ServiceCard {...service} />
               </ScrollReveal>
             ))}
           </div>
           
-          <div className="text-center">
-            <Button asChild size="lg" variant="outline" className="group w-full sm:w-auto min-h-[56px]">
-              <Link href="/services" className="flex items-center gap-2 justify-center">
-                Explore All Capabilities
-                <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Link>
-            </Button>
-          </div>
+          <ScrollReveal direction="up" delay={0.5}>
+            <div className="text-center">
+              <Button asChild size="lg" variant="outline" className="group w-full sm:w-auto min-h-[56px]">
+                <Link href="/services" className="flex items-center gap-2 justify-center">
+                  Explore All Capabilities
+                  <span className="inline-block group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </Link>
+              </Button>
+            </div>
+          </ScrollReveal>
         </Container>
       </MotionSection>
 
