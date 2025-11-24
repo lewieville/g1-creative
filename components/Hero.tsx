@@ -54,9 +54,9 @@ export function Hero({
   const [problemComplete, setProblemComplete] = useState(false)
   const [agitateComplete, setAgitateComplete] = useState(false)
 
-  // Optimized typewriter effect using state instead of multiple motion.span elements
+  // Optimized typewriter effect - always runs regardless of reduced motion preference
   useEffect(() => {
-    if (prefersReducedMotion || !problem || !agitate) {
+    if (!problem || !agitate) {
       setProblemText(problem || "")
       setAgitateText(agitate || "")
       setProblemComplete(true)
@@ -64,50 +64,55 @@ export function Hero({
       return
     }
 
-    // Problem typewriter
+    let problemInterval: NodeJS.Timeout
+    let agitateInterval: NodeJS.Timeout
+
+    // Problem typewriter - starts after initial fade in
     const problemDelay = setTimeout(() => {
       setShowProblemCursor(true)
       let index = 0
-      const problemInterval = setInterval(() => {
+      problemInterval = setInterval(() => {
         if (index < problem.length) {
           setProblemText(problem.slice(0, index + 1))
           index++
         } else {
           clearInterval(problemInterval)
           setProblemComplete(true)
-          // Blink cursor a few times then start agitate
+          
+          // Cursor blinks for 1.5 seconds then moves to agitate
           setTimeout(() => {
             setShowProblemCursor(false)
             
-            // Agitate typewriter
-            if (agitate) {
-              setTimeout(() => {
-                setShowAgitateCursor(true)
-                let agitateIndex = 0
-                const agitateInterval = setInterval(() => {
-                  if (agitateIndex < agitate.length) {
-                    setAgitateText(agitate.slice(0, agitateIndex + 1))
-                    agitateIndex++
-                  } else {
-                    clearInterval(agitateInterval)
-                    setAgitateComplete(true)
-                    // Blink cursor then hide
-                    setTimeout(() => {
-                      setShowAgitateCursor(false)
-                    }, 2000)
-                  }
-                }, 30) // 30ms per character
-              }, 300)
-            }
-          }, 2000)
+            // Start agitate typewriter immediately after problem cursor disappears
+            setTimeout(() => {
+              setShowAgitateCursor(true)
+              let agitateIndex = 0
+              agitateInterval = setInterval(() => {
+                if (agitateIndex < agitate.length) {
+                  setAgitateText(agitate.slice(0, agitateIndex + 1))
+                  agitateIndex++
+                } else {
+                  clearInterval(agitateInterval)
+                  setAgitateComplete(true)
+                  
+                  // Cursor blinks for 1.5 seconds then disappears
+                  setTimeout(() => {
+                    setShowAgitateCursor(false)
+                  }, 1500)
+                }
+              }, 25) // 25ms per character for slightly faster typing
+            }, 200)
+          }, 1500)
         }
-      }, 30) // 30ms per character
+      }, 25) // 25ms per character for slightly faster typing
+    }, 800) // Start after logo and initial fade-in
 
-      return () => clearInterval(problemInterval)
-    }, 700)
-
-    return () => clearTimeout(problemDelay)
-  }, [problem, agitate, prefersReducedMotion])
+    return () => {
+      clearTimeout(problemDelay)
+      if (problemInterval) clearInterval(problemInterval)
+      if (agitateInterval) clearInterval(agitateInterval)
+    }
+  }, [problem, agitate])
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-bg px-0">
@@ -263,12 +268,13 @@ export function Hero({
                 )}
               </motion.div>
 
-              {/* Solution - Optimized reveal */}
+              {/* Solution - Optimized reveal with proper timing */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: agitateComplete ? 1 : 0, y: agitateComplete ? 0 : 20 }}
                 transition={{ 
-                  duration: 0.8,
+                  duration: 0.7,
+                  delay: 0.5, // Wait for underline to finish
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 className="relative"
@@ -279,7 +285,12 @@ export function Hero({
                 >
                   {/* Static glow background for performance */}
                   {agitateComplete && (
-                    <div className="absolute inset-0 blur-xl bg-gold/15 -z-10" />
+                    <motion.div 
+                      className="absolute inset-0 blur-xl bg-gold/15 -z-10"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                    />
                   )}
                   
                   {solution.split(' ').map((word, i) => (
@@ -288,8 +299,8 @@ export function Hero({
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: agitateComplete ? 1 : 0, y: agitateComplete ? 0 : 20 }}
                       transition={{
-                        duration: 0.5,
-                        delay: i * 0.1,
+                        duration: 0.4,
+                        delay: 0.6 + (i * 0.08), // Faster word stagger
                         ease: [0.22, 1, 0.36, 1]
                       }}
                       className="inline-block mr-[0.2em]"
@@ -312,8 +323,8 @@ export function Hero({
                         rotate: 360
                       }}
                       transition={{ 
-                        duration: 0.6,
-                        delay: 0.8,
+                        duration: 0.5,
+                        delay: 1.2, // After all words appear
                         ease: "easeOut"
                       }}
                     >
@@ -383,12 +394,12 @@ export function Hero({
             </>
           ) : null}
 
-          {/* Outcome-Driven Benefits List - optimized */}
+          {/* Outcome-Driven Benefits List - optimized, waits for solution headline */}
           {benefits.length > 0 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: agitateComplete ? 1 : 0 }}
-              transition={{ duration: 0.6, delay: 1.5 }}
+              transition={{ duration: 0.6, delay: 2.0 }}
               className="max-w-3xl mx-auto mb-10 sm:mb-12"
             >
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
@@ -401,8 +412,8 @@ export function Hero({
                       y: agitateComplete ? 0 : 20
                     }}
                     transition={{
-                      duration: 0.5,
-                      delay: 1.6 + (index * 0.1),
+                      duration: 0.4,
+                      delay: 2.1 + (index * 0.08), // Stagger after solution
                       ease: [0.22, 1, 0.36, 1]
                     }}
                     whileHover={{ 
@@ -433,8 +444,8 @@ export function Hero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: agitateComplete ? 1 : 0, y: agitateComplete ? 0 : 20 }}
             transition={{ 
-              duration: 0.6,
-              delay: 2.2,
+              duration: 0.5,
+              delay: 2.8, // After benefits start appearing
               ease: [0.22, 1, 0.36, 1]
             }}
             className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4"
@@ -465,11 +476,11 @@ export function Hero({
             )}
           </motion.div>
 
-          {/* Decorative line divider */}
+          {/* Decorative line divider - appears after CTA */}
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: agitateComplete ? 1 : 0, opacity: agitateComplete ? 1 : 0 }}
-            transition={{ duration: 0.8, delay: 2.5, ease: "easeOut" }}
+            transition={{ duration: 0.7, delay: 3.2, ease: "easeOut" }}
             className="h-px mx-auto bg-gradient-to-r from-transparent via-gold to-transparent origin-center mt-8 sm:mt-10"
             style={{ width: 'clamp(5rem, 8vw, 8rem)' }}
           />
