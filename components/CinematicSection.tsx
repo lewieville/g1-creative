@@ -33,10 +33,11 @@ export function CinematicSection({
         >
           {/* Text Content */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity" }}
             className={`space-y-6 ${reverse ? "lg:col-start-2" : ""}`}
           >
             {subtitle && (
@@ -55,10 +56,11 @@ export function CinematicSection({
 
           {/* Image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            style={{ willChange: "transform, opacity" }}
             className={`relative ${reverse ? "lg:col-start-1 lg:row-start-1" : ""}`}
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden glass-panel border border-gold/10">
@@ -68,13 +70,14 @@ export function CinematicSection({
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                loading="lazy"
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-luxury-bg/50 to-transparent" />
             </div>
 
-            {/* Decorative elements */}
-            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold/5 rounded-full blur-3xl" />
+            {/* Decorative elements - reduced blur for performance */}
+            <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[100%] bg-gold/5 rounded-full blur-2xl" />
           </motion.div>
         </div>
       </Container>

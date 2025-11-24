@@ -161,8 +161,7 @@ export default function HomePage() {
       <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Animated gradient mesh background */}
-        <GradientMesh intensity="low" speed="slow" />
+        {/* GradientMesh removed - performance optimization */}
         
         <Container>
           <motion.div
@@ -188,10 +187,11 @@ export default function HomePage() {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
+                style={{ willChange: "transform, opacity" }}
               >
                 <ServiceCard {...service} />
               </motion.div>
@@ -220,8 +220,7 @@ export default function HomePage() {
       <MotionSection className="bg-luxury-bg relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Animated gradient mesh background */}
-        <GradientMesh intensity="low" speed="slow" />
+        {/* GradientMesh removed - performance optimization */}
         
         <Container>
           <motion.div
@@ -247,10 +246,11 @@ export default function HomePage() {
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-30px" }}
+                transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
+                style={{ willChange: "transform, opacity" }}
               >
                 <PortfolioCard {...project} />
               </motion.div>
@@ -279,8 +279,7 @@ export default function HomePage() {
       <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
         
-        {/* Animated gradient mesh background */}
-        <GradientMesh intensity="low" speed="slow" />
+        {/* Animated gradient mesh background - removed duplicate */}
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20 relative z-10">
@@ -304,7 +303,7 @@ export default function HomePage() {
       {/* FAQ Section */}
       <MotionSection className="bg-luxury-bg relative py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
-        <GradientMesh intensity="low" speed="slow" />
+        {/* GradientMesh removed - too many instances */}
         
         <Container>
           <div className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20">
@@ -355,8 +354,7 @@ export default function HomePage() {
       {/* CTA Section */}
       <MotionSection className="bg-luxury-surface relative overflow-hidden py-20 sm:py-24 md:py-28 lg:py-40">
         <div className="gold-divider" />
-        {/* Animated gradient mesh background */}
-        <GradientMesh intensity="medium" speed="medium" />
+        {/* GradientMesh removed - too many instances */}
         
         <Container className="relative z-10">
           <div className="text-center max-w-4xl mx-auto">

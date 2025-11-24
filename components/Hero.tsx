@@ -75,8 +75,8 @@ export function Hero({
       {/* Animated gradient mesh background - optimized */}
       {!prefersReducedMotion && <GradientMesh intensity="low" speed="slow" />}
 
-      {/* Floating particles - optimized count for performance */}
-      {!prefersReducedMotion && [...Array(6)].map((_, i) => (
+      {/* Floating particles - reduced count for better performance */}
+      {!prefersReducedMotion && [...Array(2)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-gold/30 rounded-full"
@@ -136,29 +136,16 @@ export function Hero({
                   style={{ fontSize: 'clamp(0.9375rem, 1.25vw, 1.25rem)' }}
                 >
                   <motion.span
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ 
-                      duration: 2,
+                      duration: 0.6,
                       delay: 0.7,
                       ease: "easeInOut"
                     }}
-                    className="inline-block overflow-hidden break-words"
+                    className="inline-block break-words"
                   >
-                    {problem.split('').map((char, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{
-                          duration: 0.05,
-                          delay: 0.7 + (i * 0.03),
-                        }}
-                        className={char === ' ' ? "inline-block w-[0.3em]" : "inline-block"}
-                      >
-                        {char === ' ' ? '\u00A0' : char}
-                      </motion.span>
-                    ))}
+                    {problem}
                   </motion.span>
                   
                   {/* Blinking cursor */}
@@ -197,41 +184,28 @@ export function Hero({
                   >
                     {/* Background glow that pulses in - REDUCED */}
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: [0, 0.15, 0.08], scale: 1 }}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: [0, 0.1, 0.05], scale: 1 }}
                       transition={{ 
-                        duration: 1,
+                        duration: 0.8,
                         delay: 2.9,
                         ease: "easeOut"
                       }}
-                      className="absolute inset-0 blur-xl bg-red-500/10 -z-10"
+                      className="absolute inset-0 blur-lg bg-red-500/8 -z-10"
                       style={{ willChange: "transform, opacity" }}
                     />
                     
                     <motion.span
-                      initial={{ width: 0 }}
-                      animate={{ width: "100%" }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ 
-                        duration: 1.8,
+                        duration: 0.6,
                         delay: 3,
                         ease: "easeInOut"
                       }}
-                      className="inline-block overflow-hidden break-words"
+                      className="inline-block break-words"
                     >
-                      {agitate.split('').map((char, i) => (
-                        <motion.span
-                          key={i}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.05,
-                            delay: 3 + (i * 0.025),
-                          }}
-                          className={char === ' ' ? "inline-block w-[0.3em]" : "inline-block"}
-                        >
-                          {char === ' ' ? '\u00A0' : char}
-                        </motion.span>
-                      ))}
+                      {agitate}
                     </motion.span>
                     
                     {/* Blinking cursor for second line */}
@@ -279,17 +253,17 @@ export function Hero({
                 >
                   {/* Animated glow background - REDUCED */}
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ 
-                      opacity: [0, 0.3, 0.2],
-                      scale: [0.8, 1.2, 1],
+                      opacity: [0, 0.2, 0.15],
+                      scale: [0.9, 1.1, 1],
                     }}
                     transition={{
-                      duration: 1.5,
+                      duration: 1,
                       delay: 5.2,
                       ease: "easeOut"
                     }}
-                    className="absolute inset-0 blur-2xl bg-gold/20 -z-10"
+                    className="absolute inset-0 blur-xl bg-gold/15 -z-10"
                     style={{ willChange: "transform, opacity" }}
                   />
                   
@@ -321,21 +295,6 @@ export function Hero({
                     >
                       <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent relative">
                         {word}
-                        {/* Shimmer effect that sweeps across */}
-                        <motion.span
-                          initial={{ x: "-100%" }}
-                          animate={{ x: "200%" }}
-                          transition={{
-                            duration: 1.5,
-                            delay: 5.6 + (i * 0.15),
-                            ease: "easeInOut"
-                          }}
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                          style={{ 
-                            backgroundClip: "text",
-                            willChange: "transform"
-                          }}
-                        />
                       </span>
                     </motion.span>
                   ))}
