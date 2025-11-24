@@ -1,11 +1,7 @@
 "use client"
 
-import { useRef, useEffect } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { motion } from "framer-motion"
 import { Container } from "@/components/ui/Container"
-
-gsap.registerPlugin(ScrollTrigger)
 
 interface CinematicSectionProps {
   title: string
@@ -26,83 +22,8 @@ export function CinematicSection({
   reverse = false,
   children,
 }: CinematicSectionProps) {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const textRef = useRef<HTMLDivElement>(null)
-  const imageRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const section = sectionRef.current
-    const text = textRef.current
-    const imageEl = imageRef.current
-    
-    if (!section || !text || !imageEl) return
-
-    // Parallax image effect
-    gsap.to(imageEl, {
-      y: -50,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-      },
-    })
-
-    // Text reveal animation
-    const textDirection = reverse ? 100 : -100
-    gsap.fromTo(
-      text,
-      {
-        x: textDirection,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    )
-
-    // Image reveal animation
-    const imageDirection = reverse ? -100 : 100
-    gsap.fromTo(
-      imageEl,
-      {
-        x: imageDirection,
-        opacity: 0,
-        scale: 1.1,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    )
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-    }
-  }, [reverse])
-
   return (
-    <div
-      ref={sectionRef}
-      className="relative py-20 sm:py-24 md:py-32 overflow-hidden"
-    >
+    <div className="relative py-20 sm:py-24 md:py-32 overflow-hidden">
       <Container>
         <div
           className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${
@@ -110,8 +31,11 @@ export function CinematicSection({
           }`}
         >
           {/* Text Content */}
-          <div
-            ref={textRef}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
             className={`space-y-6 ${reverse ? "lg:col-start-2" : ""}`}
           >
             {subtitle && (
@@ -126,11 +50,14 @@ export function CinematicSection({
               {description}
             </p>
             {children && <div className="pt-4">{children}</div>}
-          </div>
+          </motion.div>
 
           {/* Image */}
-          <div
-            ref={imageRef}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7 }}
             className={`relative ${reverse ? "lg:col-start-1 lg:row-start-1" : ""}`}
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden glass-panel border border-gold/10">
@@ -145,7 +72,7 @@ export function CinematicSection({
 
             {/* Decorative elements */}
             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gold/5 rounded-full blur-3xl" />
-          </div>
+          </motion.div>
         </div>
       </Container>
 
