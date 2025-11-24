@@ -25,20 +25,19 @@ export function ScrollReveal({
     const element = elementRef.current
     if (!element) return
 
-    // Force element to be visible first
-    gsap.set(element, { opacity: 1 })
+    // Start fully visible
+    gsap.set(element, { opacity: 1, x: 0, y: 0 })
 
-    // Check if element is already in viewport
+    // Check if element is in viewport
     const rect = element.getBoundingClientRect()
-    const isInViewport = rect.top < window.innerHeight * 0.8
+    const isInViewport = rect.top < window.innerHeight * 0.75
 
-    // If already visible, don't animate at all
+    // If already visible, skip animation
     if (isInViewport) {
-      gsap.set(element, { x: 0, y: 0, opacity: 1 })
       return
     }
 
-    // Simple slide animations
+    // Simple slide animations for elements below fold
     const animations: Record<string, any> = {
       left: { x: -30 },
       right: { x: 30 },
@@ -50,7 +49,7 @@ export function ScrollReveal({
 
     gsap.fromTo(
       element,
-      { ...fromVars, opacity: 0.3 },
+      { ...fromVars, opacity: 0.5 },
       {
         x: 0,
         y: 0,
@@ -60,7 +59,7 @@ export function ScrollReveal({
         ease: "power2.out",
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
+          start: "top 85%",
           toggleActions: "play none none none",
         },
       }
@@ -72,7 +71,7 @@ export function ScrollReveal({
   }, [direction, delay])
 
   return (
-    <div ref={elementRef} className={className} style={{ opacity: 1 }}>
+    <div ref={elementRef} className={className}>
       {children}
     </div>
   )
