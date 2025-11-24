@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -20,18 +20,18 @@ export function ScrollReveal({
   className = "",
 }: ScrollRevealProps) {
   const elementRef = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const element = elementRef.current
     if (!element) return
 
-    // Check if element is already in viewport on mount
+    // Check if element is already in viewport
     const rect = element.getBoundingClientRect()
-    const isInViewport = rect.top < window.innerHeight && rect.bottom > 0
-    
+    const isInViewport = rect.top < window.innerHeight * 0.9
+
+    // If already visible, don't animate
     if (isInViewport) {
-      setIsVisible(true)
+      gsap.set(element, { opacity: 1, x: 0, y: 0 })
       return
     }
 
@@ -61,7 +61,6 @@ export function ScrollReveal({
           trigger: element,
           start: "top 90%",
           toggleActions: "play none none none",
-          onEnter: () => setIsVisible(true),
         },
       }
     )
@@ -72,11 +71,7 @@ export function ScrollReveal({
   }, [direction, delay])
 
   return (
-    <div 
-      ref={elementRef} 
-      className={`h-full ${className}`}
-      style={{ opacity: isVisible ? 1 : 0 }}
-    >
+    <div ref={elementRef} className={`h-full ${className}`}>
       {children}
     </div>
   )
