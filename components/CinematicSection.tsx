@@ -64,8 +64,8 @@ export function CinematicSection({
         ease: "power3.out",
         scrollTrigger: {
           trigger: section,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
+          start: "top 80%",
+          toggleActions: "play none none none",
         },
       }
     )
@@ -87,8 +87,8 @@ export function CinematicSection({
         ease: "power3.out",
         scrollTrigger: {
           trigger: section,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
+          start: "top 80%",
+          toggleActions: "play none none none",
         },
       }
     )

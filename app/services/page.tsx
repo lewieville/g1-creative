@@ -195,8 +195,8 @@ export default function ServicesPage() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: servicesRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
         }
       )
@@ -217,8 +217,8 @@ export default function ServicesPage() {
           ease: "back.out(1.7)",
           scrollTrigger: {
             trigger: processRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
         }
       )
@@ -236,8 +236,8 @@ export default function ServicesPage() {
           ease: "power3.out",
           scrollTrigger: {
             trigger: whyChooseRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
+            start: "top 85%",
+            toggleActions: "play none none none",
           },
         }
       )
