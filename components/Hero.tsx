@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/Container"
 import { GradientMesh } from "@/components/GradientMesh"
 import { AnimatedLogo } from "@/components/AnimatedLogo"
 import { motion, useReducedMotion } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 
 interface HeroProps {
   title?: string
@@ -45,6 +45,69 @@ export function Hero({
 }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
+  
+  // Typewriter state
+  const [problemText, setProblemText] = useState("")
+  const [agitateText, setAgitateText] = useState("")
+  const [showProblemCursor, setShowProblemCursor] = useState(false)
+  const [showAgitateCursor, setShowAgitateCursor] = useState(false)
+  const [problemComplete, setProblemComplete] = useState(false)
+  const [agitateComplete, setAgitateComplete] = useState(false)
+
+  // Optimized typewriter effect using state instead of multiple motion.span elements
+  useEffect(() => {
+    if (prefersReducedMotion || !problem || !agitate) {
+      setProblemText(problem || "")
+      setAgitateText(agitate || "")
+      setProblemComplete(true)
+      setAgitateComplete(true)
+      return
+    }
+
+    // Problem typewriter
+    const problemDelay = setTimeout(() => {
+      setShowProblemCursor(true)
+      let index = 0
+      const problemInterval = setInterval(() => {
+        if (index < problem.length) {
+          setProblemText(problem.slice(0, index + 1))
+          index++
+        } else {
+          clearInterval(problemInterval)
+          setProblemComplete(true)
+          // Blink cursor a few times then start agitate
+          setTimeout(() => {
+            setShowProblemCursor(false)
+            
+            // Agitate typewriter
+            if (agitate) {
+              setTimeout(() => {
+                setShowAgitateCursor(true)
+                let agitateIndex = 0
+                const agitateInterval = setInterval(() => {
+                  if (agitateIndex < agitate.length) {
+                    setAgitateText(agitate.slice(0, agitateIndex + 1))
+                    agitateIndex++
+                  } else {
+                    clearInterval(agitateInterval)
+                    setAgitateComplete(true)
+                    // Blink cursor then hide
+                    setTimeout(() => {
+                      setShowAgitateCursor(false)
+                    }, 2000)
+                  }
+                }, 30) // 30ms per character
+              }, 300)
+            }
+          }, 2000)
+        }
+      }, 30) // 30ms per character
+
+      return () => clearInterval(problemInterval)
+    }, 700)
+
+    return () => clearTimeout(problemDelay)
+  }, [problem, agitate, prefersReducedMotion])
 
   return (
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-bg px-0">
@@ -78,13 +141,12 @@ export function Hero({
       {/* Animated gradient mesh background - optimized */}
       {!prefersReducedMotion && <GradientMesh intensity="low" speed="slow" />}
 
-      {/* Floating particles - reduced count for better performance */}
-      {!prefersReducedMotion && [...Array(2)].map((_, i) => (
+      {/* Floating particles - minimal for performance */}
+      {!prefersReducedMotion && (
         <motion.div
-          key={i}
           className="absolute w-1 h-1 bg-gold/30 rounded-full"
           initial={{ 
-            x: `${20 + (i * 12)}%`,
+            x: "25%",
             y: "100%",
             opacity: 0 
           }}
@@ -93,17 +155,16 @@ export function Hero({
             opacity: [0, 1, 0],
           }}
           transition={{
-            duration: 4 + (i * 0.5),
-            delay: i * 0.3,
+            duration: 5,
             repeat: Infinity,
             ease: "linear",
           }}
           style={{ 
-            left: `${10 + (i * 15)}%`,
+            left: "15%",
             willChange: "transform, opacity"
           }}
         />
-      ))}
+      )}
 
       <div className="relative z-10 w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8">
         <Container>
@@ -125,176 +186,113 @@ export function Hero({
               transition={{ duration: 0.5, delay: 0.4 }}
               className="space-y-2 sm:space-y-3 mb-8 sm:mb-10"
             >
-              {/* Problem - Typewriter effect with character-by-character reveal */}
-              {prefersReducedMotion ? (
-                <p className="text-luxury-muted/80 font-medium break-words leading-relaxed" style={{ fontSize: 'clamp(0.9375rem, 1.25vw, 1.25rem)' }}>
-                  {problem}
-                </p>
-              ) : (
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.6 }}
-                  className="text-luxury-muted/80 font-medium break-words leading-relaxed"
-                  style={{ fontSize: 'clamp(0.9375rem, 1.25vw, 1.25rem)' }}
-                >
+              {/* Problem - Optimized typewriter effect using state */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
+                className="text-luxury-muted/80 font-medium break-words leading-relaxed"
+                style={{ fontSize: 'clamp(0.9375rem, 1.25vw, 1.25rem)' }}
+              >
+                {problemText}
+                {showProblemCursor && (
                   <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ 
-                      duration: 0.6,
-                      delay: 0.7,
-                      ease: "easeInOut"
-                    }}
-                    className="inline-block break-words"
-                  >
-                    {problem}
-                  </motion.span>
-                  
-                  {/* Blinking cursor */}
-                  <motion.span
-                    animate={{ opacity: [1, 0, 1] }}
+                    animate={{ opacity: [1, 0] }}
                     transition={{
-                      duration: 0.8,
-                      delay: 0.7,
-                      repeat: 3,
+                      duration: 0.5,
+                      repeat: Infinity,
                       ease: "linear"
                     }}
                     className="inline-block w-0.5 h-5 sm:h-6 bg-luxury-muted/60 ml-1 align-middle"
                   />
-                </motion.p>
-              )}
+                )}
+              </motion.p>
 
-              {/* Agitate - Slide and scale with dramatic emphasis */}
-              {prefersReducedMotion ? (
-                <p className="text-luxury-muted font-semibold break-words leading-relaxed" style={{ fontSize: 'clamp(1.0625rem, 1.625vw, 1.75rem)' }}>
-                  {agitate}
-                </p>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ 
-                    duration: 0.6, 
-                    delay: 2.8,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                  className="relative"
+              {/* Agitate - Optimized typewriter effect using state */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: agitateText ? 1 : 0 }}
+                transition={{ 
+                  duration: 0.3,
+                  ease: "easeOut"
+                }}
+                className="relative"
+              >
+                <motion.p
+                  className="text-luxury-muted font-semibold break-words leading-relaxed"
+                  style={{ fontSize: 'clamp(1.0625rem, 1.625vw, 1.75rem)' }}
                 >
-                    <motion.p
-                    className="text-luxury-muted font-semibold break-words leading-relaxed"
-                    style={{ fontSize: 'clamp(1.0625rem, 1.625vw, 1.75rem)' }}
-                  >
-                    {/* Background glow that pulses in - REDUCED */}
+                  {/* Background glow - minimal */}
+                  {agitateComplete && (
                     <motion.div
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: [0, 0.1, 0.05], scale: 1 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 0.08 }}
                       transition={{ 
-                        duration: 0.8,
-                        delay: 2.9,
+                        duration: 0.5,
                         ease: "easeOut"
                       }}
-                      className="absolute inset-0 blur-lg bg-red-500/8 -z-10"
-                      style={{ willChange: "transform, opacity" }}
+                      className="absolute inset-0 blur-lg bg-red-500/20 -z-10"
                     />
-                    
+                  )}
+                  
+                  {agitateText}
+                  {showAgitateCursor && (
                     <motion.span
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ 
-                        duration: 0.6,
-                        delay: 3,
-                        ease: "easeInOut"
-                      }}
-                      className="inline-block break-words"
-                    >
-                      {agitate}
-                    </motion.span>
-                    
-                    {/* Blinking cursor for second line */}
-                    <motion.span
-                      animate={{ opacity: [1, 0, 1] }}
+                      animate={{ opacity: [1, 0] }}
                       transition={{
-                        duration: 0.8,
-                        delay: 3,
-                        repeat: 3,
+                        duration: 0.5,
+                        repeat: Infinity,
                         ease: "linear"
                       }}
                       className="inline-block w-0.5 h-6 sm:h-7 bg-luxury-muted/60 ml-1 align-middle"
                     />
-                  </motion.p>
-                  
-                  {/* Animated underline that draws in - adjusted timing */}
+                  )}
+                </motion.p>
+                
+                {/* Animated underline */}
+                {agitateComplete && (
                   <motion.div
                     initial={{ scaleX: 0, opacity: 0 }}
                     animate={{ scaleX: 1, opacity: 1 }}
                     transition={{ 
-                      duration: 0.8, 
-                      delay: 4.8,
+                      duration: 0.8,
                       ease: [0.22, 1, 0.36, 1]
                     }}
                     className="absolute -bottom-2 sm:-bottom-3 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold/50 to-transparent origin-left"
                   />
-                </motion.div>
-              )}
+                )}
+              </motion.div>
 
-              {/* Solution - Dramatic reveal with glow and scale */}
+              {/* Solution - Optimized reveal */}
               <motion.div
-                initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
-                animate={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-                transition={prefersReducedMotion ? {} : { 
-                  duration: 1,
-                  delay: 5.2,
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: agitateComplete ? 1 : 0, y: agitateComplete ? 0 : 20 }}
+                transition={{ 
+                  duration: 0.8,
                   ease: [0.22, 1, 0.36, 1]
                 }}
                 className="relative"
-                style={{ willChange: "transform, opacity" }}
               >
                 <motion.h1
                   className="font-heading font-bold leading-tight break-words"
                   style={{ fontSize: 'clamp(1.875rem, 4.5vw, 4.25rem)', lineHeight: '1.1', letterSpacing: '-0.01em' }}
                 >
-                  {/* Animated glow background - REDUCED */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ 
-                      opacity: [0, 0.2, 0.15],
-                      scale: [0.9, 1.1, 1],
-                    }}
-                    transition={{
-                      duration: 1,
-                      delay: 5.2,
-                      ease: "easeOut"
-                    }}
-                    className="absolute inset-0 blur-xl bg-gold/15 -z-10"
-                    style={{ willChange: "transform, opacity" }}
-                  />
+                  {/* Static glow background for performance */}
+                  {agitateComplete && (
+                    <div className="absolute inset-0 blur-xl bg-gold/15 -z-10" />
+                  )}
                   
                   {solution.split(' ').map((word, i) => (
                     <motion.span
                       key={i}
-                      initial={prefersReducedMotion ? { opacity: 0 } : { 
-                        opacity: 0, 
-                        y: 50,
-                        rotateX: 90,
-                        filter: "blur(10px)"
-                      }}
-                      animate={prefersReducedMotion ? { opacity: 1 } : { 
-                        opacity: 1, 
-                        y: 0,
-                        rotateX: 0,
-                        filter: "blur(0px)"
-                      }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: agitateComplete ? 1 : 0, y: agitateComplete ? 0 : 20 }}
                       transition={{
-                        duration: 0.6,
-                        delay: 5.4 + (i * 0.15),
+                        duration: 0.5,
+                        delay: i * 0.1,
                         ease: [0.22, 1, 0.36, 1]
                       }}
-                      className="inline-block mr-[0.2em] origin-bottom"
-                      style={{ 
-                        perspective: "1000px",
-                        willChange: "transform, opacity, filter"
-                      }}
+                      className="inline-block mr-[0.2em]"
                     >
                       <span className="bg-gradient-to-r from-gold via-gold-light to-gold bg-clip-text text-transparent relative">
                         {word}
@@ -302,24 +300,26 @@ export function Hero({
                     </motion.span>
                   ))}
                   
-                  {/* Sparkle accent with delayed pop-in */}
-                  <motion.span
-                    className="absolute text-gold"
-                    style={{ top: 'clamp(-0.5rem, -1vw, -1rem)', right: 'clamp(-0.5rem, -1vw, -1rem)' }}
-                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                    animate={{ 
-                      opacity: 1,
-                      scale: [0, 1.3, 1],
-                      rotate: [0, 360]
-                    }}
-                    transition={{ 
-                      duration: 0.8,
-                      delay: 6.8,
-                      ease: [0.34, 1.56, 0.64, 1]
-                    }}
-                  >
-                    <Sparkles style={{ width: 'clamp(1.5rem, 2vw, 2rem)', height: 'clamp(1.5rem, 2vw, 2rem)' }} />
-                  </motion.span>
+                  {/* Sparkle accent */}
+                  {agitateComplete && (
+                    <motion.span
+                      className="absolute text-gold"
+                      style={{ top: 'clamp(-0.5rem, -1vw, -1rem)', right: 'clamp(-0.5rem, -1vw, -1rem)' }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ 
+                        opacity: 1,
+                        scale: 1,
+                        rotate: 360
+                      }}
+                      transition={{ 
+                        duration: 0.6,
+                        delay: 0.8,
+                        ease: "easeOut"
+                      }}
+                    >
+                      <Sparkles style={{ width: 'clamp(1.5rem, 2vw, 2rem)', height: 'clamp(1.5rem, 2vw, 2rem)' }} />
+                    </motion.span>
+                  )}
                 </motion.h1>
               </motion.div>
             </motion.div>
@@ -383,98 +383,44 @@ export function Hero({
             </>
           ) : null}
 
-          {/* Outcome-Driven Benefits List with Staggered Entrance - adjusted timing */}
+          {/* Outcome-Driven Benefits List - optimized */}
           {benefits.length > 0 && (
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 7.2 }}
+              animate={{ opacity: agitateComplete ? 1 : 0 }}
+              transition={{ duration: 0.6, delay: 1.5 }}
               className="max-w-3xl mx-auto mb-10 sm:mb-12"
             >
               <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                 {benefits.map((benefit, index) => (
                   <motion.div
                     key={index}
-                    initial={{ 
-                      opacity: 0, 
-                      x: index % 2 === 0 ? -30 : 30,
-                      scale: 0.8
-                    }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ 
-                      opacity: 1, 
-                      x: 0,
-                      scale: 1
+                      opacity: agitateComplete ? 1 : 0,
+                      y: agitateComplete ? 0 : 20
                     }}
                     transition={{
-                      duration: 0.6,
-                      delay: 7.4 + (index * 0.15),
+                      duration: 0.5,
+                      delay: 1.6 + (index * 0.1),
                       ease: [0.22, 1, 0.36, 1]
                     }}
                     whileHover={{ 
-                      scale: 1.03,
+                      scale: 1.02,
                       transition: { duration: 0.2 }
                     }}
                     className="flex items-start gap-2 sm:gap-3 group"
                   >
-                    <div className="flex-shrink-0 mt-1 relative">
-                      {/* Checkmark with animated circle */}
-                      <motion.div
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{
-                          duration: 0.5,
-                          delay: 7.5 + (index * 0.15),
-                          ease: [0.34, 1.56, 0.64, 1]
-                        }}
-                        className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center group-hover:bg-gold/30 group-hover:border-gold/60 transition-all duration-300 relative overflow-hidden"
-                      >
-                        {/* Pulsing background */}
-                        <motion.div
-                          animate={{ 
-                            scale: [1, 1.5, 1],
-                            opacity: [0.3, 0, 0.3]
-                          }}
-                          transition={{
-                            duration: 2,
-                            delay: 7.7 + (index * 0.15),
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
-                          className="absolute inset-0 bg-gold/50 rounded-full"
-                        />
-                        
-                        {/* Checkmark icon with draw-in animation */}
-                        <motion.div
-                          initial={{ pathLength: 0, opacity: 0 }}
-                          animate={{ pathLength: 1, opacity: 1 }}
-                          transition={{
-                            duration: 0.4,
-                            delay: 7.7 + (index * 0.15),
-                            ease: "easeOut"
-                          }}
-                        >
-                          <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-gold relative z-10" />
-                        </motion.div>
-                      </motion.div>
+                    <div className="flex-shrink-0 mt-1">
+                      {/* Simplified checkmark */}
+                      <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center group-hover:bg-gold/30 group-hover:border-gold/60 transition-all duration-300">
+                        <CheckCircle2 className="w-3 h-3 sm:w-4 sm:h-4 text-gold" />
+                      </div>
                     </div>
                     
-                    {/* Benefit text with word-by-word reveal */}
+                    {/* Benefit text - no word-by-word animation for performance */}
                     <p className="text-luxury-muted leading-relaxed group-hover:text-luxury-text transition-colors break-words flex-1 min-w-0" style={{ fontSize: 'clamp(0.9375rem, 1.1vw, 1.0625rem)' }}>
-                      {benefit.split(' ').map((word, wordIndex) => (
-                        <motion.span
-                          key={wordIndex}
-                          initial={{ opacity: 0, y: 5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{
-                            duration: 0.2,
-                            delay: 7.6 + (index * 0.15) + (wordIndex * 0.03),
-                            ease: "easeOut"
-                          }}
-                          className="inline-block mr-[0.3em]"
-                        >
-                          {word}
-                        </motion.span>
-                      ))}
+                      {benefit}
                     </p>
                   </motion.div>
                 ))}
@@ -482,82 +428,34 @@ export function Hero({
             </motion.div>
           )}
 
-          {/* CTA with magnetic hover effect and final reveal */}
+          {/* CTA - optimized */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: agitateComplete ? 1 : 0, y: agitateComplete ? 0 : 20 }}
             transition={{ 
-              duration: 0.8,
-              delay: 8.2,
-              type: "spring",
-              stiffness: 200,
-              damping: 20
+              duration: 0.6,
+              delay: 2.2,
+              ease: [0.22, 1, 0.36, 1]
             }}
             className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4"
           >
             <motion.div
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto relative group"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="w-full sm:w-auto"
             >
-              {/* Animated pulse ring */}
-              <motion.div
-                animate={{ 
-                  scale: [1, 1.15, 1],
-                  opacity: [0.5, 0, 0.5]
-                }}
-                transition={{
-                  duration: 2,
-                  delay: 8.4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute inset-0 rounded-lg bg-gold blur-md -z-10"
-              />
-              
-              <Button asChild size="xl" className="shadow-g1-glow relative overflow-hidden group w-full sm:w-auto min-h-[56px]">
-                <Link href={primaryCTA.href} className="relative z-10">
-                  {/* Animated shimmer sweep */}
-                  <motion.span
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-gold-light/50 to-transparent"
-                    animate={{ x: ["-200%", "200%"] }}
-                    transition={{
-                      duration: 2,
-                      delay: 8.7,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                      ease: "easeInOut"
-                    }}
-                  />
-                  
-                  <span className="relative z-10 flex items-center justify-center">
-                    {primaryCTA.text}
-                    <motion.span
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ 
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                      className="ml-2"
-                    >
-                      <ArrowRight className="h-5 w-5" />
-                    </motion.span>
-                  </span>
+              <Button asChild size="xl" className="shadow-g1-glow w-full sm:w-auto min-h-[56px]">
+                <Link href={primaryCTA.href} className="flex items-center justify-center">
+                  {primaryCTA.text}
+                  <ArrowRight className="h-5 w-5 ml-2" />
                 </Link>
               </Button>
             </motion.div>
             
             {secondaryCTA && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ 
-                  duration: 0.6,
-                  delay: 8.5,
-                }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 className="w-full sm:w-auto"
               >
                 <Button asChild variant="subtle" size="xl" className="w-full sm:w-auto min-h-[56px]">
@@ -567,11 +465,11 @@ export function Hero({
             )}
           </motion.div>
 
-          {/* Decorative line divider with draw animation */}
+          {/* Decorative line divider */}
           <motion.div
             initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ duration: 1.2, delay: 9, ease: "easeInOut" }}
+            animate={{ scaleX: agitateComplete ? 1 : 0, opacity: agitateComplete ? 1 : 0 }}
+            transition={{ duration: 0.8, delay: 2.5, ease: "easeOut" }}
             className="h-px mx-auto bg-gradient-to-r from-transparent via-gold to-transparent origin-center mt-8 sm:mt-10"
             style={{ width: 'clamp(5rem, 8vw, 8rem)' }}
           />
