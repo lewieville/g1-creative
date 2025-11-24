@@ -116,7 +116,7 @@ export default function HomePage() {
       <Hero
         problem="You deserve a digital presence that attracts customers, not scares them away."
         agitate="Whether you're starting from scratch or need a complete overhaul,"
-        solution="We'll build a website that turns browsers into buyers."
+        solution="We build websites that turn browsers into buyers."
         benefits={[
           "Get a website that converts 3x better than templates",
           "Launch in 4 weeks, not 4 months",
