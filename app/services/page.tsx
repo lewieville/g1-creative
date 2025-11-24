@@ -160,22 +160,20 @@ export default function ServicesPage() {
     if (heroRef.current) {
       gsap.fromTo(
         heroRef.current.querySelector("h1"),
-        { opacity: 0, y: 50, filter: "blur(10px)" },
+        { opacity: 0, y: 50 },
         {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           duration: 1,
           ease: "power3.out",
         }
       )
       gsap.fromTo(
         heroRef.current.querySelector("p"),
-        { opacity: 0, y: 30, filter: "blur(10px)" },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           duration: 0.8,
           delay: 0.3,
           ease: "power3.out",
@@ -188,11 +186,10 @@ export default function ServicesPage() {
       const cards = servicesRef.current.querySelectorAll(".service-card")
       gsap.fromTo(
         cards,
-        { opacity: 0, y: 80, filter: "blur(10px)" },
+        { opacity: 0, y: 80 },
         {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
           duration: 1,
           stagger: 0.15,
           ease: "power3.out",
@@ -231,11 +228,10 @@ export default function ServicesPage() {
     if (whyChooseRef.current) {
       gsap.fromTo(
         whyChooseRef.current.querySelector("h2"),
-        { opacity: 0, x: -50, filter: "blur(10px)" },
+        { opacity: 0, x: -50 },
         {
           opacity: 1,
           x: 0,
-          filter: "blur(0px)",
           duration: 1,
           ease: "power3.out",
           scrollTrigger: {

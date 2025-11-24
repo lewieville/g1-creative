@@ -56,12 +56,10 @@ export function CinematicSection({
       {
         x: textDirection,
         opacity: 0,
-        filter: "blur(10px)",
       },
       {
         x: 0,
         opacity: 1,
-        filter: "blur(0px)",
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
@@ -80,13 +78,11 @@ export function CinematicSection({
         x: imageDirection,
         opacity: 0,
         scale: 1.1,
-        filter: "blur(10px)",
       },
       {
         x: 0,
         opacity: 1,
         scale: 1,
-        filter: "blur(0px)",
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {

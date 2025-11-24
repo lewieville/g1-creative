@@ -39,13 +39,11 @@ export function ScrollReveal({
       element,
       {
         ...fromVars,
-        filter: "blur(10px)",
       },
       {
         x: 0,
         y: 0,
         opacity: 1,
-        filter: "blur(0px)",
         duration: 1.2,
         delay,
         ease: "power3.out",
