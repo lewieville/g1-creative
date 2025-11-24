@@ -4,32 +4,44 @@ import "./globals.css"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { StickyCTA } from "@/components/StickyCTA"
-import { AnimatedCursor } from "@/components/AnimatedCursor"
 import { ClientLayout } from "@/components/ClientLayout"
-import { SocialProofTicker } from "@/components/SocialProofTicker"
-import { ChatWidget } from "@/components/ChatWidget"
+import dynamic from "next/dynamic"
 import { generateMetadata as generateSEOMetadata } from "@/lib/seo"
 import { GA_TRACKING_ID } from "@/lib/analytics"
 
+// Lazy load heavy components
+const SocialProofTicker = dynamic(() => import("@/components/SocialProofTicker").then(mod => ({ default: mod.SocialProofTicker })), {
+  ssr: false,
+  loading: () => null,
+})
+
+const ChatWidget = dynamic(() => import("@/components/ChatWidget").then(mod => ({ default: mod.ChatWidget })), {
+  ssr: false,
+  loading: () => null,
+})
+
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"], // Reduced weights
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 })
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700"], // Reduced weights
   variable: "--font-playfair",
   display: "swap",
+  preload: true,
 })
 
 const cinzel = Cinzel({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"], // Reduced weights
   variable: "--font-cinzel",
   display: "swap",
+  preload: false, // Less critical
 })
 
 export const metadata: Metadata = {
@@ -42,6 +54,11 @@ export const metadata: Metadata = {
     icon: '/g1-logo.png',
     apple: '/g1-logo.png',
   },
+  // Performance optimizations
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://g1creative.com'),
+  other: {
+    'x-content-type-options': 'nosniff',
+  },
 }
 
 export default function RootLayout({
@@ -52,14 +69,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${cinzel.variable}`}>
       <head>
-        {/* Google Analytics */}
+        {/* Resource hints for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        
+        {/* Google Analytics - Deferred for better performance */}
         {GA_TRACKING_ID && (
           <>
             <script
-              async
+              defer
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
             />
             <script
+              defer
               dangerouslySetInnerHTML={{
                 __html: `
                   window.dataLayer = window.dataLayer || [];
@@ -76,7 +99,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-luxury-bg text-luxury-text">
         <ClientLayout>
-          <AnimatedCursor />
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />

@@ -2,21 +2,29 @@
 
 import Link from "next/link"
 import { Palette, ShoppingCart, Sparkles } from "lucide-react"
+import dynamic from "next/dynamic"
 import { Hero } from "@/components/Hero"
 import { ServiceCard } from "@/components/ServiceCard"
 import { PortfolioCard } from "@/components/PortfolioCard"
-import { TestimonialsCarousel } from "@/components/TestimonialsCarousel"
 import { Button } from "@/components/ui/Button"
 import { Section } from "@/components/ui/Section"
 import { Container } from "@/components/ui/Container"
 import { MotionSection } from "@/components/MotionSection"
 import { CinematicSection } from "@/components/CinematicSection"
-import { ScrollReveal } from "@/components/ScrollReveal"
 import { DynamicCTA } from "@/components/DynamicCTA"
-import { GradientMesh } from "@/components/GradientMesh"
 import { motion } from "framer-motion"
 import { generateOrganizationSchema, generateWebsiteSchema, generateLocalBusinessSchema } from "@/lib/seo"
-import { FAQ } from "@/components/FAQ"
+
+// Lazy load heavy components below the fold
+const TestimonialsCarousel = dynamic(() => import("@/components/TestimonialsCarousel").then(mod => ({ default: mod.TestimonialsCarousel })), {
+  ssr: false,
+  loading: () => <div className="h-64 flex items-center justify-center text-luxury-muted">Loading testimonials...</div>,
+})
+
+const FAQ = dynamic(() => import("@/components/FAQ").then(mod => ({ default: mod.FAQ })), {
+  ssr: true,
+  loading: () => null,
+})
 
 const services = [
   {

@@ -25,22 +25,6 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Hide default cursor only on desktop (pointer devices) */
-  @media (pointer: fine) {
-    body {
-      cursor: none;
-    }
-    * {
-      cursor: none !important;
-    }
-  }
-  
-  /* Ensure proper cursor on mobile/touch devices */
-  @media (pointer: coarse) {
-    body, * {
-      cursor: auto !important;
-    }
-  }
 
   /* Smooth scrolling */
   html {
