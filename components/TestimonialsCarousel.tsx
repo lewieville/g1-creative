@@ -19,7 +19,7 @@ const testimonials = [
   },
   {
     quote:
-      "Lewis built an incredible trading journal platform for CTR Trades that connects to a robust backend with multi-user database functionality. The landing page perfectly captures our brand, and the journal system has become essential for our trading community. The technical execution was flawless.",
+      "I am truly impressed with the quality work Lewis put into my business Trading Journal. He took a basic excel spreadsheet and created/developed an AMAZING, interactive, automated, online Trading Journal. It is the most professional journal I have ever come across and that was all thanks to Lewis&apos; &quot;outside of the box&quot;, creative design and programming layout. There were plenty of bells and whistles in this trading journal that I didn&apos;t even think to have, which made my job a lot easier when it comes to trading. I really enjoyed working with Lewis because he took the time to truly hear what I was needing in a journal and he not only met all my requirements but far exceeded them. I highly recommend Lewis to anyone I come across as he can do it all from programing, designing, and creating a powerful unique &quot;one of a kind&quot; solution to meet and exceed your expectations! Oh... and he did all of this in such a short period of time!! Truly impressed!!",
     author: {
       name: "Andy",
       title: "Founder",
