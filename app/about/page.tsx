@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Award, Users, Target, Heart, Code2, Sparkles, Coffee, Rocket, Mail, Handshake, MessageCircle, ExternalLink, LucideIcon } from "lucide-react"
+import { Award, Users, Target, Heart, Code2, Sparkles, Coffee, Rocket, Handshake, MessageCircle, ExternalLink, LucideIcon } from "lucide-react"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { GradientMesh } from "@/components/GradientMesh"
@@ -28,7 +28,7 @@ export default function AboutPage() {
               <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-g1-glow ring-2 ring-gold/30 group">
                 <Image
                   src="/images/lewis-personal.jpg"
-                  alt="Lewis Miller - The person behind G1 Creative"
+                  alt="Lewis - The person behind G1 Creative"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   priority
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.5 }}
                 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text leading-tight"
               >
-                I&apos;m Lewis Miller
+                I&apos;m Lewis
               </motion.h1>
               
               <motion.div
@@ -541,7 +541,6 @@ export default function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button asChild size="xl" className="shadow-g1-glow">
                 <Link href="/contact">
-                  <Mail className="w-5 h-5 mr-2" />
                   Get In Touch
                 </Link>
               </Button>
