@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Award, Users, Target, Heart, Code2, Sparkles, Coffee, Rocket, Mail, Handshake, MessageCircle, GraduationCap, Briefcase, ExternalLink, LucideIcon } from "lucide-react"
+import { Award, Users, Target, Heart, Code2, Sparkles, Coffee, Rocket, Mail, Handshake, MessageCircle, ExternalLink, LucideIcon } from "lucide-react"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { GradientMesh } from "@/components/GradientMesh"
@@ -131,181 +131,6 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Visual Timeline */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-16"
-            >
-              <div className="relative max-w-4xl mx-auto">
-                {/* Timeline line */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gold/30 via-gold/20 to-gold/30 hidden md:block" />
-                
-                <div className="space-y-12">
-                  {/* Timeline Item 1 */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="relative flex items-start gap-6 md:gap-8"
-                  >
-                    <div className="relative z-10 flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gold/10 border-2 border-gold/30 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                        <GraduationCap className="w-7 h-7 text-gold" />
-                      </div>
-                    </div>
-                    <div className="flex-grow pt-1">
-                      <div className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-gold font-semibold text-sm">2020-2022</span>
-                          <span className="text-luxury-muted text-sm">•</span>
-                          <span className="text-luxury-muted text-sm">Southern Virginia University</span>
-                        </div>
-                        <h3 className="text-xl font-heading font-bold text-luxury-text mb-2">
-                          Computer Science Student
-                        </h3>
-                        <p className="text-luxury-muted">
-                          Pursuing my Bachelor&apos;s while building real businesses on the side
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Timeline Item 2 */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="relative flex items-start gap-6 md:gap-8"
-                  >
-                    <div className="relative z-10 flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gold/10 border-2 border-gold/30 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                        <Sparkles className="w-7 h-7 text-gold" />
-                      </div>
-                    </div>
-                    <div className="flex-grow pt-1">
-                      <div className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-gold font-semibold text-sm">2021-2022</span>
-                          <span className="text-luxury-muted text-sm">•</span>
-                          <span className="text-luxury-muted text-sm">Founder & Developer</span>
-                        </div>
-                        <h3 className="text-xl font-heading font-bold text-luxury-text mb-2">
-                          LEWON Styles
-                        </h3>
-                        <p className="text-luxury-muted">
-                          Built my first e-commerce business from scratch—coded the website, managed marketing, learned what actually works
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Timeline Item 3 */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="relative flex items-start gap-6 md:gap-8"
-                  >
-                    <div className="relative z-10 flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gold/10 border-2 border-gold/30 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                        <Code2 className="w-7 h-7 text-gold" />
-                      </div>
-                    </div>
-                    <div className="flex-grow pt-1">
-                      <div className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-gold font-semibold text-sm">2022-2023</span>
-                          <span className="text-luxury-muted text-sm">•</span>
-                          <span className="text-luxury-muted text-sm">IT Specialist</span>
-                        </div>
-                        <h3 className="text-xl font-heading font-bold text-luxury-text mb-2">
-                          Seed to Table
-                        </h3>
-                        <p className="text-luxury-muted">
-                          Supported hardware and software systems, built custom computers, learned the importance of reliable infrastructure
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Timeline Item 4 */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    className="relative flex items-start gap-6 md:gap-8"
-                  >
-                    <div className="relative z-10 flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gold/10 border-2 border-gold/30 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                        <Briefcase className="w-7 h-7 text-gold" />
-                      </div>
-                    </div>
-                    <div className="flex-grow pt-1">
-                      <div className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-gold font-semibold text-sm">2023-2024</span>
-                          <span className="text-luxury-muted text-sm">•</span>
-                          <span className="text-luxury-muted text-sm">CEO</span>
-                        </div>
-                        <h3 className="text-xl font-heading font-bold text-luxury-text mb-2 flex items-center gap-2">
-                          CTR Trades
-                          <Link href="/portfolio/ctr-trades" className="text-gold hover:text-gold-light transition-colors">
-                            <ExternalLink className="w-4 h-4" />
-                          </Link>
-                        </h3>
-                        <p className="text-luxury-muted mb-3">
-                          Managed SEO strategies, built an engaged trading community, developed educational content that helped people succeed
-                        </p>
-                        <Link href="/portfolio/ctr-trades">
-                          <Button variant="outline" size="sm" className="group">
-                            View Case Study
-                            <ExternalLink className="w-3 h-3 ml-2 group-hover:translate-x-0.5 transition-transform" />
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-                  </motion.div>
-
-                  {/* Timeline Item 5 */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="relative flex items-start gap-6 md:gap-8"
-                  >
-                    <div className="relative z-10 flex-shrink-0">
-                      <div className="w-16 h-16 rounded-full bg-gold/20 border-2 border-gold/50 flex items-center justify-center group-hover:bg-gold/30 transition-colors shadow-g1-glow">
-                        <Rocket className="w-7 h-7 text-gold" />
-                      </div>
-                    </div>
-                    <div className="flex-grow pt-1">
-                      <div className="glass-panel p-6 hover:shadow-g1-glow transition-all duration-500 border border-gold/20">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-gold font-semibold text-sm">2024 - Present</span>
-                          <span className="text-luxury-muted text-sm">•</span>
-                          <span className="text-luxury-muted text-sm">Founder & Developer</span>
-                        </div>
-                        <h3 className="text-xl font-heading font-bold text-luxury-text mb-2">
-                          G1 Creative
-                        </h3>
-                        <p className="text-luxury-muted">
-                          Building custom web solutions for businesses that want real results, not just pretty designs
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-
             <div className="space-y-8">
               {/* Story Card 1 */}
               <motion.div
@@ -317,7 +142,7 @@ export default function AboutPage() {
               >
                 <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
                   <Sparkles className="w-6 h-6 text-gold" />
-                  It Started with an Idea (And a Lot of Coffee)
+                  It Started with an Idea (And a Lot of Caffeine)
                 </h3>
                 <p className="text-luxury-muted text-lg leading-relaxed">
                   My journey into web development didn&apos;t start in a classroom. It started with <span className="text-gold font-medium">LEWON Styles</span>—my first e-commerce business. I was a Computer Science student at Southern Virginia University, and instead of just learning theory, I dove headfirst into building something real. I coded the entire website from scratch, handled all the marketing, managed inventory, dealt with payment processors, and learned what makes people actually click &quot;Buy Now.&quot;
