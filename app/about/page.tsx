@@ -16,8 +16,8 @@ export default function AboutPage() {
       <div className="min-h-screen bg-luxury-bg relative overflow-hidden flex items-center">
         <GradientMesh intensity="low" speed="slow" />
         
-        <Container className="relative z-10 py-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <Container className="relative z-10 py-12 sm:py-16 md:py-24 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             {/* Left: Personal Photo with artistic treatment */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -71,7 +71,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text leading-tight"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text leading-tight"
               >
                 I&apos;m Lewis
               </motion.h1>
@@ -80,7 +80,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="space-y-4 text-lg md:text-xl text-luxury-muted leading-relaxed"
+                className="space-y-4 text-base sm:text-lg md:text-xl text-luxury-muted leading-relaxed"
               >
                 <p>
                   <span className="text-gold font-semibold">Real talk:</span> I&apos;m not your typical web developer who hides behind jargon and corporate speak.
@@ -97,12 +97,12 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
-                className="flex flex-wrap gap-4 pt-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4"
               >
-                <Button asChild size="lg" className="shadow-g1-glow">
+                <Button asChild size="lg" className="shadow-g1-glow w-full sm:w-auto">
                   <Link href="/contact">Let&apos;s Work Together</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg">
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
                   <Link href="#story">Read My Story ↓</Link>
                 </Button>
               </motion.div>
@@ -112,7 +112,7 @@ export default function AboutPage() {
       </div>
 
       {/* The Real Story Section */}
-      <section id="story" className="bg-luxury-surface py-20 md:py-32 relative overflow-hidden">
+      <section id="story" className="bg-luxury-surface py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
         <div className="gold-divider absolute top-0 left-0 right-0" />
         <Container>
           <motion.div
@@ -122,11 +122,11 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 px-4 sm:px-0">
                 The Journey Behind the Work
               </h2>
-              <p className="text-xl text-gold font-medium">
+              <p className="text-lg sm:text-xl text-gold font-medium px-4 sm:px-0">
                 Or: How I Learned to Stop Worrying and Love Web Development
               </p>
             </div>
@@ -138,16 +138,16 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="glass-panel p-8 md:p-10 hover:shadow-g1-glow transition-all duration-500 border-l-4 border-gold/50"
+                className="glass-panel p-6 sm:p-8 md:p-10 hover:shadow-g1-glow transition-all duration-500 border-l-4 border-gold/50"
               >
-                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
-                  <Sparkles className="w-6 h-6 text-gold" />
-                  It Started with an Idea (And a Lot of Caffeine)
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-gold flex-shrink-0" />
+                  <span>It Started with an Idea (And a Lot of Caffeine)</span>
                 </h3>
-                <p className="text-luxury-muted text-lg leading-relaxed">
+                <p className="text-luxury-muted text-base sm:text-lg leading-relaxed">
                   My journey into web development didn&apos;t start in a classroom. It started with <span className="text-gold font-medium">LEWON Styles</span>—my first e-commerce business. I was a Computer Science student at Southern Virginia University, and instead of just learning theory, I dove headfirst into building something real. I coded the entire website from scratch, handled all the marketing, managed inventory, dealt with payment processors, and learned what makes people actually click &quot;Buy Now.&quot;
                 </p>
-                <p className="text-luxury-muted text-lg leading-relaxed mt-4">
+                <p className="text-luxury-muted text-base sm:text-lg leading-relaxed mt-4">
                   That business taught me more than any textbook ever could: <span className="text-luxury-text font-semibold">technology is only valuable when it solves real problems</span>. A beautiful website means nothing if it doesn&apos;t convert. Fast load times don&apos;t matter if your messaging is off. I learned this the hard way—through late nights, failed campaigns, and countless A/B tests.
                 </p>
               </motion.div>
@@ -158,16 +158,16 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="glass-panel p-8 md:p-10 hover:shadow-g1-glow transition-all duration-500 border-l-4 border-gold/50"
+                className="glass-panel p-6 sm:p-8 md:p-10 hover:shadow-g1-glow transition-all duration-500 border-l-4 border-gold/50"
               >
-                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
-                  <Code2 className="w-6 h-6 text-gold" />
-                  From IT Specialist to CEO
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                  <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-gold flex-shrink-0" />
+                  <span>From IT Specialist to CEO</span>
                 </h3>
-                <p className="text-luxury-muted text-lg leading-relaxed">
+                <p className="text-luxury-muted text-base sm:text-lg leading-relaxed">
                   After LEWON Styles, I worked as an IT Specialist at Seed to Table, where I supported everything from hardware to software systems (and yes, I built custom computers on the side). Then I became CEO of <span className="text-gold font-medium">CTR Trades</span>, a trading education platform where I managed SEO strategies, built an engaged community of traders, and developed educational content that actually helped people succeed.
                 </p>
-                <p className="text-luxury-muted text-lg leading-relaxed mt-4">
+                <p className="text-luxury-muted text-base sm:text-lg leading-relaxed mt-4">
                   Each role taught me something different. The common thread? <span className="text-luxury-text font-semibold">People don&apos;t care about your tech stack—they care about results</span>. They want websites that load fast, rank on Google, look professional, and most importantly, bring in customers.
                 </p>
                 <div className="mt-6">
@@ -186,16 +186,16 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="glass-panel p-8 md:p-10 hover:shadow-g1-glow transition-all duration-500 border-l-4 border-gold/50"
+                className="glass-panel p-6 sm:p-8 md:p-10 hover:shadow-g1-glow transition-all duration-500 border-l-4 border-gold/50"
               >
-                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
-                  <Rocket className="w-6 h-6 text-gold" />
-                  Why G1 Creative Exists
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                  <Rocket className="w-5 h-5 sm:w-6 sm:h-6 text-gold flex-shrink-0" />
+                  <span>Why G1 Creative Exists</span>
                 </h3>
-                <p className="text-luxury-muted text-lg leading-relaxed">
+                <p className="text-luxury-muted text-base sm:text-lg leading-relaxed">
                   After years of building websites, managing businesses, and seeing what actually works, I realized something: most small businesses are stuck between two bad options. They can either pay $10,000+ for a big agency that treats them like just another client, or they can buy a $50 template that looks like everyone else&apos;s.
                 </p>
-                <p className="text-luxury-muted text-lg leading-relaxed mt-4">
+                <p className="text-luxury-muted text-base sm:text-lg leading-relaxed mt-4">
                   <span className="text-gold font-semibold">G1 Creative exists to be the third option</span>—professional, custom web solutions at prices that make sense for growing businesses. You get direct access to me (no account managers, no middlemen), a website built specifically for your business, and the kind of attention to detail that comes from someone who&apos;s been in the trenches.
                 </p>
               </motion.div>
@@ -205,7 +205,7 @@ export default function AboutPage() {
       </section>
 
       {/* What Drives Me Section */}
-      <section className="bg-luxury-bg py-20 md:py-32 relative">
+      <section className="bg-luxury-bg py-12 sm:py-16 md:py-24 lg:py-32 relative">
         <div className="gold-divider absolute top-0 left-0 right-0" />
         <Container>
           <motion.div
@@ -213,31 +213,31 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 px-4 sm:px-0"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-4 sm:mb-6">
               What Actually Matters to Me
             </h2>
-            <p className="text-xl text-luxury-muted">
+            <p className="text-lg sm:text-xl text-luxury-muted">
               Beyond the code, beyond the pixels—here&apos;s what I truly care about
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto px-4 sm:px-0">
             {/* Value Card 1 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="glass-panel p-8 hover:shadow-g1-glow transition-all duration-500 group"
+              className="glass-panel p-6 sm:p-8 hover:shadow-g1-glow transition-all duration-500 group"
             >
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-gold/10 rounded-xl group-hover:bg-gold/20 transition-colors">
-                  <Heart className="w-6 h-6 text-gold" />
+              <div className="flex items-start gap-3 sm:gap-4">
+                <div className="p-2 sm:p-3 bg-gold/10 rounded-xl group-hover:bg-gold/20 transition-colors flex-shrink-0">
+                  <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-gold" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-heading font-bold text-luxury-text mb-3">
+                  <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-2 sm:mb-3">
                     Real Relationships
                   </h3>
                   <p className="text-luxury-muted leading-relaxed">
@@ -320,7 +320,7 @@ export default function AboutPage() {
       </section>
 
       {/* Skills/Expertise Section - More Personal Approach */}
-      <section className="bg-luxury-surface py-20 md:py-32 relative">
+      <section className="bg-luxury-surface py-12 sm:py-16 md:py-24 lg:py-32 relative">
         <div className="gold-divider absolute top-0 left-0 right-0" />
         <Container>
           <motion.div
@@ -328,17 +328,17 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 px-4 sm:px-0"
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-4 sm:mb-6">
               What I Bring to the Table
             </h2>
-            <p className="text-xl text-luxury-muted">
+            <p className="text-lg sm:text-xl text-luxury-muted">
               A full-stack skill set earned through real projects, real challenges, and real results
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto px-4 sm:px-0">
             {/* Skill Cards with Icons */}
             {[
               {
@@ -425,10 +425,10 @@ export default function AboutPage() {
       </section>
 
       {/* Why Work With Me - Personal Approach */}
-      <section className="bg-luxury-bg py-20 md:py-32 relative">
+      <section className="bg-luxury-bg py-12 sm:py-16 md:py-24 lg:py-32 relative">
         <div className="gold-divider absolute top-0 left-0 right-0" />
         <Container>
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center max-w-6xl mx-auto px-4 sm:px-0">
             {/* Left: Image/Visual Element */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -437,8 +437,8 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="glass-panel p-8 space-y-6">
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-luxury-text">
+              <div className="glass-panel p-6 sm:p-8 space-y-4 sm:space-y-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-luxury-text">
                   Here&apos;s What You&apos;re Actually Getting
                 </h2>
                 <div className="space-y-4">
@@ -474,12 +474,12 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="glass-panel p-8 border-l-4 border-gold/50">
-                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
-                  <div className="p-2 bg-gold/10 rounded-lg">
-                    <MessageCircle className="w-5 h-5 text-gold" />
+              <div className="glass-panel p-6 sm:p-8 border-l-4 border-gold/50">
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-gold/10 rounded-lg flex-shrink-0">
+                    <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
                   </div>
-                  Let&apos;s Talk Like Humans
+                  <span>Let&apos;s Talk Like Humans</span>
                 </h3>
                 <p className="text-luxury-muted leading-relaxed mb-4">
                   I know reaching out to a web developer can feel intimidating. Will they try to upsell me? Will they use tech jargon I don&apos;t understand? Will I just be another invoice number?
@@ -489,12 +489,12 @@ export default function AboutPage() {
                 </p>
               </div>
 
-              <div className="glass-panel p-8 border-l-4 border-gold/50">
-                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
-                  <div className="p-2 bg-gold/10 rounded-lg">
-                    <Handshake className="w-5 h-5 text-gold" />
+              <div className="glass-panel p-6 sm:p-8 border-l-4 border-gold/50">
+                <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                  <div className="p-1.5 sm:p-2 bg-gold/10 rounded-lg flex-shrink-0">
+                    <Handshake className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
                   </div>
-                  Building More Than Websites
+                  <span>Building More Than Websites</span>
                 </h3>
                 <p className="text-luxury-muted leading-relaxed">
                   At the end of the day, I&apos;m not here to just build you a website and disappear. I want to build a relationship. I want to see your business grow. I want to be the person you call when you need something tech-related, whether that&apos;s adding a new feature, troubleshooting an issue, or just getting advice.
@@ -506,7 +506,7 @@ export default function AboutPage() {
       </section>
 
       {/* Final CTA - Personal and Warm */}
-      <section className="bg-luxury-surface py-20 md:py-32 relative overflow-hidden">
+      <section className="bg-luxury-surface py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
         <div className="gold-divider absolute top-0 left-0 right-0" />
         <GradientMesh intensity="medium" speed="medium" />
         
@@ -516,26 +516,26 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center px-4 sm:px-0"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center justify-center mb-6"
+              className="inline-flex items-center justify-center mb-4 sm:mb-6"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-gold/20 rounded-full blur-xl" />
-                <div className="relative p-4 bg-gold/10 rounded-full border border-gold/30">
-                  <Handshake className="w-12 h-12 text-gold" />
+                <div className="relative p-3 sm:p-4 bg-gold/10 rounded-full border border-gold/30">
+                  <Handshake className="w-8 h-8 sm:w-12 sm:h-12 text-gold" />
                 </div>
               </div>
             </motion.div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-4 sm:mb-6">
               Let&apos;s Build Something Great Together
             </h2>
-            <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl text-luxury-muted mb-6 sm:mb-8 leading-relaxed">
               Whether you&apos;re launching a new business, revamping an existing site, or just have a question—I&apos;d love to hear from you. No pressure, no sales pitch. Just a real conversation about how I can help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

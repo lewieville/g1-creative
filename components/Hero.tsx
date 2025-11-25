@@ -54,7 +54,7 @@ export function Hero({
   const [problemComplete, setProblemComplete] = useState(false)
   const [agitateComplete, setAgitateComplete] = useState(false)
 
-  // Optimized typewriter effect - always runs regardless of reduced motion preference
+  // Optimized typewriter effect - only runs once per user
   useEffect(() => {
     if (!problem || !agitate) {
       setProblemText(problem || "")
@@ -62,6 +62,20 @@ export function Hero({
       setProblemComplete(true)
       setAgitateComplete(true)
       return
+    }
+
+    // Check if user has seen the typewriter effect before
+    if (typeof window !== "undefined") {
+      const hasSeenTypewriter = localStorage.getItem("g1-creative-has-seen-typewriter")
+      
+      if (hasSeenTypewriter) {
+        // User has seen it before - show text immediately
+        setProblemText(problem)
+        setAgitateText(agitate)
+        setProblemComplete(true)
+        setAgitateComplete(true)
+        return
+      }
     }
 
     let problemInterval: NodeJS.Timeout
@@ -94,6 +108,11 @@ export function Hero({
                 } else {
                   clearInterval(agitateInterval)
                   setAgitateComplete(true)
+                  
+                  // Mark that user has seen the typewriter effect
+                  if (typeof window !== "undefined") {
+                    localStorage.setItem("g1-creative-has-seen-typewriter", "true")
+                  }
                   
                   // Cursor blinks for 1.5 seconds then disappears
                   setTimeout(() => {
