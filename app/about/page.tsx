@@ -439,8 +439,8 @@ export default function AboutPage() {
                     "A partner who actually understands business, not just code",
                     "Custom solutions built for your specific goals and budget",
                     "Honest advice, even if it means talking you out of something unnecessary",
-                    "Fast turnaround times (because I&apos;m lean, not a massive agency)",
-                    "Ongoing support after launch—I don&apos;t just disappear"
+                    "Fast turnaround times (because I'm lean, not a massive agency)",
+                    "Ongoing support after launch—I don't just disappear"
                   ].map((benefit, i) => (
                     <motion.div
                       key={i}

@@ -469,8 +469,11 @@ export function Hero({
                 whileTap={{ scale: 0.97 }}
                 className="w-full sm:w-auto"
               >
-                <Button asChild variant="subtle" size="xl" className="w-full sm:w-auto min-h-[56px]">
-                  <Link href={secondaryCTA.href}>{secondaryCTA.text}</Link>
+                <Button asChild size="xl" className="shadow-g1-glow w-full sm:w-auto min-h-[56px]">
+                  <Link href={secondaryCTA.href} className="flex items-center justify-center">
+                    {secondaryCTA.text}
+                    <ArrowRight className="h-5 w-5 ml-2" />
+                  </Link>
                 </Button>
               </motion.div>
             )}

@@ -124,7 +124,7 @@ export default function HomePage() {
           "Average 142% increase in client conversions"
         ]}
         primaryCTA={{ text: "Let's Talk", href: "/contact" }}
-        secondaryCTA={{ text: "Learn Who's Behind the Code", href: "/about" }}
+        secondaryCTA={{ text: "Behind the Code", href: "/about" }}
         image="/images/hero-main.jpg"
         imageAlt="Bespoke web design showcase"
         showScrollCue={true}
