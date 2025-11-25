@@ -134,7 +134,7 @@ export default function HomePage() {
         subtitle="The Challenge"
         title="Most websites fail in the first 8 seconds"
         description="Your visitors judge your credibility instantly. A slow, outdated, or confusing website means lost revenue. Every second counts when it comes to converting browsers into buyers."
-        image="/images/the-challenge"
+        image="/images/the-challenge.png"
         imageAlt="Website analytics showing visitor behavior"
       >
         <div className="flex flex-wrap gap-3">
