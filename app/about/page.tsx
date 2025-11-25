@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Award, Users, Target, Heart, Code2, Sparkles, Coffee, Rocket, Mail, LucideIcon } from "lucide-react"
+import { Award, Users, Target, Heart, Code2, Sparkles, Coffee, Rocket, Mail, Handshake, MessageCircle, LucideIcon } from "lucide-react"
 import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { GradientMesh } from "@/components/GradientMesh"
@@ -61,11 +61,10 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="inline-block"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm font-medium"
               >
-                <span className="px-4 py-2 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm font-medium">
-                  👋 Nice to meet you
-                </span>
+                <Handshake className="w-4 h-4" />
+                <span>Nice to meet you</span>
               </motion.div>
               
               <motion.h1
@@ -468,8 +467,11 @@ export default function AboutPage() {
               className="space-y-6"
             >
               <div className="glass-panel p-8 border-l-4 border-gold/50">
-                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4">
-                  💬 Let&apos;s Talk Like Humans
+                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
+                  <div className="p-2 bg-gold/10 rounded-lg">
+                    <MessageCircle className="w-5 h-5 text-gold" />
+                  </div>
+                  Let&apos;s Talk Like Humans
                 </h3>
                 <p className="text-luxury-muted leading-relaxed mb-4">
                   I know reaching out to a web developer can feel intimidating. Will they try to upsell me? Will they use tech jargon I don&apos;t understand? Will I just be another invoice number?
@@ -480,8 +482,11 @@ export default function AboutPage() {
               </div>
 
               <div className="glass-panel p-8 border-l-4 border-gold/50">
-                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4">
-                  🤝 Building More Than Websites
+                <h3 className="text-2xl font-heading font-bold text-luxury-text mb-4 flex items-center gap-3">
+                  <div className="p-2 bg-gold/10 rounded-lg">
+                    <Handshake className="w-5 h-5 text-gold" />
+                  </div>
+                  Building More Than Websites
                 </h3>
                 <p className="text-luxury-muted leading-relaxed">
                   At the end of the day, I&apos;m not here to just build you a website and disappear. I want to build a relationship. I want to see your business grow. I want to be the person you call when you need something tech-related, whether that&apos;s adding a new feature, troubleshooting an issue, or just getting advice.
@@ -505,9 +510,20 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <div className="inline-block mb-6">
-              <span className="text-6xl">👋</span>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center justify-center mb-6"
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-gold/20 rounded-full blur-xl" />
+                <div className="relative p-4 bg-gold/10 rounded-full border border-gold/30">
+                  <Handshake className="w-12 h-12 text-gold" />
+                </div>
+              </div>
+            </motion.div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-6">
               Let&apos;s Build Something Great Together
             </h2>
@@ -525,9 +541,10 @@ export default function AboutPage() {
                 <Link href="/services">See What I Offer</Link>
               </Button>
             </div>
-            <p className="text-sm text-luxury-muted mt-8">
-              ☕ Response time: Usually within 24 hours (often much faster)
-            </p>
+            <div className="flex items-center justify-center gap-2 text-sm text-luxury-muted mt-8">
+              <Coffee className="w-4 h-4 text-gold" />
+              <span>Response time: Usually within 24 hours (often much faster)</span>
+            </div>
           </motion.div>
         </Container>
       </section>
