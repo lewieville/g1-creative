@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button"
 import { Container } from "@/components/ui/Container"
 import { GradientMesh } from "@/components/GradientMesh"
 import { AnimatedLogo } from "@/components/AnimatedLogo"
+import Aurora from "@/components/Aurora"
 import { motion, useReducedMotion } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 
@@ -137,6 +138,13 @@ export function Hero({
     <div ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-luxury-bg px-0">
       {/* Animated background - NO BLUR/FADE on scroll */}
       <div className="absolute inset-0 z-0">
+        {/* Aurora background effect */}
+        <Aurora
+          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={0.5}
+        />
         <div className="relative w-full h-full">
           <motion.div
             initial={prefersReducedMotion ? false : { scale: 1.2, opacity: 0 }}
