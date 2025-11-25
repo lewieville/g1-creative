@@ -73,7 +73,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.5 }}
                 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-luxury-text leading-tight"
               >
-                I'm Lewis Miller
+                I&apos;m Lewis Miller
               </motion.h1>
               
               <motion.div
@@ -83,13 +83,13 @@ export default function AboutPage() {
                 className="space-y-4 text-lg md:text-xl text-luxury-muted leading-relaxed"
               >
                 <p>
-                  <span className="text-gold font-semibold">Real talk:</span> I'm not your typical web developer who hides behind jargon and corporate speak.
+                  <span className="text-gold font-semibold">Real talk:</span> I&apos;m not your typical web developer who hides behind jargon and corporate speak.
                 </p>
                 <p>
-                  I'm a <span className="text-luxury-text font-medium">real person</span> who genuinely cares about helping businesses succeed online. Before I ever wrote a line of code for clients, I was in the trenches—running my own e-commerce store, learning what works (and what doesn't), and making plenty of mistakes along the way.
+                  I&apos;m a <span className="text-luxury-text font-medium">real person</span> who genuinely cares about helping businesses succeed online. Before I ever wrote a line of code for clients, I was in the trenches—running my own e-commerce store, learning what works (and what doesn&apos;t), and making plenty of mistakes along the way.
                 </p>
                 <p>
-                  Now? I use everything I've learned to build websites that actually <span className="text-gold font-medium">turn visitors into customers</span>. No fluff, no BS—just results that matter to your business.
+                  Now? I use everything I&apos;ve learned to build websites that actually <span className="text-gold font-medium">turn visitors into customers</span>. No fluff, no BS—just results that matter to your business.
                 </p>
               </motion.div>
 
@@ -100,7 +100,7 @@ export default function AboutPage() {
                 className="flex flex-wrap gap-4 pt-4"
               >
                 <Button asChild size="lg" className="shadow-g1-glow">
-                  <Link href="/contact">Let's Work Together</Link>
+                  <Link href="/contact">Let&apos;s Work Together</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
                   <Link href="#story">Read My Story ↓</Link>
@@ -168,7 +168,7 @@ export default function AboutPage() {
                           Computer Science Student
                         </h3>
                         <p className="text-luxury-muted">
-                          Pursuing my Bachelor's while building real businesses on the side
+                          Pursuing my Bachelor&apos;s while building real businesses on the side
                         </p>
                       </div>
                     </div>
@@ -320,10 +320,10 @@ export default function AboutPage() {
                   It Started with an Idea (And a Lot of Coffee)
                 </h3>
                 <p className="text-luxury-muted text-lg leading-relaxed">
-                  My journey into web development didn't start in a classroom. It started with <span className="text-gold font-medium">LEWON Styles</span>—my first e-commerce business. I was a Computer Science student at Southern Virginia University, and instead of just learning theory, I dove headfirst into building something real. I coded the entire website from scratch, handled all the marketing, managed inventory, dealt with payment processors, and learned what makes people actually click &quot;Buy Now.&quot;
+                  My journey into web development didn&apos;t start in a classroom. It started with <span className="text-gold font-medium">LEWON Styles</span>—my first e-commerce business. I was a Computer Science student at Southern Virginia University, and instead of just learning theory, I dove headfirst into building something real. I coded the entire website from scratch, handled all the marketing, managed inventory, dealt with payment processors, and learned what makes people actually click &quot;Buy Now.&quot;
                 </p>
                 <p className="text-luxury-muted text-lg leading-relaxed mt-4">
-                  That business taught me more than any textbook ever could: <span className="text-luxury-text font-semibold">technology is only valuable when it solves real problems</span>. A beautiful website means nothing if it doesn't convert. Fast load times don't matter if your messaging is off. I learned this the hard way—through late nights, failed campaigns, and countless A/B tests.
+                  That business taught me more than any textbook ever could: <span className="text-luxury-text font-semibold">technology is only valuable when it solves real problems</span>. A beautiful website means nothing if it doesn&apos;t convert. Fast load times don&apos;t matter if your messaging is off. I learned this the hard way—through late nights, failed campaigns, and countless A/B tests.
                 </p>
               </motion.div>
 
@@ -343,7 +343,7 @@ export default function AboutPage() {
                   After LEWON Styles, I worked as an IT Specialist at Seed to Table, where I supported everything from hardware to software systems (and yes, I built custom computers on the side). Then I became CEO of <span className="text-gold font-medium">CTR Trades</span>, a trading education platform where I managed SEO strategies, built an engaged community of traders, and developed educational content that actually helped people succeed.
                 </p>
                 <p className="text-luxury-muted text-lg leading-relaxed mt-4">
-                  Each role taught me something different. The common thread? <span className="text-luxury-text font-semibold">People don't care about your tech stack—they care about results</span>. They want websites that load fast, rank on Google, look professional, and most importantly, bring in customers.
+                  Each role taught me something different. The common thread? <span className="text-luxury-text font-semibold">People don&apos;t care about your tech stack—they care about results</span>. They want websites that load fast, rank on Google, look professional, and most importantly, bring in customers.
                 </p>
                 <div className="mt-6">
                   <Link href="/portfolio/ctr-trades">
@@ -368,10 +368,10 @@ export default function AboutPage() {
                   Why G1 Creative Exists
                 </h3>
                 <p className="text-luxury-muted text-lg leading-relaxed">
-                  After years of building websites, managing businesses, and seeing what actually works, I realized something: most small businesses are stuck between two bad options. They can either pay $10,000+ for a big agency that treats them like just another client, or they can buy a $50 template that looks like everyone else's.
+                  After years of building websites, managing businesses, and seeing what actually works, I realized something: most small businesses are stuck between two bad options. They can either pay $10,000+ for a big agency that treats them like just another client, or they can buy a $50 template that looks like everyone else&apos;s.
                 </p>
                 <p className="text-luxury-muted text-lg leading-relaxed mt-4">
-                  <span className="text-gold font-semibold">G1 Creative exists to be the third option</span>—professional, custom web solutions at prices that make sense for growing businesses. You get direct access to me (no account managers, no middlemen), a website built specifically for your business, and the kind of attention to detail that comes from someone who's been in the trenches.
+                  <span className="text-gold font-semibold">G1 Creative exists to be the third option</span>—professional, custom web solutions at prices that make sense for growing businesses. You get direct access to me (no account managers, no middlemen), a website built specifically for your business, and the kind of attention to detail that comes from someone who&apos;s been in the trenches.
                 </p>
               </motion.div>
             </div>
@@ -394,7 +394,7 @@ export default function AboutPage() {
               What Actually Matters to Me
             </h2>
             <p className="text-xl text-luxury-muted">
-              Beyond the code, beyond the pixels—here's what I truly care about
+              Beyond the code, beyond the pixels—here&apos;s what I truly care about
             </p>
           </motion.div>
 
@@ -416,7 +416,7 @@ export default function AboutPage() {
                     Real Relationships
                   </h3>
                   <p className="text-luxury-muted leading-relaxed">
-                    I don't want to be &quot;just another vendor.&quot; I want to understand your business, your challenges, and your goals. When you succeed, I succeed—and I take that seriously.
+                    I don&apos;t want to be &quot;just another vendor.&quot; I want to understand your business, your challenges, and your goals. When you succeed, I succeed—and I take that seriously.
                   </p>
                 </div>
               </div>
@@ -439,7 +439,7 @@ export default function AboutPage() {
                     Measurable Results
                   </h3>
                   <p className="text-luxury-muted leading-relaxed">
-                    Pretty websites are great, but what really matters is the bottom line. More leads, more sales, more growth. That's what I optimize for.
+                    Pretty websites are great, but what really matters is the bottom line. More leads, more sales, more growth. That&apos;s what I optimize for.
                   </p>
                 </div>
               </div>
