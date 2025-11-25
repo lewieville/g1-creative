@@ -462,7 +462,7 @@ export default function AboutPage() {
                     Honest Communication
                   </h3>
                   <p className="text-luxury-muted leading-relaxed">
-                    No tech jargon, no BS, no hiding behind &quot;best practices.&quot; I'll tell you what you need, what you don't, and why. Transparency builds trust.
+                    No tech jargon, no BS, no hiding behind &quot;best practices.&quot; I&apos;ll tell you what you need, what you don&apos;t, and why. Transparency builds trust.
                   </p>
                 </div>
               </div>
@@ -485,7 +485,7 @@ export default function AboutPage() {
                     Continuous Learning
                   </h3>
                   <p className="text-luxury-muted leading-relaxed">
-                    The web evolves daily. I'm always learning new frameworks, studying conversion psychology, and staying ahead of trends—so your site stays competitive.
+                    The web evolves daily. I&apos;m always learning new frameworks, studying conversion psychology, and staying ahead of trends—so your site stays competitive.
                   </p>
                 </div>
               </div>
@@ -614,7 +614,7 @@ export default function AboutPage() {
             >
               <div className="glass-panel p-8 space-y-6">
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-luxury-text">
-                  Here's What You're Actually Getting
+                  Here&apos;s What You&apos;re Actually Getting
                 </h2>
                 <div className="space-y-4">
                   {[
@@ -654,13 +654,13 @@ export default function AboutPage() {
                   <div className="p-2 bg-gold/10 rounded-lg">
                     <MessageCircle className="w-5 h-5 text-gold" />
                   </div>
-                  Let's Talk Like Humans
+                  Let&apos;s Talk Like Humans
                 </h3>
                 <p className="text-luxury-muted leading-relaxed mb-4">
-                  I know reaching out to a web developer can feel intimidating. Will they try to upsell me? Will they use tech jargon I don't understand? Will I just be another invoice number?
+                  I know reaching out to a web developer can feel intimidating. Will they try to upsell me? Will they use tech jargon I don&apos;t understand? Will I just be another invoice number?
                 </p>
                 <p className="text-luxury-muted leading-relaxed">
-                  <span className="text-luxury-text font-semibold">Here's my promise:</span> When you reach out, you're talking directly to me. No sales scripts, no pressure, no BS. Just an honest conversation about what you need and how I can help. If I'm not the right fit, I'll tell you. If I can help, I'll show you exactly how.
+                  <span className="text-luxury-text font-semibold">Here&apos;s my promise:</span> When you reach out, you&apos;re talking directly to me. No sales scripts, no pressure, no BS. Just an honest conversation about what you need and how I can help. If I&apos;m not the right fit, I&apos;ll tell you. If I can help, I&apos;ll show you exactly how.
                 </p>
               </div>
 
@@ -672,7 +672,7 @@ export default function AboutPage() {
                   Building More Than Websites
                 </h3>
                 <p className="text-luxury-muted leading-relaxed">
-                  At the end of the day, I'm not here to just build you a website and disappear. I want to build a relationship. I want to see your business grow. I want to be the person you call when you need something tech-related, whether that's adding a new feature, troubleshooting an issue, or just getting advice.
+                  At the end of the day, I&apos;m not here to just build you a website and disappear. I want to build a relationship. I want to see your business grow. I want to be the person you call when you need something tech-related, whether that&apos;s adding a new feature, troubleshooting an issue, or just getting advice.
                 </p>
               </div>
             </motion.div>
@@ -708,10 +708,10 @@ export default function AboutPage() {
               </div>
             </motion.div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-luxury-text mb-6">
-              Let's Build Something Great Together
+              Let&apos;s Build Something Great Together
             </h2>
             <p className="text-xl text-luxury-muted mb-8 leading-relaxed">
-              Whether you're launching a new business, revamping an existing site, or just have a question—I'd love to hear from you. No pressure, no sales pitch. Just a real conversation about how I can help.
+              Whether you&apos;re launching a new business, revamping an existing site, or just have a question—I&apos;d love to hear from you. No pressure, no sales pitch. Just a real conversation about how I can help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button asChild size="xl" className="shadow-g1-glow">
