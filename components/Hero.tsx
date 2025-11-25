@@ -472,7 +472,6 @@ export function Hero({
                 <Button asChild size="xl" className="shadow-g1-glow w-full sm:w-auto min-h-[56px]">
                   <Link href={secondaryCTA.href} className="flex items-center justify-center">
                     {secondaryCTA.text}
-                    <ArrowRight className="h-5 w-5 ml-2" />
                   </Link>
                 </Button>
               </motion.div>
