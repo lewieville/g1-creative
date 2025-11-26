@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FolderProps {
   color?: string;
@@ -114,30 +115,72 @@ const Folder: React.FC<FolderProps> = ({ color = '#C6A667', size = 1, items = []
           ></span>
           {papers.map((item, i) => {
             let sizeClasses = '';
-            if (i === 0) sizeClasses = open ? 'w-[70%] h-[80%]' : 'w-[70%] h-[80%]';
-            if (i === 1) sizeClasses = open ? 'w-[80%] h-[80%]' : 'w-[80%] h-[70%]';
-            if (i === 2) sizeClasses = open ? 'w-[90%] h-[80%]' : 'w-[90%] h-[60%]';
+            if (i === 0) sizeClasses = open ? 'w-[280px] h-[200px]' : 'w-[70%] h-[80%]';
+            if (i === 1) sizeClasses = open ? 'w-[300px] h-[220px]' : 'w-[80%] h-[70%]';
+            if (i === 2) sizeClasses = open ? 'w-[320px] h-[240px]' : 'w-[90%] h-[60%]';
 
             const transformStyle = open
               ? `${getOpenTransform(i)} translate(${paperOffsets[i].x}px, ${paperOffsets[i].y}px)`
               : undefined;
 
             return (
-              <div
-                key={i}
-                onMouseMove={e => handlePaperMouseMove(e, i)}
-                onMouseLeave={e => handlePaperMouseLeave(e, i)}
-                className={`absolute z-20 bottom-[10%] left-1/2 transition-all duration-300 ease-in-out ${
-                  !open ? 'transform -translate-x-1/2 translate-y-[10%] group-hover:translate-y-0' : 'hover:scale-110'
-                } ${sizeClasses}`}
-                style={{
-                  ...(!open ? {} : { transform: transformStyle }),
-                  backgroundColor: i === 0 ? paper1 : i === 1 ? paper2 : paper3,
-                  borderRadius: '10px'
-                }}
-              >
-                {item}
-              </div>
+              <AnimatePresence key={i}>
+                <motion.div
+                  onMouseMove={e => handlePaperMouseMove(e, i)}
+                  onMouseLeave={e => handlePaperMouseLeave(e, i)}
+                  className={`absolute z-20 bottom-[10%] left-1/2 ${
+                    !open ? 'transform -translate-x-1/2 translate-y-[10%] group-hover:translate-y-0' : 'hover:scale-105'
+                  } ${sizeClasses}`}
+                  style={{
+                    ...(!open ? {} : { transform: transformStyle }),
+                    backgroundColor: i === 0 ? paper1 : i === 1 ? paper2 : paper3,
+                    borderRadius: '16px',
+                    boxShadow: open ? '0 20px 60px rgba(198, 166, 103, 0.2), 0 10px 30px rgba(0, 0, 0, 0.2)' : '0 2px 8px rgba(0, 0, 0, 0.1)',
+                    border: open ? '1px solid rgba(198, 166, 103, 0.2)' : 'none'
+                  }}
+                  initial={false}
+                  animate={{
+                    scale: open ? 1 : 0.95,
+                    opacity: open ? 1 : 0.8,
+                    rotate: open ? (i === 0 ? -15 : i === 1 ? 15 : 5) : 0,
+                  }}
+                  transition={{
+                    duration: 0.4,
+                    delay: open ? i * 0.1 : 0,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                >
+                  <motion.div
+                    className="w-full h-full p-5 sm:p-6 flex flex-col"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ 
+                      opacity: open ? 1 : 0,
+                      y: open ? 0 : 20
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      delay: open ? i * 0.15 + 0.3 : 0,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ 
+                        opacity: open ? 1 : 0,
+                        scale: open ? 1 : 0.9
+                      }}
+                      transition={{
+                        duration: 0.4,
+                        delay: open ? i * 0.15 + 0.4 : 0,
+                        ease: [0.22, 1, 0.36, 1]
+                      }}
+                      className="w-full h-full"
+                    >
+                      {item}
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              </AnimatePresence>
             );
           })}
           <div

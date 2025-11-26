@@ -191,7 +191,7 @@ export default function HomePage() {
           </motion.div>
 
           {/* Folder with cards - Desktop */}
-          <div className="hidden md:flex justify-center items-center min-h-[600px] relative">
+          <div className="hidden md:flex justify-center items-center min-h-[500px] relative mb-8">
             <Folder 
               size={2} 
               color="#C6A667" 
@@ -199,35 +199,50 @@ export default function HomePage() {
               items={[
                 <div
                   key="card-1"
-                  className="glass-panel p-4 sm:p-6 rounded-xl border border-gold/10 w-full h-full flex flex-col overflow-hidden"
+                  className="w-full h-full flex flex-col"
                 >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-3">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
                   <h3 className="text-base sm:text-lg font-heading font-bold text-luxury-text mb-2">
                     100% Custom Coded
                   </h3>
                   <p className="text-luxury-muted leading-relaxed text-xs sm:text-sm">
-                    Every website is built from the ground up with clean, hand-written code.
+                    Every website is built from the ground up with clean, hand-written code. No bloated page builders, no template limitations.
                   </p>
                 </div>,
                 <div
                   key="card-2"
-                  className="glass-panel p-4 sm:p-6 rounded-xl border border-gold/10 w-full h-full flex flex-col overflow-hidden"
+                  className="w-full h-full flex flex-col"
                 >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-3">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
                   <h3 className="text-base sm:text-lg font-heading font-bold text-luxury-text mb-2">
                     Lightning Fast Performance
                   </h3>
                   <p className="text-luxury-muted leading-relaxed text-xs sm:text-sm">
-                    Custom code means no unnecessary plugins or bloated frameworks.
+                    Custom code means no unnecessary plugins or bloated frameworks. Your site loads faster and ranks better.
                   </p>
                 </div>,
                 <div
                   key="card-3"
-                  className="glass-panel p-4 sm:p-6 rounded-xl border border-gold/10 w-full h-full flex flex-col overflow-hidden"
+                  className="w-full h-full flex flex-col"
                 >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gold/10 flex items-center justify-center mb-3">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
                   <h3 className="text-base sm:text-lg font-heading font-bold text-luxury-text mb-2">
                     Unlimited Flexibility
                   </h3>
                   <p className="text-luxury-muted leading-relaxed text-xs sm:text-sm">
-                    Custom code means we can build anything you imagine.
+                    Custom code means we can build anything you imagine—no template restrictions, no limitations.
                   </p>
                 </div>
               ]}
