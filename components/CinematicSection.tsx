@@ -3,8 +3,6 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Container } from "@/components/ui/Container"
-import { useState } from "react"
-import FallingText from "./FallingText"
 
 interface CinematicSectionProps {
   title: string
@@ -25,20 +23,6 @@ export function CinematicSection({
   reverse = false,
   children,
 }: CinematicSectionProps) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Extract words to highlight (key words from the title)
-  // For "Most websites fail in the first 8 seconds", highlight: websites, fail, first, 8, seconds
-  const highlightWords = title === "Most websites fail in the first 8 seconds"
-    ? ["websites", "fail", "first", "8", "seconds"]
-    : title
-        .split(' ')
-        .filter(word => 
-          word.length > 4 && 
-          !['the', 'in', 'a', 'an', 'and', 'or', 'but'].includes(word.toLowerCase())
-        )
-        .map(word => word.replace(/[.,!?;:]/g, ''));
-
   return (
     <div className="relative py-20 sm:py-24 md:py-32 overflow-hidden">
       <Container>
@@ -61,28 +45,9 @@ export function CinematicSection({
                 {subtitle}
               </span>
             )}
-            <div
-              className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-luxury-text tracking-tight leading-tight min-h-[1.2em]"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              {isHovered ? (
-                <FallingText
-                  key={`falling-${isHovered}`}
-                  text={title}
-                  highlightWords={highlightWords}
-                  trigger="hover"
-                  backgroundColor="transparent"
-                  wireframes={false}
-                  gravity={0.56}
-                  fontSize="clamp(2rem, 5vw, 3.75rem)"
-                  mouseConstraintStiffness={0.9}
-                  highlightClass="text-gold font-bold"
-                />
-              ) : (
-                <h2>{title}</h2>
-              )}
-            </div>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-luxury-text tracking-tight leading-tight">
+              {title}
+            </h2>
             <p className="text-lg sm:text-xl text-luxury-muted leading-relaxed">
               {description}
             </p>
