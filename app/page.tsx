@@ -118,7 +118,7 @@ export default function HomePage() {
         agitate="Whether you're starting from scratch or need a complete overhaul,"
         solution="We build websites that turn browsers into buyers."
         benefits={[
-          "Get a website that converts 3x better than templates",
+          "100% custom coded—no templates or page builders",
           "Launch in 4 weeks, not 4 months",
           "Built with cutting-edge tech that scales with you",
           "Average 142% increase in client conversions"
@@ -165,6 +165,119 @@ export default function HomePage() {
           </Button>
         </Link>
       </CinematicSection>
+
+      {/* What Makes Us Different Section */}
+      <MotionSection className="bg-luxury-bg relative py-20 sm:py-24 md:py-28 lg:py-40">
+        <div className="gold-divider" />
+        
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl mx-auto mb-12 sm:mb-16 lg:mb-20"
+          >
+            <span className="inline-block text-xs sm:text-sm tracking-caps uppercase text-gold mb-3 sm:mb-4 font-medium">
+              What Sets Us Apart
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold text-luxury-text mb-4 sm:mb-6 lg:mb-8 tracking-tight leading-tight px-4 sm:px-0">
+              No Templates. No Page Builders. Just Pure Custom Code.
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-luxury-muted leading-relaxed max-w-2xl mx-auto px-4 sm:px-0">
+              While other agencies use cookie-cutter templates and drag-and-drop builders, we write every line of code from scratch. Your website is built specifically for your business—not a modified template that hundreds of others are using.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-g1-glow"
+            >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-4 sm:mb-6">
+                <svg className="w-6 h-6 sm:w-7 sm:h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4">
+                100% Custom Coded
+              </h3>
+              <p className="text-luxury-muted leading-relaxed text-sm sm:text-base">
+                Every website is built from the ground up with clean, hand-written code. No bloated page builders, no template limitations—just pure, optimized code that performs exactly how you need it to.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-g1-glow"
+            >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-4 sm:mb-6">
+                <svg className="w-6 h-6 sm:w-7 sm:h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4">
+                Lightning Fast Performance
+              </h3>
+              <p className="text-luxury-muted leading-relaxed text-sm sm:text-base">
+                Custom code means no unnecessary plugins or bloated frameworks. Your site loads faster, ranks better, and converts more visitors—because it&apos;s built lean and optimized from day one.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-g1-glow md:col-span-2 lg:col-span-1"
+            >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-4 sm:mb-6">
+                <svg className="w-6 h-6 sm:w-7 sm:h-7 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4">
+                Unlimited Flexibility
+              </h3>
+              <p className="text-luxury-muted leading-relaxed text-sm sm:text-base">
+                Need a unique feature? Want to integrate with a specific tool? Custom code means we can build anything you imagine—no template restrictions, no &quot;that&apos;s not possible&quot; limitations.
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12 sm:mt-16 text-center"
+          >
+            <div className="inline-flex items-center gap-3 sm:gap-4 px-6 sm:px-8 py-4 sm:py-6 glass-panel rounded-2xl border border-gold/20">
+              <div className="flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gold/10 flex items-center justify-center">
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="text-left">
+                <p className="text-sm sm:text-base font-semibold text-luxury-text mb-1">
+                  Your website is one-of-a-kind
+                </p>
+                <p className="text-xs sm:text-sm text-luxury-muted">
+                  Built specifically for your business, not a template shared by hundreds of others
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </Container>
+      </MotionSection>
 
       {/* Services Section */}
       <MotionSection className="bg-luxury-surface relative py-20 sm:py-24 md:py-28 lg:py-40">
