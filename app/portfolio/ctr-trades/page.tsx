@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/Container"
 import { Button } from "@/components/ui/Button"
 import { Badge } from "@/components/ui/Badge"
 import { GradientMesh } from "@/components/GradientMesh"
-import { ArrowLeft, ExternalLink, Calendar, Clock } from "lucide-react"
+import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -130,12 +130,6 @@ export default function CTRTradesCaseStudy() {
             </p>
 
             <div className="flex gap-4 mt-12">
-              <Button asChild>
-                <a href="https://scalp.ctrtrades.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
-                  <span>Visit CTR Trades</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </Button>
               <Button asChild variant="outline">
                 <Link href="/contact#schedule-call">
                   Discuss Your Project
