@@ -1,9 +1,11 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Badge } from "@/components/ui/Badge"
 import { ArrowUpRight } from "lucide-react"
+import { ImageModal } from "@/components/ImageModal"
 
 interface PortfolioCardProps {
   title: string
@@ -22,10 +24,21 @@ export function PortfolioCard({
   tags,
   href,
 }: PortfolioCardProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsModalOpen(true)
+  }
+
   const CardContent = (
       <div className="glass-panel overflow-hidden rounded-2xl border border-luxury-panel hover:border-gold/20 transition-all duration-500 relative h-full flex flex-col hover:-translate-y-2 hover:shadow-g1-glow">
         {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden bg-luxury-panel">
+        <div 
+          className="relative aspect-[4/3] overflow-hidden bg-luxury-panel cursor-pointer"
+          onClick={handleImageClick}
+        >
           <Image
             src={image}
             alt={title}
@@ -82,12 +95,30 @@ export function PortfolioCard({
 
   if (href) {
     return (
-      <Link href={href} className="group block h-full">
-        {CardContent}
-      </Link>
+      <>
+        <Link href={href} className="group block h-full">
+          {CardContent}
+        </Link>
+        <ImageModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          src={image}
+          alt={title}
+        />
+      </>
     )
   }
 
-  return <div className="group block h-full">{CardContent}</div>
+  return (
+    <>
+      <div className="group block h-full">{CardContent}</div>
+      <ImageModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        src={image}
+        alt={title}
+      />
+    </>
+  )
 }
 

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/Badge"
 import { GradientMesh } from "@/components/GradientMesh"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import { Metadata } from "next"
+import { ClickableImage } from "@/components/ClickableImage"
 
 export const metadata: Metadata = {
   title: "MICO Case Study - AI-Powered Web3 Platform | G1 Creative",
@@ -56,7 +57,7 @@ export default function MICOCaseStudy() {
       <div className="bg-luxury-surface py-12">
         <Container>
           <div className="relative aspect-video rounded-2xl overflow-hidden shadow-g1-glow">
-            <Image
+            <ClickableImage
               src="/images/mico-1.png"
               alt="MICO Platform Interface"
               fill
@@ -102,13 +103,13 @@ export default function MICOCaseStudy() {
             {/* Screenshots Grid */}
             <div className="grid md:grid-cols-3 gap-6 my-12">
               <div className="relative aspect-video rounded-xl overflow-hidden">
-                <Image src="/images/mico-1.png" alt="MICO Screenshot 1" fill className="object-cover" />
+                <ClickableImage src="/images/mico-1.png" alt="MICO Screenshot 1" fill className="object-cover" />
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden">
-                <Image src="/images/mico-2.png" alt="MICO Screenshot 2" fill className="object-cover" />
+                <ClickableImage src="/images/mico-2.png" alt="MICO Screenshot 2" fill className="object-cover" />
               </div>
               <div className="relative aspect-video rounded-xl overflow-hidden">
-                <Image src="/images/mico-3.png" alt="MICO Screenshot 3" fill className="object-cover" />
+                <ClickableImage src="/images/mico-3.png" alt="MICO Screenshot 3" fill className="object-cover" />
               </div>
             </div>
 

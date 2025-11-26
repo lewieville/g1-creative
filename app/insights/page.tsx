@@ -12,6 +12,7 @@ import { GradientMesh } from "@/components/GradientMesh"
 import { ArrowUpRight, TrendingUp, Clock, Calendar, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
+import { ClickableImage } from "@/components/ClickableImage"
 
 const categories = ["All", "Case Studies"]
 
@@ -146,20 +147,18 @@ export default function InsightsPage() {
                       className="glass-panel overflow-hidden shadow-g1-card hover:shadow-g1-glow transition-all duration-500 relative"
                     >
                       {/* Image */}
-                      <div className="relative aspect-[16/10] overflow-hidden bg-luxury-panel">
-                        <motion.div
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.6 }}
-                          className="w-full h-full"
-                        >
-                          <Image
-                            src={item.image}
-                            alt={item.title}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
-                          />
-                        </motion.div>
+                      <div 
+                        className="relative aspect-[16/10] overflow-hidden bg-luxury-panel"
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <ClickableImage
+                          src={item.image}
+                          alt={item.title}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                          containerClassName="w-full h-full"
+                        />
                         
                         {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-luxury-bg via-luxury-bg/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
