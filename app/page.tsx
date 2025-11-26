@@ -190,7 +190,52 @@ export default function HomePage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 max-w-6xl mx-auto">
+          {/* Folder with cards - Desktop */}
+          <div className="hidden md:flex justify-center items-center min-h-[600px] relative">
+            <Folder 
+              size={2} 
+              color="#C6A667" 
+              className="custom-folder"
+              items={[
+                <div
+                  key="card-1"
+                  className="glass-panel p-4 sm:p-6 rounded-xl border border-gold/10 w-full h-full flex flex-col overflow-hidden"
+                >
+                  <h3 className="text-base sm:text-lg font-heading font-bold text-luxury-text mb-2">
+                    100% Custom Coded
+                  </h3>
+                  <p className="text-luxury-muted leading-relaxed text-xs sm:text-sm">
+                    Every website is built from the ground up with clean, hand-written code.
+                  </p>
+                </div>,
+                <div
+                  key="card-2"
+                  className="glass-panel p-4 sm:p-6 rounded-xl border border-gold/10 w-full h-full flex flex-col overflow-hidden"
+                >
+                  <h3 className="text-base sm:text-lg font-heading font-bold text-luxury-text mb-2">
+                    Lightning Fast Performance
+                  </h3>
+                  <p className="text-luxury-muted leading-relaxed text-xs sm:text-sm">
+                    Custom code means no unnecessary plugins or bloated frameworks.
+                  </p>
+                </div>,
+                <div
+                  key="card-3"
+                  className="glass-panel p-4 sm:p-6 rounded-xl border border-gold/10 w-full h-full flex flex-col overflow-hidden"
+                >
+                  <h3 className="text-base sm:text-lg font-heading font-bold text-luxury-text mb-2">
+                    Unlimited Flexibility
+                  </h3>
+                  <p className="text-luxury-muted leading-relaxed text-xs sm:text-sm">
+                    Custom code means we can build anything you imagine.
+                  </p>
+                </div>
+              ]}
+            />
+          </div>
+          
+          {/* Fallback: Show cards in grid on mobile */}
+          <div className="grid md:hidden grid-cols-1 gap-6 sm:gap-8 max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -198,9 +243,6 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-g1-glow"
             >
-              <div className="w-full h-24 sm:h-28 flex items-center justify-center mb-4 sm:mb-6">
-                <Folder size={1.2} color="#C6A667" className="custom-folder" />
-              </div>
               <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4">
                 100% Custom Coded
               </h3>
@@ -216,9 +258,6 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-g1-glow"
             >
-              <div className="w-full h-24 sm:h-28 flex items-center justify-center mb-4 sm:mb-6">
-                <Folder size={1.2} color="#C6A667" className="custom-folder" />
-              </div>
               <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4">
                 Lightning Fast Performance
               </h3>
@@ -232,11 +271,8 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-g1-glow md:col-span-2 lg:col-span-1"
+              className="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/10 hover:border-gold/30 transition-all duration-500 hover:-translate-y-2 hover:shadow-g1-glow"
             >
-              <div className="w-full h-24 sm:h-28 flex items-center justify-center mb-4 sm:mb-6">
-                <Folder size={1.2} color="#C6A667" className="custom-folder" />
-              </div>
               <h3 className="text-xl sm:text-2xl font-heading font-bold text-luxury-text mb-3 sm:mb-4">
                 Unlimited Flexibility
               </h3>
