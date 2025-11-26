@@ -165,7 +165,7 @@ export default function AboutPage() {
                   <span>From IT Specialist to CEO</span>
                 </h3>
                 <p className="text-luxury-muted text-base sm:text-lg leading-relaxed">
-                  After LEWON Styles, I worked as an IT Specialist at Seed to Table, where I supported everything from hardware to software systems (and yes, I built custom computers on the side). Then I became CEO of <span className="text-gold font-medium">CTR Trades</span>, a trading education platform where I managed SEO strategies, built an engaged community of traders, and developed educational content that actually helped people succeed.
+                  After LEWON Styles, I worked as an IT Specialist at Seed to Table, where I supported everything from hardware to software systems (and yes, I built custom computers on the side). Then I led <span className="text-gold font-medium">CTR Trades</span> software, a trading education platform where I managed SEO strategies, built an engaged community of traders, and developed educational content that actually helped people succeed.
                 </p>
                 <p className="text-luxury-muted text-base sm:text-lg leading-relaxed mt-4">
                   Each role taught me something different. The common thread? <span className="text-luxury-text font-semibold">People don&apos;t care about your tech stack—they care about results</span>. They want websites that load fast, rank on Google, look professional, and most importantly, bring in customers.
