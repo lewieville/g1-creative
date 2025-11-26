@@ -34,7 +34,7 @@ export function ClickableImage({
   return (
     <>
       <div
-        className={`relative cursor-pointer group ${containerClassName}`}
+        className={`relative cursor-pointer group ${fill ? 'absolute inset-0 w-full h-full' : ''} ${containerClassName}`}
         onClick={() => setIsModalOpen(true)}
       >
         {fill ? (
@@ -60,7 +60,7 @@ export function ClickableImage({
           />
         )}
         {/* Hover overlay indicator */}
-        <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/5 transition-colors duration-300 flex items-center justify-center">
+        <div className="absolute inset-0 bg-gold/0 group-hover:bg-gold/5 transition-colors duration-300 flex items-center justify-center pointer-events-none">
           <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gold text-sm font-medium">
             Click to expand
           </div>
