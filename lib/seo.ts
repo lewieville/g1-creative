@@ -96,7 +96,7 @@ export function generateOrganizationSchema() {
     "@type": "Organization",
     name: siteName,
     url: siteUrl,
-    logo: `${siteUrl}/images/logo.svg`,
+    logo: `${siteUrl}/g1-logo.png`,
     description:
       "G1 Creative is a web design and development agency specializing in creating high-performance, conversion-optimized websites for businesses.",
     address: {

@@ -46,13 +46,19 @@ const cinzel = Cinzel({
 
 export const metadata: Metadata = {
   ...generateSEOMetadata({
-    title: "Web Design Agency | High-Converting Websites | G1 Creative",
-    description: "G1 Creative builds premium websites designed to convert. Fast, SEO-optimized and tailored for growth. Trusted by startups and small businesses.",
+    title: "G1 Creative - Award-Winning Web Design & Development Agency",
+    description: "G1 Creative builds premium, custom-coded websites designed to convert. Fast, SEO-optimized and tailored for growth. Trusted by startups and small businesses. Find G1 Creative for expert web design and development.",
     url: "/",
   }),
   icons: {
-    icon: '/g1-logo.png',
-    apple: '/g1-logo.png',
+    icon: [
+      { url: '/g1-logo.png', sizes: 'any' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
   // Performance optimizations
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://g1creative.com'),
@@ -69,6 +75,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${cinzel.variable}`}>
       <head>
+        {/* Favicon links for better Google indexing */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/g1-logo.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/g1-logo.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/g1-logo.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        
         {/* Resource hints for faster loading */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
